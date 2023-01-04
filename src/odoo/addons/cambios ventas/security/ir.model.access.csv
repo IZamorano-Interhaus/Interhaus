@@ -1,2 +1,0 @@
-id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
-access_cambio-ventas_cambio-ventas,cambio-ventas.cambio-ventas,model_cambio-ventas_cambio-ventas,base.group_user,1,1,1,1
