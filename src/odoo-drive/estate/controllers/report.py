@@ -10,9 +10,9 @@ import werkzeug.wrappers
 import werkzeug.wsgi
 from werkzeug.urls import url_parse
 
-from odoo import http
-from odoo.http import content_disposition, request
-from odoo.tools.safe_eval import safe_eval, time
+from odoo.odoo import http
+from odoo.odoo.http import content_disposition, request
+from odoo.odoo.tools.safe_eval import safe_eval, time
 
 
 _logger = logging.getLogger(__name__)
