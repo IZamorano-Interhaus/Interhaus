@@ -11,7 +11,7 @@
     'data': [
         'views/webclient_templates.xml',
         'views/report_templates.xml',
-        'views/base_document_layout_views.xml',
+        
         'views/speedscope_template.xml',
         'views/lazy_assets.xml',
         'views/neutralize_views.xml',
