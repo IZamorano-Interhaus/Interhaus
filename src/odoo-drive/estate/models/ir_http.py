@@ -4,11 +4,11 @@ import hashlib
 import json
 import logging
 
-import odoo
-from odoo import api, http, models
-from odoo.http import request
-from odoo.tools import file_open, image_process, ustr
-from odoo.tools.misc import str2bool
+import odoo.odoo
+from odoo.odoo import api, http, models
+from odoo.odoo.http import request
+from odoo.odoo.tools import file_open, image_process, ustr
+from odoo.odoo.tools.misc import str2bool
 
 
 _logger = logging.getLogger(__name__)
