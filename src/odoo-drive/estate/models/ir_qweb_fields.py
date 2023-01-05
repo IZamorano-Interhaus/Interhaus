@@ -6,9 +6,9 @@ from collections import OrderedDict
 from werkzeug.urls import url_quote
 from markupsafe import Markup
 
-from odoo import api, models
-from odoo.tools import pycompat
-from odoo.tools import html_escape as escape
+from odoo.odoo import api, models
+from odoo.odoo.tools import pycompat
+from odoo.odoo.tools import html_escape as escape
 
 
 class Image(models.AbstractModel):

@@ -2,10 +2,10 @@
 import markupsafe
 from markupsafe import Markup
 
-from odoo import api, fields, models, tools
+from odoo.odoo import api, fields, models, tools
 
-from odoo.addons.base.models.ir_qweb_fields import nl2br
-from odoo.modules import get_resource_path
+from odoo.odoo.addons.base.models.ir_qweb_fields import nl2br
+from odoo.odoo.modules import get_resource_path
 
 try:
     import sass as libsass

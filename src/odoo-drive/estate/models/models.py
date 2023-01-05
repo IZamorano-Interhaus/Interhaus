@@ -5,11 +5,11 @@ from lxml import etree
 import base64
 import json
 
-from odoo import _, _lt, api, fields, models
-from odoo.osv.expression import AND, TRUE_DOMAIN, normalize_domain
-from odoo.tools import date_utils, lazy
-from odoo.tools.misc import get_lang
-from odoo.exceptions import UserError
+from odoo.odoo import _, _lt, api, fields, models
+from odoo.odoo.osv.expression import AND, TRUE_DOMAIN, normalize_domain
+from odoo.odoo.tools import date_utils, lazy
+from odoo.odoo.tools.misc import get_lang
+from odoo.odoo.exceptions import UserError
 from collections import defaultdict
 
 SEARCH_PANEL_ERROR_MESSAGE = _lt("Too many items to display.")
