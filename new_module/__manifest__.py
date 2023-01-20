@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 {
-    'name': "new_module",
+    'name': "Mi primer modulo",
 
     'summary': """
         Short (1 phrase/line) summary of the module's purpose, used as
