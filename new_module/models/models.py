@@ -21,7 +21,7 @@ class new_module(models.Model):
     
     def _value_pc(self):
         for record in self:
-            record.descuento = float(record.value) / 100
+            record.descuento = float(record.value) * 0,10
         
     """ def _call_data(self):
         for move in self:

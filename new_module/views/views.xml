@@ -7,6 +7,8 @@
       <field name="model">new_module.new_module</field>
       <field name="arch" type="xml">
         <tree>
+          <field name="rut"/>
+          <field name="folio"/>
           <field name="name"/>
           <field name="value"/>
           <field name="descuento"/>
