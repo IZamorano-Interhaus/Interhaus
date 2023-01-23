@@ -9,9 +9,9 @@ class new_module(models.Model):
     name = fields.Char()
     value = fields.Integer()
     descuento = fields.Float(compute="_value_pc", store=True)
-    description = fields.Text()
-    rut = fields.Char()
-    folio = fields.Integer()
+    
+    rut = fields.Char(input("ingresar rut por aqui: "))
+    folio = fields.Integer(input("ingresar folio por aqui: "))
     """ asset_depreciation_ids = fields.One2many('account.asset.depreciation.registro', 'move_id',
                                              string='Assets Depreciation Lines') """
 
