@@ -1,4 +1,6 @@
+# -*- coding: utf-8 -*-
 from odoo import api, fields, models,pruebas, tools
+
 class tablaDatos(pruebas.datos):
     _name="obtencion de datos"
     _description="esta clase usa metodo get para obtener datos del odoo"
