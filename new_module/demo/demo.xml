@@ -26,15 +26,5 @@
             <field name="value">4020</field>
           </record>
 
-          <record id="object5" model="new_module.new_module">
-            <field name="name">Object 5</field>
-            <field name="value">4020</field>
-          </record>
-
-          <record id="object6" model="new_module.new_module">
-            <field name="name">Object 6</field>
-            <field name="value">4020</field>
-          </record>
-
     </data>
 </odoo>

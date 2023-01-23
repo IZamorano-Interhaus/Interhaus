@@ -18,8 +18,8 @@ class new_module(models.Model):
         for record in self:
             record.descuento = float(record.value) / 100
         
-    def Boton_desplegar_datos(self):
+    """ def Boton_desplegar_datos(self):
         for move in self:
             for registro in move.asset_depreciation_ids:
                 registro.move_posted_click = True
-        return super(new_module, self).Boton_desplegar_datos()
+        return super(new_module, self).Boton_desplegar_datos() """
