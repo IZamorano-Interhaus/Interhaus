@@ -13,17 +13,25 @@
 
           <record id="object2" model="new_module.new_module">
             <field name="name">Object 2</field>
-            <field name="value">202</field>
+            <field name="value">200</field>
           </record>
 
           <record id="object3" model="new_module.new_module">
             <field name="name">Object 3</field>
-            <field name="value">350</field>
+            <field name="value">300</field>
           </record>
 
           <record id="object4" model="new_module.new_module">
             <field name="name">Object 4</field>
-            <field name="value">4020</field>
+            <field name="value">400</field>
+          </record>
+          <record id="object4" model="new_module.new_module">
+            <field name="name">Object 5</field>
+            <field name="value">500</field>
+          </record>
+          <record id="object4" model="new_module.new_module">
+            <field name="name">Object 6</field>
+            <field name="value">600</field>
           </record>
 
     </data>

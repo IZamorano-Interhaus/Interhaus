@@ -11,8 +11,8 @@ class new_module(models.Model):
     description = fields.Text()
     rut = fields.Char()
     folio = fields.Integer()
-    asset_depreciation_ids = fields.One2many('account.asset.depreciation.registro', 'move_id',
-                                             string='Assets Depreciation Lines')
+    """ asset_depreciation_ids = fields.One2many('account.asset.depreciation.registro', 'move_id',
+                                             string='Assets Depreciation Lines') """
     @api.depends('value')
     def _value_pc(self):
         for record in self:
