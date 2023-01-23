@@ -12,20 +12,20 @@ class new_module(models.Model):
     description = fields.Text()
     rut = fields.Char()
     folio = fields.Integer()
-    asset_depreciation_ids = fields.One2many('account.asset.depreciation.registro', 'move_id',
-                                             string='Assets Depreciation Lines')
+    """ asset_depreciation_ids = fields.One2many('account.asset.depreciation.registro', 'move_id',
+                                             string='Assets Depreciation Lines') """
 
-
+   
     @api.depends('value')
 
-
+    
     def _value_pc(self):
         for record in self:
             record.descuento = float(record.value) / 100
         
-    def _call_data(self):
+    """ def _call_data(self):
         for move in self:
             for registro in move.asset_deprecation_ids:
                 registro.move_posted_click = True
-        return super(new_module, self)._call_data()
+        return super(new_module, self)._call_data() """
     

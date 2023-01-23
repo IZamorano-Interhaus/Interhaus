@@ -1,4 +1,4 @@
-# -*- coding: utf-8 -*-
+""" # -*- coding: utf-8 -*-
 
 from odoo import api, fields, models, _
 from odoo import tools
@@ -27,5 +27,11 @@ class importData(models.Model):
         tools.drop_viw_if_exists(self._cr,'import_data')
         self._cr.execute(
             "aqui ira la sintaxis sql para traer los datos"
-            "select * from "
-        )
+            '''select sii.*,
+            min(os.date) as 
+            
+             from odoo.service os
+            left join sii.service sii on (os.folio=sii.folio)
+            where
+            '''
+        ) """
