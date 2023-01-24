@@ -5,6 +5,7 @@ from odoo import tools
 
 class importData(models.Model):
     _name = "import.data"
+    _description="obtener datos por el rut presente en odoo"
 
 
     def _get_data_by_folio(self):
