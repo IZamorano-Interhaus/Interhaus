@@ -36,18 +36,25 @@ class importData():
 
     def get_folio(self):
       return self.__folioDocumento
-    
-    def get_documento(self):
-      return self.__documento
-    
+      
     def get_tipoDocumento(self):
       return self.__tipoDocumento
 
+    def get_documento(self):
+      return self.__documento
     #setters
 
     def set_rut(self,rutTributario):
       self.__rutTributario=rutTributario
+    
+    #metodos
+    def rellenoDocumentos(self):
+      if(self.get_tipoDocumento==30):
+          set.__doc__="facturaa"
+      
 
+      
+auxList=[]
 mensaje = importData(19669468-4,123541,"factura de ventas y servicios no afectos o exentos de IVA",32)
 
 """ print(mensaje.get_rut()," | ",mensaje.get_folio()) """
