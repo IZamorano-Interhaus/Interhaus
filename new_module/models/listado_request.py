@@ -23,32 +23,7 @@ class importData():
         elif self.get_tipoDocumento()==32:
             self.doc="factura de ventas y servicios no afectos o exentos de IVA"
         else:
-            print("error")
-            
-        """ elif(self.__tipoDocumento==33):
-            self.__documento="factura"
-        elif(self.__tipoDocumento==34):
-            self.__documento="factura"
-        elif(self.__tipoDocumento==35):
-            self.__documento="factura"
-        elif(self.__tipoDocumento==38):
-            self.__documento="factura"
-        elif(self.__tipoDocumento==39):
-            self.__documento="factura"
-        elif(self.__tipoDocumento==40):
-            self.__documento="factura"
-        elif(self.__tipoDocumento==41):
-            self.__documento="factura"
-        elif(self.__tipoDocumento==43):
-            self.__documento="factura"
-        elif(self.__tipoDocumento==45):
-            self.__documento="factura"
-        elif(self.__tipoDocumento==46):
-            self.__documento="factura"
-        elif(self.__tipoDocumento==48):
-            self.__documento="factura" """
-            
-            
+            print("error")        
         return self.__documento
     #setters
 
@@ -61,7 +36,7 @@ class importData():
 
       
 auxList=[]
-mensaje = importData(19669468-4,123541,30)
+mensaje = importData(19669468-4,123541,30,"factura")
 
 print(mensaje.get_documento()," | ",mensaje.get_tipoDocumento())
 auxList.append(mensaje.get_rut())
