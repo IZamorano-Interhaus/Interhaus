@@ -12,6 +12,9 @@ class new_module(models.Model):
     
     rut = fields.Char()
     folio = fields.Integer()
+    documento = fields.Char()
+    tipo_documento = fields.Integer()
+
     """ asset_depreciation_ids = fields.One2many('account.asset.depreciation.registro', 'move_id',
                                              string='Assets Depreciation Lines') """
 
