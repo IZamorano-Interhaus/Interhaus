@@ -10,7 +10,9 @@
           <field name="rut"/>
           <field name="folio"/>
           <field name="name"/>
-          <field name="value"/>
+          <field name="documento"/>
+          <field name="tipo_documento"/>
+          <field name="precio"/>
           <field name="descuento"/>
         </tree>
       </field>
