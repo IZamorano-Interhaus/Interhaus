@@ -6,17 +6,10 @@ from odoo import models, fields, api, _
 from odoo.exceptions import ValidationError
 
 
-class new_module(models.Model):
-    _name = 'new_module.new_module'
-    _description = 'new_module.new_module'
-    name = fields.Char()
-    value = fields.Integer()
-    descuento = fields.Float(compute="_value_pc", store=True)
-    
-    rut = fields.Char()
-    folio = fields.Integer()
-    documento = fields.Many2one()
-    tipo_documento = fields.Many2one()
+class RecurringPayment(models.Model):
+    _name = 'recurring.payment'
+    _description = 'Recurring Payment('
+    _rec_name = 'name'
 
     name = fields.Char('Name', readonly=True)
     partner_id = fields.Many2one('res.partner', string="Partner", required=True)
@@ -100,7 +93,7 @@ class new_module(models.Model):
                     'recurring.payment') or _('New')
             else:
                 vals['name'] = self.env['ir.sequence'].next_by_code('recurring.payment') or _('New')
-        return super(new_module, self).create(vals)
+        return super(RecurringPayment, self).create(vals)
 
     @api.constrains('amount')
     def _check_amount(self):
@@ -111,18 +104,9 @@ class new_module(models.Model):
         for rec in self:
             if rec.state == 'done':
                 raise ValidationError(_('Cannot delete done records !'))
-        return super(new_module, self).unlink()
+        return super(RecurringPayment, self).unlink()
 
 
-    
-
-   
-    @api.depends('value')
-
-    
-    def _value_pc(self):
-        for record in self:
-            record.descuento = float(record.value) * 0.10
 class RecurringPaymentLine(models.Model):
     _name = 'recurring.payment.line'
     _description = 'Recurring Payment Line'
@@ -154,6 +138,4 @@ class RecurringPaymentLine(models.Model):
             if self.recurring_payment_id.journal_state == 'posted':
                 payment.action_post()
             self.write({'state': 'done', 'payment_id': payment.id})
-        
-  
-    
+
