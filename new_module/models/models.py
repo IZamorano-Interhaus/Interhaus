@@ -3,7 +3,7 @@
 from odoo import models, fields, api
 
 
-class new_module(models.Model):
+class importarDatosNuevos(models.Model):
     _name = 'new_module.new_module'
     _description = 'new_module.new_module'
     name = fields.Char()
