@@ -22,13 +22,6 @@
 
     # always loaded
     'data': [
-        
-        'data/sequence.xml',
-        'data/recurring_cron.xml',
-        'security/ir.model.access.csv',
-        'views/recurring_template_view.xml',
-        'views/recurring_payment_view.xml',
-    
         'security/ir.model.access.csv',
         'views/views.xml',
         'views/templates.xml',
