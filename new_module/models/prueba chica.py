@@ -1,10 +1,9 @@
-
+""" 
 
 class pruebas():
-    def __init__(self,identificador,nombre,edad):
-        __id=identificador
-        __nombre=nombre
-        __edad=edad
+    id
+    nombre
+    edad
 
     def get_id(self):
         return self.get_id
@@ -19,5 +18,7 @@ class pruebas():
             self.get_id()=1
             self.get_edad()=23
             print(self.get_id()," | ",self.get_edad())
+    
+ensayo= pruebas(1) """
         
     
