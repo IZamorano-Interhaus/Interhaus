@@ -6,7 +6,7 @@
             <field name="value">0</field>
           </record>
 
-          <record id="object1" model="importarDatosNuevos.new_module">
+          <record id="object1" model="new_module.importarDatosNuevos">
             <field name="name">Object 1</field>
             <field name="value">10</field>
           </record>
@@ -16,7 +16,7 @@
             <field name="value">20</field>
           </record>
 
-          <record id="object3" model="importarDatosNuevos.new_module">
+          <record id="object3" model="new_module.importarDatosNuevos">
             <field name="name">Object 3</field>
             <field name="value">30</field>
           </record>
