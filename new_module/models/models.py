@@ -10,8 +10,8 @@ class new_module(models.Model):
     value = fields.Integer()
     descuento = fields.Float(compute="_value_pc", store=True)
     
-    rut = fields.Char()
-    folio = fields.Integer()
+    rut = fields.Many2one()
+    folio = fields.Many2one()
     documento = fields.Char()
     tipo_documento = fields.Integer()
 
