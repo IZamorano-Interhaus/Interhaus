@@ -123,6 +123,37 @@ class new_module(models.Model):
     def _value_pc(self):
         for record in self:
             record.descuento = float(record.value) * 0.10
+class RecurringPaymentLine(models.Model):
+    _name = 'recurring.payment.line'
+    _description = 'Recurring Payment Line'
+
+    recurring_payment_id = fields.Many2one('recurring.payment', string="Recurring Payment")
+    partner_id = fields.Many2one('res.partner', 'Partner', required=True)
+    amount = fields.Monetary('Amount', required=True, default=0.0)
+    date = fields.Date('Date', required=True, default=date.today())
+    journal_id = fields.Many2one('account.journal', 'Journal', required=True)
+    company_id = fields.Many2one('res.company', string='Company', default=lambda self: self.env.company.id)
+    currency_id = fields.Many2one('res.currency', string='Currency', related='company_id.currency_id')
+    payment_id = fields.Many2one('account.payment', string='Payment')
+    state = fields.Selection(selection=[('draft', 'Draft'),
+                                        ('done', 'Done')], default='draft', string='Status')
+
+    def action_create_payment(self):
+        vals = {
+            'payment_type': self.recurring_payment_id.payment_type,
+            'amount': self.amount,
+            'currency_id': self.currency_id.id,
+            'journal_id': self.journal_id.id,
+            'company_id': self.company_id.id,
+            'date': self.date,
+            'ref': self.recurring_payment_id.name,
+            'partner_id': self.partner_id.id,
+        }
+        payment = self.env['account.payment'].create(vals)
+        if payment:
+            if self.recurring_payment_id.journal_state == 'posted':
+                payment.action_post()
+            self.write({'state': 'done', 'payment_id': payment.id})
         
   
     
