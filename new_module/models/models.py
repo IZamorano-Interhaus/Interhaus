@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-from odoo import models, fields, api
+""" from odoo import models, fields, api
 
 
 class new_module(models.Model):
@@ -17,8 +17,7 @@ class new_module(models.Model):
 
     
 
-    """ asset_depreciation_ids = fields.One2many('account.asset.depreciation.registro', 'move_id',
-                                             string='Assets Depreciation Lines') """
+    
 
    
     @api.depends('value')
@@ -28,9 +27,5 @@ class new_module(models.Model):
         for record in self:
             record.descuento = float(record.value) * 0.10
         
-    """ def _call_data(self):
-        for move in self:
-            for registro in move.asset_deprecation_ids:
-                registro.move_posted_click = True
-        return super(new_module, self)._call_data() """
+  
     
