@@ -14,11 +14,6 @@ class new_module(models.Model):
     folio = fields.Integer()
     documento = fields.Char()
     tipo_documento = fields.Integer()
-
-    
-
-    
-
    
     @api.depends('value')
 
