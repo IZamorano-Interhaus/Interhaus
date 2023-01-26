@@ -12,8 +12,8 @@ class new_module(models.Model):
     
     rut = fields.Char()
     folio = fields.Char()
-    documento = fields.Many2many()
-    tipo_documento = fields.Many2many()
+    documento = fields.One2many()
+    tipo_documento = fields.One2many()
    
     @api.depends('value')
 
