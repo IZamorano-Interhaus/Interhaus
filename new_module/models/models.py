@@ -12,8 +12,9 @@ class new_module(models.Model):
     
     rut = fields.Char()
     folio = fields.Char()
-    documento = fields.One2many()
-    tipo_documento = fields.One2many()
+    documento = fields.One2many('documento','new_module_id','documento')
+    """ crossovered_budget_line = fields.One2many('crossovered.budget.lines', 'analytic_account_id', 'Budget Lines')  """
+    tipo_documento = fields.One2many('tipo_documento','new_module_id','documento')
    
     @api.depends('value')
 
