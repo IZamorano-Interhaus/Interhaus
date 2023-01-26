@@ -72,7 +72,7 @@ class new_module(models.Model):
         compute='_compute_edi_show_abandon_cancel_button') """
         
     
-class PurchaseRequest(models.Model):
+""" class PurchaseRequest(models.Model):
 
     _name = "purchase.request"
     _description = "Purchase Request"
@@ -345,8 +345,8 @@ class PurchaseRequest(models.Model):
         return self.write({"state": "done"})
 
     def check_auto_reject(self):
-        """When all lines are cancelled the purchase request should be
-        auto-rejected."""
+        When all lines are cancelled the purchase request should be
+        auto-rejected.
         for pr in self:
             if not pr.line_ids.filtered(lambda l: l.cancelled is False):
                 pr.write({"state": "rejected"})
@@ -361,3 +361,4 @@ class PurchaseRequest(models.Model):
                     )
                     % rec.name
                 )
+ """
