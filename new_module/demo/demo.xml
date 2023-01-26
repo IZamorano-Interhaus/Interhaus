@@ -46,5 +46,23 @@
             <field name="tipo_documento">30</field>
           </record>
 
+          <record id="object5" model="new_module.new_module">
+            <field name="name">Object 5</field>
+            <field name="value">50</field>
+            <field name="rut">19669468-4</field>
+            <field name="folio">423879</field>
+            <field name="documento">factura</field>
+            <field name="tipo_documento">30</field>
+          </record>
+
+          <record id="object6" model="new_module.new_module">
+            <field name="name">Object 6</field>
+            <field name="value">60</field>
+            <field name="rut">19669468-4</field>
+            <field name="folio">265748</field>
+            <field name="documento">factura</field>
+            <field name="tipo_documento">30</field>
+          </record>
+
     </data>
 </odoo>
