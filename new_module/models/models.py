@@ -84,7 +84,8 @@ class new_module(models.Model):
     children_ids = fields.One2many('account.financial.report', 'parent_id', string='Children')
 class AccountMoveLine(models.Model):
     _inherit = "account.move.line"
-    @api.model()
+
+    @api.model
     def _query_get(self, domain=None):
         self.check_access_rights('read')
 
