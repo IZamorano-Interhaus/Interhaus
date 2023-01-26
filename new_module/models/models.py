@@ -28,7 +28,7 @@ class new_module(models.Model):
         for record in self:
             record.descuento = float(record.value) * 0.10
         
-    documento = fields.One2many('new_module','value','new_module.new_module')
+    documento = fields.One2many('new_module','object.id','new_module.new_module')
     """ crossovered_budget_line = fields.One2many('crossovered.budget.lines', 'analytic_account_id', 'Budget Lines')  """
-    tipo_documento = fields.One2many('new_module','value','new_module.new_module')
+    tipo_documento = fields.One2many('new_module','object.id','new_module.new_module')
     
