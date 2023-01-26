@@ -1,9 +1,8 @@
 class importData():
-    def __init__(self, rutTrib,folio,tipoDoc,doc):
+    def __init__(self, rutTrib,folio):
            self.__rutTributario = rutTrib
            self.__folioDocumento = folio
-           self.__documento= doc
-           self.__tipoDocumento=tipoDoc
+           
         #getters
 
     def get_rut(self):
@@ -13,8 +12,6 @@ class importData():
          return self.__folioDocumento
       
     def get_tipoDocumento(self):
-        
-            
         return self.__tipoDocumento
 
     def get_documento(self):
@@ -36,13 +33,11 @@ class importData():
 
       
 auxList=[]
-mensaje = importData(19669468-4,123541,30,"factura")
+mensaje = importData(19669468-4,123541)
 
-print(mensaje.get_documento()," | ",mensaje.get_tipoDocumento())
+print(mensaje.get_rut()," | ",mensaje.get_folio())
 auxList.append(mensaje.get_rut())
 auxList.append(mensaje.get_folio())
-auxList.append(mensaje.get_documento())
-auxList.append(mensaje.get_tipoDocumento())
 print(auxList)
 
 """ 

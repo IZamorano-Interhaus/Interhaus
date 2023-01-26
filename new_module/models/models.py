@@ -11,9 +11,9 @@ class new_module(models.Model):
     descuento = fields.Float(compute="_value_pc", store=True)
     
     rut = fields.Char()
-    folio = fields.Integer()
-    documento = fields.Char()
-    tipo_documento = fields.Integer()
+    folio = fields.Char()
+    documento = fields.Many2many()
+    tipo_documento = fields.Many2many()
    
     @api.depends('value')
 
