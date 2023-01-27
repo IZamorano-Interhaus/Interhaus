@@ -54,8 +54,8 @@ class importData(models.Model):
       
 
       
-auxList=[]
-mensaje = importData(19669468-4,123541,"factura de ventas y servicios no afectos o exentos de IVA",32)
+""" auxList=[]
+mensaje = importData(19669468-4,123541,"factura de ventas y servicios no afectos o exentos de IVA",32) """
 
 """ print(mensaje.get_rut()," | ",mensaje.get_folio()) """
         
