@@ -28,7 +28,7 @@ class new_module(models.Model):
         tracking=True,
     )
     tipo_documento=fields.Many2one(comodel_name="procurement.group",
-        string="Procurement Group",
+        string="tipo de documento",
         copy=False,
         index=True,)
     

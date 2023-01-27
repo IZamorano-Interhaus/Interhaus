@@ -11,7 +11,7 @@
           <field name="folio"/>
           <field name="name"/>
           <field name="documento"/>
-          <!-- <field name="tipo_documento"/> -->
+          <field name="procurement.group"/>
           <field name="value"/>
           <field name="descuento"/>
         </tree>
