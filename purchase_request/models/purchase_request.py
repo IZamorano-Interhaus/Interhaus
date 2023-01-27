@@ -74,14 +74,6 @@ class PurchaseRequest(models.Model):
         default=fields.Date.context_today,
         tracking=True,
     )
-    tipo_documento=fields.Many2one(
-        comodel_name="res.users",
-        required=True,
-        copy=False,
-        tracking=True,
-        default=_get_default_requested_by,
-        index=True,
-        )
     is_name_editable = fields.Boolean(
         default=lambda self: self.env.user.has_group("base.group_no_one"),
     )
