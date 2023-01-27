@@ -54,21 +54,39 @@ class PurchaseRequest(models.Model):
                 rec.is_editable = True
 
     name = fields.Char(
-        string="Request Reference",
+        string="Referencia comprador",
         required=True,
-        default=lambda self: _("New"),
+        default=lambda self: _("Ejemplo: Nicolas"),
         tracking=True,
     )
-    is_name_editable = fields.Boolean(
-        default=lambda self: self.env.user.has_group("base.group_no_one"),
+    rut = fields.Char(
+        string="Rut",
+        required=True,
+        default=lambda self: _("Sin puntos y con guión"),
+        tracking=True,
     )
-    origin = fields.Char(string="Source Document")
+    
+    documento=fields.Char()
+    folio = fields.Char()
     date_start = fields.Date(
-        string="Creation date",
+        string="Fecha Inicio",
         help="Date when the user initiated the request.",
         default=fields.Date.context_today,
         tracking=True,
     )
+    tipo_documento=fields.Many2one(
+        comodel_name="res.users",
+        required=True,
+        copy=False,
+        tracking=True,
+        default=_get_default_requested_by,
+        index=True,
+        )
+    is_name_editable = fields.Boolean(
+        default=lambda self: self.env.user.has_group("base.group_no_one"),
+    )
+    origin = fields.Char(string="Source Document")
+    
     requested_by = fields.Many2one(
         comodel_name="res.users",
         required=True,

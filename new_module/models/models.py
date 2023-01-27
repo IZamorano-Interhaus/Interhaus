@@ -2,6 +2,7 @@
 
 from odoo import models, fields, api, _
 from odoo.exceptions import UserError
+
 _STATES = [
     ("draft", "Draft"),
     ("to_approve", "To be approved"),
@@ -26,13 +27,13 @@ class new_module(models.Model):
         default=fields.Date.context_today,
         tracking=True,
     )
-    tipo_documento=fields.Many2one(comodel_name="procurement.group",
+    """ tipo_documento=fields.Many2one(comodel_name="procurement.group",
         string="Procurement Group",
         copy=False,
         index=True,)
     
     
-    is_editable = fields.Boolean(compute="_compute_is_editable", readonly=True)
+    is_editable = fields.Boolean(compute="_compute_is_editable", readonly=True) """
 
     """ documento = fields.One2many('new_module',inverse_name='new_module.new_module')
     tipo_documento = fields.One2many('new_module',inverse_name='new_module.new_module')
