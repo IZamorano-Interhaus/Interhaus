@@ -68,7 +68,7 @@ class PurchaseRequestLine(models.Model):
         related="request_id.origin", string="Source Document", store=True
     )
     date_required = fields.Date(
-        string="Request Date",
+        string="Date",
         required=True,
         tracking=True,
         default=fields.Date.context_today,
@@ -76,7 +76,7 @@ class PurchaseRequestLine(models.Model):
     is_editable = fields.Boolean(compute="_compute_is_editable", readonly=True)
     specifications = fields.Text()
     request_state = fields.Selection(
-        string="Request state",
+        string="state",
         related="request_id.state",
         store=True,
     )

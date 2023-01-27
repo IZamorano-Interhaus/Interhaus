@@ -2,7 +2,7 @@
 from odoo import http
 
 
-""" class NewModule(http.Controller):
+class NewModule(http.Controller):
     @http.route('/new_module/new_module', auth='public')
     def index(self, **kw):
         return "Hello, world"
@@ -18,4 +18,4 @@ from odoo import http
     def object(self, obj, **kw):
         return http.request.render('new_module.object', {
             'object': obj
-        }) """
+        })

@@ -54,21 +54,43 @@ class PurchaseRequest(models.Model):
                 rec.is_editable = True
 
     name = fields.Char(
-        string="Request Reference",
+        string="Referencia comprador",
         required=True,
-        default=lambda self: _("New"),
+        default=lambda self: _("Ejemplo: Nicolas"),
+        tracking=True,
+    )
+    rut = fields.Char(
+        string="Rut",
+        required=True,
+        default=lambda self: _("Sin puntos y con guión"),
+        tracking=True,
+    )
+    
+    documento=fields.Many2one(
+        comodel_name="product.product",
+        string="documento",
+        copy=False,
+        index=True,
+    )
+
+    folio = fields.Many2one(
+        comodel_name="procurement.group",
+        string="Folio",
+        copy=False,
+        index=True,
+    )
+
+    date_start = fields.Date(
+        string="Fecha Inicio",
+        help="Date when the user initiated the request.",
+        default=fields.Date.context_today,
         tracking=True,
     )
     is_name_editable = fields.Boolean(
         default=lambda self: self.env.user.has_group("base.group_no_one"),
     )
     origin = fields.Char(string="Source Document")
-    date_start = fields.Date(
-        string="Creation date",
-        help="Date when the user initiated the request.",
-        default=fields.Date.context_today,
-        tracking=True,
-    )
+    
     requested_by = fields.Many2one(
         comodel_name="res.users",
         required=True,
@@ -100,7 +122,7 @@ class PurchaseRequest(models.Model):
     line_ids = fields.One2many(
         comodel_name="purchase.request.line",
         inverse_name="request_id",
-        string="Products to Purchase",
+        string="Productos a comprar",
         readonly=False,
         copy=True,
         tracking=True,
@@ -108,7 +130,7 @@ class PurchaseRequest(models.Model):
     product_id = fields.Many2one(
         comodel_name="product.product",
         related="line_ids.product_id",
-        string="Product",
+        string="Productifero",
         readonly=True,
     )
     state = fields.Selection(

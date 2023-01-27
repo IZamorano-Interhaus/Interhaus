@@ -4,11 +4,11 @@
 from odoo import tools """
 
 class importData():
-    """ _name = "import.data"
-    _description="obtener datos por el rut presente en odoo"
+    _name = "import.data"
+    _description="en este modulo se traera los datos de la base de datos de la api con los datos rut y folio en este momento"
 
 
-    def _get_data_by_folio(self):
+    """ def _get_data_by_folio(self):
         for x in self:
             x.folio = x.partner_id.address_get(
                 adr_pref=['invoice']).get('invoice', x.partner_id.id)
@@ -22,7 +22,7 @@ class importData():
     rutTributario = fields.Many2one('res.company', 'Company', readonly=True)
     folio = fields.Many2one('res.partner', compute='_get_data_by_folio', string='Invoice Address')
 
-    @api.model """
+    @api.model  """
 
     def __init__(self, rutTrib,folio,doc,tipoDoc):
         self.__rutTributario = rutTrib
@@ -57,5 +57,5 @@ class importData():
 auxList=[]
 mensaje = importData(19669468-4,123541,"factura de ventas y servicios no afectos o exentos de IVA",32)
 
-""" print(mensaje.get_rut()," | ",mensaje.get_folio()) """
+print(mensaje.get_rut()," | ",mensaje.get_folio())
         
