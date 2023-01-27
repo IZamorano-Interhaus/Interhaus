@@ -59,21 +59,27 @@ class PurchaseRequest(models.Model):
         default=lambda self: _("Ejemplo: Nicolas"),
         tracking=True,
     )
-    rut = fields.Char()
+    rut = fields.Char(
+        string="Rut",
+        required=True,
+        default=lambda self: _("Sin puntos y con guión"),
+        tracking=True,
+    )
     
     documento=fields.Many2one(
-        comodel_name="documento.group",
-        string="documento tributarios",
+        comodel_name="procurement.group",
+        string="Procurement Group",
         copy=False,
         index=True,
     )
-    tipo_doc=fields.Many2one(
-        comodel_name="tipo_doc.group",
-        string="tipo de documento tributarios",
+
+    folio = fields.Many2one(
+        comodel_name="procurement.group",
+        string="Procurement Group",
         copy=False,
         index=True,
     )
-    folio = fields.Char()
+
     date_start = fields.Date(
         string="Fecha Inicio",
         help="Date when the user initiated the request.",
