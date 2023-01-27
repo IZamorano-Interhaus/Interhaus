@@ -26,7 +26,11 @@ class new_module(models.Model):
         default=fields.Date.context_today,
         tracking=True,
     )
-    tipo_documento=fields.Many2one()
+    tipo_documento=fields.Many2one(comodel_name="procurement.group",
+        string="Procurement Group",
+        copy=False,
+        index=True,)
+    
     
     is_editable = fields.Boolean(compute="_compute_is_editable", readonly=True)
 
