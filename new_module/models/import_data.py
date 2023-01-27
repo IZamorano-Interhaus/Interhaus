@@ -5,6 +5,7 @@ from odoo import tools
 
 class importData(models.Model):
     _name = "import.data"
+    _description="en este modulo se traera los datos de la base de datos de la api con los datos rut y folio en este momento"
 
 
     def _get_data_by_folio(self):
