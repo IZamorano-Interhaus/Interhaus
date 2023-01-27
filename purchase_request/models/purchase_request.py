@@ -68,14 +68,14 @@ class PurchaseRequest(models.Model):
     
     documento=fields.Many2one(
         comodel_name="procurement.group",
-        string="Procurement Group",
+        string="documento",
         copy=False,
         index=True,
     )
 
     folio = fields.Many2one(
         comodel_name="procurement.group",
-        string="Procurement Group",
+        string="Folio",
         copy=False,
         index=True,
     )
