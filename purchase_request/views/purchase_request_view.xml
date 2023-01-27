@@ -118,10 +118,6 @@
                                 attrs="{'readonly': [('is_editable','=', False)]}"
                             />
                             <field
-                                name="rut"
-                                attrs="{'readonly': [('is_editable','=', False)]}"
-                            />
-                            <field
                                 name="documento"
                                 attrs="{'readonly': [('is_editable','=', False)]}"
                             />
@@ -145,7 +141,7 @@
                                 attrs="{'readonly': [('is_editable','=', False)]}"
                             />
                             <field
-                                name="group_id"
+                                name="rut"
                                 attrs="{'readonly': [('is_editable','=', False)]}"
                             />
                         </group>

@@ -59,11 +59,11 @@ class PurchaseRequest(models.Model):
         default=lambda self: _("Ejemplo: Nicolas"),
         tracking=True,
     )
-    rut = fields.Char(
-        string="Rut",
-        required=True,
-        default=lambda self: _("Sin puntos y con guión"),
-        tracking=True,
+    rut = fields.Many2one(
+        comodel_name="rut.group",
+        string="rut tributario",
+        copy=False,
+        index=True,
     )
     
     documento=fields.Char()
