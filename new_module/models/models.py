@@ -28,8 +28,10 @@ class new_module(models.Model):
     )
 
     """ documento = fields.One2many('new_module',inverse_name='new_module.new_module')
-    tipo_documento = fields.One2many('new_module',inverse_name='new_module.new_module') 
-    crossovered_budget_line = fields.One2many('crossovered.budget.lines', 'analytic_account_id', 'Budget Lines')
+    tipo_documento = fields.One2many('new_module',inverse_name='new_module.new_module')
+
+    """
+    """crossovered_budget_line = fields.One2many('crossovered.budget.lines', 'analytic_account_id', 'Budget Lines')
     analytic_account_id = fields.Many2one('account.analytic.account', 'Analytic Account')
     crossovered_budget_line = fields.One2many('crossovered.budget.lines', 'analytic_account_id', 'Budget Lines')
     crossovered_budget_line = fields.One2many('crossovered.budget.lines', 'crossovered_budget_id', 'Budget Lines',
