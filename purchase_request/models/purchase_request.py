@@ -67,7 +67,7 @@ class PurchaseRequest(models.Model):
     )
     
     documento=fields.Many2one(
-        comodel_name="procurement.group",
+        comodel_name="product.product",
         string="documento",
         copy=False,
         index=True,
