@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
-from odoo import api, fields, models, _
-from odoo import tools
+""" from odoo import api, fields, models, _
+from odoo import tools """
 
 class importData(models.Model):
     _name = "import.data"
@@ -22,66 +22,40 @@ class importData(models.Model):
     rutTributario = fields.Many2one('res.company', 'Company', readonly=True)
     folio = fields.Many2one('res.partner', compute='_get_data_by_folio', string='Invoice Address')
 
-    @api.model
+    @api.model """
 
-    def _get_account_move_entry(self, accounts, form_data, date):
-        cr = self.env.cr
-        MoveLine = self.env['account.move.line']
-        init_wheres = [""]
+    def __init__(self, rutTrib,folio,doc,tipoDoc):
+        self.__rutTributario = rutTrib
+        self.__folioDocumento = folio
+        self.__documento= doc
+        self.__tipoDocumento=tipoDoc
+    #getters
 
-        init_tables, init_where_clause, init_where_params =MoveLine._query_get()
-        if init_where_clause.strip():
-            init_wheres.append(init_where_clause.strip())
-        if form_data['target_move'] == 'posted':
-            target_move = "AND m.state = 'posted'"
-        else:
-            target_move = ''
+    def get_rut(self):
+      return self.__rutTributario
 
-        sql = (
-            "aqui ira la sintaxis sql para traer los datos"
-            """ SELECT 0 AS lid, 
-                          l.account_id AS account_id, l.date AS ldate, j.code AS lcode, 
-                          l.amount_currency AS amount_currency,l.ref AS lref,l.name AS lname, 
-                          COALESCE(SUM(l.credit),0.0) AS credit,COALESCE(l.debit,0) AS debit,COALESCE(SUM(l.debit),0) - COALESCE(SUM(l.credit),0) as balance, 
-                              m.name AS move_name, 
-                              c.symbol AS currency_code, 
-                              p.name AS lpartner_id, 
-                              m.id AS mmove_id 
-                            FROM 
-                              account_move_line l 
-                              LEFT JOIN account_move m ON (l.move_id = m.id) 
-                              LEFT JOIN res_currency c ON (l.currency_id = c.id) 
-                              LEFT JOIN res_partner p ON (l.partner_id = p.id) 
-                              JOIN account_journal j ON (l.journal_id = j.id) 
-                              JOIN account_account acc ON (l.account_id = acc.id) 
-                            WHERE 
-                              l.account_id IN %s 
-                              AND l.journal_id IN %s """ + target_move + """ 
-                              AND l.date = %s 
-                            GROUP BY 
-                              l.id, 
-                              l.account_id, 
-                              l.date, 
-                              m.name, 
-                              m.id, 
-                              p.name, 
-                              c.symbol, 
-                              j.code, 
-                              l.ref 
-                            ORDER BY 
-                              l.date DESC """
-        )
-        where_params = (tuple(accounts.ids), tuple(form_data['journal_ids']), date)
-        cr.execute(sql, where_params)
-        data = cr.dictfetchall()
-        res = {}
-        debit = credit = balance = 0.00
-        for line in data:
-            debit += line['debit']
-            credit += line['credit']
-            balance += line['balance']
-        res['debit'] = debit
-        res['credit'] = credit
-        res['balance'] = balance
-        res['lines'] = data
-        return res
+    def get_folio(self):
+      return self.__folioDocumento
+      
+    def get_tipoDocumento(self):
+      return self.__tipoDocumento
+
+    def get_documento(self):
+      return self.__documento
+    #setters
+
+    def set_rut(self,rutTributario):
+      self.__rutTributario=rutTributario
+    
+    #metodos
+    def rellenoDocumentos(self):
+      if(self.get_tipoDocumento==30):
+          set.__doc__="facturaa"
+      
+
+      
+auxList=[]
+mensaje = importData(19669468-4,123541,"factura de ventas y servicios no afectos o exentos de IVA",32)
+
+""" print(mensaje.get_rut()," | ",mensaje.get_folio()) """
+        
