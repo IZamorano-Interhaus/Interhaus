@@ -27,7 +27,7 @@ class new_module(models.Model):
         default=fields.Date.context_today,
         tracking=True,
     )
-    tipo_documento=fields.Many2one(comodel_name="procurement.group",
+    tipo_documento=fields.Many2one(comodel_name="tipo_documento",
         string="tipo de documento",
         copy=False,
         index=True,)
