@@ -118,10 +118,6 @@
                                 attrs="{'readonly': [('is_editable','=', False)]}"
                             />
                             <field
-                                name="documento"
-                                attrs="{'readonly': [('is_editable','=', False)]}"
-                            />
-                            <field
                                 name="folio"
                                 attrs="{'readonly': [('is_editable','=', False)]}"
                             />

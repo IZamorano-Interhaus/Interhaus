@@ -66,10 +66,18 @@ class PurchaseRequest(models.Model):
         tracking=True,
     )
     
-    documento=fields.Char(
+    documento=fields.Many2one(
+        comodel_name="procurement.group",
+        string="documento",
+        copy=False,
+        index=True,
     )
 
-    folio = fields.Char(
+    folio = fields.Many2one(
+        comodel_name="procurement.group",
+        string="Folio",
+        copy=False,
+        index=True,
     )
 
     date_start = fields.Date(
