@@ -100,7 +100,7 @@ class PurchaseRequest(models.Model):
     line_ids = fields.One2many(
         comodel_name="purchase.request.line",
         inverse_name="request_id",
-        string="Products to Purchase",
+        string="Productos a comprar",
         readonly=False,
         copy=True,
         tracking=True,
@@ -108,7 +108,7 @@ class PurchaseRequest(models.Model):
     product_id = fields.Many2one(
         comodel_name="product.product",
         related="line_ids.product_id",
-        string="Product",
+        string="Productifero",
         readonly=True,
     )
     state = fields.Selection(

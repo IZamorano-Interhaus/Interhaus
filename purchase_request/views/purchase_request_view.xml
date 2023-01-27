@@ -371,7 +371,7 @@
         </field>
     </record>
     <record model="ir.actions.act_window" id="purchase_request_form_action">
-        <field name="name">Purchase Requests</field>
+        <field name="name">Purchases Requests</field>
         <field name="type">ir.actions.act_window</field>
         <field name="res_model">purchase.request</field>
         <field name="view_mode">tree,form</field>

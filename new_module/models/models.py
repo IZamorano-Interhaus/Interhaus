@@ -17,15 +17,18 @@ class new_module(models.Model):
     value = fields.Integer()
     descuento = fields.Float(compute="_value_pc", store=True)
     rut = fields.Char()
-    folio = fields.Char()
+    
     documento=fields.Char()
-    tipo_documento=fields.Integer()
+    folio = fields.Char()
     date_start = fields.Date(
         string="Fecha Inicio",
         help="Date when the user initiated the request.",
         default=fields.Date.context_today,
         tracking=True,
     )
+    tipo_documento=fields.Many2one()
+    
+    is_editable = fields.Boolean(compute="_compute_is_editable", readonly=True)
 
     """ documento = fields.One2many('new_module',inverse_name='new_module.new_module')
     tipo_documento = fields.One2many('new_module',inverse_name='new_module.new_module')
@@ -43,6 +46,16 @@ class new_module(models.Model):
     def _value_pc(self):
         for record in self:
             record.descuento = float(record.value) * 0.10
+    
+    def _prepare_item(self, linea):
+        return {
+            "linea_id": linea.id,
+            "pedido_id": linea.request_id.id,
+            "product_id": linea.product_id.id,
+            "name": linea.name or linea.product_id.name,
+            "product_qty": linea.pending_qty_to_receive,
+            "product_uom_id": linea.product_uom_id.id,
+        }
 
 
 """ class AccountMove(models.Model):
