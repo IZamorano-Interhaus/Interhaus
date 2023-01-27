@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
-""" from odoo import api, fields, models, _
-from odoo import tools """
+from odoo import api, fields, models, _
+from odoo import tools
 
 class importData(models.Model):
     _name = "import.data"
@@ -22,7 +22,7 @@ class importData(models.Model):
     rutTributario = fields.Many2one('res.company', 'Company', readonly=True)
     folio = fields.Many2one('res.partner', compute='_get_data_by_folio', string='Invoice Address')
 
-    @api.model """
+    @api.model 
 
     def __init__(self, rutTrib,folio,doc,tipoDoc):
         self.__rutTributario = rutTrib
