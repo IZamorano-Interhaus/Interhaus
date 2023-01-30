@@ -12,7 +12,7 @@
           <field name="name"/>
           <field name="documento"/>
           <field name="tipo_documento"/>
-          <filed name ="date_start"/>
+          <field name ="date_start"/>
           <field name="value"/>
           <field name="descuento"/>
         </tree>

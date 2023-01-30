@@ -49,21 +49,14 @@ class new_module(models.Model):
         copy=False,
         index=True,
     )
-
     date_start = fields.Date(
         string="Fecha Inicio",
         help="Date when the user initiated the request.",
         default=fields.Date.context_today,
         tracking=True,
     )
-    
-    
     """ is_editable = fields.Boolean(compute="_compute_is_editable", readonly=True) """
-
-    
     @api.depends('value')
-
-    
     def _value_pc(self):
         for record in self:
             record.descuento = float(record.value) * 0.10
