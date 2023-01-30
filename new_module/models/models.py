@@ -36,7 +36,7 @@ class new_module(models.Model):
         copy=False,
         index=True,
     )
-    folio = fields.Many2one(
+    folio_documento = fields.Many2one(
         comodel_name="procurement.group",
         string="Folio",
         copy=False,
@@ -51,7 +51,7 @@ class new_module(models.Model):
         string="Referencia de pago",
         help="La referencia de pago para establecer en apuntes de diario.",
     )
-    date_factura = fields.Date(
+    fecha_factura = fields.Date(
         string="fecha de factura",
         default=fields.Date.context_today
     )
@@ -60,7 +60,8 @@ class new_module(models.Model):
         default=fields.Date.context_today
     )
     plazo_pago = fields.Date(
-        
+                default=fields.Date.context_today
+
     )
     documento_id = fields.Char(
         string = "Número de documento",
