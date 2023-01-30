@@ -40,7 +40,6 @@
           <field name="value"/>
           <field name="descuento"/>
 
-          <field name="product_id" />
           <field name="name" />
           <field name="product_qty" />
           <field
