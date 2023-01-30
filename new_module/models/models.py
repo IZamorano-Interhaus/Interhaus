@@ -3,13 +3,7 @@
 from odoo import models, fields, api, _
 from odoo.exceptions import UserError
 
-_STATES = [
-    ("draft", "Draft"),
-    ("to_approve", "To be approved"),
-    ("approved", "Approved"),
-    ("rejected", "Rejected"),
-    ("done", "Done"),
-]
+
 class new_module(models.Model):
     _name = 'new_module.new_module'
     _description = 'new_module.new_module' 
@@ -73,4 +67,3 @@ class new_module(models.Model):
         copy=False,
         index=True,
     )
-    """ is_editable = fields.Boolean(compute="_compute_is_editable", readonly=True) """
