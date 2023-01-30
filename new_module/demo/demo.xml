@@ -6,7 +6,6 @@
             <field name="value">0</field>
             <field name="rut">19669468-4</field>
             <field name="folio">123456</field>
-            <field name="documento">factura</field>
             <field name="tipo_documento">30</field>
           </record>
 
@@ -15,7 +14,6 @@
             <field name="value">10</field>
             <field name="rut">19669468-4</field>
             <field name="folio">654123</field>
-            <field name="documento">factura</field>
             <field name="tipo_documento">30</field>
           </record>
 
@@ -24,7 +22,6 @@
             <field name="value">20</field>
             <field name="rut">19669468-4</field>
             <field name="folio">985632</field>
-            <field name="documento">factura</field>
             <field name="tipo_documento">30</field>
           </record>
 
@@ -33,7 +30,6 @@
             <field name="value">30</field>
             <field name="rut">19669468-4</field>
             <field name="folio">745821</field>
-            <field name="documento">factura</field>
             <field name="tipo_documento">30</field>
           </record>
 
@@ -42,7 +38,6 @@
             <field name="value">40</field>
             <field name="rut">19669468-4</field>
             <field name="folio">658742</field>
-            <field name="documento">factura</field>
             <field name="tipo_documento">30</field>
           </record>
 
@@ -51,7 +46,6 @@
             <field name="value">50</field>
             <field name="rut">19669468-4</field>
             <field name="folio">423879</field>
-            <field name="documento">factura</field>
             <field name="tipo_documento">30</field>
           </record>
 
@@ -60,7 +54,6 @@
             <field name="value">60</field>
             <field name="rut">19669468-4</field>
             <field name="folio">265748</field>
-            <field name="documento">factura</field>
             <field name="tipo_documento">30</field>
           </record>
 

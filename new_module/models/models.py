@@ -22,13 +22,11 @@ class new_module(models.Model):
         string="Referencia comprador",
         required=True,
         default=lambda self: _("Ejemplo: Nicolas"),
-        tracking=True,
     )
     rut = fields.Char(
         string="Rut",
         required=True,
         default=lambda self: _("Sin puntos y con guión"),
-        tracking=True,
     )
     
     documento=fields.Many2one(
@@ -53,7 +51,6 @@ class new_module(models.Model):
         string="Fecha Inicio",
         help="Date when the user initiated the request.",
         default=fields.Date.context_today,
-        tracking=True,
     )
     """ is_editable = fields.Boolean(compute="_compute_is_editable", readonly=True) """
     @api.depends('value')
