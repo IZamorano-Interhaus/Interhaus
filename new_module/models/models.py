@@ -2,7 +2,8 @@
 
 from odoo import models, fields, api, _
 from odoo.exceptions import UserError
-
+from datetime import datetime
+from odoo.tools import get_lang
 _STATES = [
     ("draft", "Draft"),
     ("to_approve", "To be approved"),
