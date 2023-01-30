@@ -15,7 +15,8 @@
           <field name = "fecha_factura"/>
           <field name = "referencia_pago"/>
           <field name = "fecha_vencimiento"/>
-          <field name = "Diario"/>
+          <field name = "plazo_pago"/>
+          <field name = "diario"/>
         </tree>
       </field>
     </record>

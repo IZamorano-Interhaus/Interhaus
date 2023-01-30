@@ -13,7 +13,8 @@ _STATES = [
 class new_module(models.Model):
     _name = 'new_module.new_module'
     _description = 'new_module.new_module' 
-    nombre = fields.Char(
+
+    cliente = fields.Char(
         string="Referencia comprador",
         required=True,
         default=lambda self: _("Ejemplo: Nicolas"),
@@ -58,11 +59,14 @@ class new_module(models.Model):
         string="fecha de vencimiento",
         default=fields.Date.context_today
     )
+    plazo_pago = fields.Date(
+        
+    )
     documento_id = fields.Char(
         string = "Número de documento",
         required=True,
     )
-    Diario = fields.Many2one(
+    diario = fields.Many2one(
         comodel_name="procurement.group",
         string="Dario",
         copy=False,
