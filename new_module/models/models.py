@@ -37,7 +37,12 @@ class new_module(models.Model):
         copy=False,
         index=True,
     )
-
+    tipo_documento=fields.Many2one(
+        comodel_name="product.product",
+        string="tipo de documento",
+        copy=False,
+        index=True,
+    )
     folio = fields.Many2one(
         comodel_name="procurement.group",
         string="Folio",
