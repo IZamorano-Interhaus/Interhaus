@@ -63,7 +63,7 @@ class new_module(models.Model):
     )
     diario = fields.Many2one(
         comodel_name="procurement.group",
-        string="Dario",
+        string="Diario",
         copy=False,
         index=True,
     )
