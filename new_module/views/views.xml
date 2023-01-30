@@ -6,38 +6,14 @@
       <field name="name">new_module list</field>
       <field name="model">new_module.new_module</field>
       <field name="arch" type="xml">
-      <field name="requested_by"
-            attrs="{'readonly': [('is_editable','=', False)]}"
-      />
-      <field name="folio"
-          attrs="{'readonly': [('is_editable','=', False)]}"
-      />
-      <field name="assigned_to"
-          attrs="{'readonly': [('is_editable','=', False)]}"
-      />
-      <field name="origin"
-          class="oe_inline"
-          attrs="{'readonly': [('is_editable','=', False)]}"
-      />
-      <field name="description"
-          attrs="{'readonly': [('is_editable','=', False)]}"
-      />
-      <field name="rut"
-          attrs="{'readonly': [('is_editable','=', False)]}"
-      />
-      <field name="documento"
-          attrs="{'readonly': [('is_editable','=', False)]}"
-      />
-      <field name="value"/>
-      <field name="descuento"/>
-      <field name="name" />
-      <field name="currency_id" invisible="1" />
-      <field name="company_id"
-          groups="base.group_multi_company"
-          widget="selection"
-      />
-      <field name="is_editable" invisible="1" />
-        <tree>         
+        <tree>
+          <field name="rut"/>
+          <field name="folio"/>
+          <field name="name"/>
+          <field name="documento"/>
+          <field name="tipo_documento"/>
+          <field name="value"/>
+          <field name="descuento"/>
         </tree>
       </field>
     </record>
