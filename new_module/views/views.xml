@@ -36,11 +36,7 @@
                                 name="documento"
                                 attrs="{'readonly': [('is_editable','=', False)]}"
                             />
-          <field name="rut"/>
-          <field name="folio"/>
-          <field name="name"/>
-          <field name="documento"/>
-          <field name="tipo_documento"/>
+         
           <field name="value"/>
           <field name="descuento"/>
         </tree>
