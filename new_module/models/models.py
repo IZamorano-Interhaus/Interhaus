@@ -19,6 +19,17 @@ class new_module(models.Model):
     @api.model
     def _get_default_requested_by(self):
         return self.env["res.users"].browse(self.env.uid)
+    @api.model
+    def _company_get(self):
+        return self.env["res.company"].browse(self.env.company.id)
+
+    @api.model
+    def _get_default_requested_by(self):
+        return self.env["res.users"].browse(self.env.uid)
+
+    @api.model
+    def _get_default_name(self):
+        return self.env["ir.sequence"].next_by_code("purchase.request")
     name = fields.Char(
         string="Referencia comprador",
         required=True,
@@ -80,12 +91,68 @@ class new_module(models.Model):
         ],
         index=True,
     )
+    description = fields.Text()
+    company_id = fields.Many2one(
+        comodel_name="res.company",
+        required=False,
+        default=_company_get,
+        tracking=True,
+    )
+    line_ids = fields.One2many(
+        comodel_name="purchase.request.line",
+        inverse_name="request_id",
+        string="Productos a comprar",
+        readonly=False,
+        copy=True,
+        tracking=True,
+    )
+    product_id = fields.Many2one(
+        comodel_name="product.product",
+        related="line_ids.product_id",
+        string="Productifero",
+        readonly=True,
+    )
+    state = fields.Selection(
+        selection=_STATES,
+        string="Status",
+        index=True,
+        tracking=True,
+        required=True,
+        copy=False,
+        default="draft",
+    )
+    is_editable = fields.Boolean(compute="_compute_is_editable", readonly=True)
+    to_approve_allowed = fields.Boolean(compute="_compute_to_approve_allowed")
+    picking_type_id = fields.Many2one(
+        comodel_name="stock.picking.type",
+        string="Picking Type",
+        required=True,
+        default=_default_picking_type,
+    )
     group_id = fields.Many2one(
         comodel_name="procurement.group",
         string="Procurement Group",
         copy=False,
         index=True,
     )
+    line_count = fields.Integer(
+        string="Purchase Request Line count",
+        compute="_compute_line_count",
+        readonly=True,
+    )
+    move_count = fields.Integer(
+        string="Stock Move count", compute="_compute_move_count", readonly=True
+    )
+    purchase_count = fields.Integer(
+        string="Purchases count", compute="_compute_purchase_count", readonly=True
+    )
+    currency_id = fields.Many2one(related="company_id.currency_id", readonly=True)
+    estimated_cost = fields.Monetary(
+        compute="_compute_estimated_cost",
+        string="Total Estimated Cost",
+        store=True,
+    )
+
     
     """ is_editable = fields.Boolean(compute="_compute_is_editable", readonly=True) """
 

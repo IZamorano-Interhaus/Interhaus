@@ -25,25 +25,15 @@
                                 attrs="{'readonly': [('is_editable','=', False)]}"
                             />
                             <field
+                                name="description"
+                                attrs="{'readonly': [('is_editable','=', False)]}"
+                            />
+                            <field
                                 name="rut"
                                 attrs="{'readonly': [('is_editable','=', False)]}"
                             />
                             <field
                                 name="documento"
-                                attrs="{'readonly': [('is_editable','=', False)]}"
-                            />
-                            <field
-                                name="date_start"
-                                attrs="{'readonly': [('is_editable','=', False)]}"
-                            />
-                            <field
-                                name="picking_type_id"
-                                attrs="{'readonly': [('is_editable','=', False)]}"
-                            />
-                            <field
-                                name="company_id"
-                                groups="base.group_multi_company"
-                                widget="selection"
                                 attrs="{'readonly': [('is_editable','=', False)]}"
                             />
           <field name="rut"/>
