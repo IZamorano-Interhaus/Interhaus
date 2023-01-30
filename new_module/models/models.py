@@ -111,14 +111,7 @@ class new_module(models.Model):
         default=_company_get,
         tracking=True,
     )
-    line_ids = fields.One2many(
-        comodel_name="purchase.request.line",
-        inverse_name="request_id",
-        string="Productos a comprar",
-        readonly=False,
-        copy=True,
-        tracking=True,
-    )
+    
     product_id = fields.Many2one(
         comodel_name="product.product",
         related="line_ids.product_id",
