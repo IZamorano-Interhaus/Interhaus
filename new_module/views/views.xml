@@ -13,8 +13,6 @@
           <field name="documento"/>
           <field name="tipo_documento"/>
           <field name ="date_start"/>
-          <field name="value"/>
-          <field name="descuento"/>
         </tree>
       </field>
     </record>

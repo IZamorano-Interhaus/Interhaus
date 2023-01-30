@@ -15,8 +15,7 @@ class new_module(models.Model):
     _name = 'new_module.new_module'
     _description = 'new_module.new_module'
     
-    value = fields.Integer()
-    descuento = fields.Float(compute="_value_pc", store=True)
+    
     
     name = fields.Char(
         string="Referencia comprador",
@@ -53,7 +52,4 @@ class new_module(models.Model):
         default=fields.Date.context_today,
     )
     """ is_editable = fields.Boolean(compute="_compute_is_editable", readonly=True) """
-    @api.depends('value')
-    def _value_pc(self):
-        for record in self:
-            record.descuento = float(record.value) * 0.10
+    

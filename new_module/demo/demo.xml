@@ -3,7 +3,6 @@
 
           <record id="object0" model="new_module.new_module">
             <field name="name">Object 0</field>
-            <field name="value">0</field>
             <field name="rut">19669468-4</field>
             <field name="folio">123456</field>
             <field name="tipo_documento">30</field>
@@ -11,7 +10,6 @@
 
           <record id="object1" model="new_module.new_module">
             <field name="name">Object 1</field>
-            <field name="value">10</field>
             <field name="rut">19669468-4</field>
             <field name="folio">654123</field>
             <field name="tipo_documento">30</field>
@@ -19,7 +17,6 @@
 
           <record id="object2" model="new_module.new_module">
             <field name="name">Object 2</field>
-            <field name="value">20</field>
             <field name="rut">19669468-4</field>
             <field name="folio">985632</field>
             <field name="tipo_documento">30</field>
@@ -27,7 +24,6 @@
 
           <record id="object3" model="new_module.new_module">
             <field name="name">Object 3</field>
-            <field name="value">30</field>
             <field name="rut">19669468-4</field>
             <field name="folio">745821</field>
             <field name="tipo_documento">30</field>
@@ -35,7 +31,6 @@
 
           <record id="object4" model="new_module.new_module">
             <field name="name">Object 4</field>
-            <field name="value">40</field>
             <field name="rut">19669468-4</field>
             <field name="folio">658742</field>
             <field name="tipo_documento">30</field>
@@ -43,7 +38,6 @@
 
           <record id="object5" model="new_module.new_module">
             <field name="name">Object 5</field>
-            <field name="value">50</field>
             <field name="rut">19669468-4</field>
             <field name="folio">423879</field>
             <field name="tipo_documento">30</field>
@@ -51,7 +45,6 @@
 
           <record id="object6" model="new_module.new_module">
             <field name="name">Object 6</field>
-            <field name="value">60</field>
             <field name="rut">19669468-4</field>
             <field name="folio">265748</field>
             <field name="tipo_documento">30</field>
