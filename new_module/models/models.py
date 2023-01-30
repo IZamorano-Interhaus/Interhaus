@@ -17,7 +17,6 @@ class new_module(models.Model):
     
     value = fields.Integer()
     descuento = fields.Float(compute="_value_pc", store=True)
-    rut = fields.Char()
     
     name = fields.Char(
         string="Referencia comprador",
