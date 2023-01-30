@@ -15,42 +15,6 @@
                         type="object"
                         groups="purchase_request.group_purchase_request_manager"
                     />
-                    <button
-                        name="button_to_approve"
-                        states="draft"
-                        string="Request approval"
-                        type="object"
-                        class="oe_highlight"
-                    />
-                    <button
-                        name="button_approved"
-                        states="to_approve"
-                        string="Approve"
-                        type="object"
-                        class="oe_highlight"
-                        groups="purchase_request.group_purchase_request_manager"
-                    />
-                    <button
-                        name="%(action_purchase_request_line_make_purchase_order)d"
-                        states="approved"
-                        string="Create RFQ"
-                        type="action"
-                    />
-                    <button
-                        name="button_done"
-                        states="approved"
-                        string="Done"
-                        type="object"
-                        class="oe_highlight"
-                        groups="purchase_request.group_purchase_request_manager"
-                    />
-                    <button
-                        name="button_rejected"
-                        states="to_approve,approved"
-                        string="Reject"
-                        type="object"
-                        groups="purchase_request.group_purchase_request_manager"
-                    />
                     <field
                         name="state"
                         widget="statusbar"
@@ -163,64 +127,7 @@
                         </group>
                     </group>
                     <notebook>
-                        <page string="Products">
-                            <field name="line_ids">
-                                <tree
-                                    decoration-muted="cancelled == True"
-                                    editable="bottom"
-                                >
-                                    <field name="product_id" />
-                                    <field name="name" />
-                                    <field name="product_qty" />
-                                    <field
-                                        name="product_uom_category_id"
-                                        invisible="1"
-                                    />
-                                    <field
-                                        name="product_uom_id"
-                                        invisible="1"
-                                        groups="!uom.group_uom"
-                                    />
-                                    <field
-                                        name="product_uom_id"
-                                        groups="uom.group_uom"
-                                    />
-                                    <field
-                                        name="analytic_distribution"
-                                        widget="analytic_distribution"
-                                        groups="analytic.group_analytic_accounting"
-                                        options="{'product_field': 'product_id', 'business_domain': 'purchase_order'}"
-                                    />
-                                    <field name="date_required" />
-                                    <field name="estimated_cost" widget="monetary" />
-                                    <field name="currency_id" invisible="1" />
-                                    <field
-                                        name="company_id"
-                                        groups="base.group_multi_company"
-                                        widget="selection"
-                                    />
-                                    <field name="cancelled" invisible="1" />
-                                    <field name="is_editable" invisible="1" />
-                                    <field name="purchased_qty" />
-                                    <field
-                                        name="purchase_state"
-                                        widget="badge"
-                                        decoration-success="purchase_state == ('done')"
-                                        decoration-muted="purchase_state == ('draft')"
-                                        decoration-info="purchase_state in ('sent', 'purchase')"
-                                        decoration-warning="purchase_state == ('to_approve')"
-                                        decoration-danger="purchase_state == 'cancelled'"
-                                    />
-                                    <button
-                                        name="action_show_details"
-                                        type="object"
-                                        icon="fa-list"
-                                        title="Show Details"
-                                        width="0.1"
-                                        options='{"warn": true}'
-                                    />
-                                </tree>
-                            </field>
+                        <page string="Products">                            
                             <group class="oe_subtotal_footer oe_right">
                                 <field name="currency_id" invisible="1" />
                                 <div class="oe_subtotal_footer_separator oe_inline">
