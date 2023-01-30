@@ -80,6 +80,12 @@ class new_module(models.Model):
         ],
         index=True,
     )
+    group_id = fields.Many2one(
+        comodel_name="procurement.group",
+        string="Procurement Group",
+        copy=False,
+        index=True,
+    )
     
     """ is_editable = fields.Boolean(compute="_compute_is_editable", readonly=True) """
 
