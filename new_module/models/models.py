@@ -36,6 +36,19 @@ class new_module(models.Model):
         default=lambda self: _("Ejemplo: Nicolas"),
         tracking=True,
     )
+    @api.model
+    def _default_picking_type(self):
+        type_obj = self.env["stock.picking.type"]
+        company_id = self.env.context.get("company_id") or self.env.company.id
+        types = type_obj.search(
+            [("code", "=", "incoming"), ("warehouse_id.company_id", "=", company_id)]
+        )
+        if not types:
+            types = type_obj.search(
+                [("code", "=", "incoming"), ("warehouse_id", "=", False)]
+            )
+        return types[:1]
+
     value = fields.Integer()
     descuento = fields.Float(compute="_value_pc", store=True)
     rut = fields.Char(
