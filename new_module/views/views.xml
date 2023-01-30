@@ -25,10 +25,6 @@
                                 attrs="{'readonly': [('is_editable','=', False)]}"
                             />
                             <field
-                                name="description"
-                                attrs="{'readonly': [('is_editable','=', False)]}"
-                            />
-                            <field
                                 name="rut"
                                 attrs="{'readonly': [('is_editable','=', False)]}"
                             />
