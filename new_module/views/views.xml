@@ -7,57 +7,57 @@
       <field name="model">new_module.new_module</field>
       <field name="arch" type="xml">
         <tree>
+          
+            <group>
+                <field
+                    name="requested_by"
+                    attrs="{'readonly': [('is_editable','=', False)]}"
+                />
+                <field
+                    name="folio"
+                    attrs="{'readonly': [('is_editable','=', False)]}"
+                />
+                <field
+                    name="assigned_to"
+                    attrs="{'readonly': [('is_editable','=', False)]}"
+                />
+            </group>
           <group>
-                        <group>
-                            <field
-                                name="requested_by"
-                                attrs="{'readonly': [('is_editable','=', False)]}"
-                            />
-                            <field
-                                name="folio"
-                                attrs="{'readonly': [('is_editable','=', False)]}"
-                            />
-                            <field
-                                name="assigned_to"
-                                attrs="{'readonly': [('is_editable','=', False)]}"
-                            />
-                        </group>
-                        <group>
-                            <field
-                                name="origin"
-                                class="oe_inline"
-                                attrs="{'readonly': [('is_editable','=', False)]}"
-                            />
-                            <field
-                                name="description"
-                                attrs="{'readonly': [('is_editable','=', False)]}"
-                            />
-                            <field
-                                name="rut"
-                                attrs="{'readonly': [('is_editable','=', False)]}"
-                            />
-                            <field
-                                name="documento"
-                                attrs="{'readonly': [('is_editable','=', False)]}"
-                            />
-                        </group>
-                        <group>
-                            <field
-                                name="date_start"
-                                attrs="{'readonly': [('is_editable','=', False)]}"
-                            />
-                            <field
-                                name="picking_type_id"
-                                attrs="{'readonly': [('is_editable','=', False)]}"
-                            />
-                            <field
-                                name="company_id"
-                                groups="base.group_multi_company"
-                                widget="selection"
-                                attrs="{'readonly': [('is_editable','=', False)]}"
-                            />
-                        </group>
-                    </group>
+              <field
+                  name="origin"
+                  class="oe_inline"
+                  attrs="{'readonly': [('is_editable','=', False)]}"
+              />
+              <field
+                  name="description"
+                  attrs="{'readonly': [('is_editable','=', False)]}"
+              />
+              <field
+                  name="rut"
+                  attrs="{'readonly': [('is_editable','=', False)]}"
+              />
+              <field
+                  name="documento"
+                  attrs="{'readonly': [('is_editable','=', False)]}"
+              />
+          </group>
+          <group>
+              <field
+                  name="date_start"
+                  attrs="{'readonly': [('is_editable','=', False)]}"
+              />
+              <field
+                  name="picking_type_id"
+                  attrs="{'readonly': [('is_editable','=', False)]}"
+              />
+              <field
+                  name="company_id"
+                  groups="base.group_multi_company"
+                  widget="selection"
+                  attrs="{'readonly': [('is_editable','=', False)]}"
+              />
+          </group>
+        
         </tree>
       </field>
     </record>

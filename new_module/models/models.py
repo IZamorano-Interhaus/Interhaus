@@ -12,8 +12,13 @@ _STATES = [
 ]
 
 class new_module(models.Model):
+
+    
     _name = 'new_module.new_module'
     _description = 'new_module.new_module'
+    @api.model
+    def _get_default_requested_by(self):
+        return self.env["res.users"].browse(self.env.uid)
     name = fields.Char(
         string="Referencia comprador",
         required=True,
@@ -49,7 +54,32 @@ class new_module(models.Model):
         default=fields.Date.context_today,
         tracking=True,
     )
+    is_name_editable = fields.Boolean(
+        default=lambda self: self.env.user.has_group("base.group_no_one"),
+    )
+    origin = fields.Char(string="Source Document")
     
+    requested_by = fields.Many2one(
+        comodel_name="res.users",
+        required=True,
+        copy=False,
+        tracking=True,
+        default=_get_default_requested_by,
+        index=True,
+    )
+    assigned_to = fields.Many2one(
+        comodel_name="res.users",
+        string="Approver",
+        tracking=True,
+        domain=lambda self: [
+            (
+                "groups_id",
+                "in",
+                self.env.ref("purchase_request.group_purchase_request_manager").id,
+            )
+        ],
+        index=True,
+    )
     
     """ is_editable = fields.Boolean(compute="_compute_is_editable", readonly=True) """
 
