@@ -8,6 +8,7 @@
             <field name="folio">123456</field>
             <field name="documento">factura</field>
             <field name="tipo_documento">30</field>
+            <field name="date_start">01/30/2023</field>
           </record>
 
           <record id="object1" model="new_module.new_module">
@@ -17,6 +18,7 @@
             <field name="folio">654123</field>
             <field name="documento">factura</field>
             <field name="tipo_documento">30</field>
+            <field name="date_start">01/30/2023</field>
           </record>
 
           <record id="object2" model="new_module.new_module">
@@ -26,6 +28,7 @@
             <field name="folio">985632</field>
             <field name="documento">factura</field>
             <field name="tipo_documento">30</field>
+            <field name="date_start">01/30/2023</field>
           </record>
 
           <record id="object3" model="new_module.new_module">
@@ -35,6 +38,7 @@
             <field name="folio">745821</field>
             <field name="documento">factura</field>
             <field name="tipo_documento">30</field>
+            <field name="date_start">01/30/2023</field>
           </record>
 
           <record id="object4" model="new_module.new_module">
@@ -44,6 +48,7 @@
             <field name="folio">658742</field>
             <field name="documento">factura</field>
             <field name="tipo_documento">30</field>
+            <field name="date_start">01/30/2023</field>
           </record>
 
           <record id="object5" model="new_module.new_module">
@@ -53,6 +58,7 @@
             <field name="folio">423879</field>
             <field name="documento">factura</field>
             <field name="tipo_documento">30</field>
+            <field name="date_start">01/30/2023</field>
           </record>
 
           <record id="object6" model="new_module.new_module">
@@ -62,6 +68,7 @@
             <field name="folio">265748</field>
             <field name="documento">factura</field>
             <field name="tipo_documento">30</field>
+            <field name="date_start">01/30/2023</field>
           </record>
 
     </data>
