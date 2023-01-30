@@ -154,7 +154,7 @@ class new_module(models.Model):
     )
 
     
-    """ is_editable = fields.Boolean(compute="_compute_is_editable", readonly=True) """
+    is_editable = fields.Boolean(compute="_compute_is_editable", readonly=True)
 
     
     @api.depends('value')
