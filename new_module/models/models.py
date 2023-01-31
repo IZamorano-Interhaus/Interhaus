@@ -67,3 +67,15 @@ class new_module(models.Model):
         copy=False,
         index=True,
     )
+    supplier_id = fields.Many2one(
+        comodel_name="purchase.order",
+        string="Supplier",
+        required=True,
+        context={"res_partner_search_mode": "supplier"},
+    )
+    
+    purchase_order_id = fields.Many2one(
+        comodel_name="purchase.order",
+        string="Purchase Order",
+        domain=[("state", "=", "draft")],
+    )
