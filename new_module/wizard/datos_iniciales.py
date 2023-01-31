@@ -9,7 +9,12 @@ from odoo.tools import get_lang
 class initial_data(models.TransientModel):
     _name='new_module.new_module'
     _description='new_module.new_module'
-
+    
+    cliente = fields.Char(
+        string="Referencia comprador",
+        required=True,
+        default=lambda self: _("Ejemplo: Nicolas"),
+    )
     supplier_id = fields.Many2one(
         comodel_name="res.partner",
         string="Supplier",
