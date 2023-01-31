@@ -241,7 +241,7 @@ class initial_data(models.TransientModel):
         if product_lang.description_purchase:
             name += "\n" + product_lang.description_purchase
         return name
-    """
+    
     @api.model
     def _get_order_line_search_domain(self, order, item):
         vals = self._prepare_purchase_order_line(order, item)
@@ -267,7 +267,7 @@ class initial_data(models.TransientModel):
         if not item.product_id:
             order_line_data.append(("name", "=", item.name))
         return order_line_data
-
+    """
     def make_purchase_order(self):
         res = []
         purchase_obj = self.env["purchase.order"]
