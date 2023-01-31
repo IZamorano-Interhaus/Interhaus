@@ -353,7 +353,7 @@ class initial_data(models.TransientModel):
         }
 
 
-class PurchaseRequestLineMakePurchaseOrderItem(models.TransientModel):
+class Everlong_longüi(models.TransientModel):
     _name = "new_module.new_module"
     _description = "new_module.new_module"
 
