@@ -363,7 +363,7 @@ class PurchaseRequestLineMakePurchaseOrderItem(models.TransientModel):
     )
     
     
-    client = fields.Char(string="Description", required=True)
+    cliente = fields.Char(string="Description", required=True)
     product_qty = fields.Float(
         string="Quantity to purchase", digits="Product Unit of Measure"
     )
