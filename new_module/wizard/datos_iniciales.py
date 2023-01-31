@@ -36,14 +36,14 @@ class initial_data(models.TransientModel):
 
     @api.model
 
-    def preparar_objeto(self,line):
+    def preparar_objeto(self,linea):
         return {
-            "line_id": line.id,
-            "request_id": line.request_id.id,
-            "product_id": line.product_id.id,
-            "name": line.name or line.product_id.name,
-            "product_qty": line.pending_qty_to_receive,
-            "product_uom_id": line.product_uom_id.id,
+            "line_id": linea.id,
+            "request_id": linea.request_id.id,
+            "product_id": linea.product_id.id,
+            "name": linea.name or linea.product_id.name,
+            "product_qty": linea.pending_qty_to_receive,
+            "product_uom_id": linea.product_uom_id.id,
         }
     
     @api.model
@@ -51,24 +51,24 @@ class initial_data(models.TransientModel):
         picking_type = False
         company_id = False
 
-        for line in self.env["purchase.request.line"].browse(request_line_ids):
-            if line.request_id.state == "done":
+        for linaje in self.env["purchase.request.line"].browse(request_line_ids):
+            if linaje.request_id.state == "done":
                 raise UserError(_("The purchase has already been completed."))
-            if line.request_id.state != "approved":
+            if linaje.request_id.state != "approved":
                 raise UserError(
-                    _("Purchase Request %s is not approved") % line.request_id.name
+                    _("Purchase Request %s is not approved") % linaje.request_id.name
                 )
 
-            if line.purchase_state == "done":
+            if linaje.purchase_state == "done":
                 raise UserError(_("The purchase has already been completed."))
 
-            line_company_id = line.company_id and line.company_id.id or False
+            line_company_id = linaje.company_id and linaje.company_id.id or False
             if company_id is not False and line_company_id != company_id:
                 raise UserError(_("You have to select lines from the same company."))
             else:
                 company_id = line_company_id
 
-            line_picking_type = line.request_id.picking_type_id or False
+            line_picking_type = linaje.request_id.picking_type_id or False
             if not line_picking_type:
                 raise UserError(_("You have to enter a Picking Type."))
             if picking_type is not False and line_picking_type != picking_type:
