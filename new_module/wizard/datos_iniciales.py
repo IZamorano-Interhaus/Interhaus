@@ -54,7 +54,7 @@ class initial_data(models.TransientModel):
     )
     plazo_pago = fields.Date(
         default=fields.Date.context_today,
-        string = "plazo de pafgo"
+        string = "plazo de pago"
     )
     documento_id = fields.Char(
         string = "Número de documento",
