@@ -70,7 +70,7 @@ class initial_data(models.TransientModel):
         index=True,
     )
     supplier_id = fields.Many2one(
-        comodel_name="res.partner",
+        comodel_name="purchase.order",
         string="Supplier",
         required=True,
         context={"res_partner_search_mode": "supplier"},
@@ -142,7 +142,7 @@ class initial_data(models.TransientModel):
         )
     )
 
-    @api.model
+    """  @api.model
     def get_items(self, request_line_ids):
         request_line_obj = self.env["purchase.request.line"]
         items = []
@@ -231,7 +231,7 @@ class initial_data(models.TransientModel):
 
     @api.model
     def _get_purchase_line_name(self, order, line):
-        """Fetch the product name as per supplier settings"""
+        Fetch the product name as per supplier settings""""""
         product_lang = line.product_id.with_context(
             lang=get_lang(self.env, self.supplier_id.lang).code,
             partner_id=self.supplier_id.id,
@@ -425,3 +425,4 @@ class PurchaseRequestLineMakePurchaseOrderItem(models.TransientModel):
                 self.name = name
 
 
+ """
