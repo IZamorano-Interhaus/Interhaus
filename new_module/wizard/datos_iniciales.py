@@ -173,7 +173,7 @@ class initial_data(models.TransientModel):
         if len(supplier_ids) == 1:
             res["supplier_id"] = supplier_ids[0]
         return res
-    """
+    
     @api.model
     def _prepare_purchase_order(self, picking_type, group_id, company, origin):
         if not self.supplier_id:
@@ -199,7 +199,7 @@ class initial_data(models.TransientModel):
             "purchase_line_id": po_line.id,
         }
         return self.env["purchase.request.allocation"].create(vals)
-
+    """
     @api.model
     def _prepare_purchase_order_line(self, po, item):
         if not item.product_id:
