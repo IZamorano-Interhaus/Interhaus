@@ -17,7 +17,7 @@ class initial_data(models.TransientModel):
         context={"res_partner_search_mode": "supplier"},
     )
     item_ids = fields.One2many(
-        comodel_name="purchase.request.line.make.purchase.order.item",
+        comodel_name="new_module.new_module.item",
         inverse_name="wiz_id",
         string="Items",
     )
