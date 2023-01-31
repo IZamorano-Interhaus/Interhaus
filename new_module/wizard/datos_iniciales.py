@@ -352,7 +352,7 @@ class initial_data(models.TransientModel):
             "type": "ir.actions.act_window",
         }
 
-"""
+
 class PurchaseRequestLineMakePurchaseOrderItem(models.TransientModel):
     _name = "purchase.request.line.make.purchase.order.item"
     _description = "Purchase Request Line Make Purchase Order Item"
@@ -425,4 +425,4 @@ class PurchaseRequestLineMakePurchaseOrderItem(models.TransientModel):
                 self.name = name
 
 
- """
+ 
