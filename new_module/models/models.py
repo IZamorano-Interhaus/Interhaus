@@ -1,9 +1,6 @@
 # -*- coding: utf-8 -*-
-
 from odoo import models, fields, api, _
 from odoo.exceptions import UserError
-
-
 class new_module(models.Model):
     _name = 'new_module.new_module'
     _description = 'new_module.new_module' 
