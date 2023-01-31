@@ -354,8 +354,8 @@ class initial_data(models.TransientModel):
 
 
 class PurchaseRequestLineMakePurchaseOrderItem(models.TransientModel):
-    _name = "purchase.request.line.make.purchase.order.item"
-    _description = "Purchase Request Line Make Purchase Order Item"
+    _name='new_module.new_module'
+    _description='new_module.new_module'
 
     wiz_id = fields.Many2one(
         comodel_name="purchase.request.line.make.purchase.order",
