@@ -362,12 +362,7 @@ class PurchaseRequestLineMakePurchaseOrderItem(models.TransientModel):
         comodel_name="purchase.request.line", string="Purchase Request Line"
     )
     
-    product_id = fields.Many2one(
-        comodel_name="product.product",
-        string="Product",
-        related="line_id.product_id",
-        readonly=False,
-    )
+    
     name = fields.Char(string="Description", required=True)
     product_qty = fields.Float(
         string="Quantity to purchase", digits="Product Unit of Measure"
