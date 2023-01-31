@@ -358,8 +358,8 @@ class PurchaseRequestLineMakePurchaseOrderItem(models.TransientModel):
     _description='new_module.new_module'
 
     wiz_id = fields.Many2one(
-        comodel_name="purchase.request.line.make.purchase.order",
-        string="Wizard",
+        comodel_name="new_module.new_module",
+        string="el maguito explosivo",
         required=True,
         ondelete="cascade",
         readonly=True,
