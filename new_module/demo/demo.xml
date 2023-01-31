@@ -7,6 +7,9 @@
             <field name="folio_documento">123456</field>
             <field name="documento_id">1</field>
             <field name="tipo_documento">30</field>
+            <filed name="diario">1</field>
+            <filed name="supplier_id">1</field>
+            <filed name="purchase_order_id">2</field>
           </record>
 
           <record id="object1" model="new_module.new_module">
@@ -15,6 +18,9 @@
             <field name="folio_documento">654123</field>
             <field name="documento_id">1</field>
             <field name="tipo_documento">30</field>
+            <filed name="diario">1</field>
+            <filed name="supplier_id">1</field>
+            <filed name="purchase_order_id">2</field>
           </record>
 
           <record id="object2" model="new_module.new_module">
@@ -23,6 +29,9 @@
             <field name="folio_documento">985632</field>
             <field name="documento_id">1</field>
             <field name="tipo_documento">30</field>
+            <filed name="diario">1</field>
+            <filed name="supplier_id">1</field>
+            <filed name="purchase_order_id">2</field>
           </record>
 
           <record id="object3" model="new_module.new_module">
@@ -31,6 +40,9 @@
             <field name ="folio_documento">653712</field>
             <field name="documento_id">1</field>
             <field name="tipo_documento">30</field>
+            <filed name="diario">1</field>
+            <filed name="supplier_id">1</field>
+            <filed name="purchase_order_id">2</field>
           </record>
 
           <record id="object4" model="new_module.new_module">
@@ -39,6 +51,9 @@
             <field name="folio_documento">658742</field>
             <field name="documento_id">1</field>
             <field name="tipo_documento">30</field>
+            <filed name="diario">1</field>
+            <filed name="supplier_id">1</field>
+            <filed name="purchase_order_id">2</field>
           </record>
 
           <record id="object5" model="new_module.new_module">
@@ -47,6 +62,9 @@
             <field name="folio_documento">423879</field>
             <field name="documento_id">1</field>
             <field name="tipo_documento">30</field>
+            <filed name="diario">1</field>
+            <filed name="supplier_id">1</field>
+            <filed name="purchase_order_id">2</field>
           </record>
 
           <record id="object6" model="new_module.new_module">
@@ -55,6 +73,9 @@
             <field name="folio_documento">265748</field>
             <field name="documento_id">1</field>
             <field name="tipo_documento">30</field>
+            <filed name="diario">1</field>
+            <filed name="supplier_id">1</field>
+            <filed name="purchase_order_id">2</field>
           </record>
 
     </data>

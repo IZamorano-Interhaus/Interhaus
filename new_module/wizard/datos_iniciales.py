@@ -56,8 +56,8 @@ class initial_data(models.TransientModel):
         default=fields.Date.context_today
     )
     plazo_pago = fields.Date(
-                default=fields.Date.context_today
-
+        default=fields.Date.context_today,
+        string = "plazo de pafgo"
     )
     documento_id = fields.Char(
         string = "Número de documento",
@@ -82,7 +82,7 @@ class initial_data(models.TransientModel):
         domain=[("state", "=", "draft")],
     )
     sync_data_planned = fields.Boolean(
-        string="Match existing PO lines by Scheduled Date",
+        string="aplicar iva",
         help=(
             "When checked, PO lines on the selected purchase order are only reused "
             "if the scheduled date matches as well."
