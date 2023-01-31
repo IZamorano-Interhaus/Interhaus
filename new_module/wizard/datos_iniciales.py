@@ -1,15 +1,12 @@
 # Copyright 2018-2019 ForgeFlow, S.L.
 # License LGPL-3.0 or later (https://www.gnu.org/licenses/lgpl-3.0).
 from datetime import datetime
-
 from odoo import _, api, fields, models
 from odoo.exceptions import UserError
 from odoo.tools import get_lang
-
 class initial_data(models.TransientModel):
     _name='new_module.new_module'
     _description='new_module.new_module'
-
     cliente = fields.Char(
         string="Referencia comprador",
         required=True,
@@ -88,9 +85,7 @@ class initial_data(models.TransientModel):
             "if the scheduled date matches as well."
         ),
     )
-
     @api.model
-
     def preparar_objeto(self,linea):
         return {
             "line_id": linea.id,
@@ -100,12 +95,10 @@ class initial_data(models.TransientModel):
             "product_qty": linea.pending_qty_to_receive,
             "product_uom_id": linea.product_uom_id.id,
         }
-    
     @api.model
     def _check_valid_request_line(self, request_line_ids):
         picking_type = False
         company_id = False
-
         for linaje in self.env["purchase.request.line"].browse(request_line_ids):
             if linaje.request_id.state == "done":
                 raise UserError(_("The purchase has already been completed."))
@@ -113,16 +106,13 @@ class initial_data(models.TransientModel):
                 raise UserError(
                     _("Purchase Request %s is not approved") % linaje.request_id.name
                 )
-
             if linaje.purchase_state == "done":
                 raise UserError(_("The purchase has already been completed."))
-
             line_company_id = linaje.company_id and linaje.company_id.id or False
             if company_id is not False and line_company_id != company_id:
                 raise UserError(_("You have to select lines from the same company."))
             else:
                 company_id = line_company_id
-
             line_picking_type = linaje.request_id.picking_type_id or False
             if not line_picking_type:
                 raise UserError(_("You have to enter a Picking Type."))
@@ -141,7 +131,6 @@ class initial_data(models.TransientModel):
             "purchase requests that have different procurement group."
         )
     )
-
     @api.model
     def get_items(self, request_line_ids):
         request_line_obj = self.env["purchase.request.line"]
@@ -152,7 +141,6 @@ class initial_data(models.TransientModel):
         for line in request_lines:
             items.append([0, 0, self._prepare_item(line)])
         return items
-
     @api.model
     def default_get(self, fields):
         res = super().default_get(fields)
@@ -173,7 +161,6 @@ class initial_data(models.TransientModel):
         if len(supplier_ids) == 1:
             res["supplier_id"] = supplier_ids[0]
         return res
-    
     @api.model
     def _prepare_purchase_order(self, picking_type, group_id, company, origin):
         if not self.supplier_id:
@@ -190,7 +177,6 @@ class initial_data(models.TransientModel):
             "group_id": group_id.id,
         }
         return data
-
     def create_allocation(self, po_line, pr_line, new_qty, alloc_uom):
         vals = {
             "requested_product_uom_qty": new_qty,
@@ -199,13 +185,11 @@ class initial_data(models.TransientModel):
             "purchase_line_id": po_line.id,
         }
         return self.env["purchase.request.allocation"].create(vals)
-    
     @api.model
     def _prepare_purchase_order_line(self, po, item):
         if not item.product_id:
             raise UserError(_("Please select a product for all lines"))
         product = item.product_id
-
         # Keep the standard product UOM for purchase order so we should
         # convert the product quantity to this UOM
         qty = item.product_uom_id._compute_quantity(
@@ -228,7 +212,6 @@ class initial_data(models.TransientModel):
             ),
             "move_dest_ids": [(4, x.id) for x in item.line_id.move_dest_ids],
         }
-    
     @api.model
     def _get_purchase_line_name(self, order, line):
         """Fetch the product name as per supplier settings"""
@@ -241,7 +224,6 @@ class initial_data(models.TransientModel):
         if product_lang.description_purchase:
             name += "\n" + product_lang.description_purchase
         return name
-    
     @api.model
     def _get_order_line_search_domain(self, order, item):
         vals = self._prepare_purchase_order_line(order, item)
@@ -267,14 +249,12 @@ class initial_data(models.TransientModel):
         if not item.product_id:
             order_line_data.append(("name", "=", item.name))
         return order_line_data
-    
     def make_purchase_order(self):
         res = []
         purchase_obj = self.env["purchase.order"]
         po_line_obj = self.env["purchase.order.line"]
         pr_line_obj = self.env["purchase.request.line"]
         purchase = False
-
         for item in self.item_ids:
             line = item.line_id
             if item.product_qty <= 0.0:
@@ -289,7 +269,6 @@ class initial_data(models.TransientModel):
                     line.origin,
                 )
                 purchase = purchase_obj.create(po_data)
-
             # Look for any other PO line in the selected PO with same
             # product and UoM to sum quantities instead of creating a new
             # po line
@@ -341,7 +320,6 @@ class initial_data(models.TransientModel):
                 date_required.year, date_required.month, date_required.day
             )
             res.append(purchase.id)
-
         return {
             "domain": [("id", "in", res)],
             "name": _("RFQ"),
