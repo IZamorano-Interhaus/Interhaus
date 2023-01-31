@@ -199,7 +199,7 @@ class initial_data(models.TransientModel):
             "purchase_line_id": po_line.id,
         }
         return self.env["purchase.request.allocation"].create(vals)
-    """
+    
     @api.model
     def _prepare_purchase_order_line(self, po, item):
         if not item.product_id:
@@ -228,7 +228,7 @@ class initial_data(models.TransientModel):
             ),
             "move_dest_ids": [(4, x.id) for x in item.line_id.move_dest_ids],
         }
-
+    """
     @api.model
     def _get_purchase_line_name(self, order, line):
         Fetch the product name as per supplier settings""""""
