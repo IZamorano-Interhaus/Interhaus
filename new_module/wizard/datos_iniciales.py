@@ -354,18 +354,12 @@ class initial_data(models.TransientModel):
 
 
 class PurchaseRequestLineMakePurchaseOrderItem(models.TransientModel):
-    _name='new_module.new_module'
-    _description='new_module.new_module'
+    _name = "purchase.request.line.make.purchase.order.item"
+    _description = "Purchase Request Line Make Purchase Order Item"
 
-    wiz_id = fields.Many2one(
-        comodel_name="new_module.new_module",
-        string="el maguito explosivo",
-        required=True,
-        ondelete="cascade",
-        readonly=True,
-    )
+    
     line_id = fields.Many2one(
-        comodel_name="new_module.new_module", string="Purchase Request Line"
+        comodel_name="purchase.request.line", string="Purchase Request Line"
     )
     request_id = fields.Many2one(
         comodel_name="purchase.request",
