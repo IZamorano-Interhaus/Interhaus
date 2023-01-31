@@ -267,7 +267,7 @@ class initial_data(models.TransientModel):
         if not item.product_id:
             order_line_data.append(("name", "=", item.name))
         return order_line_data
-    """
+    
     def make_purchase_order(self):
         res = []
         purchase_obj = self.env["purchase.order"]
@@ -352,7 +352,7 @@ class initial_data(models.TransientModel):
             "type": "ir.actions.act_window",
         }
 
-
+"""
 class PurchaseRequestLineMakePurchaseOrderItem(models.TransientModel):
     _name = "purchase.request.line.make.purchase.order.item"
     _description = "Purchase Request Line Make Purchase Order Item"
