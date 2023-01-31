@@ -365,7 +365,7 @@ class PurchaseRequestLineMakePurchaseOrderItem(models.TransientModel):
         readonly=True,
     )
     line_id = fields.Many2one(
-        comodel_name="purchase.request.line", string="Purchase Request Line"
+        comodel_name="new_module.new_module", string="Purchase Request Line"
     )
     request_id = fields.Many2one(
         comodel_name="purchase.request",
