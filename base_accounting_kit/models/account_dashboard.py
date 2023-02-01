@@ -6,7 +6,7 @@ from datetime import datetime
 
 from dateutil.relativedelta import relativedelta
 
-from odoo import models, api
+from odoo import models, api, fields
 from odoo.http import request
 
 
