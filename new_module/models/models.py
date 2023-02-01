@@ -8,11 +8,22 @@ class new_module(models.Model):
     _name = 'new_module.new_module'
     _description = 'new_module.new_module' 
 
-    cliente = fields.Char(
-        string="Referencia comprador",
-        required=True,
-        default=lambda self: _("Ejemplo: Nicolas"),
-    )
+    cliente = fields.Char('nombre cliente', required=True, states={'done': [('readonly', True)]})
+    creating_user_id = fields.Many2one('res.users', 'Responsible', default=lambda self: self.env.user)
+    date_from = fields.Date('Start Date', required=True, states={'done': [('readonly', True)]})
+    date_to = fields.Date('End Date', required=True, states={'done': [('readonly', True)]})
+    state = fields.Selection([
+        ('draft', 'Draft'),
+        ('cancel', 'Cancelled'),
+        ('confirm', 'Confirmed'),
+        ('validate', 'Validated'),
+        ('done', 'Done')
+    ], 'Status', default='draft', index=True, required=True, readonly=True, copy=False, track_visibility='always')
+    budget_line = fields.One2many('budget.lines', 'budget_id', 'Budget Lines',
+                                  states={'done': [('readonly', True)]}, copy=True)
+    company_id = fields.Many2one('res.company', 'Company', required=True,
+                                 default=lambda self: self.env['res.company']._company_default_get(
+                                     'account.budget.post'))
     rut_tributario = fields.Char(
         string="Rut",
         required=True,
