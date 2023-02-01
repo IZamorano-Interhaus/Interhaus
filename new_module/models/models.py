@@ -1,6 +1,9 @@
 # -*- coding: utf-8 -*-
 from odoo import models, fields, api, _
 from odoo.exceptions import UserError
+from datetime import datetime, date
+from dateutil.relativedelta import relativedelta
+
 class new_module(models.Model):
     _name = 'new_module.new_module'
     _description = 'new_module.new_module' 
@@ -75,3 +78,19 @@ class new_module(models.Model):
         string="Purchase Order",
         domain=[("state", "=", "draft")],
     )
+    def _get_next_schedule(self):
+        if self.date:
+            recurr_dates = []
+            today = datetime.today()
+            start_date = datetime.strptime(str(self.date), '%Y-%m-%d')
+            while start_date <= today:
+                recurr_dates.append(str(start_date.date()))
+                if self.recurring_period == 'days':
+                    start_date += relativedelta(days=self.recurring_interval)
+                elif self.recurring_period == 'weeks':
+                    start_date += relativedelta(weeks=self.recurring_interval)
+                elif self.recurring_period == 'months':
+                    start_date += relativedelta(months=self.recurring_interval)
+                else:
+                    start_date += relativedelta(years=self.recurring_interval)
+            self.next_date = start_date.date()
