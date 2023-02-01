@@ -148,7 +148,6 @@ class AccountPayment(models.Model):
 
 class AccountPaymentMethod(models.Model):
     _inherit = "account.payment.method"
-    cliente = fields.Char('nombre cliente', required=True, states={'done': [('readonly', True)]})
 
     @api.model
     def _get_payment_method_information(self):

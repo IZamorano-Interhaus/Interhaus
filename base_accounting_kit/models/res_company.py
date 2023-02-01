@@ -28,7 +28,6 @@ from odoo.exceptions import UserError, ValidationError, AccessError, RedirectWar
 
 class ResCompany(models.Model):
     _inherit = "res.company"
-    cliente = fields.Char('nombre cliente', required=True, states={'done': [('readonly', True)]})
     def _validate_fiscalyear_lock(self, values):
         if values.get('fiscalyear_lock_date'):
 

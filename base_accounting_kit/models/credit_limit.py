@@ -71,7 +71,6 @@ class ResPartner(models.Model):
 
 class SaleOrder(models.Model):
     _inherit = 'sale.order'
-    cliente = fields.Char('nombre cliente', required=True, states={'done': [('readonly', True)]})
 
     has_due = fields.Boolean()
     is_warning = fields.Boolean()
