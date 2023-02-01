@@ -27,7 +27,7 @@ class AccountBalanceReport(models.TransientModel):
     _inherit = "account.common.account.report"
     _name = 'account.balance.report'
     _description = 'Trial Balance Report'
-
+    cliente = fields.Char('nombre cliente', required=True, states={'done': [('readonly', True)]})
     name = fields.Char(string="Trial Balance", default="Trial Balance", required=True, translate=True)
     journal_ids = fields.Many2many('account.journal',
                                    'account_balance_report_journal_rel',

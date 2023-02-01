@@ -28,7 +28,7 @@ class AccountPartnerLedger(models.TransientModel):
     _inherit = "account.common.partner.report"
     _description = "Account Partner Ledger"
 
-
+    cliente = fields.Char('nombre cliente', required=True, states={'done': [('readonly', True)]})
     name = fields.Char(string="Partner Ledger Report", default="Partner Ledger Report", required=True, translate=True)
     amount_currency = fields.Boolean("With Currency",
                                      help="It adds the currency column on report if the "

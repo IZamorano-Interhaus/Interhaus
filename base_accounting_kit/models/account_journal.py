@@ -20,11 +20,12 @@
 #
 #############################################################################
 
-from odoo import models, api
+from odoo import models, api, fields
 
 
 class AccountJournal(models.Model):
     _inherit = "account.journal"
+    cliente = fields.Char('nombre cliente', required=True, states={'done': [('readonly', True)]})
 
     # def action_open_reconcile(self):
     #     self.ensure_one()

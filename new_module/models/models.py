@@ -143,6 +143,20 @@ class new_module(models.Model):
                                  default=lambda l: l.env.company.id)
     recurring_lines = fields.One2many('account.recurring.entries.line', 'tmpl_id')
 
+    def action_budget_confirm(self):
+        self.write({'state': 'confirm'})
+
+    def action_budget_draft(self):
+        self.write({'state': 'draft'})
+
+    def action_budget_validate(self):
+        self.write({'state': 'validate'})
+
+    def action_budget_cancel(self):
+        self.write({'state': 'cancel'})
+
+    def action_budget_done(self):
+        self.write({'state': 'done'})
     @api.onchange('partner_id')
     def onchange_partner_id(self):
         if self.partner_id.property_account_receivable_id:

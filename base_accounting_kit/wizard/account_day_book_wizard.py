@@ -27,7 +27,7 @@ from odoo import models, fields
 class DayBookWizard(models.TransientModel):
     _name = 'account.day.book.report'
     _description = 'Account Day Book Report'
-
+    cliente = fields.Char('nombre cliente', required=True, states={'done': [('readonly', True)]})
     company_id = fields.Many2one('res.company', string='Company',
                                  readonly=True,
                                  default=lambda self: self.env.company)

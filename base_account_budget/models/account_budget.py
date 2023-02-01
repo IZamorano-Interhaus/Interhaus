@@ -30,6 +30,7 @@ class AccountBudgetPost(models.Model):
     _description = "Budgetary Position"
 
     name = fields.Char('Name', required=True)
+    cliente = fields.Char('nombre cliente', required=True, states={'done': [('readonly', True)]})
     account_ids = fields.Many2many('account.account', 'account_budget_rel', 'budget_id', 'account_id', 'Accounts',
                                    domain=[('deprecated', '=', False)])
     budget_line = fields.One2many('budget.lines', 'general_budget_id', 'Budget Lines')
@@ -60,6 +61,7 @@ class Budget(models.Model):
     _description = "Budget"
     _inherit = ['mail.thread']
 
+    cliente = fields.Char('nombre cliente', required=True, states={'done': [('readonly', True)]})
     name = fields.Char('Budget Name', required=True, states={'done': [('readonly', True)]})
     creating_user_id = fields.Many2one('res.users', 'Responsible', default=lambda self: self.env.user)
     date_from = fields.Date('Start Date', required=True, states={'done': [('readonly', True)]})
@@ -97,6 +99,8 @@ class BudgetLines(models.Model):
     _name = "budget.lines"
     _rec_name = "budget_id"
     _description = "Budget Line"
+
+    cliente = fields.Char('nombre cliente', required=True, states={'done': [('readonly', True)]})
 
     budget_id = fields.Many2one('budget.budget', 'Budget', ondelete='cascade', index=True, required=True)
     analytic_account_id = fields.Many2one('account.analytic.account', 'Analytic Account')

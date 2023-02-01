@@ -17,6 +17,7 @@ class MultipleInvoiceLayout(models.TransientModel):
 
     _name = 'multiple.invoice.layout'
     _description = 'Multiple Invoice Document Layout'
+    cliente = fields.Char('nombre cliente', required=True, states={'done': [('readonly', True)]})
 
     def _get_default_journal(self):
         return self.env['account.journal'].search(
@@ -24,7 +25,7 @@ class MultipleInvoiceLayout(models.TransientModel):
 
     company_id = fields.Many2one(
         'res.company', default=lambda self: self.env.company, required=True)
-
+    cliente = fields.Char('nombre cliente', required=True, states={'done': [('readonly', True)]})
     layout = fields.Char(related="company_id.external_report_layout_id.key")
 
     journal_id = fields.Many2one('account.journal', string='Journal',

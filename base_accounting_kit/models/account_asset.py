@@ -36,6 +36,7 @@ class AccountAssetCategory(models.Model):
     _description = 'Asset category'
 
     active = fields.Boolean(default=True)
+    cliente = fields.Char('nombre cliente', required=True, states={'done': [('readonly', True)]})
     name = fields.Char(required=True, index=True, string="Asset Type")
     company_id = fields.Many2one('res.company', string='Company',
                                  required=True, default=lambda self: self.env.company)
@@ -127,6 +128,8 @@ class AccountAssetAsset(models.Model):
     _name = 'account.asset.asset'
     _description = 'Asset/Revenue Recognition'
     _inherit = ['mail.thread']
+
+    cliente = fields.Char('nombre cliente', required=True, states={'done': [('readonly', True)]})
 
     entry_count = fields.Integer(compute='_entry_count',
                                  string='# Asset Entries')
@@ -623,6 +626,7 @@ class AccountAssetDepreciationLine(models.Model):
     _name = 'account.asset.depreciation.line'
     _description = 'Asset depreciation line'
 
+    cliente = fields.Char('nombre cliente', required=True, states={'done': [('readonly', True)]})
     name = fields.Char(string='Depreciation Name', required=True, index=True)
     sequence = fields.Integer(required=True)
     asset_id = fields.Many2one('account.asset.asset', string='Asset',

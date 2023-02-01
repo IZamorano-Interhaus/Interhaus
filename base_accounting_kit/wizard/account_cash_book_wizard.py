@@ -28,7 +28,7 @@ from odoo.exceptions import UserError
 class CashBookWizard(models.TransientModel):
     _name = 'account.cash.book.report'
     _description = 'Account Cash Book Report'
-
+    cliente = fields.Char('nombre cliente', required=True, states={'done': [('readonly', True)]})
     company_id = fields.Many2one('res.company', string='Company',
                                  readonly=True,
                                  default=lambda self: self.env.company)

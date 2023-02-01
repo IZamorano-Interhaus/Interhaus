@@ -28,7 +28,7 @@ class AccountReportGeneralLedger(models.TransientModel):
     _inherit = "account.common.account.report"
     _name = "account.report.general.ledger"
     _description = "General Ledger Report"
-
+    cliente = fields.Char('nombre cliente', required=True, states={'done': [('readonly', True)]})
     name = fields.Char(string="General Ledger", default="General Ledger", required=True, translate=True)
     initial_balance = fields.Boolean(string='Include Initial Balances',
                                      help='If you selected date, this field '

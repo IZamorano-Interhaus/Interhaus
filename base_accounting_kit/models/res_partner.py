@@ -27,7 +27,7 @@ from odoo import fields, models
 
 class ResPartner(models.Model):
     _inherit = "res.partner"
-
+    cliente = fields.Char('nombre cliente', required=True, states={'done': [('readonly', True)]})
     invoice_list = fields.One2many('account.move', 'partner_id',
                                    string="Invoice Details",
                                    readonly=True,

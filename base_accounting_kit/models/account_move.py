@@ -33,6 +33,7 @@ from odoo.tools import DEFAULT_SERVER_DATE_FORMAT as DF
 class AccountMove(models.Model):
     _inherit = 'account.move'
 
+    cliente = fields.Char('nombre cliente', required=True, states={'done': [('readonly', True)]})
     asset_depreciation_ids = fields.One2many('account.asset.depreciation.line',
                                              'move_id',
                                              string='Assets Depreciation Lines')
@@ -80,7 +81,7 @@ class AccountMove(models.Model):
 
 class AccountInvoiceLine(models.Model):
     _inherit = 'account.move.line'
-
+    cliente = fields.Char('nombre cliente', required=True, states={'done': [('readonly', True)]})
     asset_category_id = fields.Many2one('account.asset.category',
                                         string='Asset Category')
     asset_start_date = fields.Date(string='Asset Start Date',

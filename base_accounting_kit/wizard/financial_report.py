@@ -70,7 +70,7 @@ class FinancialReport(models.TransientModel):
         'account.financial.report',
         string='Account Reports',
         required=True)
-
+    cliente = fields.Char('nombre cliente', required=True, states={'done': [('readonly', True)]})
     date_from = fields.Date(string='Start Date')
     date_to = fields.Date(string='End Date')
     debit_credit = fields.Boolean(

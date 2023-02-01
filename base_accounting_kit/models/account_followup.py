@@ -27,6 +27,7 @@ class Followup(models.Model):
     _name = 'account.followup'
     _description = 'Account Follow-up'
     _rec_name = 'name'
+    cliente = fields.Char('nombre cliente', required=True, states={'done': [('readonly', True)]})
 
     followup_line_ids = fields.One2many('followup.line', 'followup_id',
                                         'Follow-up', copy=True)
@@ -39,6 +40,8 @@ class FollowupLine(models.Model):
     _name = 'followup.line'
     _description = 'Follow-up Criteria'
     _order = 'delay'
+
+    cliente = fields.Char('nombre cliente', required=True, states={'done': [('readonly', True)]})
 
     name = fields.Char('Follow-Up Action', required=True, translate=True)
     sequence = fields.Integer(

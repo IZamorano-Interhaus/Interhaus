@@ -28,6 +28,7 @@ from odoo.exceptions import UserError
 class BankBookWizard(models.TransientModel):
     _name = 'account.bank.book.report'
     _description = 'Account Bank Book Report'
+    cliente = fields.Char('nombre cliente', required=True, states={'done': [('readonly', True)]})
 
     company_id = fields.Many2one('res.company', string='Company',
                                  readonly=True,
