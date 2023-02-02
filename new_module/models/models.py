@@ -200,7 +200,7 @@ class new_module(models.Model):
         for pr in self:
             if not pr.line_ids.filtered(lambda l: l.cancelled is False):
                 pr.write({"state": "rejected"})
-
+    
     def to_approve_allowed_check(self):
         for rec in self:
             if not rec.to_approve_allowed:
