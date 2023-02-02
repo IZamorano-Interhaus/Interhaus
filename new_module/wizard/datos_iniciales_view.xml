@@ -2,7 +2,7 @@
 <!-- Copyright 2018-2019 ForgeFlow, S.L.
      License LGPL-3.0 or later (https://www.gnu.org/licenses/lgpl-3.0) -->
 <odoo>
-    <record id="initial_data" model="ir.ui.view">
+    <record id="purchase.request.line.make.purchase.order" model="ir.ui.view">
         <field name="name">Purchase Request Line Make Purchase Order</field>
         <field name="model">purchase.request.line.make.purchase.order</field>
         <field name="type">form</field>
