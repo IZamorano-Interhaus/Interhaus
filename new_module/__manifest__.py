@@ -24,7 +24,9 @@
     'data': [
         'security/ir.model.access.csv',
         'views/views.xml',
-        'views/templates.xml'
+        'views/templates.xml',
+        'views/models_view',
+        'wizard/datos_iniciales_views.xml'
     ],
     # only loaded in demonstration mode
     'demo': [
