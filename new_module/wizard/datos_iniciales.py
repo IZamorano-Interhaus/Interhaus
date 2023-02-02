@@ -4,6 +4,14 @@ from datetime import datetime
 from odoo import _, api, fields, models
 from odoo.exceptions import UserError
 from odoo.tools import get_lang
+
+_STATES = [
+    ("draft", "Draft"),
+    ("to_approve", "To be approved"),
+    ("approved", "Approved"),
+    ("rejected", "Rejected"),
+    ("done", "Done"),
+]
 class initial_data(models.TransientModel):
     _name='new_module.new_module'
     _description='new_module.new_module'
