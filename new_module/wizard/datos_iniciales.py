@@ -4,7 +4,6 @@ from datetime import datetime
 from odoo import _, api, fields, models
 from odoo.exceptions import UserError
 from odoo.tools import get_lang
-
 _STATES = [
     ("draft", "Draft"),
     ("to_approve", "To be approved"),
@@ -73,6 +72,17 @@ class initial_data(models.TransientModel):
         string="Diario",
         copy=False,
         index=True,
+    )
+    supplier_id = fields.Many2one(
+        comodel_name="purchase.order",
+        string="Supplier",
+        required=True,
+        context={"res_partner_search_mode": "supplier"},
+    )
+    purchase_order_id = fields.Many2one(
+        comodel_name="purchase.order",
+        string="Purchase Order",
+        domain=[("state", "=", "draft")],
     )
     @api.model
     def preparar_objeto(self,linea):
