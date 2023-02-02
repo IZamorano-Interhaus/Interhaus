@@ -40,7 +40,6 @@ def setup_modifiers(node, field=None, context=None, in_tree_view=False):
 class AssetModify(models.TransientModel):
     _name = 'asset.modify'
     _description = 'Modify Asset'
-    cliente = fields.Char('nombre cliente', required=True, states={'done': [('readonly', True)]})
     name = fields.Text(string='Reason', required=True)
     method_number = fields.Integer(string='Number of Depreciations', required=True)
     method_period = fields.Integer(string='Period Length')

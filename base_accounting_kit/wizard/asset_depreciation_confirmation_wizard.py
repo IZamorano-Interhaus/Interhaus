@@ -28,7 +28,6 @@ class AssetDepreciationConfirmationWizard(models.TransientModel):
     _description = "asset.depreciation.confirmation.wizard"
 
     date = fields.Date('Account Date', required=True, help="Choose the period for which you want to automatically post the depreciation lines of running assets", default=fields.Date.context_today)
-    cliente = fields.Char('nombre cliente', required=True, states={'done': [('readonly', True)]})
     def asset_compute(self):
         self.ensure_one()
         context = self._context

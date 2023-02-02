@@ -28,7 +28,6 @@ class AccountingReport(models.TransientModel):
     _name = "cash.flow.report"
     _inherit = "account.report"
     _description = "Cash Flow Report"
-    cliente = fields.Char('nombre cliente', required=True, states={'done': [('readonly', True)]})
     name = fields.Char(string="Cash Flow Report", default="Cash Flow Report", required=True, translate=True)
     date_from = fields.Date(string='Start Date')
     date_to = fields.Date(string='End Date')

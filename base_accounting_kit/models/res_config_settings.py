@@ -25,7 +25,6 @@ from odoo import models, fields, api
 
 class ResConfigSettings(models.TransientModel):
     _inherit = 'res.config.settings'
-    cliente = fields.Char('nombre cliente', required=True, states={'done': [('readonly', True)]})
     customer_credit_limit = fields.Boolean(string="Customer Credit Limit")
 
     @api.model

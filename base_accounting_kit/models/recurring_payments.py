@@ -168,7 +168,6 @@ class RecurringPayments(models.Model):
 class GetAllRecurringEntries(models.TransientModel):
     _name = 'account.recurring.entries.line'
     _description = 'Account Recurring Entries Line'
-    cliente = fields.Char('nombre cliente', required=True, states={'done': [('readonly', True)]})
     date = fields.Date('Date')
     template_name = fields.Char('Name')
     amount = fields.Float('Amount')

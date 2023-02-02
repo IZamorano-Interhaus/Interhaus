@@ -27,8 +27,6 @@ class AccountPrintJournal(models.TransientModel):
     _inherit = "account.common.journal.report"
     _name = "account.print.journal"
     _description = "Account Print Journal"
-
-    cliente = fields.Char('nombre cliente', required=True, states={'done': [('readonly', True)]})
     name = fields.Char(string="Journal Audit", default="Journal Audit", required=True, translate=True)
     sort_selection = fields.Selection(
         [('date', 'Date'), ('move_name', 'Journal Entry Number')],

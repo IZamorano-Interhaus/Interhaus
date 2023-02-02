@@ -34,7 +34,6 @@ class AccountAgedTrialBalance(models.TransientModel):
     _description = 'Account Aged Trial balance Report'
 
     name = fields.Char(string="Account Aged Trial balance Report", default="Account Aged Trial balance Report", required=True, translate=True)
-    cliente = fields.Char('nombre cliente', required=True, states={'done': [('readonly', True)]})
     journal_ids = fields.Many2many('account.journal', string='Journals',
                                    required=True)
     period_length = fields.Integer(string='Period Length (days)',
