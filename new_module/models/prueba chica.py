@@ -1,24 +1,22 @@
+
 """ 
-
 class pruebas():
-    id
-    nombre
-    edad
+    id= int(input("id: \n"));
+    nombre= ('');
+    edad=int();
 
-    def get_id(self):
-        return self.get_id
+    if id ==1:
+        nombre='nicolas';
+        edad=23;
+        print=(" | "+nombre+" | ");
+    else:
+        print("fin de la prueba, no dijiste 1")
     
-    def get_nombre(self):
-        return self.get_nombre
-    
-    def get_edad(self):
-        return self.get_edad
+     """
 
-        if self.get_nombre()=="nicolas":
-            self.get_id()=1
-            self.get_edad()=23
-            print(self.get_id()," | ",self.get_edad())
+
     
-ensayo= pruebas(1) """
+
+    
         
     
