@@ -149,7 +149,7 @@ class new_module(models.Model):
         for vals in vals_list:
             if vals.get("name", _("New")) == _("New"):
                 vals["name"] = self._get_default_name()
-        requests = super(PurchaseRequest, self).create(vals_list)
+        requests = super(new_module, self).create(vals_list)
         for vals, request in zip(vals_list, requests):
             if vals.get("assigned_to"):
                 partner_id = self._get_partner_id(request)
@@ -157,7 +157,7 @@ class new_module(models.Model):
         return requests
 
     def write(self, vals):
-        res = super(PurchaseRequest, self).write(vals)
+        res = super(new_module, self).write(vals)
         for request in self:
             if vals.get("assigned_to"):
                 partner_id = self._get_partner_id(request)
@@ -174,7 +174,7 @@ class new_module(models.Model):
                 raise UserError(
                     _("You cannot delete a purchase request which is not draft.")
                 )
-        return super(PurchaseRequest, self).unlink()
+        return super(new_module, self).unlink()
 
     def button_draft(self):
         self.mapped("line_ids").do_uncancel()
