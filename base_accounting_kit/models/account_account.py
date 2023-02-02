@@ -108,7 +108,6 @@ class AccountCommonJournalReport(models.TransientModel):
     _inherit = "account.report"
 
     amount_currency = fields.Boolean('With Currency', help="Print Report with the currency column if the currency differs from the company currency.")
-    cliente = fields.Char('nombre cliente', required=True, states={'done': [('readonly', True)]})
     company_id = fields.Many2one('res.company', string='Company', required=True, readonly=True, default=lambda self: self.env.company)
     date_from = fields.Date(string='Start Date')
     date_to = fields.Date(string='End Date')

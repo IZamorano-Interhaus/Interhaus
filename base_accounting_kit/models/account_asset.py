@@ -129,7 +129,6 @@ class AccountAssetAsset(models.Model):
     _description = 'Asset/Revenue Recognition'
     _inherit = ['mail.thread']
 
-    cliente = fields.Char('nombre cliente', required=True, states={'done': [('readonly', True)]})
 
     entry_count = fields.Integer(compute='_entry_count',
                                  string='# Asset Entries')
@@ -626,7 +625,6 @@ class AccountAssetDepreciationLine(models.Model):
     _name = 'account.asset.depreciation.line'
     _description = 'Asset depreciation line'
 
-    cliente = fields.Char('nombre cliente', required=True, states={'done': [('readonly', True)]})
     name = fields.Char(string='Depreciation Name', required=True, index=True)
     sequence = fields.Integer(required=True)
     asset_id = fields.Many2one('account.asset.asset', string='Asset',

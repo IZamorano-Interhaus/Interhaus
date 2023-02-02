@@ -12,7 +12,7 @@ from odoo.http import request
 
 class DashBoard(models.Model):
     _inherit = 'account.move'
-    cliente = fields.Char('nombre cliente', required=True, states={'done': [('readonly', True)]})
+    
 
     # function to getting expenses
 
