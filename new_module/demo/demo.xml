@@ -3,7 +3,8 @@
           <record id="object0" model="new_module.new_module">
             <field name="cliente">Object 0</field>
             <field name="rut_tributario">19669468-4</field>
-            <field name="folio_documento">123456</field>
+            <field name="folio_documento">10</field>
+            <field name="documento">1</field>
             <field name="documento_id">1</field>
             <field name="tipo_documento">30</field>
             <field name="referencia_pago">iva</field>
@@ -13,7 +14,8 @@
           <record id="object1" model="new_module.new_module">
             <field name="cliente">Object 1</field>
             <field name="rut_tributario">19669468-4</field>
-            <field name="folio_documento">654123</field>
+            <field name="folio_documento">10</field>
+            <field name="documento">1</field>
             <field name="documento_id">1</field>
             <field name="tipo_documento">30</field>
             <field name="referencia_pago">iva</field>
@@ -23,7 +25,8 @@
           <record id="object2" model="new_module.new_module">
             <field name="cliente">Object 2</field>
             <field name="rut_tributario">19669468-4</field>
-            <field name="folio_documento">985632</field>
+            <field name="folio_documento">10</field>
+            <field name="documento">1</field>
             <field name="documento_id">1</field>
             <field name="tipo_documento">30</field>
             <field name="referencia_pago">iva</field>
@@ -33,7 +36,8 @@
           <record id="object3" model="new_module.new_module">
             <field name="cliente">Object 3</field>
             <field name="rut_tributario">19669468-4</field>
-            <field name ="folio_documento">653712</field>
+            <field name ="folio_documento">10</field>
+            <field name="documento">1</field>
             <field name="documento_id">1</field>
             <field name="tipo_documento">30</field>
             <field name="referencia_pago">iva</field>
@@ -43,7 +47,8 @@
           <record id="object4" model="new_module.new_module">
             <field name="cliente">Object 4</field>
             <field name="rut_tributario">19669468-4</field>
-            <field name="folio_documento">658742</field>
+            <field name="folio_documento">10</field>
+            <field name="documento">1</field>
             <field name="documento_id">1</field>
             <field name="tipo_documento">30</field>
             <field name="referencia_pago">iva</field>
@@ -53,7 +58,8 @@
           <record id="object5" model="new_module.new_module">
             <field name="cliente">Object 5</field>
             <field name="rut_tributario">19669468-4</field>
-            <field name="folio_documento">423879</field>
+            <field name="folio_documento">10</field>
+            <field name="documento">1</field>
             <field name="documento_id">1</field>
             <field name="tipo_documento">30</field>
             <field name="referencia_pago">iva</field>
@@ -63,7 +69,8 @@
           <record id="object6" model="new_module.new_module">
             <field name="cliente">Object 6</field>
             <field name="rut_tributario">19669468-4</field>
-            <field name="folio_documento">265748</field>
+            <field name="folio_documento">10</field>
+            <field name="documento">1</field>
             <field name="documento_id">1</field>
             <field name="tipo_documento">30</field>
             <field name="referencia_pago">iva</field>
