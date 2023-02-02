@@ -7,13 +7,16 @@
       <field name="model">new_module.new_module</field>
       <field name="arch" type="xml">
         <tree>
-          <field name="rut"/>
-          <field name="folio"/>
-          <field name="name"/>
-          <field name="documento"/>
-          <field name="tipo_documento"/>
-          <field name="value"/>
-          <field name="descuento"/>
+          <field name = "cliente"/>
+          <field name = "rut_tributario"/>
+          <field name = "folio_documento"/>
+          <field name = "tipo_documento"/>
+          <field name = "documento_id"/>
+          <field name = "fecha_factura"/>
+          <field name = "referencia_pago"/>
+          <field name = "fecha_vencimiento"/>
+          <field name = "plazo_pago"/>
+          <field name = "diario"/>
         </tree>
       </field>
     </record>
@@ -25,6 +28,7 @@
       <field name="name">agregar nuevo dato</field>
       <field name="res_model">new_module.new_module</field>
       <field name="view_mode">tree,form</field>
+      
     </record>
 
 
