@@ -12,13 +12,7 @@ class new_module(models.Model):
     creating_user_id = fields.Many2one('res.users', 'Responsible', default=lambda self: self.env.user)
     date_from = fields.Date('Start Date', required=True, states={'done': [('readonly', True)]})
     date_to = fields.Date('End Date', required=True, states={'done': [('readonly', True)]})
-    state = fields.Selection([
-        ('draft', 'Draft'),
-        ('cancel', 'Cancelled'),
-        ('confirm', 'Confirmed'),
-        ('validate', 'Validated'),
-        ('done', 'Done')
-    ], 'Status', default='draft', index=True, required=True, readonly=True, copy=False, track_visibility='always')
+    
     budget_line = fields.One2many('budget.lines', 'budget_id', 'Budget Lines',
                                   states={'done': [('readonly', True)]}, copy=True)
     company_id = fields.Many2one('res.company', 'Company', required=True,

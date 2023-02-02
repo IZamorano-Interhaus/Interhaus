@@ -66,25 +66,6 @@ class initial_data(models.TransientModel):
         copy=False,
         index=True,
     )
-    supplier_id = fields.Many2one(
-        comodel_name="purchase.order",
-        string="Supplier",
-        required=True,
-        context={"res_partner_search_mode": "supplier"},
-    )
-    
-    purchase_order_id = fields.Many2one(
-        comodel_name="purchase.order",
-        string="Purchase Order",
-        domain=[("state", "=", "draft")],
-    )
-    sync_data_planned = fields.Boolean(
-        string="aplicar iva",
-        help=(
-            "When checked, PO lines on the selected purchase order are only reused "
-            "if the scheduled date matches as well."
-        ),
-    )
     @api.model
     def preparar_objeto(self,linea):
         return {
