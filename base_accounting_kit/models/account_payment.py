@@ -31,7 +31,6 @@ class AccountRegisterPayments(models.TransientModel):
     effective_date = fields.Date('Effective Date',
                                  help='Effective date of PDC', copy=False,
                                  default=False)
-    cliente = fields.Char('nombre cliente', required=True, states={'done': [('readonly', True)]})
     def _prepare_payment_vals(self, invoices):
         res = super(AccountRegisterPayments, self)._prepare_payment_vals(
             invoices)
@@ -55,7 +54,6 @@ class AccountRegisterPayments(models.TransientModel):
 
 class AccountPayment(models.Model):
     _inherit = "account.payment"
-    cliente = fields.Char('nombre cliente', required=True, states={'done': [('readonly', True)]})
     bank_reference = fields.Char(copy=False)
     cheque_reference = fields.Char(copy=False)
     effective_date = fields.Date('Effective Date',

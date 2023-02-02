@@ -27,7 +27,6 @@ from odoo.tools.translate import _
 
 class ResPartner(models.Model):
     _inherit = 'res.partner'
-    cliente = fields.Char('nombre cliente', required=True, states={'done': [('readonly', True)]})
 
     warning_stage = fields.Float(string='Warning Amount',
                                  help="A warning message will appear once the "
@@ -114,7 +113,6 @@ class AccountMove(models.Model):
     has_due = fields.Boolean()
     is_warning = fields.Boolean()
     due_amount = fields.Float(related='partner_id.due_amount')
-    cliente = fields.Char('nombre cliente', required=True, states={'done': [('readonly', True)]})
 
     def action_post(self):
         """To check the selected customers due amount is exceed than

@@ -29,14 +29,12 @@ from odoo.exceptions import UserError
 
 class FilterRecurringEntries(models.Model):
     _inherit = 'account.move'
-    cliente = fields.Char('nombre cliente', required=True, states={'done': [('readonly', True)]})
     recurring_ref = fields.Char()
 
 
 class RecurringPayments(models.Model):
     _name = 'account.recurring.payments'
     _description = 'Accounting Recurring Payment'
-    cliente = fields.Char('nombre cliente', required=True, states={'done': [('readonly', True)]})
     def _get_next_schedule(self):
         if self.date:
             recurr_dates = []

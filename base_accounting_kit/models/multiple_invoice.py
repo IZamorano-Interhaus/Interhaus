@@ -7,7 +7,6 @@ class MultipleInvoice(models.Model):
     _name = "multiple.invoice"
     _description = 'Multiple Invoice'
     _order = "sequence"
-    cliente = fields.Char('nombre cliente', required=True, states={'done': [('readonly', True)]})
     sequence = fields.Integer('Sequence No')
     copy_name = fields.Char('Invoice Copy Name')
     journal_id = fields.Many2one('account.journal', string="Journal")
@@ -16,7 +15,6 @@ class MultipleInvoice(models.Model):
 class AccountJournal(models.Model):
     """Inheriting Account Journal Model"""
     _inherit = "account.journal"
-    cliente = fields.Char('nombre cliente', required=True, states={'done': [('readonly', True)]})
     multiple_invoice_ids = fields.One2many('multiple.invoice', 'journal_id',
                                            string='Multiple Invoice')
     multiple_invoice_type = fields.Selection(
