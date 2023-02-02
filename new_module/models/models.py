@@ -137,20 +137,73 @@ class new_module(models.Model):
                                  default=lambda l: l.env.company.id)
     recurring_lines = fields.One2many('account.recurring.entries.line', 'tmpl_id')
 
-    def action_budget_confirm(self):
-        self.write({'state': 'confirm'})
+    @api.model_create_multi
+    def create(self, vals_list):
+        for vals in vals_list:
+            if vals.get("name", _("New")) == _("New"):
+                vals["name"] = self._get_default_name()
+        requests = super(PurchaseRequest, self).create(vals_list)
+        for vals, request in zip(vals_list, requests):
+            if vals.get("assigned_to"):
+                partner_id = self._get_partner_id(request)
+                request.message_subscribe(partner_ids=[partner_id])
+        return requests
 
-    def action_budget_draft(self):
-        self.write({'state': 'draft'})
+    def write(self, vals):
+        res = super(PurchaseRequest, self).write(vals)
+        for request in self:
+            if vals.get("assigned_to"):
+                partner_id = self._get_partner_id(request)
+                request.message_subscribe(partner_ids=[partner_id])
+        return res
 
-    def action_budget_validate(self):
-        self.write({'state': 'validate'})
+    def _can_be_deleted(self):
+        self.ensure_one()
+        return self.state == "draft"
 
-    def action_budget_cancel(self):
-        self.write({'state': 'cancel'})
+    def unlink(self):
+        for request in self:
+            if not request._can_be_deleted():
+                raise UserError(
+                    _("You cannot delete a purchase request which is not draft.")
+                )
+        return super(PurchaseRequest, self).unlink()
 
-    def action_budget_done(self):
-        self.write({'state': 'done'})
+    def button_draft(self):
+        self.mapped("line_ids").do_uncancel()
+        return self.write({"state": "draft"})
+
+    def button_to_approve(self):
+        self.to_approve_allowed_check()
+        return self.write({"state": "to_approve"})
+
+    def button_approved(self):
+        return self.write({"state": "approved"})
+
+    def button_rejected(self):
+        self.mapped("line_ids").do_cancel()
+        return self.write({"state": "rejected"})
+
+    def button_done(self):
+        return self.write({"state": "done"})
+
+    def check_auto_reject(self):
+        """When all lines are cancelled the purchase request should be
+        auto-rejected."""
+        for pr in self:
+            if not pr.line_ids.filtered(lambda l: l.cancelled is False):
+                pr.write({"state": "rejected"})
+
+    def to_approve_allowed_check(self):
+        for rec in self:
+            if not rec.to_approve_allowed:
+                raise UserError(
+                    _(
+                        "You can't request an approval for a purchase request "
+                        "which is empty. (%s)"
+                    )
+                    % rec.name
+                )
     @api.onchange('partner_id')
     def onchange_partner_id(self):
         if self.partner_id.property_account_receivable_id:
