@@ -284,11 +284,3 @@ class new_module(models.Model):
             move_id = self.env['account.move'].create(vals)
             if tmpl_id.journal_state == 'posted':
                 move_id.post()
-class GetAllRecurringEntries(models.TransientModel):
-    _name = 'account.recurring.entries.line'
-    _description = 'Account Recurring Entries Line'
-
-    date = fields.Date('Date')
-    template_name = fields.Char('Name')
-    amount = fields.Float('Amount')
-    tmpl_id = fields.Many2one('account.recurring.payments', string='id')
