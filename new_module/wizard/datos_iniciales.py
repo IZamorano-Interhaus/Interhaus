@@ -11,7 +11,7 @@ _STATES = [
     ("rejected", "Rejected"),
     ("done", "Done"),
 ]
-class initial_data(models.TransientModel):
+class purchase_request_line_make_purchase_order(models.TransientModel):
     _name='new_module.new_module'
     _description='new_module.new_module'
     cliente = fields.Char(
