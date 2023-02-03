@@ -3,7 +3,6 @@ from odoo import models, fields, api, _
 from odoo.exceptions import UserError
 from datetime import datetime, date
 from dateutil.relativedelta import relativedelta
-
 _STATES = [
     ("draft", "Draft"),
     ("to_approve", "To be approved"),
@@ -14,7 +13,6 @@ _STATES = [
 class new_module(models.Model):
     _name = 'new_module.new_module'
     _description = 'new_module.new_module' 
-
     cliente = fields.Char('nombre cliente', required=True, states={'done': [('readonly', True)]})
     creating_user_id = fields.Many2one('res.users', 'Responsible', default=lambda self: self.env.user)
     date_from = fields.Date('Start Date', required=True, states={'done': [('readonly', True)]})
@@ -130,7 +128,6 @@ class new_module(models.Model):
     company_id = fields.Many2one('res.company',
                                  default=lambda l: l.env.company.id)
     recurring_lines = fields.One2many('account.recurring.entries.line', 'recutting_lines_id')
-
     @api.model_create_multi
     def create(self, vals_list):
         for vals in vals_list:
@@ -142,7 +139,6 @@ class new_module(models.Model):
                 partner_id = self._get_partner_id(request)
                 request.message_subscribe(partner_ids=[partner_id])
         return requests
-
     def write(self, vals):
         res = super(new_module, self).write(vals)
         for request in self:
@@ -150,11 +146,9 @@ class new_module(models.Model):
                 partner_id = self._get_partner_id(request)
                 request.message_subscribe(partner_ids=[partner_id])
         return res
-
     def _can_be_deleted(self):
         self.ensure_one()
         return self.state == "draft"
-
     def unlink(self):
         for request in self:
             if not request._can_be_deleted():
@@ -162,32 +156,25 @@ class new_module(models.Model):
                     _("You cannot delete a purchase request which is not draft.")
                 )
         return super(new_module, self).unlink()
-
     def button_draft(self):
         self.mapped("line_ids").do_uncancel()
         return self.write({"state": "draft"})
-
     def button_to_approve(self):
         self.to_approve_allowed_check()
         return self.write({"state": "to_approve"})
-
     def button_approved(self):
         return self.write({"state": "approved"})
-
     def button_rejected(self):
         self.mapped("line_ids").do_cancel()
         return self.write({"state": "rejected"})
-
     def button_done(self):
         return self.write({"state": "done"})
-
     def check_auto_reject(self):
         """When all lines are cancelled the purchase request should be
         auto-rejected."""
         for pr in self:
             if not pr.line_ids.filtered(lambda l: l.cancelled is False):
                 pr.write({"state": "rejected"})
-    
     def to_approve_allowed_check(self):
         for rec in self:
             if not rec.to_approve_allowed:
@@ -202,9 +189,6 @@ class new_module(models.Model):
     def onchange_partner_id(self):
         if self.partner_id.property_account_receivable_id:
             self.credit_account = self.partner_id.property_account_payable_id
-
-    
-
     def _cron_generate_entries(self):
         data = self.env['account.recurring.payments'].search(
             [('state', '=', 'running')])
