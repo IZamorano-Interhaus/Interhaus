@@ -28,7 +28,6 @@ class new_module(models.Model):
     rut_tributario = fields.Char(
         string="Rut",
         required=True,
-        default=lambda self: _("Sin puntos y con guión"),
     )   
     documento=fields.Many2one(
         comodel_name="product.product",
@@ -67,7 +66,6 @@ class new_module(models.Model):
     )
     plazo_pago = fields.Date(
                 default=fields.Date.context_today
-
     )
     documento_id = fields.Char(
         string = "Número de documento",
@@ -78,17 +76,6 @@ class new_module(models.Model):
         string="Diario",
         copy=False,
         index=True,
-    )
-    supplier_id = fields.Many2one(
-        comodel_name="purchase.order",
-        string="Supplier",
-        required=True,
-        context={"res_partner_search_mode": "supplier"},
-    )
-    purchase_order_id = fields.Many2one(
-        comodel_name="purchase.order",
-        string="Purchase Order",
-        domain=[("state", "=", "draft")],
     )
     def _get_next_schedule(self):
         if self.date:
@@ -284,11 +271,3 @@ class new_module(models.Model):
             move_id = self.env['account.move'].create(vals)
             if tmpl_id.journal_state == 'posted':
                 move_id.post()
-class GetAllRecurringEntries(models.TransientModel):
-    _name = 'account.recurring.entries.line'
-    _description = 'Account Recurring Entries Line'
-
-    date = fields.Date('Date')
-    template_name = fields.Char('Name')
-    amount = fields.Float('Amount')
-    tmpl_id = fields.Many2one('account.recurring.payments', string='id')
