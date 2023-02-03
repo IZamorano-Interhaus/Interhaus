@@ -98,17 +98,7 @@ class initial_data(models.TransientModel):
                 else:
                     start_date += relativedelta(years=self.recurring_interval)
             self.next_date = start_date.date()   
-    @api.model_create_multi
-    def create(self, vals_list):
-        for vals in vals_list:
-            if vals.get("name", _("New")) == _("New"):
-                vals["name"] = self._get_default_name()
-        requests = super(initial_data, self).create(vals_list)
-        for vals, request in zip(vals_list, requests):
-            if vals.get("assigned_to"):
-                partner_id = self._get_partner_id(request)
-                request.message_subscribe(partner_ids=[partner_id])
-        return requests
+    
     @api.model
     def preparar_objeto(self,linea):
         return {
