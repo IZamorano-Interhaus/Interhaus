@@ -138,7 +138,7 @@ class initial_data(models.TransientModel):
                                 store=True, required=True)
     company_id = fields.Many2one('res.company',
                                  default=lambda l: l.env.company.id)
-    recurring_lines = fields.One2many('account.recurring.entries.line', 'recurring_lines_id')
+    
 
     @api.model_create_multi
     def create(self, vals_list):
