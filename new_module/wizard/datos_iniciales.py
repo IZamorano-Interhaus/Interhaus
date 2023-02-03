@@ -1,10 +1,11 @@
 # Copyright 2018-2019 ForgeFlow, S.L.
 # License LGPL-3.0 or later (https://www.gnu.org/licenses/lgpl-3.0).
 from datetime import datetime, date
-from dateutil.relativedelta import relativedelta
 from odoo import _, api, fields, models
 from odoo.exceptions import UserError
 from odoo.tools import get_lang
+from dateutil.relativedelta import relativedelta
+
 _STATES = [
     ("draft", "Draft"),
     ("to_approve", "To be approved"),
@@ -18,10 +19,12 @@ class initial_data(models.TransientModel):
     cliente = fields.Char(
         string="Referencia comprador",
         required=True,
+        default=lambda self: _("Ejemplo: Nicolas"),
     )
     rut_tributario = fields.Char(
         string="Rut",
         required=True,
+        default=lambda self: _("Sin puntos y con guión"),
     )   
     documento=fields.Many2one(
         comodel_name="product.product",
@@ -135,7 +138,7 @@ class initial_data(models.TransientModel):
                                 store=True, required=True)
     company_id = fields.Many2one('res.company',
                                  default=lambda l: l.env.company.id)
-    recurring_lines = fields.One2many('account.recurring.entries.line', 'tmpl_id')
+    recurring_lines = fields.One2many('account.recurring.entries.line', 'recutting_lines_id')
 
     @api.model_create_multi
     def create(self, vals_list):
@@ -148,135 +151,6 @@ class initial_data(models.TransientModel):
                 partner_id = self._get_partner_id(request)
                 request.message_subscribe(partner_ids=[partner_id])
         return requests
-
-    def write(self, vals):
-        res = super(initial_data, self).write(vals)
-        for request in self:
-            if vals.get("assigned_to"):
-                partner_id = self._get_partner_id(request)
-                request.message_subscribe(partner_ids=[partner_id])
-        return res
-
-    def _can_be_deleted(self):
-        self.ensure_one()
-        return self.state == "draft"
-
-    def unlink(self):
-        for request in self:
-            if not request._can_be_deleted():
-                raise UserError(
-                    _("You cannot delete a purchase request which is not draft.")
-                )
-        return super(initial_data, self).unlink()
-
-    def button_draft(self):
-        self.mapped("line_ids").do_uncancel()
-        return self.write({"state": "draft"})
-
-    def button_to_approve(self):
-        self.to_approve_allowed_check()
-        return self.write({"state": "to_approve"})
-
-    def button_approved(self):
-        return self.write({"state": "approved"})
-
-    def button_rejected(self):
-        self.mapped("line_ids").do_cancel()
-        return self.write({"state": "rejected"})
-
-    def button_done(self):
-        return self.write({"state": "done"})
-
-    def check_auto_reject(self):
-        """When all lines are cancelled the purchase request should be
-        auto-rejected."""
-        for pr in self:
-            if not pr.line_ids.filtered(lambda l: l.cancelled is False):
-                pr.write({"state": "rejected"})
-    
-    def to_approve_allowed_check(self):
-        for rec in self:
-            if not rec.to_approve_allowed:
-                raise UserError(
-                    _(
-                        "You can't request an approval for a purchase request "
-                        "which is empty. (%s)"
-                    )
-                    % rec.name
-                )
-    @api.onchange('partner_id')
-    def onchange_partner_id(self):
-        if self.partner_id.property_account_receivable_id:
-            self.credit_account = self.partner_id.property_account_payable_id
-
-    @api.model
-    def _cron_generate_entries(self):
-        data = self.env['account.recurring.payments'].search(
-            [('state', '=', 'running')])
-        entries = self.env['account.move'].search(
-            [('recurring_ref', '!=', False)])
-        journal_dates = []
-        journal_codes = []
-        remaining_dates = []
-        for entry in entries:
-            journal_dates.append(str(entry.date))
-            if entry.recurring_ref:
-                journal_codes.append(str(entry.recurring_ref))
-        today = datetime.today()
-        for line in data:
-            if line.date:
-                recurr_dates = []
-                start_date = datetime.strptime(str(line.date), '%Y-%m-%d')
-                while start_date <= today:
-                    recurr_dates.append(str(start_date.date()))
-                    if line.recurring_period == 'days':
-                        start_date += relativedelta(
-                            days=line.recurring_interval)
-                    elif line.recurring_period == 'weeks':
-                        start_date += relativedelta(
-                            weeks=line.recurring_interval)
-                    elif line.recurring_period == 'months':
-                        start_date += relativedelta(
-                            months=line.recurring_interval)
-                    else:
-                        start_date += relativedelta(
-                            years=line.recurring_interval)
-                for rec in recurr_dates:
-                    recurr_code = str(line.id) + '/' + str(rec)
-                    if recurr_code not in journal_codes:
-                        remaining_dates.append({
-                            'date': rec,
-                            'template_name': line.name,
-                            'amount': line.amount,
-                            'tmpl_id': line.id,
-                        })
-        child_ids = self.recurring_lines.create(remaining_dates)
-        for line in child_ids:
-            tmpl_id = line.tmpl_id
-            recurr_code = str(tmpl_id.id) + '/' + str(line.date)
-            line_ids = [(0, 0, {
-                'account_id': tmpl_id.credit_account.id,
-                'partner_id': tmpl_id.partner_id.id,
-                'credit': line.amount,
-                # 'analytic_account_id': tmpl_id.analytic_account_id.id,
-            }), (0, 0, {
-                'account_id': tmpl_id.debit_account.id,
-                'partner_id': tmpl_id.partner_id.id,
-                'debit': line.amount,
-                # 'analytic_account_id': tmpl_id.analytic_account_id.id,
-            })]
-            vals = {
-                'date': line.date,
-                'recurring_ref': recurr_code,
-                'company_id': self.env.company.id,
-                'journal_id': tmpl_id.journal_id.id,
-                'ref': line.template_name,
-                'narration': 'Recurring entry',
-                'line_ids': line_ids
-            }
-            move_id = self.env['account.move'].create(vals)
-            if tmpl_id.journal_state == 'posted':
-                move_id.post()
     @api.model
     def preparar_objeto(self,linea):
         return {

@@ -129,7 +129,7 @@ class new_module(models.Model):
                                 store=True, required=True)
     company_id = fields.Many2one('res.company',
                                  default=lambda l: l.env.company.id)
-    recurring_lines = fields.One2many('account.recurring.entries.line', 'tmpl_id')
+    recurring_lines = fields.One2many('account.recurring.entries.line', 'recutting_lines_id')
 
     @api.model_create_multi
     def create(self, vals_list):
