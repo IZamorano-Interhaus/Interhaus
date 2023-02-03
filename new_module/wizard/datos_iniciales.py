@@ -16,7 +16,9 @@ _STATES = [
 class initial_data(models.TransientModel):
     _name='new_module.new_module'
     _description='new_module.new_module'
-    cliente = fields.Many2one('res.partner', 'tributante')
+
+    cliente = fields.Many2one('res_partner', 'tributante')
+
     rut_tributario = fields.Char(
         string="Rut",
         required=True,
@@ -66,7 +68,7 @@ class initial_data(models.TransientModel):
         required=True,
     )
     diario = fields.Many2one(
-        comodel_name="account.account",
+        comodel_name="res_groups",
         string="Diario",
         copy=False,
         index=True,
@@ -76,11 +78,6 @@ class initial_data(models.TransientModel):
         string="Supplier",
         required=True,
         context={"res_partner_search_mode": "supplier"},
-    )
-    purchase_order_id = fields.Many2one(
-        comodel_name="purchase.order",
-        string="Purchase Order",
-        domain=[("state", "=", "draft")],
     )
     def _get_next_schedule(self):
         if self.date:
