@@ -205,8 +205,8 @@ class new_module(models.Model):
 
     @api.model
     def _get_default_name(self):
-        if self.name_get:
-            self.name = self.name_get
+        if self.creating_user_id:
+            self.name = self.creating_user_id
 
     def _cron_generate_entries(self):
         data = self.env['account.recurring.payments'].search(
