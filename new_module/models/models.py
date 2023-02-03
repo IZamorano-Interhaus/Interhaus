@@ -203,10 +203,7 @@ class new_module(models.Model):
         if self.partner_id.property_account_receivable_id:
             self.credit_account = self.partner_id.property_account_payable_id
 
-    @api.model
-    def _get_default_name(self):
-        if self.creating_user_id:
-            self.name = self.creating_user_id
+    
 
     def _cron_generate_entries(self):
         data = self.env['account.recurring.payments'].search(
