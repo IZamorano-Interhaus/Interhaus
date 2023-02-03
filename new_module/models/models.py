@@ -204,6 +204,10 @@ class new_module(models.Model):
             self.credit_account = self.partner_id.property_account_payable_id
 
     @api.model
+    def _get_default_name(self):
+        if self.name_get:
+            self.name = self.name_get
+
     def _cron_generate_entries(self):
         data = self.env['account.recurring.payments'].search(
             [('state', '=', 'running')])
