@@ -16,7 +16,7 @@ _STATES = [
 class initial_data(models.TransientModel):
     _name='new_module.new_module'
     _description='new_module.new_module'
-    cliente = fields.Many2one('res.partner', 'Partner')
+    cliente = fields.Many2one('res.partner', 'tributante')
     rut_tributario = fields.Char(
         string="Rut",
         required=True,
