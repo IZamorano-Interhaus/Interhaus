@@ -31,7 +31,7 @@ class initial_data(models.TransientModel):
         index=True,
     )
     tipo_documento=fields.Many2one(
-        comodel_name="product.product",
+        comodel_name="ir_act_client",
         string="tipo de documento",
         copy=False,
         index=True,
@@ -80,7 +80,7 @@ class initial_data(models.TransientModel):
         context={"res_partner_search_mode": "supplier"},
     )
     purchase_order_id = fields.Many2one(
-        comodel_name="purchase.order",
+        comodel_name="ir.act.client",
         string="Purchase Order",
         domain=[("state", "=", "draft")],
     )
