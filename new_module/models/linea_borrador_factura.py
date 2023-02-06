@@ -17,7 +17,7 @@ class facturaLinea(models.Model):
 
     _name = "new_module.new_module"
     _description = "Purchase Request Line"
-    _inherit = ["mail.thread", "mail.activity.mixin", "analytic.mixin"]
+    _inherit = ["mail.activity.mixin", "analytic.mixin"]
     _order = "id desc"
 
     name = fields.Char(string="Description", tracking=True)
