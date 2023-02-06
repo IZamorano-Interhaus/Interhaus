@@ -29,7 +29,7 @@ class factura(models.Model):
 
     @api.model
     def _get_default_name(self):
-        return self.env["ir.sequence"].next_by_code("new_module.new_module")
+        return self.env["ir.sequence"].next_by_code("purchase.request")
 
     @api.model
     def _default_picking_type(self):
@@ -119,7 +119,7 @@ class factura(models.Model):
         tracking=True,
     )
     line_ids = fields.One2many(
-        comodel_name="new_module.new_module.line",
+        comodel_name="purchase.request.line",
         inverse_name="request_id",
         string="Productos a comprar",
         readonly=False,
