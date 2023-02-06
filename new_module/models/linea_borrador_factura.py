@@ -19,10 +19,10 @@ class facturaLinea(models.Model):
     _description = "Purchase Request Line"
     _order = "id desc"
 
-    name = fields.Char(string="Description", tracking=True)
+    name = fields.Char(string="Description")
     
     product_qty = fields.Float(
-        string="Quantity", tracking=True, digits="Product Unit of Measure"
+        string="Quantity",  digits="Product Unit of Measure"
     )
     request_id = fields.Many2one(
         comodel_name="new_module.new_module",
