@@ -14,10 +14,12 @@ class new_module(models.Model):
     _name = 'new_module.new_module'
     _description = 'new_module.new_module' 
     cliente = fields.Char('nombre cliente', required=True, states={'done': [('readonly', True)]})
+    creating_user_id = fields.Many2one('res.users', 'Responsible', default=lambda self: self.env.user)
     date_from = fields.Date('Start Date', required=True, states={'done': [('readonly', True)]})
     date_to = fields.Date('End Date', required=True, states={'done': [('readonly', True)]})
     
-    
+    budget_line = fields.One2many('budget.lines', 'budget_id', 'Budget Lines',
+                                  states={'done': [('readonly', True)]}, copy=True)
     company_id = fields.Many2one('res.company', 'Company', required=True,
                                  default=lambda self: self.env['res.company']._company_default_get(
                                      'account.budget.post'))
@@ -125,6 +127,7 @@ class new_module(models.Model):
                                 store=True, required=True)
     company_id = fields.Many2one('res.company',
                                  default=lambda l: l.env.company.id)
+    recurring_lines = fields.One2many('account.recurring.entries.line', 'recutting_lines_id')
     @api.model_create_multi
     def create(self, vals_list):
         for vals in vals_list:

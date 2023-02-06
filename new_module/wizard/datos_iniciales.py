@@ -84,11 +84,6 @@ class initial_data(models.TransientModel):
         string="Purchase Order",
         domain=[("state", "=", "draft")],
     )
-    product_id = fields.Many2one(
-        comodel_name="product.product",
-        string="Productifero",
-        readonly=True,
-    )
     def _get_next_schedule(self):
         if self.date:
             recurr_dates = []
