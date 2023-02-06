@@ -17,7 +17,6 @@ class factura(models.Model):
 
     _name = "new_model.new_model"
     _description = "Purchase Request"
-    _inherit = ["mail.thread", "mail.activity.mixin"]
     _order = "id desc"
 
     @api.model
