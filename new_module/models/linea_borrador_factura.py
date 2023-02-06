@@ -203,36 +203,7 @@ class facturaLinea(models.Model):
         "purchase_request_allocation_ids.purchase_line_id.order_id.state",
         "purchase_request_allocation_ids.purchase_line_id",
     )
-    def _compute_qty_cancelled(self):
-        for request in self:
-            if request.product_id.type != "service":
-                qty_cancelled = sum(
-                    request.mapped("purchase_request_allocation_ids.stock_move_id")
-                    .filtered(lambda sm: sm.state == "cancel")
-                    .mapped("product_qty")
-                )
-            else:
-                qty_cancelled = sum(
-                    request.mapped("purchase_request_allocation_ids.purchase_line_id")
-                    .filtered(lambda sm: sm.state == "cancel")
-                    .mapped("product_qty")
-                )
-                # done this way as i cannot track what was received before
-                # cancelled the purchase order
-                qty_cancelled -= request.qty_done
-            if request.product_uom_id:
-                request.qty_cancelled = (
-                    max(
-                        0,
-                        request.product_id.uom_id._compute_quantity(
-                            qty_cancelled, request.product_uom_id
-                        ),
-                    )
-                    if request.purchase_request_allocation_ids
-                    else 0
-                )
-            else:
-                request.qty_cancelled = qty_cancelled
+    
 
     @api.depends(
         "purchase_lines",
@@ -256,16 +227,7 @@ class facturaLinea(models.Model):
             rec.supplier_id = sellers[0].partner_id if sellers else False
 
     @api.onchange("product_id")
-    def onchange_product_id(self):
-        if self.product_id:
-            name = self.product_id.name
-            if self.product_id.code:
-                name = "[{}] {}".format(self.product_id.code, name)
-            if self.product_id.description_purchase:
-                name += "\n" + self.product_id.description_purchase
-            self.product_uom_id = self.product_id.uom_id.id
-            self.product_qty = 1
-            self.name = name
+    
 
     def do_cancel(self):
         """Actions to perform when cancelling a purchase request line."""
@@ -282,17 +244,7 @@ class facturaLinea(models.Model):
             requests.check_auto_reject()
         return res
 
-    def _compute_purchased_qty(self):
-        for rec in self:
-            rec.purchased_qty = 0.0
-            for line in rec.purchase_lines.filtered(lambda x: x.state != "cancel"):
-                if rec.product_uom_id and line.product_uom != rec.product_uom_id:
-                    rec.purchased_qty += line.product_uom._compute_quantity(
-                        line.product_qty, rec.product_uom_id
-                    )
-                else:
-                    rec.purchased_qty += line.product_qty
-
+    
     @api.depends("purchase_lines.state", "purchase_lines.order_id.state")
     def _compute_purchase_state(self):
         for rec in self:
@@ -331,29 +283,7 @@ class facturaLinea(models.Model):
         return seller_min_qty
 
     @api.model
-    def _calc_new_qty(self, request_line, po_line=None, new_pr_line=False):
-        purchase_uom = po_line.product_uom or request_line.product_id.uom_po_id
-        # TODO: Not implemented yet.
-        #  Make sure we use the minimum quantity of the partner corresponding
-        #  to the PO. This does not apply in case of dropshipping
-        supplierinfo_min_qty = 0.0
-        if not po_line.order_id.dest_address_id:
-            supplierinfo_min_qty = self._get_supplier_min_qty(
-                po_line.product_id, po_line.order_id.partner_id
-            )
-
-        rl_qty = 0.0
-        # Recompute quantity by adding existing running procurements.
-        if new_pr_line:
-            rl_qty = po_line.product_uom_qty
-        else:
-            for prl in po_line.purchase_request_lines:
-                for alloc in prl.purchase_request_allocation_ids:
-                    rl_qty += alloc.product_uom_id._compute_quantity(
-                        alloc.requested_product_uom_qty, purchase_uom
-                    )
-        qty = max(rl_qty, supplierinfo_min_qty)
-        return qty
+    
 
     def _can_be_deleted(self):
         self.ensure_one()
