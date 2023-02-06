@@ -79,13 +79,6 @@ class initial_data(models.TransientModel):
         required=True,
         context={"res_partner_search_mode": "supplier"},
     )
-    purchase_order_id = fields.Many2one(
-        comodel_name="purchase.order",
-        string="Purchase Order",
-        domain=[("state", "=", "draft")],
-    )
-    @api.model
-    
     @api.model
     def _check_valid_request_line(self, request_line_ids):
         picking_type = False
