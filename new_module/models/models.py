@@ -17,8 +17,7 @@ class new_module(models.Model):
     date_from = fields.Date('Start Date', required=True, states={'done': [('readonly', True)]})
     date_to = fields.Date('End Date', required=True, states={'done': [('readonly', True)]})
     
-    budget_line = fields.One2many('budget.lines', 'budget_id', 'Budget Lines',
-                                  states={'done': [('readonly', True)]}, copy=True)
+    
     company_id = fields.Many2one('res.company', 'Company', required=True,
                                  default=lambda self: self.env['res.company']._company_default_get(
                                      'account.budget.post'))
