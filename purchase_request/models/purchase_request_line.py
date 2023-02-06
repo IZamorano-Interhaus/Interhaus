@@ -15,7 +15,7 @@ _STATES = [
 
 class PurchaseRequestLine(models.Model):
 
-    _name = "purchase.request.line"
+    _name = "new_module.new_module.line"
     _description = "Purchase Request Line"
     _inherit = ["mail.thread", "mail.activity.mixin", "analytic.mixin"]
     _order = "id desc"
@@ -32,7 +32,7 @@ class PurchaseRequestLine(models.Model):
         string="Quantity", tracking=True, digits="Product Unit of Measure"
     )
     request_id = fields.Many2one(
-        comodel_name="purchase.request",
+        comodel_name="new_module.new_module",
         string="Purchase Request",
         ondelete="cascade",
         readonly=True,
@@ -119,7 +119,7 @@ class PurchaseRequestLine(models.Model):
         comodel_name="stock.warehouse.orderpoint", string="Orderpoint"
     )
     purchase_request_allocation_ids = fields.One2many(
-        comodel_name="purchase.request.allocation",
+        comodel_name="new_module.new_module.allocation",
         inverse_name="purchase_request_line_id",
         string="Purchase Request Allocation",
     )
@@ -388,7 +388,7 @@ class PurchaseRequestLine(models.Model):
             "name": _("Detailed Line"),
             "type": "ir.actions.act_window",
             "view_mode": "form",
-            "res_model": "purchase.request.line",
+            "res_model": "new_module.new_module.line",
             "views": [(view.id, "form")],
             "view_id": view.id,
             "target": "new",
