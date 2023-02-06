@@ -1,9 +1,11 @@
 # Copyright 2018-2019 ForgeFlow, S.L.
 # License LGPL-3.0 or later (https://www.gnu.org/licenses/lgpl-3.0).
-from datetime import datetime
+from datetime import datetime, date
 from odoo import _, api, fields, models
 from odoo.exceptions import UserError
 from odoo.tools import get_lang
+from dateutil.relativedelta import relativedelta
+
 _STATES = [
     ("draft", "Draft"),
     ("to_approve", "To be approved"),
@@ -14,24 +16,22 @@ _STATES = [
 class initial_data(models.TransientModel):
     _name='new_module.new_module'
     _description='new_module.new_module'
-    cliente = fields.Char(
-        string="Referencia comprador",
-        required=True,
-        default=lambda self: _("Ejemplo: Nicolas"),
-    )
+
+    cliente = fields.Many2one('res.partner', 'tributante')
+    
     rut_tributario = fields.Char(
         string="Rut",
         required=True,
         default=lambda self: _("Sin puntos y con guión"),
     )   
     documento=fields.Many2one(
-        comodel_name="product.product",
+        comodel_name="account.account",
         string="documento",
         copy=False,
         index=True,
     )
     tipo_documento=fields.Many2one(
-        comodel_name="product.product",
+        comodel_name="ir_act_client",
         string="tipo de documento",
         copy=False,
         index=True,
@@ -68,22 +68,39 @@ class initial_data(models.TransientModel):
         required=True,
     )
     diario = fields.Many2one(
-        comodel_name="procurement.group",
+        comodel_name="account.account",
         string="Diario",
         copy=False,
         index=True,
     )
     supplier_id = fields.Many2one(
-        comodel_name="purchase.order",
+        comodel_name="account.journal",
         string="Supplier",
         required=True,
         context={"res_partner_search_mode": "supplier"},
     )
     purchase_order_id = fields.Many2one(
-        comodel_name="purchase.order",
+        comodel_name="ir.act.client",
         string="Purchase Order",
         domain=[("state", "=", "draft")],
     )
+    def _get_next_schedule(self):
+        if self.date:
+            recurr_dates = []
+            today = datetime.today()
+            start_date = datetime.strptime(str(self.date), '%Y-%m-%d')
+            while start_date <= today:
+                recurr_dates.append(str(start_date.date()))
+                if self.recurring_period == 'days':
+                    start_date += relativedelta(days=self.recurring_interval)
+                elif self.recurring_period == 'weeks':
+                    start_date += relativedelta(weeks=self.recurring_interval)
+                elif self.recurring_period == 'months':
+                    start_date += relativedelta(months=self.recurring_interval)
+                else:
+                    start_date += relativedelta(years=self.recurring_interval)
+            self.next_date = start_date.date()   
+    
     @api.model
     def preparar_objeto(self,linea):
         return {
