@@ -111,8 +111,37 @@ class new_module(models.Model):
                                 store=True, required=True)
    
     @api.model
+    def _company_get(self):
+        return self.env["res.company"].browse(self.env.company.id)
+
+    @api.model
+    def _get_default_requested_by(self):
+        return self.env["res.users"].browse(self.env.uid)
+
+    @api.model
     def _get_default_name(self):
-        return self.env["ir.sequence"].next_by_code("new_module.new_module")
+        return self.env["ir.sequence"].next_by_code("purchase.request")
+
+    @api.model
+    def _default_picking_type(self):
+        type_obj = self.env["stock.picking.type"]
+        company_id = self.env.context.get("company_id") or self.env.company.id
+        types = type_obj.search(
+            [("code", "=", "incoming"), ("warehouse_id.company_id", "=", company_id)]
+        )
+        if not types:
+            types = type_obj.search(
+                [("code", "=", "incoming"), ("warehouse_id", "=", False)]
+            )
+        return types[:1]
+
+    @api.depends("state")
+    def _compute_is_editable(self):
+        for rec in self:
+            if rec.state in ("to_approve", "approved", "rejected", "done"):
+                rec.is_editable = False
+            else:
+                rec.is_editable = True
     @api.model_create_multi
     def create(self, vals_list):
         for vals in vals_list:
