@@ -195,10 +195,7 @@ class new_module(models.Model):
                     )
                     % rec.name
                 )
-    @api.onchange('partner_id')
-    def onchange_partner_id(self):
-        if self.partner_id.property_account_receivable_id:
-            self.credit_account = self.partner_id.property_account_payable_id
+    
     """ def _cron_generate_entries(self):
         data = self.env['account.recurring.payments'].search(
             [('state', '=', 'running')])
