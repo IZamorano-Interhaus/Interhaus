@@ -6,7 +6,7 @@
             <field name="folio_documento">1</field>
             <field name="documento">1</field>
             <field name="documento_id">1</field>
-            <field name="tipo_documento">30</field>
+            <field name="l10n_latam_document_type">30</field>
             <field name="referencia_pago">iva</field>
           </record>
           <record id="object1" model="new_module.new_module">
@@ -15,7 +15,7 @@
             <field name="folio_documento">1</field>
             <field name="documento">1</field>
             <field name="documento_id">1</field>
-            <field name="tipo_documento">30</field>
+            <field name="l10n_latam_document_type">30</field>
             <field name="referencia_pago">iva</field>
           </record>
           <record id="object2" model="new_module.new_module">
@@ -24,7 +24,7 @@
             <field name="folio_documento">1</field>
             <field name="documento">1</field>
             <field name="documento_id">1</field>
-            <field name="tipo_documento">30</field>
+            <field name="l10n_latam_document_type">30</field>
             <field name="referencia_pago">iva</field>
           </record>
           <record id="object3" model="new_module.new_module">
@@ -33,7 +33,7 @@
             <field name ="folio_documento">1</field>
             <field name="documento">1</field>
             <field name="documento_id">1</field>
-            <field name="tipo_documento">30</field>
+            <field name="l10n_latam_document_type">30</field>
             <field name="referencia_pago">iva</field>
           </record>
           <record id="object4" model="new_module.new_module">
@@ -42,7 +42,7 @@
             <field name="folio_documento">1</field>
             <field name="documento">1</field>
             <field name="documento_id">1</field>
-            <field name="tipo_documento">30</field>
+            <field name="l10n_latam_document_type">30</field>
             <field name="referencia_pago">iva</field>
           </record>
           <record id="object5" model="new_module.new_module">
@@ -51,7 +51,7 @@
             <field name="folio_documento">1</field>
             <field name="documento">1</field>
             <field name="documento_id">1</field>
-            <field name="tipo_documento">30</field>
+            <field name="l10n_latam_document_type">30</field>
             <field name="referencia_pago">iva</field>
           </record>
           <record id="object6" model="new_module.new_module">
@@ -60,7 +60,7 @@
             <field name="folio_documento">1</field>
             <field name="documento">1</field>
             <field name="documento_id">1</field>
-            <field name="tipo_documento">30</field>
+            <field name="l10n_latam_document_type">30</field>
             <field name="referencia_pago">iva</field>
           </record>
 
