@@ -8,8 +8,6 @@
             <field name="documento_id">1</field>
             <field name="tipo_documento">30</field>
             <field name="referencia_pago">iva</field>
-            <field name="supplier_id">1</field>
-            <field name="purchase_order_id">1</field>
           </record>
           <record id="object1" model="new_module.new_module">
             <field name="cliente">Object 1</field>
@@ -19,8 +17,6 @@
             <field name="documento_id">1</field>
             <field name="tipo_documento">30</field>
             <field name="referencia_pago">iva</field>
-            <field name="supplier_id">1</field>
-            <field name="purchase_order_id">1</field>
           </record>
           <record id="object2" model="new_module.new_module">
             <field name="cliente">Object 2</field>
@@ -30,8 +26,6 @@
             <field name="documento_id">1</field>
             <field name="tipo_documento">30</field>
             <field name="referencia_pago">iva</field>
-            <field name="supplier_id">1</field>
-            <field name="purchase_order_id">1</field>
           </record>
           <record id="object3" model="new_module.new_module">
             <field name="cliente">Object 3</field>
@@ -41,8 +35,6 @@
             <field name="documento_id">1</field>
             <field name="tipo_documento">30</field>
             <field name="referencia_pago">iva</field>
-            <field name="supplier_id">1</field>
-            <field name="purchase_order_id">1</field>
           </record>
           <record id="object4" model="new_module.new_module">
             <field name="cliente">Object 4</field>
@@ -52,8 +44,6 @@
             <field name="documento_id">1</field>
             <field name="tipo_documento">30</field>
             <field name="referencia_pago">iva</field>
-            <field name="supplier_id">1</field>
-            <field name="purchase_order_id">1</field>
           </record>
           <record id="object5" model="new_module.new_module">
             <field name="cliente">Object 5</field>
@@ -63,8 +53,6 @@
             <field name="documento_id">1</field>
             <field name="tipo_documento">30</field>
             <field name="referencia_pago">iva</field>
-            <field name="supplier_id">1</field>
-            <field name="purchase_order_id">1</field>
           </record>
           <record id="object6" model="new_module.new_module">
             <field name="cliente">Object 6</field>
@@ -74,8 +62,6 @@
             <field name="documento_id">1</field>
             <field name="tipo_documento">30</field>
             <field name="referencia_pago">iva</field>
-            <field name="supplier_id">1</field>
-            <field name="purchase_order_id">1</field>
           </record>
 
     </data>
