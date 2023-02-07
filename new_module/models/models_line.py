@@ -5,6 +5,8 @@ from odoo import _, api, fields, models
 from odoo.exceptions import UserError
 
 class lineaNuevoModulo(models.Model):
+    _name="linea.nuevo.modulo"
+    _description="linea nuevo modulo"
     product_id= fields.Many2one(
         comodel_name="account.move.line",
         string="Producto",
