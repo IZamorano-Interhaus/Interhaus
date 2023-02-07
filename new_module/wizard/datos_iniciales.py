@@ -113,30 +113,7 @@ class initial_data(models.TransientModel):
             items.append([0, 0, self._prepare_item(line)])
         return items
     
-    @api.model
-    def _prepare_purchase_order(self, picking_type, group_id, company, origin):
-        if not self.supplier_id:
-            raise UserError(_("Enter a supplier."))
-        supplier = self.supplier_id
-        data = {
-            "origin": origin,
-            "partner_id": self.supplier_id.id,
-            "fiscal_position_id": supplier.property_account_position_id
-            and supplier.property_account_position_id.id
-            or False,
-            "picking_type_id": picking_type.id,
-            "company_id": company.id,
-            "group_id": group_id.id,
-        }
-        return data
-    def create_allocation(self, po_line, pr_line, new_qty, alloc_uom):
-        vals = {
-            "requested_product_uom_qty": new_qty,
-            "product_uom_id": alloc_uom.id,
-            "purchase_request_line_id": pr_line.id,
-            "purchase_line_id": po_line.id,
-        }
-        return self.env["purchase.request.allocation"].create(vals)
+    
     @api.model
     def _prepare_purchase_order_line(self, po, item):
         if not item.product_id:
@@ -164,9 +141,9 @@ class initial_data(models.TransientModel):
             ),
             "move_dest_ids": [(4, x.id) for x in item.line_id.move_dest_ids],
         }
-    @api.model
+    """ @api.model
     def _get_purchase_line_name(self, order, line):
-        """Fetch the product name as per supplier settings"""
+        
         product_lang = line.product_id.with_context(
             lang=get_lang(self.env, self.supplier_id.lang).code,
             partner_id=self.supplier_id.id,
@@ -175,7 +152,7 @@ class initial_data(models.TransientModel):
         name = product_lang.display_name
         if product_lang.description_purchase:
             name += "\n" + product_lang.description_purchase
-        return name
+        return name """
     @api.model
     def _get_order_line_search_domain(self, order, item):
         vals = self._prepare_purchase_order_line(order, item)
