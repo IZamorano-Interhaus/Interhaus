@@ -54,10 +54,6 @@ class new_module(models.Model):
         string="fecha de factura",
         default=fields.Date.context_today
     )
-    fecha_vencimiento = fields.Date(
-        string="fecha de vencimiento",
-        default=fields.Date.context_today
-    )
     plazo_pago = fields.Date(
                 default=fields.Date.context_today
     )
@@ -110,7 +106,6 @@ class new_module(models.Model):
                                      required=True, default='draft',
                                      string='Generate Journal As')
     recurring_interval = fields.Integer('Recurring Interval', default=1)
-    partner_id = fields.Many2one('res.partner', 'Partner')
     pay_time = fields.Selection(selection=[('pay_now', 'Pay Directly'),
                                            ('pay_later', 'Pay Later')],
                                 store=True, required=True)
