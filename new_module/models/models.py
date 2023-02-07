@@ -115,6 +115,9 @@ class new_module(models.Model):
                                            ('pay_later', 'Pay Later')],
                                 store=True, required=True)
    
+    @api.model
+    def _get_default_name(self):
+        return self.env["ir.sequence"].next_by_code("new_module.new_module")
     @api.model_create_multi
     def create(self, vals_list):
         for vals in vals_list:
