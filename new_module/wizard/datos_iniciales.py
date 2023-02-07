@@ -112,26 +112,7 @@ class initial_data(models.TransientModel):
         for line in request_lines:
             items.append([0, 0, self._prepare_item(line)])
         return items
-    @api.model
-    def default_get(self, fields):
-        res = super().default_get(fields)
-        active_model = self.env.context.get("active_model", False)
-        request_line_ids = []
-        if active_model == "purchase.request.line":
-            request_line_ids += self.env.context.get("active_ids", [])
-        elif active_model == "purchase.request":
-            request_ids = self.env.context.get("active_ids", False)
-            request_line_ids += (
-                self.env[active_model].browse(request_ids).mapped("line_ids.id")
-            )
-        if not request_line_ids:
-            return res
-        res["item_ids"] = self.get_items(request_line_ids)
-        request_lines = self.env["purchase.request.line"].browse(request_line_ids)
-        supplier_ids = request_lines.mapped("supplier_id").ids
-        if len(supplier_ids) == 1:
-            res["supplier_id"] = supplier_ids[0]
-        return res
+    
     @api.model
     def _prepare_purchase_order(self, picking_type, group_id, company, origin):
         if not self.supplier_id:
