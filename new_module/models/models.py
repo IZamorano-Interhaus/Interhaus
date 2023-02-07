@@ -18,11 +18,7 @@ class new_module(models.Model):
     date_from = fields.Date('Start Date', required=True, states={'done': [('readonly', True)]})
     date_to = fields.Date('End Date', required=True, states={'done': [('readonly', True)]})
     
-    budget_line = fields.One2many('budget.lines', 'budget_id', 'Budget Lines',
-                                  states={'done': [('readonly', True)]}, copy=True)
-    company_id = fields.Many2one('res.company', 'Company', required=True,
-                                 default=lambda self: self.env['res.company']._company_default_get(
-                                     'account.budget.post'))
+    
     rut_tributario = fields.Char(
         string="Rut",
         required=True,
@@ -92,14 +88,7 @@ class new_module(models.Model):
                     start_date += relativedelta(years=self.recurring_interval)
             self.next_date = start_date.date()
     name = fields.Char('Name')
-    debit_account = fields.Many2one('account.account', 'Debit Account',
-                                    required=True,
-                                    domain="['|', ('company_id', '=', False), "
-                                           "('company_id', '=', company_id)]")
-    credit_account = fields.Many2one('account.account', 'Credit Account',
-                                     required=True,
-                                     domain="['|', ('company_id', '=', False), "
-                                            "('company_id', '=', company_id)]")
+   
     journal_id = fields.Many2one('account.journal', 'Journal', required=True)
     analytic_account_id = fields.Many2one('account.analytic.account',
                                           'Analytic Account')
@@ -125,9 +114,7 @@ class new_module(models.Model):
     pay_time = fields.Selection(selection=[('pay_now', 'Pay Directly'),
                                            ('pay_later', 'Pay Later')],
                                 store=True, required=True)
-    company_id = fields.Many2one('res.company',
-                                 default=lambda l: l.env.company.id)
-    recurring_lines = fields.One2many('account.recurring.entries.line', 'recutting_lines_id')
+   
     @api.model_create_multi
     def create(self, vals_list):
         for vals in vals_list:
