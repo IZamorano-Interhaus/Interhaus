@@ -116,18 +116,6 @@ class initial_data(models.TransientModel):
             ),
             "move_dest_ids": [(4, x.id) for x in item.line_id.move_dest_ids],
         }
-    """ @api.model
-    def _get_purchase_line_name(self, order, line):
-        
-        product_lang = line.product_id.with_context(
-            lang=get_lang(self.env, self.supplier_id.lang).code,
-            partner_id=self.supplier_id.id,
-            company_id=order.company_id.id,
-        )
-        name = product_lang.display_name
-        if product_lang.description_purchase:
-            name += "\n" + product_lang.description_purchase
-        return name """
     @api.model
     def _get_order_line_search_domain(self, order, item):
         vals = self._prepare_purchase_order_line(order, item)
