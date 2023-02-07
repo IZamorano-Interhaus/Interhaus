@@ -19,8 +19,9 @@ class new_module(models.Model):
     date_to = fields.Date('End Date', required=True, states={'done': [('readonly', True)]})
     
     
-    rut_tributario = fields.Char(
-        string="Rut",
+    partner_id = fields.Many2one(
+        comodel_name="account.move",
+        string="Proveedor",
         required=True,
     )   
     documento=fields.Many2one(
