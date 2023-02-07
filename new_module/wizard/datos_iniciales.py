@@ -73,17 +73,7 @@ class initial_data(models.TransientModel):
         copy=False,
         index=True,
     )
-    supplier_id = fields.Many2one(
-        comodel_name="account.journal",
-        string="Supplier",
-        required=True,
-        context={"res_partner_search_mode": "supplier"},
-    )
-    purchase_order_id = fields.Many2one(
-        comodel_name="ir.act.client",
-        string="Purchase Order",
-        domain=[("state", "=", "draft")],
-    )
+    
     def _get_next_schedule(self):
         if self.date:
             recurr_dates = []
