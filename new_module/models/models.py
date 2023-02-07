@@ -85,7 +85,6 @@ class new_module(models.Model):
             self.next_date = start_date.date()
     name = fields.Char('Name')
    
-    journal_id = fields.Many2one('account.journal', 'Journal', required=True)
     analytic_account_id = fields.Many2one('account.analytic.account',
                                           'Analytic Account')
     date = fields.Date('Starting Date', required=True, default=date.today())
