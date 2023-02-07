@@ -29,8 +29,8 @@ class new_module(models.Model):
         copy=False,
         index=True,
     )
-    tipo_documento=fields.Many2one(
-        comodel_name="product.product",
+    l10n_latam_document_type=fields.Many2one(
+        comodel_name="account.move",
         string="tipo de documento",
         copy=False,
         index=True,
@@ -90,11 +90,7 @@ class new_module(models.Model):
     date = fields.Date('Starting Date', required=True, default=date.today())
     next_date = fields.Date('Next Schedule', compute=_get_next_schedule,
                             readonly=True, copy=False)
-    recurring_period = fields.Selection(selection=[('days', 'Days'),
-                                                   ('weeks', 'Weeks'),
-                                                   ('months', 'Months'),
-                                                   ('years', 'Years')],
-                                        store=True, required=True)
+    
     amount = fields.Float('Amount')
     description = fields.Text('Description')
     state = fields.Selection(selection=[('draft', 'Draft'),
