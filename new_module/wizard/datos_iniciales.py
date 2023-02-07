@@ -73,7 +73,6 @@ class initial_data(models.TransientModel):
         copy=False,
         index=True,
     )
-    
     def _get_next_schedule(self):
         if self.date:
             recurr_dates = []
@@ -90,20 +89,6 @@ class initial_data(models.TransientModel):
                 else:
                     start_date += relativedelta(years=self.recurring_interval)
             self.next_date = start_date.date()   
-    
-    
-    @api.model
-    def get_items(self, request_line_ids):
-        request_line_obj = self.env["purchase.request.line"]
-        items = []
-        request_lines = request_line_obj.browse(request_line_ids)
-        self._check_valid_request_line(request_line_ids)
-        self.check_group(request_lines)
-        for line in request_lines:
-            items.append([0, 0, self._prepare_item(line)])
-        return items
-    
-    
     @api.model
     def _prepare_purchase_order_line(self, po, item):
         if not item.product_id:
