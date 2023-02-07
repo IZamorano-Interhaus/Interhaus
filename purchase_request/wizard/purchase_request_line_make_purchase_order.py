@@ -303,16 +303,7 @@ class PurchaseRequestLineMakePurchaseOrderItem(models.TransientModel):
     _name = "purchase.request.line.make.purchase.order.item"
     _description = "Purchase Request Line Make Purchase Order Item"
 
-    wiz_id = fields.Many2one(
-        comodel_name="purchase.request.line.make.purchase.order",
-        string="Wizard",
-        required=True,
-        ondelete="cascade",
-        readonly=True,
-    )
-    line_id = fields.Many2one(
-        comodel_name="purchase.request.line", string="Purchase Request Line"
-    )
+    
     request_id = fields.Many2one(
         comodel_name="purchase.request",
         related="line_id.request_id",
