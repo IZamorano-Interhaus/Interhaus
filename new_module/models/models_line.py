@@ -4,3 +4,16 @@
 from odoo import _, api, fields, models
 from odoo.exceptions import UserError
 
+class lineaNuevoModulo(models.Model):
+    product_id= fields.Many2one(
+        comodel_name="account.move.line",
+        string="Producto",
+        copy=False,
+        index=True
+    )
+    account_id= fields.Many2one(
+        comodel_name="account.move.line",
+        string="Cuenta",
+        copy=False,
+        index=True
+    )
