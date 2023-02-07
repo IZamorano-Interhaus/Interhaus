@@ -98,17 +98,7 @@ class new_module(models.Model):
                                         store=True, required=True)
     amount = fields.Float('Amount')
     description = fields.Text('Description')
-    state = fields.Selection(selection=[('draft', 'Draft'),
-                                        ('running', 'Running')],
-                             default='draft', string='Status')
-    journal_state = fields.Selection(selection=[('draft', 'Unposted'),
-                                                ('posted', 'Posted')],
-                                     required=True, default='draft',
-                                     string='Generate Journal As')
-    recurring_interval = fields.Integer('Recurring Interval', default=1)
-    pay_time = fields.Selection(selection=[('pay_now', 'Pay Directly'),
-                                           ('pay_later', 'Pay Later')],
-                                store=True, required=True)
+    
    
     @api.model
     def _get_default_name(self):
