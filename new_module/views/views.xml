@@ -9,7 +9,7 @@
       
         <tree>
           <field name = "cliente"/>
-          <field name = "rut_tributario"/>
+          <field name = "partner_id"/>
           <field name = "folio_documento"/>
           <field name = "l10n_latam_document_type"/>
           <field name = "documento_id"/>
