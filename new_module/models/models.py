@@ -3,6 +3,13 @@ from odoo import models, fields, api, _
 from odoo.exceptions import UserError
 from datetime import datetime, date
 from dateutil.relativedelta import relativedelta
+_STATES = [
+    ("draft", "Draft"),
+    ("to_approve", "To be approved"),
+    ("approved", "Approved"),
+    ("rejected", "Rejected"),
+    ("done", "Done"),
+]
 class new_module(models.Model):
     _name = 'new_module.new_module'
     _description = 'new_module.new_module' 
@@ -60,4 +67,7 @@ class new_module(models.Model):
                                           'Analytic Account')
     date = fields.Date('Starting Date', required=True, default=date.today())
     amount = fields.Float('Amount')
+    state = fields.Selection(selection=[('draft', 'Draft'),
+                                        ('running', 'Running')],
+                             default='draft', string='Status')
     partner_id = fields.Many2one('res.partner', 'Partner')
