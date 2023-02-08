@@ -8,7 +8,7 @@
       <field name="arch" type="xml">
       
         <tree>
-          <field name = "cliente"/>
+          <field name = "partner_id"/>
           <field name = "rut_tributario"/>
           <field name = "folio_documento"/>
           <field name = "tipo_documento"/>
