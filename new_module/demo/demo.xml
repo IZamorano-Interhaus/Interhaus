@@ -4,7 +4,6 @@
             <field name="partner_id">0</field>
             <field name="rut_tributario">19669468-4</field>
             <field name="folio_documento">1</field>
-            <field name="documento">1</field>
             <field name="documento_id">1</field>
             <field name="tipo_documento">30</field>
             <field name="referencia_pago">iva</field>
@@ -15,7 +14,6 @@
             <field name="partner_id">1</field>
             <field name="rut_tributario">19669468-4</field>
             <field name="folio_documento">1</field>
-            <field name="documento">1</field>
             <field name="documento_id">1</field>
             <field name="tipo_documento">30</field>
             <field name="referencia_pago">iva</field>
@@ -26,7 +24,6 @@
             <field name="partner_id">2</field>
             <field name="rut_tributario">19669468-4</field>
             <field name="folio_documento">1</field>
-            <field name="documento">1</field>
             <field name="documento_id">1</field>
             <field name="tipo_documento">30</field>
             <field name="referencia_pago">iva</field>
@@ -37,7 +34,6 @@
             <field name="partner_id">3</field>
             <field name="rut_tributario">19669468-4</field>
             <field name ="folio_documento">1</field>
-            <field name="documento">1</field>
             <field name="documento_id">1</field>
             <field name="tipo_documento">30</field>
             <field name="referencia_pago">iva</field>
@@ -48,7 +44,6 @@
             <field name="partner_id">4</field>
             <field name="rut_tributario">19669468-4</field>
             <field name="folio_documento">1</field>
-            <field name="documento">1</field>
             <field name="documento_id">1</field>
             <field name="tipo_documento">30</field>
             <field name="referencia_pago">iva</field>
@@ -59,7 +54,6 @@
             <field name="partner_id">5</field>
             <field name="rut_tributario">19669468-4</field>
             <field name="folio_documento">1</field>
-            <field name="documento">1</field>
             <field name="documento_id">1</field>
             <field name="tipo_documento">30</field>
             <field name="referencia_pago">iva</field>
@@ -70,7 +64,6 @@
             <field name="partner_id">6</field>
             <field name="rut_tributario">19669468-4</field>
             <field name="folio_documento">1</field>
-            <field name="documento">1</field>
             <field name="documento_id">1</field>
             <field name="tipo_documento">30</field>
             <field name="referencia_pago">iva</field>
