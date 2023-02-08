@@ -66,9 +66,9 @@ class PurchaseRequest(models.Model):
         tracking=True,
     )
     
-    documento=fields.Many2one(
-        comodel_name="product.product",
-        string="documento",
+    tipo_documento=fields.Many2one(
+        comodel_name="account.move",
+        string="Tipo de Documento",
         copy=False,
         index=True,
     )
