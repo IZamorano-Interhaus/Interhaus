@@ -13,29 +13,25 @@ _STATES = [
 class new_module(models.Model):
     _name = 'new_module.new_module'
     _description = 'new_module.new_module' 
-    cliente = fields.Char('nombre cliente', required=True, states={'done': [('readonly', True)]})
+    partner_id = fields.Many2one(
+        comodel_name="account.move",
+        string="Proveedor",
+        copy=False,
+        index=True,
+    )
     creating_user_id = fields.Many2one('res.users', 'Responsible', default=lambda self: self.env.user)
     date_from = fields.Date('Start Date', required=True, states={'done': [('readonly', True)]})
     date_to = fields.Date('End Date', required=True, states={'done': [('readonly', True)]})
     
-    budget_line = fields.One2many('budget.lines', 'budget_id', 'Budget Lines',
-                                  states={'done': [('readonly', True)]}, copy=True)
-    company_id = fields.Many2one('res.company', 'Company', required=True,
-                                 default=lambda self: self.env['res.company']._company_default_get(
-                                     'account.budget.post'))
+    
     rut_tributario = fields.Char(
         string="Rut",
         required=True,
     )   
-    documento=fields.Many2one(
-        comodel_name="product.product",
-        string="documento",
-        copy=False,
-        index=True,
-    )
-    tipo_documento=fields.Many2one(
-        comodel_name="product.product",
-        string="tipo de documento",
+    
+    l10n_latam_document_type=fields.Many2one(
+        comodel_name="account.move",
+        string="Tipo de Documento",
         copy=False,
         index=True,
     )

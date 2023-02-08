@@ -11,11 +11,11 @@ class lineaNuevoModulo(models.Model):
         comodel_name="account.move.line",
         string="Producto",
         copy=False,
-        index=True
+        index=True,
     )
     account_id= fields.Many2one(
         comodel_name="account.move.line",
         string="Cuenta",
         copy=False,
-        index=True
+        index=True,
     )
