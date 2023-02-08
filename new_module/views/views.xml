@@ -15,7 +15,6 @@
           <field name = "documento_id"/>
           <field name = "fecha_factura"/>
           <field name = "referencia_pago"/>
-          <field name = "fecha_vencimiento"/>
           <field name = "journal_id"/>
         </tree>
       </field>
