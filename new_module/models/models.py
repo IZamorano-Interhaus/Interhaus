@@ -29,7 +29,7 @@ class new_module(models.Model):
         required=True,
     )   
     
-    l10n_latam_document_type=fields.Many2one(
+    tipo_documento=fields.Many2one(
         comodel_name="account.move",
         string="Tipo de Documento",
         copy=False,

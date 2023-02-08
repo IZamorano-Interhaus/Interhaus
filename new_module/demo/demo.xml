@@ -6,7 +6,7 @@
             <field name="folio_documento">1</field>
             <field name="documento">1</field>
             <field name="documento_id">1</field>
-            <field name="l10n_latam_document_type">30</field>
+            <field name="tipo_documento">30</field>
             <field name="referencia_pago">iva</field>
             <field name="supplier_id">1</field>
             <field name="purchase_order_id">1</field>
@@ -17,7 +17,7 @@
             <field name="folio_documento">1</field>
             <field name="documento">1</field>
             <field name="documento_id">1</field>
-            <field name="l10n_latam_document_type">30</field>
+            <field name="tipo_documento">30</field>
             <field name="referencia_pago">iva</field>
             <field name="supplier_id">1</field>
             <field name="purchase_order_id">1</field>
@@ -28,7 +28,7 @@
             <field name="folio_documento">1</field>
             <field name="documento">1</field>
             <field name="documento_id">1</field>
-            <field name="l10n_latam_document_type">30</field>
+            <field name="tipo_documento">30</field>
             <field name="referencia_pago">iva</field>
             <field name="supplier_id">1</field>
             <field name="purchase_order_id">1</field>
@@ -39,7 +39,7 @@
             <field name ="folio_documento">1</field>
             <field name="documento">1</field>
             <field name="documento_id">1</field>
-            <field name="l10n_latam_document_type">30</field>
+            <field name="tipo_documento">30</field>
             <field name="referencia_pago">iva</field>
             <field name="supplier_id">1</field>
             <field name="purchase_order_id">1</field>
@@ -50,7 +50,7 @@
             <field name="folio_documento">1</field>
             <field name="documento">1</field>
             <field name="documento_id">1</field>
-            <field name="l10n_latam_document_type">30</field>
+            <field name="tipo_documento">30</field>
             <field name="referencia_pago">iva</field>
             <field name="supplier_id">1</field>
             <field name="purchase_order_id">1</field>
@@ -61,7 +61,7 @@
             <field name="folio_documento">1</field>
             <field name="documento">1</field>
             <field name="documento_id">1</field>
-            <field name="l10n_latam_document_type">30</field>
+            <field name="tipo_documento">30</field>
             <field name="referencia_pago">iva</field>
             <field name="supplier_id">1</field>
             <field name="purchase_order_id">1</field>
@@ -72,7 +72,7 @@
             <field name="folio_documento">1</field>
             <field name="documento">1</field>
             <field name="documento_id">1</field>
-            <field name="l10n_latam_document_type">30</field>
+            <field name="tipo_documento">30</field>
             <field name="referencia_pago">iva</field>
             <field name="supplier_id">1</field>
             <field name="purchase_order_id">1</field>
