@@ -118,9 +118,14 @@
                                 attrs="{'readonly': [('is_editable','=', False)]}"
                             />
                             <field
-                                name="folio"
+                                name="folio_documento"
                                 attrs="{'readonly': [('is_editable','=', False)]}"
                             />
+                            <field
+                                name="tipo_documento"
+                                attrs="{'readonly': [('is_editable','=', False)]}"
+                            />
+                            
                             <field
                                 name="assigned_to"
                                 attrs="{'readonly': [('is_editable','=', False)]}"
