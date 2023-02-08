@@ -67,11 +67,7 @@ class new_module(models.Model):
     analytic_account_id = fields.Many2one('account.analytic.account',
                                           'Analytic Account')
     date = fields.Date('Starting Date', required=True, default=date.today())
-    recurring_period = fields.Selection(selection=[('days', 'Days'),
-                                                   ('weeks', 'Weeks'),
-                                                   ('months', 'Months'),
-                                                   ('years', 'Years')],
-                                        store=True, required=True)
+    
     amount = fields.Float('Amount')
     state = fields.Selection(selection=[('draft', 'Draft'),
                                         ('running', 'Running')],
