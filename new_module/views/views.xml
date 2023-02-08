@@ -24,7 +24,7 @@
     <!-- actions opening views on models -->
 
     <record model="ir.actions.act_window" id="new_module.action_window">
-      <field name="name">agregar nuevo dato</field>
+      <field name="name">Agregar nuevo dato</field>
       <field name="res_model">new_module.new_module</field>
       <field name="view_mode">tree,form</field>
       
