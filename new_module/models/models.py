@@ -37,6 +37,8 @@ class new_module(models.Model):
         copy=False,
         index=True,
     )
+    company_id = fields.Many2one('res.company',
+                                 default=lambda l: l.env.company.id)
     date_start = fields.Date(
         string="Fecha contable",
         help="Date when the user initiated the request.",
@@ -75,19 +77,14 @@ class new_module(models.Model):
                                                    ('years', 'Years')],
                                         store=True, required=True)
     amount = fields.Float('Amount')
-    description = fields.Text('Description')
     state = fields.Selection(selection=[('draft', 'Draft'),
                                         ('running', 'Running')],
                              default='draft', string='Status')
-    journal_state = fields.Selection(selection=[('draft', 'Unposted'),
-                                                ('posted', 'Posted')],
-                                     required=True, default='draft',
-                                     string='Generate Journal As')
+    
     recurring_interval = fields.Integer('Recurring Interval', default=1)
     partner_id = fields.Many2one('res.partner', 'Partner')
     pay_time = fields.Selection(selection=[('pay_now', 'Pay Directly'),
                                            ('pay_later', 'Pay Later')],
                                 store=True, required=True)
-    company_id = fields.Many2one('res.company',
-                                 default=lambda l: l.env.company.id)
+    
     
