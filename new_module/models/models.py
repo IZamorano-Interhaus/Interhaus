@@ -52,10 +52,6 @@ class new_module(models.Model):
         string="Fecha factura",
         default=fields.Date.context_today
     )
-    fecha_vencimiento = fields.Date(
-        string="fecha de vencimiento",
-        default=fields.Date.context_today
-    )
     invoice_payment_term_id = fields.Many2one(
         comodel_name="account.move",
         string="Términos de Pago",
