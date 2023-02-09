@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-from odoo import models, fields, api, _, tools
+from odoo import models, fields, api, _
 from odoo.exceptions import UserError
 from datetime import datetime, date
 from dateutil.relativedelta import relativedelta
@@ -44,12 +44,16 @@ class new_module(models.Model):
         help="Date when the user initiated the request.",
         default=fields.Date.context_today,
     )
+    referencia_pago = fields.Char(
+        string="Referencia de pago",
+        help="La referencia de pago para establecer en apuntes de diario.",
+    )
     fecha_factura = fields.Date(
         string="Fecha factura",
         default=fields.Date.context_today
     )
     invoice_payment_term_id = fields.Many2one(
-        comodel_name="account.analytic.account",
+        comodel_name="account.move",
         string="Términos de Pago",
         copy=False,
         index=True,
@@ -59,10 +63,11 @@ class new_module(models.Model):
         required=True,
     )
     journal_id = fields.Many2one('account.move', 'Diario', required=True)
+    analytic_account_id = fields.Many2one('account.analytic.account',
+                                          'Analytic Account')
+    date = fields.Date('Starting Date', required=True, default=date.today())
     amount = fields.Float('Amount')
     state = fields.Selection(selection=[('draft', 'Draft'),
                                         ('running', 'Running')],
                              default='draft', string='Status')
     partner_id = fields.Many2one('res.partner', 'Partner')
-
-    
