@@ -52,7 +52,7 @@ class new_module(models.Model):
         string="Fecha factura",
         default=fields.Date.context_today
     )
-    invoice_payment_term_id = fields.Many2one(
+    terminos_pagos = fields.Many2one(
         comodel_name="account.move",
         string="Términos de Pago",
         copy=False,
