@@ -44,14 +44,12 @@ class new_module(models.Model):
         help="Date when the user initiated the request.",
         default=fields.Date.context_today,
     )
-    referencia_pago = fields.Many2one('account.analytic.account',
-                                          'Analytic Account')
     fecha_factura = fields.Date(
         string="Fecha factura",
         default=fields.Date.context_today
     )
     invoice_payment_term_id = fields.Many2one(
-        comodel_name="account.move",
+        comodel_name="account.analytic.account",
         string="Términos de Pago",
         copy=False,
         index=True,
