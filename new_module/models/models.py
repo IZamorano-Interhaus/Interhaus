@@ -44,10 +44,8 @@ class new_module(models.Model):
         help="Date when the user initiated the request.",
         default=fields.Date.context_today,
     )
-    referencia_pago = fields.Char(
-        string="Referencia de pago",
-        help="La referencia de pago para establecer en apuntes de diario.",
-    )
+    referencia_pago = fields.Many2one('account.analytic.account',
+                                          'Analytic Account')
     fecha_factura = fields.Date(
         string="Fecha factura",
         default=fields.Date.context_today
@@ -63,9 +61,6 @@ class new_module(models.Model):
         required=True,
     )
     journal_id = fields.Many2one('account.move', 'Diario', required=True)
-    analytic_account_id = fields.Many2one('account.analytic.account',
-                                          'Analytic Account')
-    date = fields.Date('Starting Date', required=True, default=date.today())
     amount = fields.Float('Amount')
     state = fields.Selection(selection=[('draft', 'Draft'),
                                         ('running', 'Running')],
