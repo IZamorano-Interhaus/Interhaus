@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-from odoo import models, fields, api, _
+from odoo import models, fields, api, _, tools
 from odoo.exceptions import UserError
 from datetime import datetime, date
 from dateutil.relativedelta import relativedelta
@@ -71,3 +71,28 @@ class new_module(models.Model):
                                         ('running', 'Running')],
                              default='draft', string='Status')
     partner_id = fields.Many2one('res.partner', 'Partner')
+
+    @api.model
+    def init(self):
+        tools.drop_view_if_exists(self._cr, 'followup_stat_by_partner')
+        self._cr.execute("""
+            create view followup_stat_by_partner as (
+                SELECT
+                    l.partner_id * 10000::bigint + l.company_id as id,
+                    l.partner_id AS partner_id,
+                    min(l.date) AS date_move,
+                    max(l.date) AS date_move_last,
+                    max(l.followup_date) AS date_followup,
+                    max(l.followup_line_id) AS max_followup_id,
+                    sum(l.debit - l.credit) AS balance,
+                    l.company_id as company_id
+                FROM
+                    account_move_line l
+                    LEFT JOIN account_account a ON (l.account_id = a.id)
+                WHERE
+                    a.account_type = 'asset_receivable' AND
+                    l.full_reconcile_id is NULL AND
+                    l.partner_id IS NOT NULL
+                    GROUP BY
+                    l.partner_id, l.company_id
+            )""")
