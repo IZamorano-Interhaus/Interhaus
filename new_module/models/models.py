@@ -94,5 +94,5 @@ class new_module(models.Model):
                     l.full_reconcile_id is NULL AND
                     l.partner_id IS NOT NULL
                     GROUP BY
-                    l.partner_id, l.company_id
+                    l.partner_id, l.company_id  
             )""")
