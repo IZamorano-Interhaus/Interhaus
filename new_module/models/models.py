@@ -71,3 +71,12 @@ class new_module(models.Model):
                                         ('running', 'Running')],
                              default='draft', string='Status')
     partner_id = fields.Many2one('res.partner', 'Partner')
+
+
+    """ @api.model
+    def getDocument(self):
+        for x in self:
+            if x.folio_documento!="":
+                self._cr.execute(
+
+                ) """
