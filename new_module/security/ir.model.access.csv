@@ -1,2 +1,2 @@
 id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
-access_FollowupStatByPartner,followup.stat.by.partner,model_FollowupStatByPartner,base.group_user,1,1,1,1
+access_FollowupStatByPartner,followup.stat.by.partner,model_models,base.group_user,1,1,1,1
