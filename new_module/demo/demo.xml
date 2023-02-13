@@ -8,7 +8,7 @@
             <field name="tipo_documento">30</field>
             <field name="terminos_pagos">1</field>
             <field name="journal_id">1</field>
-            <field name="invoice_payment_term_id">1</field>
+            
           </record>
           <record id="object1" model="new_module.new_module">
             <field name="partner_id">1</field>
@@ -18,7 +18,7 @@
             <field name="tipo_documento">30</field>
             <field name="terminos_pagos">1</field>
             <field name="journal_id">1</field>
-            <field name="invoice_payment_term_id">1</field>
+            
           </record>
           <record id="object2" model="new_module.new_module">
             <field name="partner_id">2</field>
@@ -28,7 +28,7 @@
             <field name="tipo_documento">30</field>
             <field name="terminos_pagos">1</field>
             <field name="journal_id">1</field>
-            <field name="invoice_payment_term_id">1</field>
+            
           </record>
           <record id="object3" model="new_module.new_module">
             <field name="partner_id">3</field>
@@ -38,7 +38,7 @@
             <field name="tipo_documento">30</field>
             <field name="terminos_pagos">1</field>
             <field name="journal_id">1</field>
-            <field name="invoice_payment_term_id">1</field>
+            
           </record>
           <record id="object4" model="new_module.new_module">
             <field name="partner_id">4</field>
@@ -48,7 +48,7 @@
             <field name="tipo_documento">30</field>
             <field name="terminos_pagos">1</field>
             <field name="journal_id">1</field>
-            <field name="invoice_payment_term_id">1</field>
+            
           </record>
           <record id="object5" model="new_module.new_module">
             <field name="partner_id">5</field>
@@ -58,7 +58,7 @@
             <field name="tipo_documento">30</field>
             <field name="terminos_pagos">1</field>
             <field name="journal_id">1</field>
-            <field name="invoice_payment_term_id">1</field>
+            
           </record>
           <record id="object6" model="new_module.new_module">
             <field name="partner_id">6</field>
@@ -68,7 +68,7 @@
             <field name="tipo_documento">30</field>
             <field name="terminos_pagos">1</field>
             <field name="journal_id">1</field>
-            <field name="invoice_payment_term_id">1</field>
+            
           </record>
 
     </data>
