@@ -71,7 +71,7 @@ class new_module(models.Model):
     state = fields.Selection(selection=[('draft', 'Draft'),
                                         ('running', 'Running')],
                              default='draft', string='estado')
-    partner_id = fields.Many2one('res.partner', 'Proveedor 2, id')
+    
 
 
     @api.model
