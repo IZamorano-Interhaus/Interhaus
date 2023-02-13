@@ -17,7 +17,7 @@ auxlista=list()
 numero=0
 
 
-class FollowupStatByPartner(models.Model):
+class new_module(models.Model):
     _name = "followup.stat.by.partner"
     _description = "Follow-up Statistics by Partner"
     _rec_name = 'partner_id'
