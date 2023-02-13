@@ -73,12 +73,12 @@ class new_module(models.Model):
 
     @api.model
     def getDocument(self, *post):
-        with open("new 2.json") as archivo:
+        """ with open("new 2.json") as archivo:
             auxdiccionario = json.load(archivo)
         with open("new 2.json", 'w') as archivo_nuevo:
-            json.dump(auxdiccionario, archivo_nuevo)
-            company_id = self.get_current_company_value()
-
+            json.dump(auxdiccionario, archivo_nuevo) """
+        
+        company_id = self.get_current_company_value()
         states_arg = ""
         if post != ('posted',):
             states_arg = """ account_move.state in ('posted', 'draft')"""
@@ -118,10 +118,10 @@ class new_module(models.Model):
 
         }
         return records
-        for x in range(len(auxdiccionario["ventas"]["detalleVentas"])):
+        """ for x in range(len(auxdiccionario["ventas"]["detalleVentas"])):
             if x.folio_documento=="":
                 numero+=1
                 auxlista.append(auxdiccionario["ventas"]['detalleVentas'][0+(numero-1)]["rutCliente"]+" | "+str(auxdiccionario["ventas"]['detalleVentas'][0+(numero-1)]["folio"]))
                 self._cr.execute(
 
-                )
+                ) """
