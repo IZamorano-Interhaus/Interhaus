@@ -24,7 +24,7 @@ class new_module(models.Model):
     
     rut_tributario = fields.Char(
         string="Rut",
-        required=True,
+        
     )   
     
     tipo_documento=fields.Many2one(
@@ -62,9 +62,9 @@ class new_module(models.Model):
     )
     documento_id = fields.Char(
         string = "Número de documento",
-        required=True,
+        
     )
-    journal_id = fields.Many2one('account.move', 'Diario', required=True)
+    journal_id = fields.Many2one('account.move', 'Diario')
     analytic_account_id = fields.Many2one('account.analytic.account',
                                           'Cuenta Analitica')
     date = fields.Date('Starting Date', required=True, default=date.today())
