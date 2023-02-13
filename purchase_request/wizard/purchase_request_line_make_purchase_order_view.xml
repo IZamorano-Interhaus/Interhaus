@@ -16,7 +16,7 @@
                         domain="[('partner_id', '=', supplier_id)]"
                     />
                     <field name="sync_data_planned" />
-                </group>
+                </group><!-- a -->
                 <newline />
                 <separator string="New PO details:" />
                 <newline />

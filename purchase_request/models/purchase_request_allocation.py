@@ -20,7 +20,7 @@ class PurchaseRequestAllocation(models.Model):
         string="Company",
         comodel_name="res.company",
         readonly=True,
-        related="purchase_request_line_id.request_id.company_id",
+        
         store=True,
         index=True,
     )
@@ -41,13 +41,11 @@ class PurchaseRequestAllocation(models.Model):
     product_id = fields.Many2one(
         string="Product",
         comodel_name="product.product",
-        related="purchase_request_line_id.product_id",
         readonly=True,
     )
     product_uom_id = fields.Many2one(
         string="UoM",
         comodel_name="uom.uom",
-        related="purchase_request_line_id.product_uom_id",
         readonly=True,
         required=True,
     )
@@ -119,14 +117,4 @@ class PurchaseRequestAllocation(models.Model):
             "product_uom": po_line.product_uom.name,
         }
 
-    def _notify_allocation(self, allocated_qty):
-        if not allocated_qty:
-            return
-        for allocation in self:
-            request = allocation.purchase_request_line_id.request_id
-            po_line = allocation.purchase_line_id
-            message_data = self._prepare_message_data(po_line, request, allocated_qty)
-            message = self._purchase_request_confirm_done_message_content(message_data)
-            request.message_post(
-                body=message, subtype_id=self.env.ref("mail.mt_comment").id
-            )
+    

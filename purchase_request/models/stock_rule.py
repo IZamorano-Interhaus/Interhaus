@@ -7,26 +7,7 @@ from odoo import api, fields, models
 class StockRule(models.Model):
     _inherit = "stock.rule"
 
-    @api.model
-    def _prepare_purchase_request_line(self, request_id, procurement):
-        procurement_uom_po_qty = procurement.product_uom._compute_quantity(
-            procurement.product_qty, procurement.product_id.uom_po_id
-        )
-        return {
-            "product_id": procurement.product_id.id,
-            "name": procurement.product_id.name,
-            "date_required": "date_planned" in procurement.values
-            and procurement.values["date_planned"]
-            or fields.Datetime.now(),
-            "product_uom_id": procurement.product_id.uom_po_id.id,
-            "product_qty": procurement_uom_po_qty,
-            "request_id": request_id.id,
-            "move_dest_ids": [
-                (4, x.id) for x in procurement.values.get("move_dest_ids", [])
-            ],
-            "orderpoint_id": procurement.values.get("orderpoint_id", False)
-            and procurement.values.get("orderpoint_id").id,
-        }
+    
 
     @api.model
     def _prepare_purchase_request(self, origin, values):

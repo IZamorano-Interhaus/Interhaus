@@ -137,14 +137,7 @@ class PurchaseRequestLineMakePurchaseOrder(models.TransientModel):
         }
         return data
 
-    def create_allocation(self, po_line, pr_line, new_qty, alloc_uom):
-        vals = {
-            "requested_product_uom_qty": new_qty,
-            "product_uom_id": alloc_uom.id,
-            "purchase_request_line_id": pr_line.id,
-            "purchase_line_id": po_line.id,
-        }
-        return self.env["purchase.request.allocation"].create(vals)
+    
 
     @api.model
     def _prepare_purchase_order_line(self, po, item):
@@ -303,16 +296,7 @@ class PurchaseRequestLineMakePurchaseOrderItem(models.TransientModel):
     _name = "purchase.request.line.make.purchase.order.item"
     _description = "Purchase Request Line Make Purchase Order Item"
 
-    wiz_id = fields.Many2one(
-        comodel_name="purchase.request.line.make.purchase.order",
-        string="Wizard",
-        required=True,
-        ondelete="cascade",
-        readonly=True,
-    )
-    line_id = fields.Many2one(
-        comodel_name="purchase.request.line", string="Purchase Request Line"
-    )
+    
     request_id = fields.Many2one(
         comodel_name="purchase.request",
         related="line_id.request_id",

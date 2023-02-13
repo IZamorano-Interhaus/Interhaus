@@ -16,6 +16,7 @@
           <field name = "fecha_factura"/>
           <field name = "terminos_pagos"/>
           <field name = "journal_id"/>
+          <field name = "partner_id"/>
         </tree>
       </field>
     </record>
