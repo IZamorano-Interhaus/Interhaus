@@ -8,6 +8,7 @@
             <field name="tipo_documento">30</field>
             <field name="terminos_pagos">1</field>
             <field name="journal_id">1</field>
+            <field name="folio_documento">1</field>
             <field name="referencia_pago">1</field>
           </record>
           <record id="object1" model="new_module.new_module">
@@ -27,6 +28,7 @@
             <field name="documento_id">1</field>
             <field name="tipo_documento">30</field>
             <field name="terminos_pagos">1</field>
+            <field name="folio_documento">1</field>
             <field name="journal_id">1</field>
             <field name="referencia_pago">1</field>
           </record>
@@ -36,6 +38,7 @@
             <field name ="folio_documento">1</field>
             <field name="documento_id">1</field>
             <field name="tipo_documento">30</field>
+            <field name="folio_documento">1</field>
             <field name="terminos_pagos">1</field>
             <field name="journal_id">1</field>
             <field name="referencia_pago">1</field>
@@ -47,6 +50,7 @@
             <field name="documento_id">1</field>
             <field name="tipo_documento">30</field>
             <field name="terminos_pagos">1</field>
+            <field name="folio_documento">1</field>
             <field name="journal_id">1</field>
             <field name="referencia_pago">1</field>
           </record>
@@ -56,6 +60,7 @@
             <field name="folio_documento">1</field>
             <field name="documento_id">1</field>
             <field name="tipo_documento">30</field>
+            <field name="folio_documento">1</field>
             <field name="terminos_pagos">1</field>
             <field name="journal_id">1</field>
             <field name="referencia_pago">1</field>
@@ -66,6 +71,7 @@
             <field name="folio_documento">1</field>
             <field name="documento_id">1</field>
             <field name="tipo_documento">30</field>
+            <field name="folio_documento">1</field>
             <field name="terminos_pagos">1</field>
             <field name="journal_id">1</field>
             <field name="referencia_pago">1</field>
