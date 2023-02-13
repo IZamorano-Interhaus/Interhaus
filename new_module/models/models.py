@@ -28,13 +28,13 @@ class new_module(models.Model):
     )   
     
     tipo_documento=fields.Many2one(
-        comodel_name="l10n.latam.document.type",
+        comodel_name="l10n_latam_document_type",
         string="Tipo de Documento",
         copy=False,
         index=True,
     )
     folio_documento = fields.Many2one(
-        comodel_name="l10n.latam.identification.type ",
+        comodel_name="procurement.group",
         string="Folio",
         copy=False,
         index=True,
