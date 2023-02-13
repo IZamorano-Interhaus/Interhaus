@@ -75,19 +75,14 @@ class new_module(models.Model):
     partner_id = fields.Many2one('res.partner', 'Partner')
 
 
-    @api.model
-    def getDocument(self, *post):
-        """ with open("new 2.json") as archivo:
-            auxdiccionario = json.load(archivo)
-        with open("new 2.json", 'w') as archivo_nuevo:
-            json.dump(auxdiccionario, archivo_nuevo) """
-        
+    """ @api.model
+    def getDocument(self, *post):       
         company_id = self.get_current_company_value()
         states_arg = ""
         if post != ('posted',):
-            states_arg = """ account_move.state in ('posted', 'draft')"""
+            states_arg = account_move.state in ('posted', 'draft')
         else:
-            states_arg = """ account_move.state = 'posted'"""
+            states_arg = account_move.state = 'posted'
 
         self._cr.execute(('''  select res_partner.name as partner, res_partner.commercial_partner_id as res  ,
                             account_move.commercial_partner_id as parent, sum(account_move.amount_total) as amount
@@ -121,11 +116,5 @@ class new_module(models.Model):
             'result': results,
 
         }
-        return records
-        """ for x in range(len(auxdiccionario["ventas"]["detalleVentas"])):
-            if x.folio_documento=="":
-                numero+=1
-                auxlista.append(auxdiccionario["ventas"]['detalleVentas'][0+(numero-1)]["rutCliente"]+" | "+str(auxdiccionario["ventas"]['detalleVentas'][0+(numero-1)]["folio"]))
-                self._cr.execute(
-
-                ) """
+        return records """
+        
