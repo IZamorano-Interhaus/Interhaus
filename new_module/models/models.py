@@ -65,8 +65,7 @@ class new_module(models.Model):
         required=True,
     )
     journal_id = fields.Many2one('account.move', 'Diario', required=True)
-    analytic_account_id = fields.Many2one('account.analytic.account',
-                                          'Cuenta Analitica')
+    
     date = fields.Date('Starting Date', required=True, default=date.today())
     amount = fields.Float('Monto')
     state = fields.Selection(selection=[('draft', 'Draft'),
