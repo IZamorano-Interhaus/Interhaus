@@ -31,41 +31,31 @@ class PurchaseRequestLine(models.Model):
     product_qty = fields.Float(
         string="Quantity", tracking=True, digits="Product Unit of Measure"
     )
-    request_id = fields.Many2one(
-        comodel_name="new_module.new_module",
-        string="Purchase Request",
-        ondelete="cascade",
-        readonly=True,
-        index=True,
-        auto_join=True,
-    )
+    
     company_id = fields.Many2one(
         comodel_name="res.company",
-        related="request_id.company_id",
         string="Company",
         store=True,
     )
     requested_by = fields.Many2one(
         comodel_name="res.users",
-        related="request_id.requested_by",
         string="Requested by",
         store=True,
     )
     assigned_to = fields.Many2one(
         comodel_name="res.users",
-        related="request_id.assigned_to",
         string="Assigned to",
         store=True,
     )
-    date_start = fields.Date(related="request_id.date_start", store=True)
+    date_start = fields.Date(related="", store=True)
     description = fields.Text(
-        related="request_id.description",
+        related="",
         string="PR Description",
         store=True,
         readonly=False,
     )
     origin = fields.Char(
-        related="request_id.origin", string="Source Document", store=True
+        related=".origin", string="Source Document", store=True
     )
     date_required = fields.Date(
         string="Date",
@@ -77,7 +67,7 @@ class PurchaseRequestLine(models.Model):
     specifications = fields.Text()
     request_state = fields.Selection(
         string="state",
-        related="request_id.state",
+        related=".state",
         store=True,
     )
     supplier_id = fields.Many2one(
@@ -176,7 +166,7 @@ class PurchaseRequestLine(models.Model):
         "purchase_request_allocation_ids.stock_move_id",
         "purchase_request_allocation_ids.purchase_line_id",
         "purchase_request_allocation_ids.purchase_line_id.state",
-        "request_id.state",
+        ".state",
         "product_qty",
     )
     def _compute_qty_to_buy(self):
@@ -241,18 +231,7 @@ class PurchaseRequestLine(models.Model):
             else:
                 request.qty_cancelled = qty_cancelled
 
-    @api.depends(
-        "purchase_lines",
-        "request_id.state",
-    )
-    def _compute_is_editable(self):
-        for rec in self:
-            if rec.request_id.state in ("to_approve", "approved", "rejected", "done"):
-                rec.is_editable = False
-            else:
-                rec.is_editable = True
-        for rec in self.filtered(lambda p: p.purchase_lines):
-            rec.is_editable = False
+    
 
     @api.depends("product_id", "product_id.seller_ids")
     def _compute_supplier_id(self):
@@ -285,7 +264,7 @@ class PurchaseRequestLine(models.Model):
     def write(self, vals):
         res = super(PurchaseRequestLine, self).write(vals)
         if vals.get("cancelled"):
-            requests = self.mapped("request_id")
+            requests = self.mapped("")
             requests.check_auto_reject()
         return res
 

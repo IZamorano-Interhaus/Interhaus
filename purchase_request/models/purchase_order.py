@@ -37,43 +37,9 @@ class PurchaseOrder(models.Model):
         message += "</ul>"
         return message
 
-    def _purchase_request_confirm_message(self):
-        request_obj = self.env["purchase.request"]
-        for po in self:
-            requests_dict = {}
-            for line in po.order_line:
-                for request_line in line.sudo().purchase_request_lines:
-                    request_id = request_line.request_id.id
-                    if request_id not in requests_dict:
-                        requests_dict[request_id] = {}
-                    date_planned = "%s" % line.date_planned
-                    data = {
-                        "name": request_line.name,
-                        "product_qty": line.product_qty,
-                        "product_uom": line.product_uom.name,
-                        "date_planned": date_planned,
-                    }
-                    requests_dict[request_id][request_line.id] = data
-            for request_id in requests_dict:
-                request = request_obj.sudo().browse(request_id)
-                message = po._purchase_request_confirm_message_content(
-                    request, requests_dict[request_id]
-                )
-                request.message_post(
-                    body=message, subtype_id=self.env.ref("mail.mt_comment").id
-                )
-        return True
+    
 
-    def _purchase_request_line_check(self):
-        for po in self:
-            for line in po.order_line:
-                for request_line in line.purchase_request_lines:
-                    if request_line.sudo().purchase_state == "done":
-                        raise exceptions.UserError(
-                            _("Purchase Request %s has already been completed")
-                            % (request_line.request_id.name)
-                        )
-        return True
+    
 
     def button_confirm(self):
         self._purchase_request_line_check()
@@ -147,44 +113,7 @@ class PurchaseOrderLine(models.Model):
             v["purchase_request_allocation_ids"] = all_list
         return val
 
-    def update_service_allocations(self, prev_qty_received):
-        for rec in self:
-            allocation = self.env["purchase.request.allocation"].search(
-                [
-                    ("purchase_line_id", "=", rec.id),
-                    ("purchase_line_id.product_id.type", "=", "service"),
-                ]
-            )
-            if not allocation:
-                return
-            qty_left = rec.qty_received - prev_qty_received
-            for alloc in allocation:
-                allocated_product_qty = alloc.allocated_product_qty
-                if not qty_left:
-                    alloc.purchase_request_line_id._compute_qty()
-                    break
-                if alloc.open_product_qty <= qty_left:
-                    allocated_product_qty += alloc.open_product_qty
-                    qty_left -= alloc.open_product_qty
-                    alloc._notify_allocation(alloc.open_product_qty)
-                else:
-                    allocated_product_qty += qty_left
-                    alloc._notify_allocation(qty_left)
-                    qty_left = 0
-                alloc.write({"allocated_product_qty": allocated_product_qty})
-
-                message_data = self._prepare_request_message_data(
-                    alloc, alloc.purchase_request_line_id, allocated_product_qty
-                )
-                message = self._purchase_request_confirm_done_message_content(
-                    message_data
-                )
-                alloc.purchase_request_line_id.request_id.message_post(
-                    body=message, subtype_id=self.env.ref("mail.mt_comment").id
-                )
-
-                alloc.purchase_request_line_id._compute_qty()
-        return True
+    
 
     @api.model
     def _purchase_request_confirm_done_message_content(self, message_data):

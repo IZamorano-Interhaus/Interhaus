@@ -37,40 +37,9 @@ class StockMove(models.Model):
         distinct_fields += ["created_purchase_request_line_id"]
         return distinct_fields
 
-    def _action_cancel(self):
-        """Create an activity on the request for the cancelled procurement move"""
-        for move in self:
-            if move.created_purchase_request_line_id:
-                try:
-                    activity_type_id = self.env.ref("mail.mail_activity_data_todo").id
-                except ValueError:
-                    activity_type_id = False
-                pr_line = move.created_purchase_request_line_id
-                self.env["mail.activity"].sudo().create(
-                    {
-                        "activity_type_id": activity_type_id,
-                        "note": _(
-                            "A sale/manufacturing order that generated this "
-                            "purchase request has been cancelled/deleted. "
-                            "Check if an action is needed."
-                        ),
-                        "user_id": (
-                            pr_line.product_id.responsible_id.id or self.env.user.id
-                        ),
-                        "res_id": pr_line.request_id.id,
-                        "res_model_id": self.env.ref(
-                            "purchase_request.model_purchase_request"
-                        ).id,
-                    }
-                )
-        return super(StockMove, self)._action_cancel()
+    
 
-    @api.depends("purchase_request_allocation_ids")
-    def _compute_purchase_request_ids(self):
-        for rec in self:
-            rec.purchase_request_ids = (
-                rec.purchase_request_allocation_ids.purchase_request_line_id.request_id
-            )
+    
 
     def _merge_moves_fields(self):
         res = super(StockMove, self)._merge_moves_fields()
