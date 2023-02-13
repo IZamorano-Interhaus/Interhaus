@@ -14,9 +14,7 @@ _STATES = [
 ]
 auxlista=list()
 numero=0
-class new_module(models.Model):
-    _name = 'new_module.new_module'
-    _description = 'new_module.new_module' 
+class FilterRecurringEntries(models.Model):
     _inherit = 'account.move'
     recurring_ref = fields.Char()
 
