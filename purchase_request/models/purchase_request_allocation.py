@@ -41,7 +41,6 @@ class PurchaseRequestAllocation(models.Model):
     product_id = fields.Many2one(
         string="Product",
         comodel_name="product.product",
-        related="purchase_request_line_id.product_id",
         readonly=True,
     )
     product_uom_id = fields.Many2one(
