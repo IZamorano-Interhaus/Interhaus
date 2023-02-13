@@ -1,5 +1,6 @@
 # -*- coding: utf-8 -*-
 from datetime import datetime, date
+
 from dateutil.relativedelta import relativedelta
 from odoo import tools
 from odoo.http import request
@@ -85,9 +86,7 @@ class FollowupStatByPartner(models.Model):
         # return record
 
     # function to getting over dues
-class FilterRecurringEntries(models.Model):
-    _inherit = 'account.move'
-    recurring_ref = fields.Char()
+
 
 
 class RecurringPayments(models.Model):
@@ -154,75 +153,7 @@ class RecurringPayments(models.Model):
         if self.partner_id.property_account_receivable_id:
             self.credit_account = self.partner_id.property_account_payable_id
 
-    @api.model
-    def _cron_generate_entries(self):
-        data = self.env['account.recurring.payments'].search(
-            [('state', '=', 'running')])
-        entries = self.env['account.move'].search(
-            [('recurring_ref', '!=', False)])
-        journal_dates = []
-        journal_codes = []
-        remaining_dates = []
-        for entry in entries:
-            journal_dates.append(str(entry.date))
-            if entry.recurring_ref:
-                journal_codes.append(str(entry.recurring_ref))
-        today = datetime.today()
-        for line in data:
-            if line.date:
-                recurr_dates = []
-                start_date = datetime.strptime(str(line.date), '%Y-%m-%d')
-                while start_date <= today:
-                    recurr_dates.append(str(start_date.date()))
-                    if line.recurring_period == 'days':
-                        start_date += relativedelta(
-                            days=line.recurring_interval)
-                    elif line.recurring_period == 'weeks':
-                        start_date += relativedelta(
-                            weeks=line.recurring_interval)
-                    elif line.recurring_period == 'months':
-                        start_date += relativedelta(
-                            months=line.recurring_interval)
-                    else:
-                        start_date += relativedelta(
-                            years=line.recurring_interval)
-                for rec in recurr_dates:
-                    recurr_code = str(line.id) + '/' + str(rec)
-                    if recurr_code not in journal_codes:
-                        remaining_dates.append({
-                            'date': rec,
-                            'template_name': line.name,
-                            'amount': line.amount,
-                            'tmpl_id': line.id,
-                        })
-        child_ids = self.recurring_lines.create(remaining_dates)
-        for line in child_ids:
-            tmpl_id = line.tmpl_id
-            recurr_code = str(tmpl_id.id) + '/' + str(line.date)
-            line_ids = [(0, 0, {
-                'account_id': tmpl_id.credit_account.id,
-                'partner_id': tmpl_id.partner_id.id,
-                'credit': line.amount,
-                # 'analytic_account_id': tmpl_id.analytic_account_id.id,
-            }), (0, 0, {
-                'account_id': tmpl_id.debit_account.id,
-                'partner_id': tmpl_id.partner_id.id,
-                'debit': line.amount,
-                # 'analytic_account_id': tmpl_id.analytic_account_id.id,
-            })]
-            vals = {
-                'date': line.date,
-                'recurring_ref': recurr_code,
-                'company_id': self.env.company.id,
-                'journal_id': tmpl_id.journal_id.id,
-                'ref': line.template_name,
-                'narration': 'Recurring entry',
-                'line_ids': line_ids
-            }
-            move_id = self.env['account.move'].create(vals)
-            if tmpl_id.journal_state == 'posted':
-                move_id.post()
-
+    
 
 class GetAllRecurringEntries(models.TransientModel):
     _name = 'account.recurring.entries.line'
