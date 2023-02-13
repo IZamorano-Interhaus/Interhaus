@@ -118,15 +118,6 @@
                                 attrs="{'readonly': [('is_editable','=', False)]}"
                             />
                             <field
-                                name="folio"
-                                attrs="{'readonly': [('is_editable','=', False)]}"
-                            />
-                            <field
-                                name="tipo_documento"
-                                attrs="{'readonly': [('is_editable','=', False)]}"
-                            />
-                            
-                            <field
                                 name="assigned_to"
                                 attrs="{'readonly': [('is_editable','=', False)]}"
                             />
@@ -142,7 +133,7 @@
                                 attrs="{'readonly': [('is_editable','=', False)]}"
                             />
                             <field
-                                name="rut"
+                                name="group_id"
                                 attrs="{'readonly': [('is_editable','=', False)]}"
                             />
                         </group>
@@ -380,7 +371,7 @@
         </field>
     </record>
     <record model="ir.actions.act_window" id="purchase_request_form_action">
-        <field name="name">Purchases Requests</field>
+        <field name="name">Purchase Requests</field>
         <field name="type">ir.actions.act_window</field>
         <field name="res_model">purchase.request</field>
         <field name="view_mode">tree,form</field>

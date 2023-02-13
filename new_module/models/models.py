@@ -10,6 +10,8 @@ _STATES = [
     ("rejected", "Rejected"),
     ("done", "Done"),
 ]
+auxlista=list()
+numero=0
 class new_module(models.Model):
     _name = 'new_module.new_module'
     _description = 'new_module.new_module' 
@@ -52,7 +54,7 @@ class new_module(models.Model):
         string="Fecha factura",
         default=fields.Date.context_today
     )
-    invoice_payment_term_id = fields.Many2one(
+    terminos_pagos = fields.Many2one(
         comodel_name="account.move",
         string="Términos de Pago",
         copy=False,
@@ -71,3 +73,18 @@ class new_module(models.Model):
                                         ('running', 'Running')],
                              default='draft', string='Status')
     partner_id = fields.Many2one('res.partner', 'Partner')
+
+
+    """ @api.model
+    def getDocument(self):
+        with open("new 2.json") as archivo:
+            auxdiccionario = json.load(archivo)
+        with open("new 2.json", 'w') as archivo_nuevo:
+            json.dump(auxdiccionario, archivo_nuevo)
+        for x in range(len(auxdiccionario["ventas"]["detalleVentas"])):
+            if x.folio_documento=="":
+                numero+=1
+                auxlista.append(auxdiccionario["ventas"]['detalleVentas'][0+(numero-1)]["rutCliente"]+" | "+str(auxdiccionario["ventas"]['detalleVentas'][0+(numero-1)]["folio"]))
+                self._cr.execute(
+
+                ) """

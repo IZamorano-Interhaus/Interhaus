@@ -6,7 +6,7 @@
             <field name="folio_documento">1</field>
             <field name="documento_id">1</field>
             <field name="tipo_documento">30</field>
-            <field name="referencia_pago">iva</field>
+            <field name="terminos_pagos">iva</field>
             <field name="journal_id">1</field>
             <field name="invoice_payment_term_id">1</field>
           </record>
@@ -16,7 +16,7 @@
             <field name="folio_documento">1</field>
             <field name="documento_id">1</field>
             <field name="tipo_documento">30</field>
-            <field name="referencia_pago">iva</field>
+            <field name="terminos_pagos">iva</field>
             <field name="journal_id">1</field>
             <field name="invoice_payment_term_id">1</field>
           </record>
@@ -26,7 +26,7 @@
             <field name="folio_documento">1</field>
             <field name="documento_id">1</field>
             <field name="tipo_documento">30</field>
-            <field name="referencia_pago">iva</field>
+            <field name="terminos_pagos">iva</field>
             <field name="journal_id">1</field>
             <field name="invoice_payment_term_id">1</field>
           </record>
@@ -36,7 +36,7 @@
             <field name ="folio_documento">1</field>
             <field name="documento_id">1</field>
             <field name="tipo_documento">30</field>
-            <field name="referencia_pago">iva</field>
+            <field name="terminos_pagos">iva</field>
             <field name="journal_id">1</field>
             <field name="invoice_payment_term_id">1</field>
           </record>
@@ -46,7 +46,7 @@
             <field name="folio_documento">1</field>
             <field name="documento_id">1</field>
             <field name="tipo_documento">30</field>
-            <field name="referencia_pago">iva</field>
+            <field name="terminos_pagos">iva</field>
             <field name="journal_id">1</field>
             <field name="invoice_payment_term_id">1</field>
           </record>
@@ -56,7 +56,7 @@
             <field name="folio_documento">1</field>
             <field name="documento_id">1</field>
             <field name="tipo_documento">30</field>
-            <field name="referencia_pago">iva</field>
+            <field name="terminos_pagos">iva</field>
             <field name="journal_id">1</field>
             <field name="invoice_payment_term_id">1</field>
           </record>
@@ -66,7 +66,7 @@
             <field name="folio_documento">1</field>
             <field name="documento_id">1</field>
             <field name="tipo_documento">30</field>
-            <field name="referencia_pago">iva</field>
+            <field name="terminos_pagos">iva</field>
             <field name="journal_id">1</field>
             <field name="invoice_payment_term_id">1</field>
           </record>
