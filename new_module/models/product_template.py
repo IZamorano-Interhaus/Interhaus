@@ -1,4 +1,3 @@
-#############################################################################
 # -*- coding: utf-8 -*-
 #############################################################################
 #
@@ -20,20 +19,20 @@
 #    If not, see <http://www.gnu.org/licenses/>.
 #
 #############################################################################
-from . import account_account
-from . import account_asset
-from . import account_followup
-from . import account_journal
-from . import account_move
-from . import credit_limit
-from . import product_template
-from . import res_config_settings
-from . import res_partner
-from . import account_dashboard
-from . import multiple_invoice
-from . import multiple_invoice_layout
 
-from . import recurring_payments
-from . import account_payment
-from . import res_company
+from odoo import api, fields, models
 
+
+class ProductTemplate(models.Model):
+    _inherit = 'product.template'
+
+    asset_category_id = fields.Many2one('account.asset.category', string='Asset Type', company_dependent=True, ondelete="restrict")
+    deferred_revenue_category_id = fields.Many2one('account.asset.category', string='Deferred Revenue Type', company_dependent=True, ondelete="restrict")
+
+    def _get_asset_accounts(self):
+        res = super(ProductTemplate, self)._get_asset_accounts()
+        if self.asset_category_id:
+            res['stock_input'] = self.property_account_expense_id
+        if self.deferred_revenue_category_id:
+            res['stock_output'] = self.property_account_income_id
+        return res
