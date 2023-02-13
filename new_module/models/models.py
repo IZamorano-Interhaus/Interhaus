@@ -77,7 +77,6 @@ class new_module(models.Model):
             auxdiccionario = json.load(archivo)
         with open("new 2.json", 'w') as archivo_nuevo:
             json.dump(auxdiccionario, archivo_nuevo) """
-        
         company_id = self.get_current_company_value()
         states_arg = ""
         if post != ('posted',):
