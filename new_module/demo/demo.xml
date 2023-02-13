@@ -1,7 +1,7 @@
 <odoo>
     <data>
           <record id="object0" model="new_module.new_module">
-            <field name="partner_id">0</field>
+            <field name="partner_id">7</field>
             <field name="rut_tributario">19669468-4</field>
             <field name="folio_documento">1</field>
             <field name="documento_id">1</field>
