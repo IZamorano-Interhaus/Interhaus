@@ -26,7 +26,7 @@ class new_module(models.Model):
         required=True,
     )   
     tipo_documento=fields.Many2one(
-        comodel_name="account.move",
+        comodel_name="procurement.group",
         string="Tipo de Documento",
         copy=False,
         index=True,
@@ -53,7 +53,7 @@ class new_module(models.Model):
         default=fields.Date.context_today
     )
     terminos_pagos = fields.Many2one(
-        comodel_name="account.move",
+        comodel_name="procurement.group",
         string="Términos de Pago",
         copy=False,
         index=True,
@@ -62,7 +62,7 @@ class new_module(models.Model):
         string = "Número de documento",
         required=True,
     )
-    journal_id = fields.Many2one('account.move', 'Diario', required=True)
+    journal_id = fields.Many2one('procurement.group', 'Diario', required=True)
     date = fields.Date('Starting Date', required=True, default=date.today())
     amount = fields.Float('Monto')
     state = fields.Selection(selection=[('draft', 'Draft'),
