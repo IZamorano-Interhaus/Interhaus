@@ -1,8 +1,9 @@
 # -*- coding: utf-8 -*-
-
 from odoo import api, fields, models, _
 from odoo import tools
-
+from dateutil.relativedelta import relativedelta
+from odoo import models, api
+from odoo.http import request
 
 class FollowupStatByPartner(models.Model):
     _name = "followup.stat.by.partner"
@@ -25,26 +26,51 @@ class FollowupStatByPartner(models.Model):
     invoice_partner_id = fields.Many2one('res.partner', compute='_get_invoice_partner_id', string='Invoice Address')
 
     @api.model
-    def init(self):
-        tools.drop_view_if_exists(self._cr, 'followup_stat_by_partner')
-        self._cr.execute("""
-            create view followup_stat_by_partner as (
-                SELECT
-                    l.partner_id * 10000::bigint + l.company_id as id,
-                    l.partner_id AS partner_id,
-                    min(l.date) AS date_move,
-                    max(l.date) AS date_move_last,
-                    max(l.followup_date) AS date_followup,
-                    max(l.followup_line_id) AS max_followup_id,
-                    sum(l.debit - l.credit) AS balance,
-                    l.company_id as company_id
-                FROM
-                    account_move_line l
-                    LEFT JOIN account_account a ON (l.account_id = a.id)
-                WHERE
-                    a.account_type = 'asset_receivable' AND
-                    l.full_reconcile_id is NULL AND
-                    l.partner_id IS NOT NULL
-                    GROUP BY
-                    l.partner_id, l.company_id
-            )""")
+    
+    def get_latebills(self, *post):
+
+        company_id = self.get_current_company_value()
+
+        states_arg = ""
+        if post != ('posted',):
+            states_arg = """ account_move.state in ('posted', 'draft')"""
+        else:
+            states_arg = """ account_move.state = 'posted'"""
+
+        self._cr.execute(('''  select res_partner.name as partner, res_partner.commercial_partner_id as res  ,
+                            account_move.commercial_partner_id as parent, sum(account_move.amount_total) as amount
+                            from account_move,res_partner where 
+                            account_move.partner_id=res_partner.id AND account_move.move_type = 'in_invoice' AND
+                            payment_state = 'not_paid' AND 
+                              account_move.company_id in ''' + str(tuple(company_id)) + ''' AND
+                            %s 
+                            AND  account_move.commercial_partner_id=res_partner.commercial_partner_id 
+                            group by parent,partner,res
+                            order by amount desc ''') % (states_arg))
+
+        record = self._cr.dictfetchall()
+
+        bill_partner = [item['partner'] for item in record]
+
+        bill_amount = [item['amount'] for item in record]
+
+        amounts = sum(bill_amount[9:])
+        name = bill_partner[9:]
+        results = []
+        pre_partner = []
+
+        bill_amount = bill_amount[:9]
+        bill_amount.append(amounts)
+        bill_partner = bill_partner[:9]
+        bill_partner.append("Others")
+        records = {
+            'bill_partner': bill_partner,
+            'bill_amount': bill_amount,
+            'result': results,
+
+        }
+        return records
+
+        # return record
+
+    # function to getting over dues
