@@ -66,13 +66,13 @@ class new_module(models.Model):
     )
     journal_id = fields.Many2one('account.move', 'Diario', required=True)
     analytic_account_id = fields.Many2one('account.analytic.account',
-                                          'Analytic Account')
+                                          'Cuenta Analitica')
     date = fields.Date('Starting Date', required=True, default=date.today())
-    amount = fields.Float('Amount')
+    amount = fields.Float('Monto')
     state = fields.Selection(selection=[('draft', 'Draft'),
                                         ('running', 'Running')],
-                             default='draft', string='Status')
-    partner_id = fields.Many2one('res.partner', 'Partner')
+                             default='draft', string='estado')
+    partner_id = fields.Many2one('res.partner', 'Proveedor 2, id')
 
 
     @api.model
