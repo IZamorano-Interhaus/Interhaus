@@ -5,9 +5,9 @@ from dateutil.relativedelta import relativedelta
 from odoo import models, api
 from odoo.http import request
 
-class FollowupStatByPartner(models.Model):
-    _name = "followup.stat.by.partner"
-    _description = "Follow-up Statistics by Partner"
+class traerDatos(models.Model):
+    _name = "traerDatos.traerDatos"
+    _description = "traerDatos.traerDatos"
     _rec_name = 'partner_id'
     _auto = False
 
