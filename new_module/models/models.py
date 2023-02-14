@@ -74,15 +74,34 @@ class new_module(models.Model):
                              default='draft', string='estado')
     partner_id = fields.Many2one('res.partner', 'Partner')
     amount = fields.Float('Monto')
+class traer_Datos(models.Model):
+    
+    _rec_name = 'partner_id'
+    _auto = False
 
-    """ @api.model
-    def getDocument(self, *post):       
+    def _get_invoice_partner_id(self):
+        for rec in self:
+            rec.invoice_partner_id = rec.partner_id.address_get(
+                adr_pref=['invoice']).get('invoice', rec.partner_id.id)
+
+    partner_id = fields.Many2one('res.partner', 'Partner', readonly=True)
+    date_move = fields.Date('First move', readonly=True)
+    date_move_last = fields.Date('Last move', readonly=True)
+    date_followup = fields.Date('Latest follow-up', readonly=True)
+    balance = fields.Float('Balance', readonly=True)
+    company_id = fields.Many2one('res.company', 'Company', readonly=True)
+
+    @api.model
+    
+    def get_latebills(self, *post):
+
         company_id = self.get_current_company_value()
+
         states_arg = ""
         if post != ('posted',):
-            states_arg = account_move.state in ('posted', 'draft')
+            states_arg = """ account_move.state in ('posted', 'draft')"""
         else:
-            states_arg = account_move.state = 'posted'
+            states_arg = """ account_move.state = 'posted'"""
 
         self._cr.execute(('''  select res_partner.name as partner, res_partner.commercial_partner_id as res  ,
                             account_move.commercial_partner_id as parent, sum(account_move.amount_total) as amount
@@ -116,5 +135,9 @@ class new_module(models.Model):
             'result': results,
 
         }
-        return records """
-        
+        return records
+
+        # return record
+
+    # function to getting over dues
+   
