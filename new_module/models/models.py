@@ -74,10 +74,6 @@ class new_module(models.Model):
                              default='draft', string='estado')
     partner_id = fields.Many2one('res.partner', 'Partner')
     amount = fields.Float('Monto')
-class testing(models.Model):
-    
-    _rec_name = 'partner_id'
-    _auto = False
 
     def _get_invoice_partner_id(self):
         for rec in self:
@@ -88,7 +84,7 @@ class testing(models.Model):
     date_move = fields.Date('First move', readonly=True)
     date_move_last = fields.Date('Last move', readonly=True)
     date_followup = fields.Date('Latest follow-up', readonly=True)
-    balance = fields.Float('Balance', readonly=True)
+    
     company_id = fields.Many2one('res.company', 'Company', readonly=True)
 
     @api.model
