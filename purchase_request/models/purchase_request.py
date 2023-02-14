@@ -122,7 +122,6 @@ class PurchaseRequest(models.Model):
     
     product_id = fields.Many2one(
         comodel_name="product.product",
-        related="line_ids.product_id",
         string="Productifero",
         readonly=True,
     )
@@ -172,29 +171,7 @@ class PurchaseRequest(models.Model):
         for rec in self:
             rec.estimated_cost = sum(rec.line_ids.mapped("estimated_cost"))
 
-    @api.depends("line_ids")
-    def _compute_purchase_count(self):
-        for rec in self:
-            rec.purchase_count = len(rec.mapped("line_ids.purchase_lines.order_id"))
-
-    def action_view_purchase_order(self):
-        action = self.env["ir.actions.actions"]._for_xml_id("purchase.purchase_rfq")
-        lines = self.mapped("line_ids.purchase_lines.order_id")
-        if len(lines) > 1:
-            action["domain"] = [("id", "in", lines.ids)]
-        elif lines:
-            action["views"] = [
-                (self.env.ref("purchase.purchase_order_form").id, "form")
-            ]
-            action["res_id"] = lines.id
-        return action
-
-    @api.depends("line_ids")
-    def _compute_move_count(self):
-        for rec in self:
-            rec.move_count = len(
-                rec.mapped("line_ids.purchase_request_allocation_ids.stock_move_id")
-            )
+    
 
     def action_view_stock_picking(self):
         action = self.env["ir.actions.actions"]._for_xml_id(

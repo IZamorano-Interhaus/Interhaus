@@ -82,23 +82,7 @@ class PurchaseOrderLine(models.Model):
         copy=False,
     )
 
-    def action_open_request_line_tree_view(self):
-        """
-        :return dict: dictionary value for created view
-        """
-        request_line_ids = []
-        for line in self:
-            request_line_ids += line.purchase_request_lines.ids
-
-        domain = [("id", "in", request_line_ids)]
-
-        return {
-            "name": _("Purchase Request Lines"),
-            "type": "ir.actions.act_window",
-            "res_model": "purchase.request.line",
-            "view_mode": "tree,form",
-            "domain": domain,
-        }
+   
 
     def _prepare_stock_moves(self, picking):
         self.ensure_one()

@@ -60,7 +60,7 @@ class new_module(models.Model):
         copy=False,
         index=True,
     )
-    documento_id = fields.Char(
+    documento_id = fields.Many2one(
         string = "Número de documento",
         
     )
