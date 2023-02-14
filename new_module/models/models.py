@@ -74,7 +74,7 @@ class new_module(models.Model):
                              default='draft', string='estado')
     partner_id = fields.Many2one('res.partner', 'Partner')
     amount = fields.Float('Monto')
-class traerDatos(models.Model):
+class testing(models.Model):
     
     _rec_name = 'partner_id'
     _auto = False
