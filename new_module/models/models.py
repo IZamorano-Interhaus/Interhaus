@@ -28,7 +28,7 @@ class new_module(models.Model):
     )   
     
     tipo_documento=fields.Many2one(
-        comodel_name="l10n.latam.document.type",
+        comodel_name="res.partner",
         string="Tipo de Documento",
         copy=False,
         index=True,
