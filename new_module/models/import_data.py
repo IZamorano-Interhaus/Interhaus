@@ -5,9 +5,9 @@ from dateutil.relativedelta import relativedelta
 from odoo import models, api
 from odoo.http import request
 
-class FollowupStatByPartner(models.Model):
-    _name = "followup.stat.by.partner"
-    _description = "Follow-up Statistics by Partner"
+class traer_Datos(models.Model):
+    _name = "traer_Datos.traer_Datos"
+    _description = "traerDatos.traerDatos"
     _rec_name = 'partner_id'
     _auto = False
 
@@ -20,7 +20,6 @@ class FollowupStatByPartner(models.Model):
     date_move = fields.Date('First move', readonly=True)
     date_move_last = fields.Date('Last move', readonly=True)
     date_followup = fields.Date('Latest follow-up', readonly=True)
-    max_followup_id = fields.Many2one('followup.line', 'Max Follow Up Level', readonly=True, ondelete="cascade")
     balance = fields.Float('Balance', readonly=True)
     company_id = fields.Many2one('res.company', 'Company', readonly=True)
     invoice_partner_id = fields.Many2one('res.partner', compute='_get_invoice_partner_id', string='Invoice Address')

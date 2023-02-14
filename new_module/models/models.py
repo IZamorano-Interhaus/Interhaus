@@ -68,12 +68,12 @@ class new_module(models.Model):
     analytic_account_id = fields.Many2one('account.analytic.account',
                                           'Cuenta Analitica')
     date = fields.Date('Starting Date', required=True, default=date.today())
-    amount = fields.Float('Monto')
+    
     state = fields.Selection(selection=[('draft', 'Draft'),
                                         ('running', 'Running')],
                              default='draft', string='estado')
     partner_id = fields.Many2one('res.partner', 'Partner')
-
+    amount = fields.Float('Monto')
 
     """ @api.model
     def getDocument(self, *post):       
