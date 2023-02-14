@@ -21,12 +21,9 @@ class new_module(models.Model):
         copy=False,
         index=True,
     )
-    
     rut_tributario = fields.Char(
         string="Rut",
-        
     )   
-    
     tipo_documento=fields.Many2one(
         comodel_name="res.partner",
         string="Tipo de Documento",
@@ -39,8 +36,10 @@ class new_module(models.Model):
         copy=False,
         index=True,
     )
-    company_id = fields.Many2one('res.company',
-                                 default=lambda l: l.env.company.id)
+    company_id = fields.Many2one(
+        'res.company',
+        default=lambda l: l.env.company.id
+    )
     date_start = fields.Date(
         string="Fecha contable",
         help="Date when the user initiated the request.",
@@ -61,44 +60,47 @@ class new_module(models.Model):
         index=True,
     )
     documento_id = fields.Char(
-        
-        
+        string="Número del documento",
     )
-    journal_id = fields.Many2one('account.move', 'Diario')
-    analytic_account_id = fields.Many2one('account.analytic.account',
-                                          'Cuenta Analitica')
-    date = fields.Date('Starting Date', required=True, default=date.today())
-    
-    state = fields.Selection(selection=[('draft', 'Draft'),
-                                        ('running', 'Running')],
-                             default='draft', string='estado')
-    partner_id = fields.Many2one('res.partner', 'Partner')
+    journal_id = fields.Many2one(
+        'account.move', 'Diario'
+    )
+    analytic_account_id = fields.Many2one(
+        'account.analytic.account',
+        'Cuenta Analitica'
+    )
+    date = fields.Date(
+        'Starting Date', 
+        required=True, 
+        default=date.today()
+    )
+    state = fields.Selection(
+        selection=[('draft', 'Draft'),
+        ('running', 'Running')],
+        default='draft', string='estado'
+    )
+    partner_id = fields.Many2one(
+        'res.partner', 
+        'Partner',
+    )
     amount = fields.Float('Monto')
-
     def _get_invoice_partner_id(self):
         for rec in self:
             rec.invoice_partner_id = rec.partner_id.address_get(
                 adr_pref=['invoice']).get('invoice', rec.partner_id.id)
-
     partner_id = fields.Many2one('res.partner', 'Partner', readonly=True)
     date_move = fields.Date('First move', readonly=True)
     date_move_last = fields.Date('Last move', readonly=True)
     date_followup = fields.Date('Latest follow-up', readonly=True)
-    
     company_id = fields.Many2one('res.company', 'Company', readonly=True)
-
     @api.model
-    
     def get_latebills(self, *post):
-
         company_id = self.get_current_company_value()
-
         states_arg = ""
         if post != ('posted',):
             states_arg = """ account_move.state in ('posted', 'draft')"""
         else:
             states_arg = """ account_move.state = 'posted'"""
-
         self._cr.execute(('''  select res_partner.name as partner, res_partner.commercial_partner_id as res  ,
                             account_move.commercial_partner_id as parent, sum(account_move.amount_total) as amount
                             from account_move,res_partner where 
@@ -109,18 +111,13 @@ class new_module(models.Model):
                             AND  account_move.commercial_partner_id=res_partner.commercial_partner_id 
                             group by parent,partner,res
                             order by amount desc ''') % (states_arg))
-
         record = self._cr.dictfetchall()
-
         bill_partner = [item['partner'] for item in record]
-
         bill_amount = [item['amount'] for item in record]
-
         amounts = sum(bill_amount[9:])
         name = bill_partner[9:]
         results = []
         pre_partner = []
-
         bill_amount = bill_amount[:9]
         bill_amount.append(amounts)
         bill_partner = bill_partner[:9]
@@ -129,11 +126,8 @@ class new_module(models.Model):
             'bill_partner': bill_partner,
             'bill_amount': bill_amount,
             'result': results,
-
         }
         return records
-
         # return record
-
     # function to getting over dues
    
