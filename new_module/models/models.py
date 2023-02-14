@@ -88,11 +88,6 @@ class new_module(models.Model):
         for rec in self:
             rec.invoice_partner_id = rec.partner_id.address_get(
                 adr_pref=['invoice']).get('invoice', rec.partner_id.id)
-    partner_id = fields.Many2one('res.partner', 'Partner', readonly=True)
-    date_move = fields.Date('First move', readonly=True)
-    date_move_last = fields.Date('Last move', readonly=True)
-    date_followup = fields.Date('Latest follow-up', readonly=True)
-    company_id = fields.Many2one('res.company', 'Company', readonly=True)
     @api.model
     def get_latebills(self, *post):
         company_id = self.get_current_company_value()
