@@ -1,9 +1,9 @@
 import json
 auxlista=[]
 numero=0
-with open("/home/nicolas/Documentos/new 1.json") as archivo:
+with open("/home/nicolas/Documentos/new1.json") as archivo:
     auxdiccionario = json.load(archivo)
-with open("/home/nicolas/Documentos/new 2.json", 'w') as archivo_nuevo:
+with open("/home/nicolas/Documentos/new2.json", 'w') as archivo_nuevo:
     json.dump(auxdiccionario, archivo_nuevo)
 for x in range(len(auxdiccionario["ventas"]["detalleVentas"])):
     numero+=1
