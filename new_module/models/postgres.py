@@ -1,7 +1,7 @@
 
 import psycopg2
 
-conn = psycopg2.connect(database="interhaus_testing2", user = "postgres", password = "admin", host = "localhost", port = "5432")
+conn = psycopg2.connect(database="testing", user = "postgres", password = "admin", host = "localhost", port = "5432")
 
 cur = conn.cursor()
 
@@ -19,6 +19,12 @@ cur.execute("INSERT INTO documentos (ID,rut,folio) \
       VALUES (4, '10709562-4', 25);");
 
 cur.execute(query)
+rows = cur.fetchall()
+for row in rows:
+   print ("ID = ", row[0])
+   print ("rut = ", row[1])
+   print ("folio = ", row[2], "\n")
+
 conn.commit()
 print ("Records created successfully");
 conn.close()
