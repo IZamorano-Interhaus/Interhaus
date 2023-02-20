@@ -1,18 +1,23 @@
-import json, os ,psycopg2
+import json, os 
 os.system('cls')
-auxlistarut=[]
-auxlistafolio=[]
-listaJSON=[]
-numero=0
-with open("C:/tools/respaldoBaseDatos/SIIpruebas.json") as archivo:
-    auxdiccionario = json.load(archivo)
-with open("C:/tools/respaldoBaseDatos/SIIpruebas.json", 'w') as archivo_nuevo:
-    json.dump(auxdiccionario, archivo_nuevo)
-for x in range(len(auxdiccionario["ventas"]["detalleVentas"])):
-    numero+=1
-    auxlistarut.append(auxdiccionario["ventas"]['detalleVentas'][0+(numero-1)]["rutCliente"])
-    auxlistafolio.append(str(auxdiccionario["ventas"]['detalleVentas'][0+(numero-1)]["folio"]))
-    listaJSON.append(auxlistarut[0+(numero-1)]+" | "+str(auxlistafolio[0+(numero-1)]))
-
-
-print(listaJSON)
+f = open("C:/tools/respaldoBaseDatos/SIIpruebas.json", "r")
+listaRut=[]
+listaFolio=[]
+listaConjunto=[]
+archivoJSON = f.read()
+datosJSON = json.loads(archivoJSON)
+for ingreso in (datosJSON["ventas"]["detalleVentas"]):
+    print("rut del cliente= "+ingreso["rutCliente"])
+    print("folio: ")
+    print(ingreso["folio"])
+    listaRut.append(ingreso["rutCliente"])
+    listaFolio.append(ingreso["folio"])
+    listaConjunto.append(listaRut)
+    listaConjunto.append(listaFolio)
+print(listaRut)
+print(listaRut[1])
+print(listaRut[0][1])
+print(listaFolio)
+print(listaFolio[1])
+print(str(listaFolio[0])[1])
+print(listaConjunto)

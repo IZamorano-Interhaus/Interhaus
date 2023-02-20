@@ -7,16 +7,10 @@ cur = conn.cursor()
 
 query = "select * from documentos;"
 cur.execute("INSERT INTO documentos (rut,folio) \
-      VALUES ('19669468-4',5617);");
+      VALUES ('19669468-4',3421);");
 
-cur.execute("INSERT INTO documentos (rut,folio) \
-      VALUES ('72893782-2',5097);");
-
-cur.execute("INSERT INTO documentos (rut,folio) \
-      VALUES ('18679478-7',2533);");
-
-cur.execute("INSERT INTO documentos (rut,folio) \
-      VALUES ('10709562-4',2195);");
+cur.execute("INSERT INTO auxdoc (rut,folio) \
+      VALUES ('19669468-4',3421);");
 
 cur.execute(query)
 rows = cur.fetchall()
