@@ -14,27 +14,36 @@ for ingreso in (datosJSON["ventas"]["detalleVentas"]):
     lax=[]
     lax=ingreso["rutCliente"],str(ingreso["folio"])
     listaRut.append(lax)
-
 cur.execute("drop table if exists auxdoc;")
 cur.execute("create table auxdoc (id serial, rut varchar(15),folio int);")
-cur.execute("insert into auxdoc (rut,folio)values('61002000-3',5617);")
-
 query = "select * from auxdoc;"
 cur.execute(query)
-
-querysql = cur.fetchall()
-print(len(querysql))
+querySelect = cur.fetchall()
+print(len(querySelect))
 for i in range(len(listaRut)):
-    for j in range(len(querysql)):
-        if listaRut[i][0]!=querysql[j][1]:
-            # insert = "insert into documentos (rut,folio) values('"+str(listaRut[i][0])+"',"+str(listaRut[i][1])+");"           
-            # cur.execute(insert)
-            l.append(str(listaRut[i-1][0])+"',"+str(listaRut[i-1][1]))
-            cur.execute("insert into auxdoc (rut,folio) values('"+str(listaRut[i][0])+"',"+str(listaRut[i][1])+");")
-        elif listaRut[i][1]!=querysql[j][2]:
-            # cur.execute(insert)
-            l.append(str(listaRut[i-1][0])+"',"+str(listaRut[i-1][1]))
-            cur.execute("insert into auxdoc (rut,folio) values('"+str(listaRut[i][0])+"',"+str(listaRut[i][1])+");")
+    existe=False
+    if (len(querySelect))==0:
+        cur.execute("insert into auxdoc (rut,folio)values('61002000-3',5617);")
+    elif len(querySelect)!=0: 
+        for j in range(len(querySelect)):
+            if listaRut[i][1]!=querySelect and listaRut[i][1]!=querySelect[j][2]:
+                l.append(listaRut[0][0]+listaRut[0][1])
+    if existe==True:
+        cur.execute("insert into auxdoc (rut,folio) values('"+str(listaRut[i][0])+"',"+str(listaRut[i][1])+");")
+
+        # if listaRut[i][0]!=querysql[j][1] and listaRut[i][1]!=querysql[j][2]:
+        #     # insert = "insert into documentos (rut,folio) values('"+str(listaRut[i][0])+"',"+str(listaRut[i][1])+");"           
+        #     # cur.execute(insert)
+        #     l.append(str(listaRut[i-1][0])+"',"+str(listaRut[i-1][1]))
+        #     cur.execute("insert into auxdoc (rut,folio) values('"+str(listaRut[i][0])+"',"+str(listaRut[i][1])+");")
+        # elif listaRut[i][1]!=querysql[j][2]:
+        #     # cur.execute(insert)
+        #     l.append(str(listaRut[i-1][0])+"',"+str(listaRut[i-1][1]))
+        #     cur.execute("insert into auxdoc (rut,folio) values('"+str(listaRut[i][0])+"',"+str(listaRut[i][1])+");")
+        # elif listaRut[i][0]!=querysql[j][1] and listaRut[i][1]!=querysql[j][2]:
+        #     l.append(str(listaRut[i-1][0])+"',"+str(listaRut[i-1][1]))
+        #     cur.execute("insert into auxdoc (rut,folio) values('"+str(listaRut[i][0])+"',"+str(listaRut[i][1])+");")
+
         
 print(l)
 print(len(l))
