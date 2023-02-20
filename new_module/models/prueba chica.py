@@ -4,6 +4,7 @@ auxlista2=[]
 auxlista1=[]
 listaFinal=[]
 listaRut=[]
+l=[]
 conn = psycopg2.connect(database="testing", user = "postgres", password = "admin", host = "localhost", port = "5432")
 cur = conn.cursor()
 f = open("C:/tools/respaldoBaseDatos/SIIpruebas.json", "r")
@@ -13,36 +14,42 @@ for ingreso in (datosJSON["ventas"]["detalleVentas"]):
     lax=[]
     lax=ingreso["rutCliente"],str(ingreso["folio"])
     listaRut.append(lax)
-query = "select * from documentos;"
+
+cur.execute("drop table if exists auxdoc;")
+cur.execute("create table auxdoc (id serial, rut varchar(15),folio int);")
+cur.execute("insert into auxdoc (rut,folio)values('61002000-3',5617);")
+
+query = "select * from auxdoc;"
 cur.execute(query)
+
 querysql = cur.fetchall()
-print(querysql)
+print(len(querysql))
 for i in range(len(listaRut)):
     for j in range(len(querysql)):
         if listaRut[i][0]!=querysql[j][1]:
-            insert = "insert into documentos (rut,folio) values('"+str(listaRut[i][0])+"',"+str(listaRut[i][1])+");"           
-            cur.execute(insert)
+            # insert = "insert into documentos (rut,folio) values('"+str(listaRut[i][0])+"',"+str(listaRut[i][1])+");"           
+            # cur.execute(insert)
+            l.append(str(listaRut[i-1][0])+"',"+str(listaRut[i-1][1]))
             cur.execute("insert into auxdoc (rut,folio) values('"+str(listaRut[i][0])+"',"+str(listaRut[i][1])+");")
-        else:
-            cur.execute(insert)
+        elif listaRut[i][1]!=querysql[j][2]:
+            # cur.execute(insert)
+            l.append(str(listaRut[i-1][0])+"',"+str(listaRut[i-1][1]))
             cur.execute("insert into auxdoc (rut,folio) values('"+str(listaRut[i][0])+"',"+str(listaRut[i][1])+");")
+        
+print(l)
+print(len(l))
 print("tiempo de espera")
 print("------------------------------------------------------------------------")
 print("inicio segundo ciclo")
-for i in range(len(listaRut)):
-    print(i)
-    for j in range(len(querysql)):
-        print(j)
-        if listaRut[i][0]!=querysql[j][1]:
-            cur.execute("insert into auxdoc (rut,folio) values('"+str(listaRut[i][0])+"',"+str(listaRut[i][1])+");")
-        else:
-            listaRut=listaFinal
+for columna in l:
+    if l.count(columna)>1:
+        l.remove(columna)
+
+print(l)
+print(len(l))
 
 
-for columna in querysql:
-    print("id=",columna[0])
-    print("rut=",columna[1])
-    print("folio=",columna[2])
+
 conn.commit()
 print ("Records created successfully");
 conn.close()
