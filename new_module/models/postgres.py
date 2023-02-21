@@ -5,9 +5,8 @@ conn = psycopg2.connect(database="testing", user = "postgres", password = "admin
 
 cur = conn.cursor()
 
-query = "select * from documentos;"
-cur.execute("INSERT INTO documentos (rut,folio) \
-      VALUES ('19669468-4',3421);");
+query = "select * from auxdoc;"
+
 
 cur.execute("INSERT INTO auxdoc (rut,folio) \
       VALUES ('19669468-4',3421);");
