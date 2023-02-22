@@ -1,4 +1,4 @@
-
+# -*- coding: utf-8 -*-
 import psycopg2
 
 conn = psycopg2.connect(database="testing", user = "postgres", password = "admin", host = "localhost", port = "5432")
