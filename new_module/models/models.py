@@ -90,7 +90,7 @@ class new_module(models.Model):
             rec.invoice_partner_id = rec.partner_id.address_get(
                 adr_pref=['invoice']).get('invoice', rec.partner_id.id)
     @api.model
-    def get_latebills(self, *post):
+    def cargarDocumentos(self, *post):
     
         os.system('cls')
         listaRut=[]
