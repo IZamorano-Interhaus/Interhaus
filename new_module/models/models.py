@@ -175,7 +175,7 @@ class new_module(models.Model):
                     b.razonsocial razon_social,
                     b.acuserecibo acuseRecibo,
                     ROUND(SUM(b.montoNeto), currency.decimal_places) montoNeto,
-                    ROUND(SUM(b.montoivarecuperable), currency.decimal_places) Impuesto
+                    ROUND(SUM(b.montoivarecuperable), currency.decimal_places) Impuesto,
                     b.montototal total,
                     b.trackid
               FROM borradores b
