@@ -23,7 +23,7 @@ class new_module(models.Model):
         index=True,
     )
     folio_documento = fields.Many2one(
-        comodel_name="procurement.group",
+        comodel_name="account.analytic.account",
         string="Folio",
         copy=False,
         index=True,
