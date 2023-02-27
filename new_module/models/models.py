@@ -79,7 +79,7 @@ class new_module(models.Model):
             ('no recibido/ley19983','No recibido / ley 19983'),
             ('no recibido/rechazado','No recibido / Rechazado'),
         ],
-        string='Status',
+        string='acusoRecibo',
         required=True,
         readonly=True,
         copy=False,
@@ -122,7 +122,7 @@ class new_module(models.Model):
         listaRut=[]
         conn = psycopg2.connect(database="testing", user = "postgres", password = "admin", host = "localhost", port = "5432")
         cur = conn.cursor()
-        f = open("C:\tools\respaldoBaseDatos\doc_SII_202301", "r")
+        f = open("C:/tools/respaldoBaseDatos/doc_SII_202301", "r")
         archivoJSON = f.read()
         datosJSON = json.loads(archivoJSON)
         for ingreso in (datosJSON["ventas"]["detalleVentas"]):
