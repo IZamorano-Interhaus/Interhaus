@@ -66,7 +66,7 @@ class new_module(models.Model):
     razon_social = fields.Char(
         string="nombre de la empresa que emite factura o la razon social",
     )
-    acuseRecibo = fields.selection(
+    acuseRecibo = fields.Selection(
         selection=[
             ('observado', 'Observado'),
             ('aceptado','Aceptado'),
