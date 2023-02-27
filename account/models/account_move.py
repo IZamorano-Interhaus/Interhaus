@@ -256,7 +256,7 @@ class AccountMove(models.Model):
 
     # === Date fields === #
     invoice_date = fields.Date(
-        string='Invoice/Bill Date',
+        string='fecha de la factura emitida como dios manda',
         readonly=True,
         states={'draft': [('readonly', False)]},
         index=True,
@@ -282,7 +282,7 @@ class AccountMove(models.Model):
     # === Partner fields === #
     partner_id = fields.Many2one(
         'res.partner',
-        string='Partner',
+        string='Proveedor genialo',
         readonly=True,
         tracking=True,
         states={'draft': [('readonly', False)]},
@@ -299,14 +299,14 @@ class AccountMove(models.Model):
     )
     partner_shipping_id = fields.Many2one(
         comodel_name='res.partner',
-        string='Delivery Address',
+        string='direccion de entrega',
         compute='_compute_partner_shipping_id', store=True, readonly=False, precompute=True,
         domain="['|', ('company_id', '=', False), ('company_id', '=', company_id)]",
         help="Delivery address for current invoice.",
     )
     partner_bank_id = fields.Many2one(
         'res.partner.bank',
-        string='Recipient Bank',
+        string='lugar del banco',
         compute='_compute_partner_bank_id', store=True, readonly=False,
         help="Bank Account Number to which the invoice will be paid. "
              "A Company bank account if this is a Customer Invoice or Vendor Credit Note, "
@@ -316,7 +316,7 @@ class AccountMove(models.Model):
     )
     fiscal_position_id = fields.Many2one(
         'account.fiscal.position',
-        string='Fiscal Position',
+        string='Posicion Fiscal UVE',
         check_company=True,
         compute='_compute_fiscal_position_id', store=True, readonly=False, precompute=True,
         states={'posted': [('readonly', True)], 'cancel': [('readonly', True)]},
