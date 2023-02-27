@@ -4,15 +4,6 @@ from odoo import models, fields, api, _
 from odoo.exceptions import UserError
 from datetime import datetime, date
 from dateutil.relativedelta import relativedelta
-_STATES = [
-    ("draft", "Draft"),
-    ("to_approve", "To be approved"),
-    ("approved", "Approved"),
-    ("rejected", "Rejected"),
-    ("done", "Done"),
-]
-auxlista=list()
-numero=0
 class new_module(models.Model):
     _name = 'new_module.new_module'
     _description = 'new_module.new_module' 
