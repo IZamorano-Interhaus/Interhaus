@@ -88,7 +88,7 @@ class new_module(models.Model):
     )
     trackId = fields.Integer('Id de seguimiento')
     journal_id = fields.Many2one(
-        'account.move', 'Diario'
+        'account.move', 'Diario',default='Vendor Bills',
     )
     analytic_account_id = fields.Many2one(
         'account.analytic.account',
