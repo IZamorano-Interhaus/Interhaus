@@ -150,8 +150,44 @@ class new_module(models.Model):
                 querySelect = cur.fetchall()
                 largoQuery=len(querySelect)
                 print("query despues del ciclo parte 2 => "+str(largoQuery))
+        
+
         conn.commit()
+
         print("script completado")
         conn.close()
+    def obtenerDatosVista(self, container):
+        contenedor = container['records'].filtered(lambda move: move.line_ids)
+        if not contenedor:
+            return
+
+        # /!\ As this method is called in create / write, we can't make the assumption the computed stored fields
+        # are already done. Then, this query MUST NOT depend on computed stored fields.
+        # It happens as the ORM calls create() with the 'no_recompute' statement.
+        self.env['borradores'].flush_model(['debit', 'credit', 'balance', 'currency_id', 'move_id'])
+        self._cr.execute('''
+            select  b.tipodte codigo_documento,
+                    b.tipodtestring tipo_documento,
+                    b.rutCliente rut_tributario, 
+                    b.folio folio_documento,
+                    b.fechaemision date_start,
+                    b.fecharecepcion fecha_factura,
+                    b.razonsocial razon_social,
+                    b.acuserecibo acuseRecibo,
+                    ROUND(SUM(b.montoNeto), currency.decimal_places) montoNeto,
+                    ROUND(SUM(b.montoivarecuperable), currency.decimal_places) Impuesto
+                    b.montototal total,
+                    b.trackid
+              FROM borradores b
+              JOIN account_move move ON move.id = b.id
+              JOIN res_company company ON company.id = move.company_id
+              JOIN res_currency currency ON currency.id = company.currency_id
+             WHERE b.move_id IN %s
+          GROUP BY b.move_id, currency.decimal_places
+            HAVING ROUND(SUM(b.balance), currency.decimal_places) != 0
+        ''', [tuple(contenedor.ids)])
+
+        return self._cr.fetchall()
+
             # return record
         # function to getting over dues
