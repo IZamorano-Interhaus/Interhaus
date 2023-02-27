@@ -60,7 +60,7 @@ class new_module(models.Model):
         copy=False,
         index=True,
     )
-    documento_id = fields.Char(
+    codigo_documento = fields.Char(
         string="Número del documento",
     )
     razon_social = fields.Char(
