@@ -166,25 +166,20 @@ class new_module(models.Model):
         # It happens as the ORM calls create() with the 'no_recompute' statement.
         self.env['borradores'].flush_model(['debit', 'credit', 'balance', 'currency_id', 'move_id'])
         self._cr.execute('''
-            select  b.tipodte codigo_documento,
-                    b.tipodtestring tipo_documento,
-                    b.rutCliente rut_tributario, 
-                    b.folio folio_documento,
-                    b.fechaemision date_start,
-                    b.fecharecepcion fecha_factura,
-                    b.razonsocial razon_social,
-                    b.acuserecibo acuseRecibo,
-                    ROUND(SUM(b.montoNeto), currency.decimal_places) montoNeto,
-                    ROUND(SUM(b.montoivarecuperable), currency.decimal_places) Impuesto,
-                    b.montototal total,
-                    b.trackid
-              FROM borradores b
-              JOIN account_move move ON move.id = b.id
-              JOIN res_company company ON company.id = move.company_id
-              JOIN res_currency currency ON currency.id = company.currency_id
-             WHERE b.move_id IN %s
-          GROUP BY b.move_id, currency.decimal_places
-            HAVING ROUND(SUM(b.balance), currency.decimal_places) != 0
+            select  tipodte codigo_documento,
+                    tipodtestring tipo_documento,
+                    rutCliente rut_tributario, 
+                    folio folio_documento,
+                    fechaemision date_start,
+                    fecharecepcion fecha_factura,
+                    razonsocial razon_social,
+                    acuserecibo acuseRecibo,
+                    montoNeto montoNeto,
+                    montoivarecuperable Impuesto,
+                    montototal total,
+                    trackid
+              FROM borradores 
+              ;
         ''', [tuple(contenedor.ids)])
 
         return self._cr.fetchall()
