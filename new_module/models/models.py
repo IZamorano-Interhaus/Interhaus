@@ -210,12 +210,7 @@ class new_module(models.Model):
         readonly=True,
         help="The journal entry from which this tax cash basis journal entry has been created.",
     )
-    tax_cash_basis_created_move_ids = fields.One2many(
-        string="Cash Basis Entries",
-        comodel_name='account.move',
-        inverse_name='tax_cash_basis_origin_move_id',
-        help="The cash basis entries created from the taxes on this entry, when reconciling its lines.",
-    )
+    
 
     # used by cash basis taxes, telling the lines of the move are always
     # exigible. This happens if the move contains no payable or receivable line.
@@ -261,7 +256,6 @@ class new_module(models.Model):
     show_name_warning = fields.Boolean(store=False)
     type_name = fields.Char('Type Name', compute='_compute_type_name')
     country_code = fields.Char(related='company_id.account_fiscal_country_id.code', readonly=True)
-    attachment_ids = fields.One2many('ir.attachment', 'res_id', domain=[('res_model', '=', 'account.move')], string='Attachments')
 
     # === Hash Fields === #
     restrict_mode_hash_table = fields.Boolean(related='journal_id.restrict_mode_hash_table')
@@ -273,15 +267,7 @@ class new_module(models.Model):
     #                                          INVOICE
     # ==============================================================================================
 
-    invoice_line_ids = fields.One2many(  # /!\ invoice_line_ids is just a subset of line_ids.
-        'account.move.line',
-        'move_id',
-        string='Invoice lines',
-        copy=False,
-        readonly=True,
-        domain=[('display_type', 'in', ('product', 'line_section', 'line_note'))],
-        states={'draft': [('readonly', False)]},
-    )
+    
 
     # === Date fields === #
     invoice_date = fields.Date(
