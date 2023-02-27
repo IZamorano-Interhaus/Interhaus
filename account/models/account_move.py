@@ -75,15 +75,15 @@ class AccountMove(models.Model):
 
     # === Accounting fields === #
     name = fields.Char(
-        string='Number',
+        string='Numero o nombre, no se que es',
         compute='_compute_name', readonly=False, store=True,
         copy=False,
         tracking=True,
         index='trigram',
     )
-    ref = fields.Char(string='Reference', copy=False, tracking=True)
+    ref = fields.Char(string='Referencia', copy=False, tracking=True)
     date = fields.Date(
-        string='Date',
+        string='Fecha de emision',
         index=True,
         compute='_compute_date', store=True, required=True, readonly=False, precompute=True,
         states={'posted': [('readonly', True)], 'cancel': [('readonly', True)]},
@@ -96,7 +96,7 @@ class AccountMove(models.Model):
             ('posted', 'Posted'),
             ('cancel', 'Cancelled'),
         ],
-        string='Status',
+        string='Estado',
         required=True,
         readonly=True,
         copy=False,
@@ -113,7 +113,7 @@ class AccountMove(models.Model):
             ('out_receipt', 'Sales Receipt'),
             ('in_receipt', 'Purchase Receipt'),
         ],
-        string='Type',
+        string='Tipazo',
         required=True,
         readonly=True,
         tracking=True,
@@ -127,7 +127,7 @@ class AccountMove(models.Model):
     )
     journal_id = fields.Many2one(
         'account.journal',
-        string='Journal',
+        string='Diario contable',
         compute='_compute_journal_id', store=True, readonly=False, precompute=True,
         required=True,
         states={'draft': [('readonly', False)]},
@@ -136,14 +136,14 @@ class AccountMove(models.Model):
     )
     company_id = fields.Many2one(
         comodel_name='res.company',
-        string='Company',
+        string='Compañia',
         compute='_compute_company_id', inverse='_inverse_company_id', store=True, readonly=False, precompute=True,
         index=True,
     )
     line_ids = fields.One2many(
         'account.move.line',
         'move_id',
-        string='Journal Items',
+        string='Items de diarios',
         copy=True,
         readonly=True,
         states={'draft': [('readonly', False)]},
@@ -152,7 +152,7 @@ class AccountMove(models.Model):
     # === Payment fields === #
     payment_id = fields.Many2one(
         comodel_name='account.payment',
-        string="Payment",
+        string="Pago genialo",
         index='btree_not_null',
         copy=False,
         check_company=True,
@@ -161,7 +161,7 @@ class AccountMove(models.Model):
     # === Statement fields === #
     statement_line_id = fields.Many2one(
         comodel_name='account.bank.statement.line',
-        string="Statement Line",
+        string="Linea de tu testamento",
         copy=False,
         check_company=True,
     )
@@ -194,7 +194,7 @@ class AccountMove(models.Model):
 
     # === Misc fields === #
     auto_post = fields.Selection(
-        string='Auto-post',
+        string='Auto-posteo',
         selection=[
             ('no', 'No'),
             ('at_date', 'At Date'),
