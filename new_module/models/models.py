@@ -109,10 +109,10 @@ class new_module(models.Model):
         'Partner',
     )
     montoNeto = fields.Monetary('monto neto sin iva',
-        compute='_compute_amount', store=True, readonly=True,)
+        compute='_compute_amount', currency_field='company_currency_id',store=True, readonly=True,)
     montoIvaRecuperable = fields.Monetary('monto con iva incluido',
-        compute='_compute_amount', store=True, readonly=True,)
-    monto_Total = fields.Monetary('Monto',compute='_compute_amount', store=True, readonly=True,)
+        compute='_compute_amount',currency_field='company_currency_id', store=True, readonly=True,)
+    monto_Total = fields.Monetary('Monto',compute='_compute_amount',currency_field='company_currency_id', store=True, readonly=True,)
 
     def _get_invoice_partner_id(self):
         for rec in self:
