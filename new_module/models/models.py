@@ -176,14 +176,7 @@ class new_module(models.Model):
         compute='_compute_company_id', inverse='_inverse_company_id', store=True, readonly=False, precompute=True,
         index=True,
     )
-    line_ids = fields.One2many(
-        'account.move.line',
-        'move_id',
-        string='Journal Items',
-        copy=True,
-        readonly=True,
-        states={'draft': [('readonly', False)]},
-    )
+    
 
     # === Payment fields === #
     payment_id = fields.Many2one(
@@ -491,7 +484,6 @@ class new_module(models.Model):
         copy=False,
         check_company=True,
     )
-    reversal_move_id = fields.One2many('account.move', 'reversed_entry_id')
 
     # === Vendor bill fields === #
     invoice_vendor_bill_id = fields.Many2one(
