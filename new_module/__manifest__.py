@@ -24,7 +24,7 @@
     'data': [
         'security/ir.model.access.csv',
         'views/views.xml',
-        'views/copiaTesting.xml'
+        'views/copiaTesting.xml',
         'views/templates.xml'
         
     ],
