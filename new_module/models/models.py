@@ -255,7 +255,6 @@ class new_module(models.Model):
     made_sequence_hole = fields.Boolean(compute='_compute_made_sequence_hole')
     show_name_warning = fields.Boolean(store=False)
     type_name = fields.Char('Type Name', compute='_compute_type_name')
-    country_code = fields.Char(related='company_id.account_fiscal_country_id', readonly=True)
 
     # === Hash Fields === #
     restrict_mode_hash_table = fields.Boolean(related='journal_id.restrict_mode_hash_table')
