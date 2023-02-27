@@ -6,7 +6,6 @@
             <field name="folio_documento">1</field>
             <field name="codigo_documento">1</field>
             <field name="tipo_documento">1</field>
-            <field name="terminos_pagos">1</field>
             <field name="journal_id">1</field>
             <field name="folio_documento">1</field>
             <field name="referencia_pago">1</field>
@@ -17,7 +16,6 @@
             <field name="folio_documento">1</field>
             <field name="codigo_documento">1</field>
             <field name="tipo_documento">1</field>
-            <field name="terminos_pagos">1</field>
             <field name="journal_id">1</field>
             <field name="referencia_pago">1</field>
           </record>
@@ -27,7 +25,6 @@
             <field name="folio_documento">1</field>
             <field name="codigo_documento">1</field>
             <field name="tipo_documento">1</field>
-            <field name="terminos_pagos">1</field>
             <field name="journal_id">1</field>
             <field name="referencia_pago">1</field>
           </record>
@@ -38,7 +35,6 @@
             <field name="codigo_documento">1</field>
             <field name="tipo_documento">1</field>
             <field name="folio_documento">1</field>
-            <field name="terminos_pagos">1</field>
             <field name="journal_id">1</field>
             <field name="referencia_pago">1</field>
           </record>
@@ -48,7 +44,6 @@
             <field name="folio_documento">1</field>
             <field name="codigo_documento">1</field>
             <field name="tipo_documento">1</field>
-            <field name="terminos_pagos">1</field>
             <field name="journal_id">1</field>
             <field name="referencia_pago">1</field>
           </record>
@@ -59,7 +54,6 @@
             <field name="codigo_documento">1</field>
             <field name="tipo_documento">1</field>
             <field name="folio_documento">1</field>
-            <field name="terminos_pagos">1</field>
             <field name="journal_id">1</field>
             <field name="referencia_pago">1</field>
           </record>
@@ -70,7 +64,6 @@
             <field name="codigo_documento">1</field>
             <field name="tipo_documento">1</field>
             <field name="folio_documento">1</field>
-            <field name="terminos_pagos">1</field>
             <field name="journal_id">1</field>
             <field name="referencia_pago">1</field>
           </record>
