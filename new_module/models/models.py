@@ -667,3 +667,8 @@ class AccountMove(models.Model):
         conn.close()
             # return record
         # function to getting over dues
+    # EXTENDS portal portal.mixin
+    def _compute_access_url(self):
+        super()._compute_access_url()
+        for move in self.filtered(lambda move: move.is_invoice()):
+            move.access_url = '/my/invoices/%s' % (move.id)
