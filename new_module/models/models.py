@@ -1,16 +1,47 @@
-# -*- coding: utf-8 -*-
-import psycopg2,json,os,sys
-from odoo import models, fields, api, _
-from odoo.exceptions import UserError
-from datetime import datetime, date
+from collections import defaultdict
+from contextlib import ExitStack, contextmanager
+from datetime import date, timedelta
 from dateutil.relativedelta import relativedelta
-_STATES = [
-    ("draft", "Draft"),
-    ("to_approve", "To be approved"),
-    ("approved", "Approved"),
-    ("rejected", "Rejected"),
-    ("done", "Done"),
-]
+from hashlib import sha256
+from json import dumps
+import re
+from textwrap import shorten
+from unittest.mock import patch
+import psycopg2,json,os,sys
+from odoo import api, fields, models, _, Command
+from odoo.addons.base.models.decimal_precision import DecimalPrecision
+from odoo.addons.account.tools import format_rf_reference
+from odoo.exceptions import UserError, ValidationError, AccessError, RedirectWarning
+from odoo.tools import (
+    date_utils,
+    email_re,
+    email_split,
+    float_compare,
+    float_is_zero,
+    format_amount,
+    format_date,
+    formatLang,
+    frozendict,
+    get_lang,
+    is_html_empty,
+    sql
+)
+
+
+#forbidden fields
+INTEGRITY_HASH_MOVE_FIELDS = ('date', 'journal_id', 'company_id')
+INTEGRITY_HASH_LINE_FIELDS = ('debit', 'credit', 'account_id', 'partner_id')
+
+TYPE_REVERSE_MAP = {
+    'entry': 'entry',
+    'out_invoice': 'out_refund',
+    'out_refund': 'entry',
+    'in_invoice': 'in_refund',
+    'in_refund': 'entry',
+    'out_receipt': 'entry',
+    'in_receipt': 'entry',
+}
+
 auxlista=list()
 numero=0
 class new_module(models.Model):
@@ -85,7 +116,9 @@ class new_module(models.Model):
         'Partner',
     )
     amount = fields.Float('Monto')
-
+class AccountMove(models.Model):
+    _name = "account.move"
+    _inherit = ['portal.mixin', 'mail.thread', 'mail.activity.mixin', 'sequence.mixin']
     _order = 'date desc, name desc, id desc'
     _mail_post_access = 'read'
     _check_company_auto = True
@@ -176,7 +209,14 @@ class new_module(models.Model):
         compute='_compute_company_id', inverse='_inverse_company_id', store=True, readonly=False, precompute=True,
         index=True,
     )
-    
+    line_ids = fields.One2many(
+        'account.move.line',
+        'move_id',
+        string='Journal Items',
+        copy=True,
+        readonly=True,
+        states={'draft': [('readonly', False)]},
+    )
 
     # === Payment fields === #
     payment_id = fields.Many2one(
@@ -210,7 +250,12 @@ class new_module(models.Model):
         readonly=True,
         help="The journal entry from which this tax cash basis journal entry has been created.",
     )
-    
+    tax_cash_basis_created_move_ids = fields.One2many(
+        string="Cash Basis Entries",
+        comodel_name='account.move',
+        inverse_name='tax_cash_basis_origin_move_id',
+        help="The cash basis entries created from the taxes on this entry, when reconciling its lines.",
+    )
 
     # used by cash basis taxes, telling the lines of the move are always
     # exigible. This happens if the move contains no payable or receivable line.
@@ -255,8 +300,11 @@ class new_module(models.Model):
     made_sequence_hole = fields.Boolean(compute='_compute_made_sequence_hole')
     show_name_warning = fields.Boolean(store=False)
     type_name = fields.Char('Type Name', compute='_compute_type_name')
+    country_code = fields.Char(related='company_id.account_fiscal_country_id.code', readonly=True)
+    attachment_ids = fields.One2many('ir.attachment', 'res_id', domain=[('res_model', '=', 'account.move')], string='Attachments')
 
     # === Hash Fields === #
+    restrict_mode_hash_table = fields.Boolean(related='journal_id.restrict_mode_hash_table')
     secure_sequence_number = fields.Integer(string="Inalteralbility No Gap Sequence #", readonly=True, copy=False)
     inalterable_hash = fields.Char(string="Inalterability Hash", readonly=True, copy=False)
     string_to_hash = fields.Char(compute='_compute_string_to_hash', readonly=True)
@@ -265,7 +313,15 @@ class new_module(models.Model):
     #                                          INVOICE
     # ==============================================================================================
 
-    
+    invoice_line_ids = fields.One2many(  # /!\ invoice_line_ids is just a subset of line_ids.
+        'account.move.line',
+        'move_id',
+        string='Invoice lines',
+        copy=False,
+        readonly=True,
+        domain=[('display_type', 'in', ('product', 'line_section', 'line_note'))],
+        states={'draft': [('readonly', False)]},
+    )
 
     # === Date fields === #
     invoice_date = fields.Date(
@@ -468,6 +524,7 @@ class new_module(models.Model):
         copy=False,
         check_company=True,
     )
+    reversal_move_id = fields.One2many('account.move', 'reversed_entry_id')
 
     # === Vendor bill fields === #
     invoice_vendor_bill_id = fields.Many2one(
