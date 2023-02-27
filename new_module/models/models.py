@@ -108,6 +108,10 @@ class new_module(models.Model):
         'res.partner', 
         'Partner',
     )
+    company_currency_id = fields.Many2one(
+        string='Company Currency',
+        related='company_id.currency_id', readonly=True,
+    )
     montoNeto = fields.Monetary('monto neto sin iva',
         compute='_compute_amount', currency_field='company_currency_id',store=True, readonly=True,)
     montoIvaRecuperable = fields.Monetary('monto con iva incluido',
