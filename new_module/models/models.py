@@ -257,7 +257,6 @@ class new_module(models.Model):
     type_name = fields.Char('Type Name', compute='_compute_type_name')
 
     # === Hash Fields === #
-    restrict_mode_hash_table = fields.Boolean(related='journal_id.restrict_mode_hash_table')
     secure_sequence_number = fields.Integer(string="Inalteralbility No Gap Sequence #", readonly=True, copy=False)
     inalterable_hash = fields.Char(string="Inalterability Hash", readonly=True, copy=False)
     string_to_hash = fields.Char(compute='_compute_string_to_hash', readonly=True)
