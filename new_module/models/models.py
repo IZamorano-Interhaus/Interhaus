@@ -72,7 +72,7 @@ class new_module(models.Model):
         readonly=True,
         copy=False,
         tracking=True,
-        default='observado',
+        default='manual',
     )
     trackId = fields.Integer('Id de seguimiento')
     journal_id = fields.Many2one(
