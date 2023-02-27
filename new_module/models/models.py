@@ -63,6 +63,30 @@ class new_module(models.Model):
     documento_id = fields.Char(
         string="Número del documento",
     )
+    razon_social = fields.Char(
+        string="nombre de la empresa que emite factura o la razon social",
+    )
+    acuseRecibo = fields.selection(
+        selection=[
+            ('observado', 'Observado'),
+            ('aceptado','Aceptado'),
+            ('ley 19983', 'Recibido ley 19983'),
+            ('sin acuse','Sin acuse'),
+            ('documento no recibido','Documento no recibido'),
+            ('rechazado', 'Rechazado'),
+            ('no recibido/aceptado','No recibido / Aceptado'),
+            ('no recibido/observado','No recibido / Observado'),
+            ('no recibido/ley19983','No recibido / ley 19983'),
+            ('no recibido/rechazado','No recibido / Rechazado'),
+        ],
+        string='Status',
+        required=True,
+        readonly=True,
+        copy=False,
+        tracking=True,
+        default='draft',
+    )
+    trackId = fields.Integer('Id de seguimiento')
     journal_id = fields.Many2one(
         'account.move', 'Diario'
     )
@@ -84,7 +108,10 @@ class new_module(models.Model):
         'res.partner', 
         'Partner',
     )
-    amount = fields.Float('Monto')
+    montoNeto = fields.Integer('monto neto sin iva')
+    montoIvaRecuperable = fields.Float('monto con iva incluido')
+    monto_Total = fields.Float('Monto')
+
     def _get_invoice_partner_id(self):
         for rec in self:
             rec.invoice_partner_id = rec.partner_id.address_get(

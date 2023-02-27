@@ -9,14 +9,19 @@
       
         <tree>
           <field name = "partner_id"/>
+          <field name = "codigo_documento"/>
+          <field name = "tipo_documento"/>
           <field name = "rut_tributario"/>
           <field name = "folio_documento"/>
-          <field name = "tipo_documento"/>
-          <field name = "documento_id"/>
+          <field name = "date_start"/>
           <field name = "fecha_factura"/>
-          <field name = "terminos_pagos"/>
+          <field name = "razon_social"/>
+          <field name = "acuseRecibo"/>
+          <field name = "montoNeto"/>
+          <field name = "montoIvaRecuperable"/>
+          <field name = "monto_Total"/>
           <field name = "journal_id"/>
-          <field name = "partner_id"/>
+          <field name = "trackId"/>
         </tree>
       </field>
     </record>
