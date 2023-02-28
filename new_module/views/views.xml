@@ -2,7 +2,7 @@
 <!-- Copyright 2018-2019 ForgeFlow, S.L.
      License LGPL-3.0 or later (https://www.gnu.org/licenses/lgpl-3.0) -->
 <odoo>
-  <data>
+  
     <!-- explicit list view definition -->
     <record model="ir.ui.view" id="new_module.list">
       <field name="name">new_module list</field>
@@ -293,5 +293,4 @@
     <menuitem name="Ajustes (proximamente)" id="new_module" parent="new_module.menu_2"
               action="new_module.action_server"/>
 
-  </data>
 </odoo>
