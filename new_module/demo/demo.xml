@@ -63,9 +63,17 @@
             <field name="referencia_pago">1</field>
             <field name="trackId">98234156</field>
           </record>
-          <record id="base.user_admin" model="res.users">
-        <field eval="[(4, ref('group_purchase_request_manager'))]" name="groups_id" />
-    </record>
+          <record id="object6" model="new_module.new_module">
+            <field name="partner_id">6</field>
+            <field name="rut_tributario">19669468-4</field>
+            <field name="folio_documento">1</field>
+            <field name="codigo_documento">1</field>
+            <field name="tipo_documento">1</field>
+            <field name="folio_documento">1</field>
+            <field name="journal_id">1</field>
+            <field name="referencia_pago">1</field>
+            <field name="trackId">98234156</field>
+          </record>
 
     </data>
 </odoo>
