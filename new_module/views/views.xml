@@ -1,3 +1,4 @@
+<?xml version="1.0" encoding="utf-8"?>
 <odoo>
   <data>
     <!-- explicit list view definition -->
@@ -30,7 +31,9 @@
       <field name="model">new_module.new_module</field>
       <field name="arch" type="xml">
         <form string="Form view name">
-          
+          <header>
+           <button type="object" name="funcion" string="cargar Datos"/>
+          </header>
           <sheet>
             <group>
               <field name = "partner_id"/>
