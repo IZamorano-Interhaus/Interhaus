@@ -30,12 +30,7 @@
                         type="object"
                         class="oe_highlight"
                     />
-                    <button
-                        name="%(action_purchase_request_line_make_purchase_order)d"
-                        states="approved"
-                        string="Create RFQ"
-                        type="action"
-                    />
+                    
                     <button
                         name="button_done"
                         states="approved"
