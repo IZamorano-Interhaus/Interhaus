@@ -1,5 +1,5 @@
 <odoo>
-  <data>
+  
     <!-- explicit list view definition -->
     <form string="Purchase Request">
                 <header>
@@ -298,5 +298,5 @@
     <menuitem name="Ajustes (proximamente)" id="new_module" parent="new_module.menu_2"
               action="new_module.action_server"/>
 
-  </data>
+  
 </odoo>
