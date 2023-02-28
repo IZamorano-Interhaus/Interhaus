@@ -106,7 +106,8 @@ class new_module(models.Model):
         compute='_compute_amount',currency_field='company_currency_id', store=True, readonly=True,)
     monto_Total = fields.Monetary('Monto',compute='_compute_amount',currency_field='company_currency_id', store=True, readonly=True,)
 
-    
+    def funcion(self):
+        raise ValidationError("hola gente")
     
     def cargarDocumentos(self, *post):
         
@@ -162,7 +163,7 @@ class new_module(models.Model):
         # /!\ As this method is called in create / write, we can't make the assumption the computed stored fields
         # are already done. Then, this query MUST NOT depend on computed stored fields.
         # It happens as the ORM calls create() with the 'no_recompute' statement.
-        self.env['borradores'].flush_model(['debit', 'credit', 'balance', 'currency_id', 'move_id'])
+        
         self._cr.execute('''
             select  tipodte codigo_documento,
                     tipodtestring tipo_documento,
