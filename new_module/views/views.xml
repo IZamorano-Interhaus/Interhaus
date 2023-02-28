@@ -1,7 +1,7 @@
 <odoo>
   
     <!-- explicit list view definition -->
-                <header>
+                
                     <button
                         name="button_draft"
                         states="to_approve,approved,rejected,done"
@@ -51,7 +51,7 @@
                         statusbar_visible="draft,to_approve,approved,done,rejected"
                         statusbar_colors='{"approved":"blue"}'
                     />
-                </header>
+                
                 <sheet>
                     <div class="oe_button_box" name="button_box">
                         <button
