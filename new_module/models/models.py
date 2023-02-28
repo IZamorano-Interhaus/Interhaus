@@ -100,6 +100,12 @@ class new_module(models.Model):
         string='Company Currency',
         related='company_id.currency_id', readonly=True,
     )
+    assigned_to = fields.Many2one(
+        comodel_name="res.users",
+        string="Approver",
+        tracking=True,
+        index=True,
+    )
     montoNeto = fields.Monetary('monto neto sin iva',
         compute='_compute_amount', currency_field='company_currency_id',store=True, readonly=True,)
     montoIvaRecuperable = fields.Monetary('monto con iva incluido',

@@ -1,60 +1,17 @@
-<?xml version="1.0" ?>
-<!-- Copyright 2018-2019 ForgeFlow, S.L.
-     License LGPL-3.0 or later (https://www.gnu.org/licenses/lgpl-3.0) -->
 <odoo>
-  
+  <data>
     <!-- explicit list view definition -->
     <record model="ir.ui.view" id="new_module.list">
       <field name="name">new_module list</field>
       <field name="model">new_module.new_module</field>
       <field name="arch" type="xml">
-    <form string="el señor de los patos">
-                <header>
-                    <button
-                        name="button_draft"
-                        states="to_approve,approved,rejected,done"
-                        string="Reset"
-                        type="object"
-                    />
-                    <button
-                        name="button_to_approve"
-                        states="draft"
-                        string="Request approval"
-                        type="object"
-                        class="oe_highlight"
-                    />
-                    <button
-                        name="button_approved"
-                        states="to_approve"
-                        string="Approve"
-                        type="object"
-                        class="oe_highlight"
-                    />
-                    
-                    <button
-                        name="button_done"
-                        states="approved"
-                        string="Done"
-                        type="object"
-                        class="oe_highlight"
-                    />
-                    <button
-                        name="button_rejected"
-                        states="to_approve,approved"
-                        string="Reject"
-                        type="object"
-                    />
-                    <field
-                        name="state"
-                        widget="statusbar"
-                        statusbar_visible="draft,to_approve,approved,done,rejected"
-                        statusbar_colors='{"approved":"blue"}'
-                    />
-                </header>
-                
-            </form>
-    
-        
+      <button
+        name="boton_Carga"
+        states="load,loading,done"
+        string="Reset"
+        type="object"
+      />
+
         <tree>
           <field name = "partner_id"/>
           <field name = "codigo_documento"/>
@@ -117,4 +74,5 @@
     <menuitem name="Ajustes (proximamente)" id="new_module" parent="new_module.menu_2"
               action="new_module.action_server"/>
 
+  </data>
 </odoo>
