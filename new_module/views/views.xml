@@ -25,8 +25,34 @@
         </tree>
       </field>
     </record>
+    <record model="ir.ui.view" id="new_module.list">
+      <field name="name">new_module list</field>
+      <field name="model">new_module.new_module</field>
+      <field name="arch" type="xml">
+        <form string="Form view name">
+          <button type="object" name="funcion" string="cargar Datos"/>
+          <sheet>
+            <group>
+              <field name = "partner_id"/>
+              <field name = "codigo_documento"/>
+              <field name = "tipo_documento"/>
+              <field name = "rut_tributario"/>
+              <field name = "folio_documento"/>
+              <field name = "date_start"/>
+              <field name = "fecha_factura"/>
+              <field name = "razon_social"/>
+              <field name = "acuseRecibo"/>
+              <field name = "montoNeto"/>
+              <field name = "montoIvaRecuperable"/>
+              <field name = "monto_Total"/>
+              <field name = "journal_id"/>
+              <field name = "trackId"/>
+            </group>
+          </sheet>
+        </form>
+      </field>
+    </record>
     
-
     <!-- actions opening views on models -->
 
     <record model="ir.actions.act_window" id="new_module.action_window">
