@@ -5,6 +5,7 @@
       <field name="name">new_module list</field>
       <field name="model">new_module.new_module</field>
       <field name="arch" type="xml">
+      
         <tree>
           <field name = "partner_id"/>
           <field name = "codigo_documento"/>
@@ -24,6 +25,7 @@
       </field>
     </record>
     
+
     <!-- actions opening views on models -->
 
     <record model="ir.actions.act_window" id="new_module.action_window">
@@ -47,9 +49,6 @@
           "res_model": model._name,
         }
       </field>
-      <header>
-        <button type="object"  string="btn_loadDocumento"/>
-      </header>
     </record>
 
 
