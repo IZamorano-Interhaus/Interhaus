@@ -106,13 +106,10 @@ class new_module(models.Model):
         compute='_compute_amount',currency_field='company_currency_id', store=True, readonly=True,)
     monto_Total = fields.Monetary('Monto',compute='_compute_amount',currency_field='company_currency_id', store=True, readonly=True,)
 
-    def _get_invoice_partner_id(self):
-        for rec in self:
-            rec.invoice_partner_id = rec.partner_id.address_get(
-                adr_pref=['invoice']).get('invoice', rec.partner_id.id)
-    @api.model
+    
+    
     def cargarDocumentos(self, *post):
-        raise ValidationError("Hola mundo")
+        
         os.system('cls')
         listaRut=[]
         conn = psycopg2.connect(database="testing", user = "postgres", password = "admin", host = "localhost", port = "5432")
