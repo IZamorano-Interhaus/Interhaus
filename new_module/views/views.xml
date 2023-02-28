@@ -33,9 +33,7 @@
       <field name="name">Agregar nuevo dato</field>
       <field name="res_model">new_module.new_module</field>
       <field name="view_mode">tree,form</field>
-      <header>
-        <button type="object"  string="btn_loadDocumento"/>
-      </header>
+      
     </record>
 
 
@@ -52,6 +50,9 @@
           "res_model": model._name,
         }
       </field>
+      <header>
+        <button type="object"  string="btn_loadDocumento"/>
+      </header>
     </record>
 
 
