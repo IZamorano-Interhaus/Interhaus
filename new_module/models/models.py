@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 import psycopg2,json,os,sys
 from odoo import models, fields, api, _
-from odoo.exceptions import UserError
+from odoo.exceptions import ValidationError,UserError
 from datetime import datetime, date
 from dateutil.relativedelta import relativedelta
 class new_module(models.Model):
@@ -112,6 +112,7 @@ class new_module(models.Model):
                 adr_pref=['invoice']).get('invoice', rec.partner_id.id)
     @api.model
     def cargarDocumentos(self, *post):
+        raise ValidationError("Hola mundo")
         os.system('cls')
         listaRut=[]
         conn = psycopg2.connect(database="testing", user = "postgres", password = "admin", host = "localhost", port = "5432")
