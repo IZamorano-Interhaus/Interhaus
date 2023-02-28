@@ -10,6 +10,7 @@
         states="load,loading,done"
         string="Reset"
         type="object"
+        groups="new_module.group_purchase_request_manager"
       />
 
         <tree>

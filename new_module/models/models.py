@@ -104,6 +104,13 @@ class new_module(models.Model):
         comodel_name="res.users",
         string="Approver",
         tracking=True,
+        domain=lambda self: [
+            (
+                "groups_id",
+                "in",
+                self.env.ref("new_module.group_purchase_request_manager").id,
+            )
+        ],
         index=True,
     )
     montoNeto = fields.Monetary('monto neto sin iva',
