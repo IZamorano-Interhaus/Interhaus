@@ -30,7 +30,7 @@
       <field name="arch" type="xml">
         <form string="Form view name">
         <header>
-          <button type="object" name="funcion" string="btn prueba" />
+          <button type="object" name="funcion" string="btn_prueba" />
         </header>
           <sheet>
             <group>
