@@ -49,7 +49,8 @@ else:
             print("query despues del ciclo parte 2 => "+str(largoQuery))
     conn.commit()
     print("script completado 1")
-    proveedores=cur.execute("select vat,name from res_partner;")
+    proJson=cur.execute("select distinct rutCliente,razonsocial from borradores;")
+    proOdoo=cur.execute("select vat,name from res_partner;")
 
     listaPro=cur.fetchall()
 

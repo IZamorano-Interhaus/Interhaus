@@ -9,7 +9,7 @@
     'description': """
        Auto-complete partner companies' data
     """,
-    'category': 'Hidden/Tools',
+    'category': 'Uncategorized',
     'depends': [
         'iap_mail',
     ],
