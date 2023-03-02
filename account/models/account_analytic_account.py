@@ -7,7 +7,7 @@ class AccountAnalyticAccount(models.Model):
     _inherit = 'account.analytic.account'
 
     invoice_count = fields.Integer(
-        "Invoice Count",
+        "EN VOCES Count",
         compute='_compute_invoice_count',
     )
     vendor_bill_count = fields.Integer(
