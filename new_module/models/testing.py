@@ -91,3 +91,12 @@ class TestModel(models.Model):
         ('running', 'Running')],
         default='draft', string='estado'
     )
+    company_currency_id = fields.Many2one(
+        string='Company Currency',
+        related='company_id.currency_id', readonly=True,
+    )
+    montoNeto = fields.Monetary('monto neto sin iva',
+        compute='_compute_amount', currency_field='company_currency_id',store=True, readonly=True,)
+    montoIvaRecuperable = fields.Monetary('monto con iva incluido',
+        compute='_compute_amount',currency_field='company_currency_id', store=True, readonly=True,)
+    monto_Total = fields.Monetary('Monto',compute='_compute_amount',currency_field='company_currency_id', store=True, readonly=True,)
