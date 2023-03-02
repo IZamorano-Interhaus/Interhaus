@@ -124,5 +124,4 @@ class ResCompany(models.Model):
         company_domain = tools.url_domain_extract(self.website) if self.website else False
         if not company_domain or company_domain in ['localhost', 'example.com']:
             return False
-
         return company_domain
