@@ -1,0 +1,206 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<EnvioDTE version="1.0" xmlns="http://www.sii.cl/SiiDte" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.sii.cl/SiiDte EnvioDTE_v10.xsd">
+	<SetDTE ID="ID5d004cf9aa3241328eeb642ddffd8276">
+		<Caratula version="1.0">
+			<RutEmisor>76115594-6</RutEmisor>
+			<RutEnvia>07140604-0</RutEnvia>
+			<RutReceptor>78251940-9</RutReceptor>
+			<FchResol>2014-08-22</FchResol>
+			<NroResol>80</NroResol>
+			<TmstFirmaEnv>2023-02-27T15:58:08</TmstFirmaEnv>			
+		<SubTotDTE><TpoDTE>33</TpoDTE><NroDTE>1</NroDTE></SubTotDTE></Caratula>
+	<DTE version="1.0">
+			<Documento ID="T33F1857">
+				<Encabezado>
+					<IdDoc>
+						<TipoDTE>33</TipoDTE>
+						<Folio>1857</Folio>
+						<FchEmis>2023-02-27</FchEmis>
+						<TpoTranVenta>1</TpoTranVenta>
+						<FmaPago>1</FmaPago>
+
+						<FchVenc>2023-02-27</FchVenc>
+					</IdDoc>
+					<Emisor>
+						<RUTEmisor>76115594-6</RUTEmisor>
+						<RznSoc>Distribuidora y Comercializadora de Mobiliario Neofloor Limitada</RznSoc>
+						<GiroEmis>C-Vta. Importación y Exportación, Almac. Distrib. Cortinas, Sillas, Alfombras y </GiroEmis>
+						<Acteco>513910</Acteco>
+						<Acteco>519000</Acteco>
+						<Sucursal>LOCAL</Sucursal>
+						<DirOrigen>LOCAL</DirOrigen>
+						<CmnaOrigen>Providencia</CmnaOrigen>
+						<CiudadOrigen>Santiago</CiudadOrigen>
+						<CdgVendedor>ADM</CdgVendedor>
+					</Emisor>
+					<Receptor>
+						<RUTRecep>78251940-9</RUTRecep>
+						<CdgIntRecep>78.251.940-9</CdgIntRecep>
+						<RznSocRecep>CONSTRUCTORA INTERHAUS LTDA</RznSocRecep>
+						<GiroRecep>CONSTRUCTORA</GiroRecep>
+						<DirRecep>SEPTIMO DE LINEA 1260</DirRecep>
+						<CmnaRecep>PROVIDENCIA</CmnaRecep>
+						<CiudadRecep>SANTIAGO</CiudadRecep>
+						<DirPostal>SEPTIMO DE LINEA 1260</DirPostal>
+						<CmnaPostal>PROVIDENCIA</CmnaPostal>
+						<CiudadPostal>SANTIAGO</CiudadPostal>
+					</Receptor>
+					<Transporte>
+					</Transporte>
+
+					<Totales>
+						<MntNeto>50000000</MntNeto>
+						<TasaIVA>19.00</TasaIVA>
+						<IVA>9500000</IVA>
+						<MntTotal>59500000</MntTotal>
+					</Totales>
+				</Encabezado>
+				<Detalle>
+					<NroLinDet>1</NroLinDet>
+					<CdgItem>
+						<TpoCodigo>INT1</TpoCodigo>
+						<VlrCodigo>0100200003</VlrCodigo>
+					</CdgItem>
+					<NmbItem>ESPECIALES U OTROS</NmbItem>
+					<DscItem>Proyecto Mobiliario de Linea</DscItem>
+					<QtyItem>1.000000</QtyItem>
+					<UnmdItem>Unid</UnmdItem>
+					<PrcItem>50000000.000000</PrcItem>
+					<MontoItem>50000000</MontoItem>
+				</Detalle>
+				<Referencia>
+					<NroLinRef>1</NroLinRef>
+					<TpoDocRef>801</TpoDocRef>
+					<FolioRef>34245</FolioRef>
+					<FchRef>2023-01-27</FchRef>
+				</Referencia>
+				<TED version="1.0"><DD><RE>76115594-6</RE><TD>33</TD><F>1857</F><FE>2023-02-27</FE><RR>78251940-9</RR><RSR>CONSTRUCTORA INTERHAUS LTDA</RSR><MNT>59500000</MNT><IT1>ESPECIALES U OTROS</IT1><CAF version="1.0">
+<DA>
+<RE>76115594-6</RE>
+<RS>DISTRIBUIDORA Y COMERCIALIZADORA DE MOBI</RS>
+<TD>33</TD>
+<RNG><D>1849</D><H>1863</H></RNG>
+<FA>2022-10-26</FA>
+<RSAPK><M>2aZkoL9dtQ4Y4bkI7daelLaogBcIpm+k9WPNTw7YgWoQvocopSp+ugUvkvwGntCFfEII5gkDB6LrLLWlBpNZBw==</M><E>Aw==</E></RSAPK>
+<IDK>300</IDK>
+</DA>
+<FRMA algoritmo="SHA1withRSA">hf3lFGjofSt9JTeovst7qqBBnEwKkwPaZu+7TeMk/X/uSJKRJxiYYM96G/4IHpnqJUfKKU2qTMI7/QHmNtlimQ==</FRMA>
+</CAF><TSTED>2023-02-27T15:35:24</TSTED></DD><FRMT algoritmo="SHA1withRSA">qIT7xRUExXJoppvzx80oz/uxAE+1fPGYGRbKC3uegah92hqYB2FhCDREhKgycUmhijBvREyHMMU0IheDePMhLw==</FRMT></TED>
+				<TmstFirma>2023-02-27T15:35:24</TmstFirma>
+			</Documento><Signature xmlns="http://www.w3.org/2000/09/xmldsig#"><SignedInfo><CanonicalizationMethod Algorithm="http://www.w3.org/TR/2001/REC-xml-c14n-20010315" /><SignatureMethod Algorithm="http://www.w3.org/2000/09/xmldsig#rsa-sha1" /><Reference URI="#T33F1857"><Transforms><Transform Algorithm="http://www.w3.org/TR/2001/REC-xml-c14n-20010315" /></Transforms><DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" /><DigestValue>TOCg9MaTIhJGVGSfD1a0mRHwm/8=</DigestValue></Reference></SignedInfo><SignatureValue>
+FrfkR7iOJpPH36o3iK5UJWccg6fHXOom9dwzJI59oc9JwBbBzTQvCJLZYBP/KEz7
+KQrFqPU88YpmRR4H5+nJzGqwVMPOHipVrhtp5THd8GQ4Zuv6A8NYiWNTQFW84RJ4
+bV2ZSJ1TKP8DVHXKg1b0f2C7LwJCwRFNkjF0HDZdahtylLAedwq7FZaRaDMZuHd6
+e7PN3SvEgRRmNEf7jtm8yTFDoMVl/50E80nGGFYr/aQIYGm2xIeEn4Ta0lipDHyj
+uo0LGfnY7aH8408y7PV9zNyQyzESa9Yu8z1NilxTFuDafwKgMuD/nli6XanXWRxJ
+ll7ZgEt1faJLr7m+dp/CNQ==
+</SignatureValue><KeyInfo><KeyValue><RSAKeyValue><Modulus>
+vVSVcW581TAIMBEDoa6oAS1QdInHgjvpwLZSorVSmSHNfGkP+OE2TYPlDR7a3Wrs
+t/5gpJ1epTC4LtWKLtMNE7yh9fy+ERvGUdNXT4Jwnh5LqgzE4q9WPdND0Ou0YzmP
+AH+/nheN2T+BFCpHFMPQ+9SCmp+WCQI4p0MZ0/9FVL6L6GsYSLSL4ev62ZbL6bSR
+lvLEO46ndJB8RoefAG3BWvQ1kpiy2pUXTfPgsRGw/0qxByf0e+FCt4m1l99U9y16
+T/R6AJUt9hUWfEYKI15ZN+TjbUKOlupI8c01gqqu5KJ0sYSa9+TwGPKtxIhLaZNQ
+X4pqmZ5TVtFQqn3xWL4zSQ==
+</Modulus><Exponent>AQAB</Exponent></RSAKeyValue></KeyValue><X509Data><X509Certificate>
+MIIHujCCBaKgAwIBAgIKE7tjxAABAAKdzjANBgkqhkiG9w0BAQsFADCBvzELMAkG
+A1UEBhMCQ0wxHTAbBgNVBAgTFFJlZ2lvbiBNZXRyb3BvbGl0YW5hMREwDwYDVQQH
+EwhTYW50aWFnbzEUMBIGA1UEChMLRS1DRVJUQ0hJTEUxIDAeBgNVBAsTF0F1dG9y
+aWRhZCBDZXJ0aWZpY2Fkb3JhMR4wHAYDVQQDExVFLUNFUlRDSElMRSBDQSBGRVMg
+MDIxJjAkBgkqhkiG9w0BCQEWF3NjbGllbnRlQGUtY2VydGNoaWxlLmNsMB4XDTIy
+MDgyMzIwMjE0NVoXDTI1MDgyMjIwMjE0NVowgbYxCzAJBgNVBAYTAkNMMSIwIAYD
+VQQIExlNRVRST1BPTElUQU5BIERFIFNBTlRJQUdPMREwDwYDVQQHEwhTQU5USUFH
+TzEeMBwGA1UEChMVUk9ET0xGTyBaVU5aQSBSQU1JUkVaMQowCAYDVQQLDAEqMR4w
+HAYDVQQDExVST0RPTEZPIFpVTlpBIFJBTUlSRVoxJDAiBgkqhkiG9w0BCQEWFVdG
+VUVOVEVTQElOVEVSSEFVUy5DTDCCASIwDQYJKoZIhvcNAQEBBQADggEPADCCAQoC
+ggEBAL1UlXFufNUwCDARA6GuqAEtUHSJx4I76cC2UqK1UpkhzXxpD/jhNk2D5Q0e
+2t1q7Lf+YKSdXqUwuC7Vii7TDRO8ofX8vhEbxlHTV0+CcJ4eS6oMxOKvVj3TQ9Dr
+tGM5jwB/v54Xjdk/gRQqRxTD0PvUgpqflgkCOKdDGdP/RVS+i+hrGEi0i+Hr+tmW
+y+m0kZbyxDuOp3SQfEaHnwBtwVr0NZKYstqVF03z4LERsP9KsQcn9HvhQreJtZff
+VPctek/0egCVLfYVFnxGCiNeWTfk421CjpbqSPHNNYKqruSidLGEmvfk8BjyrcSI
+S2mTUF+KapmeU1bRUKp98Vi+M0kCAwEAAaOCAr0wggK5MIIBXwYDVR0gBIIBVjCC
+AVIwggFOBggrBgEEAcNSBTCCAUAwPQYIKwYBBQUHAgEWMWh0dHBzOi8vd3d3LmUt
+Y2VydGNoaWxlLmNsL3BvbGl0aWNhcy15LXByYWN0aWNhcy8wgf4GCCsGAQUFBwIC
+MIHxHoHuAEUAbAAgAHIAZQBzAHAAbwBuAGQAZQByACAAZQBzAHQAZQAgAGYAbwBy
+AG0AdQBsAGEAcgBpAG8AIABlAHMAIAB1AG4AIAByAGUAcQB1AGkAcwBpAHQAbwAg
+AGkAbgBkAGkAcwBwAGUAbgBzAGEAYgBsAGUAIABwAGEAcgBhACAAZABhAHIAIABp
+AG4AaQBjAGkAbwAgAGEAbAAgAHAAcgBvAGMAZQBzAG8AIABkAGUAIABjAGUAcgB0
+AGkAZgBpAGMAYQBjAGkA8wBuAC4AIABQAG8AcwB0AGUAcgBpAG8AcgBtAGUAbgB0
+AGUALDAdBgNVHQ4EFgQUzuC5SejQU6BrLSitGzPWItehOSkwCwYDVR0PBAQDAgTw
+MCMGA1UdEQQcMBqgGAYIKwYBBAHBAQGgDBYKMDcxNDA2MDQtMDAfBgNVHSMEGDAW
+gBR01iGz9FroLXy7WQZjQ+9ptDqTBDBABgNVHR8EOTA3MDWgM6Axhi9odHRwOi8v
+Y3JsLmVjZXJ0Y2hpbGUuY2wvRS1DRVJUQ0hJTEVDQUZFUzAyLmNybDA9BggrBgEF
+BQcBAQQxMC8wLQYIKwYBBQUHMAGGIWh0dHA6Ly9vY3NwZmVzLmVjZXJ0Y2hpbGUu
+Y2wvb2NzcDA8BgkrBgEEAYI3FQcELzAtBiUrBgEEAYI3FQiB3dJNl9Q6homdBoeI
+zm+Dr8xgRYbS7AiGx8p9AgFkAgEHMCMGA1UdEgQcMBqgGAYIKwYBBAHBAQKgDBYK
+OTY5MjgxODAtNTANBgkqhkiG9w0BAQsFAAOCAgEAId4Lu6z4HYU7tD51mbipMcbm
+tU5J6YyMVMKhd2QhWeQDXpiWXs9Xoa4obIudM2HnJgZqvxg8b+ZNReTkfjaFkgSv
+1Kiilymj7O1kW6o6IIkj4VN4Z0l6fGhpFoztwm5WofzF0IMQCW98edcRC0bxS0ii
+JJyMVtY+3gjZoVct7ksv4G8LY9ghT0OsAyKNjLyqn5oIPdYLa7zZ+BIupAByAOo3
+l94JIonebjntKoPdmpdKprZCmfmFYbzftY+u7FYbwXbI8auSAEBJURe+z3bGLXwU
+A13IgDOBneDiYQ+b/F+9YpbI5MN4TNGv8IUWUN3Utv6XiKY6UHa1AZWThDMiX0qN
+ItMvJJP+Q2xgFdXUfvAWEfn7/d94YruphQ9aFmU/pArLSYUonaodxOLnKmZz3z9o
+QR14QRB4epifw5VHMsFSN4iFNtfXLi1atcZpWbopW4zOUPinsWqL8fPREke1YFza
+Qswt+W3wbA7ghYrd0xCQh6L3x1iJjQJzrXB9PjU3UHh0sUmF+Kz5mclI/+q+LqWg
+kiqnGKqbP40H7BbLt1Sjv2HoQVoJpsOit34wGL4UaD21iy3LWuIwuCemsLn5ofgG
+vaxxpRCLvOMJsZuYzUa0LfuPi1qY1wWUcwl6WslHnJ3G4CHKib6jx5U5YGhFUwmX
+qijEAnUD0bzPhO6CiQQ=
+</X509Certificate></X509Data></KeyInfo></Signature>
+		</DTE></SetDTE><Signature xmlns="http://www.w3.org/2000/09/xmldsig#"><SignedInfo><CanonicalizationMethod Algorithm="http://www.w3.org/TR/2001/REC-xml-c14n-20010315" /><SignatureMethod Algorithm="http://www.w3.org/2000/09/xmldsig#rsa-sha1" /><Reference URI="#ID5d004cf9aa3241328eeb642ddffd8276"><Transforms><Transform Algorithm="http://www.w3.org/TR/2001/REC-xml-c14n-20010315" /></Transforms><DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" /><DigestValue>wTG4c2lKzCHOsCLTLCCDL6Ye5T4=</DigestValue></Reference></SignedInfo><SignatureValue>
+GR+uZOWQ51g0YASg1BBI0BamB1tjC0WbVJr8RBo7e8WBMmN/y0fKz9ImJlYzWs3S
+lQ7zKKZfkF+WHVIjtftObszSrXvPHZe+ocK0h6+srAbnLqQY3Y30PRqv5IwGFI7+
+koobZ6rQfUY4YOcLDGJSc+vMl05XDPBjIlaOFTHt4m6CWJvlOmBoCNt0qy0OkOux
+KBO+BOFguNcB6XJzNHh3qEoycCfDu1uAd69yLubFzz270WNI0/uOQ6YfgKRgwX8k
+Bt14wmIIYE2fm6lHlpQIkEI4iHrAFPgTV9jHk6NkknmkLNCuIvQVH1VbswX+G2OH
+PP9Cf/2At6cxopXQyQlJfQ==
+</SignatureValue><KeyInfo><KeyValue><RSAKeyValue><Modulus>
+vVSVcW581TAIMBEDoa6oAS1QdInHgjvpwLZSorVSmSHNfGkP+OE2TYPlDR7a3Wrs
+t/5gpJ1epTC4LtWKLtMNE7yh9fy+ERvGUdNXT4Jwnh5LqgzE4q9WPdND0Ou0YzmP
+AH+/nheN2T+BFCpHFMPQ+9SCmp+WCQI4p0MZ0/9FVL6L6GsYSLSL4ev62ZbL6bSR
+lvLEO46ndJB8RoefAG3BWvQ1kpiy2pUXTfPgsRGw/0qxByf0e+FCt4m1l99U9y16
+T/R6AJUt9hUWfEYKI15ZN+TjbUKOlupI8c01gqqu5KJ0sYSa9+TwGPKtxIhLaZNQ
+X4pqmZ5TVtFQqn3xWL4zSQ==
+</Modulus><Exponent>AQAB</Exponent></RSAKeyValue></KeyValue><X509Data><X509Certificate>
+MIIHujCCBaKgAwIBAgIKE7tjxAABAAKdzjANBgkqhkiG9w0BAQsFADCBvzELMAkG
+A1UEBhMCQ0wxHTAbBgNVBAgTFFJlZ2lvbiBNZXRyb3BvbGl0YW5hMREwDwYDVQQH
+EwhTYW50aWFnbzEUMBIGA1UEChMLRS1DRVJUQ0hJTEUxIDAeBgNVBAsTF0F1dG9y
+aWRhZCBDZXJ0aWZpY2Fkb3JhMR4wHAYDVQQDExVFLUNFUlRDSElMRSBDQSBGRVMg
+MDIxJjAkBgkqhkiG9w0BCQEWF3NjbGllbnRlQGUtY2VydGNoaWxlLmNsMB4XDTIy
+MDgyMzIwMjE0NVoXDTI1MDgyMjIwMjE0NVowgbYxCzAJBgNVBAYTAkNMMSIwIAYD
+VQQIExlNRVRST1BPTElUQU5BIERFIFNBTlRJQUdPMREwDwYDVQQHEwhTQU5USUFH
+TzEeMBwGA1UEChMVUk9ET0xGTyBaVU5aQSBSQU1JUkVaMQowCAYDVQQLDAEqMR4w
+HAYDVQQDExVST0RPTEZPIFpVTlpBIFJBTUlSRVoxJDAiBgkqhkiG9w0BCQEWFVdG
+VUVOVEVTQElOVEVSSEFVUy5DTDCCASIwDQYJKoZIhvcNAQEBBQADggEPADCCAQoC
+ggEBAL1UlXFufNUwCDARA6GuqAEtUHSJx4I76cC2UqK1UpkhzXxpD/jhNk2D5Q0e
+2t1q7Lf+YKSdXqUwuC7Vii7TDRO8ofX8vhEbxlHTV0+CcJ4eS6oMxOKvVj3TQ9Dr
+tGM5jwB/v54Xjdk/gRQqRxTD0PvUgpqflgkCOKdDGdP/RVS+i+hrGEi0i+Hr+tmW
+y+m0kZbyxDuOp3SQfEaHnwBtwVr0NZKYstqVF03z4LERsP9KsQcn9HvhQreJtZff
+VPctek/0egCVLfYVFnxGCiNeWTfk421CjpbqSPHNNYKqruSidLGEmvfk8BjyrcSI
+S2mTUF+KapmeU1bRUKp98Vi+M0kCAwEAAaOCAr0wggK5MIIBXwYDVR0gBIIBVjCC
+AVIwggFOBggrBgEEAcNSBTCCAUAwPQYIKwYBBQUHAgEWMWh0dHBzOi8vd3d3LmUt
+Y2VydGNoaWxlLmNsL3BvbGl0aWNhcy15LXByYWN0aWNhcy8wgf4GCCsGAQUFBwIC
+MIHxHoHuAEUAbAAgAHIAZQBzAHAAbwBuAGQAZQByACAAZQBzAHQAZQAgAGYAbwBy
+AG0AdQBsAGEAcgBpAG8AIABlAHMAIAB1AG4AIAByAGUAcQB1AGkAcwBpAHQAbwAg
+AGkAbgBkAGkAcwBwAGUAbgBzAGEAYgBsAGUAIABwAGEAcgBhACAAZABhAHIAIABp
+AG4AaQBjAGkAbwAgAGEAbAAgAHAAcgBvAGMAZQBzAG8AIABkAGUAIABjAGUAcgB0
+AGkAZgBpAGMAYQBjAGkA8wBuAC4AIABQAG8AcwB0AGUAcgBpAG8AcgBtAGUAbgB0
+AGUALDAdBgNVHQ4EFgQUzuC5SejQU6BrLSitGzPWItehOSkwCwYDVR0PBAQDAgTw
+MCMGA1UdEQQcMBqgGAYIKwYBBAHBAQGgDBYKMDcxNDA2MDQtMDAfBgNVHSMEGDAW
+gBR01iGz9FroLXy7WQZjQ+9ptDqTBDBABgNVHR8EOTA3MDWgM6Axhi9odHRwOi8v
+Y3JsLmVjZXJ0Y2hpbGUuY2wvRS1DRVJUQ0hJTEVDQUZFUzAyLmNybDA9BggrBgEF
+BQcBAQQxMC8wLQYIKwYBBQUHMAGGIWh0dHA6Ly9vY3NwZmVzLmVjZXJ0Y2hpbGUu
+Y2wvb2NzcDA8BgkrBgEEAYI3FQcELzAtBiUrBgEEAYI3FQiB3dJNl9Q6homdBoeI
+zm+Dr8xgRYbS7AiGx8p9AgFkAgEHMCMGA1UdEgQcMBqgGAYIKwYBBAHBAQKgDBYK
+OTY5MjgxODAtNTANBgkqhkiG9w0BAQsFAAOCAgEAId4Lu6z4HYU7tD51mbipMcbm
+tU5J6YyMVMKhd2QhWeQDXpiWXs9Xoa4obIudM2HnJgZqvxg8b+ZNReTkfjaFkgSv
+1Kiilymj7O1kW6o6IIkj4VN4Z0l6fGhpFoztwm5WofzF0IMQCW98edcRC0bxS0ii
+JJyMVtY+3gjZoVct7ksv4G8LY9ghT0OsAyKNjLyqn5oIPdYLa7zZ+BIupAByAOo3
+l94JIonebjntKoPdmpdKprZCmfmFYbzftY+u7FYbwXbI8auSAEBJURe+z3bGLXwU
+A13IgDOBneDiYQ+b/F+9YpbI5MN4TNGv8IUWUN3Utv6XiKY6UHa1AZWThDMiX0qN
+ItMvJJP+Q2xgFdXUfvAWEfn7/d94YruphQ9aFmU/pArLSYUonaodxOLnKmZz3z9o
+QR14QRB4epifw5VHMsFSN4iFNtfXLi1atcZpWbopW4zOUPinsWqL8fPREke1YFza
+Qswt+W3wbA7ghYrd0xCQh6L3x1iJjQJzrXB9PjU3UHh0sUmF+Kz5mclI/+q+LqWg
+kiqnGKqbP40H7BbLt1Sjv2HoQVoJpsOit34wGL4UaD21iy3LWuIwuCemsLn5ofgG
+vaxxpRCLvOMJsZuYzUa0LfuPi1qY1wWUcwl6WslHnJ3G4CHKib6jx5U5YGhFUwmX
+qijEAnUD0bzPhO6CiQQ=
+</X509Certificate></X509Data></KeyInfo></Signature>
+</EnvioDTE>

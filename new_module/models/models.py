@@ -1,18 +1,9 @@
 # -*- coding: utf-8 -*-
 import psycopg2,json,os,sys
 from odoo import models, fields, api, _
-from odoo.exceptions import UserError
+from odoo.exceptions import ValidationError,UserError
 from datetime import datetime, date
 from dateutil.relativedelta import relativedelta
-_STATES = [
-    ("draft", "Draft"),
-    ("to_approve", "To be approved"),
-    ("approved", "Approved"),
-    ("rejected", "Rejected"),
-    ("done", "Done"),
-]
-auxlista=list()
-numero=0
 class new_module(models.Model):
     _name = 'new_module.new_module'
     _description = 'new_module.new_module' 
@@ -32,7 +23,7 @@ class new_module(models.Model):
         index=True,
     )
     folio_documento = fields.Many2one(
-        comodel_name="procurement.group",
+        comodel_name="account.analytic.account",
         string="Folio",
         copy=False,
         index=True,
@@ -60,11 +51,32 @@ class new_module(models.Model):
         copy=False,
         index=True,
     )
-    documento_id = fields.Char(
+    codigo_documento = fields.Char(
         string="Número del documento",
     )
+    razon_social = fields.Char(
+        string="nombre de la empresa que emite factura o la razon social",
+    )
+    acuseRecibo = fields.Selection(
+        selection=[
+            ('not_sent', 'Pendiente de ser enviado'),
+            ('accepted','Aceptado'),
+            ('ask_for_status', 'Consultar Estado Doc'),
+            ('objected','Aceptado con reparos'),
+            ('cancelled','Anulado'),
+            ('rejected', 'Rechazado'),
+            ('manual','Manual ( borrador)'),
+        ],
+        string='acusoRecibo',
+        required=True,
+        readonly=True,
+        copy=False,
+        tracking=True,
+        default='manual',
+    )
+    trackId = fields.Integer('Id de seguimiento')
     journal_id = fields.Many2one(
-        'account.move', 'Diario'
+        'account.move', 'Diario',default='Vendor Bills',
     )
     analytic_account_id = fields.Many2one(
         'account.analytic.account',
@@ -84,20 +96,26 @@ class new_module(models.Model):
         'res.partner', 
         'Partner',
     )
-    amount = fields.Float('Monto')
-    def _get_invoice_partner_id(self):
-        for rec in self:
-            rec.invoice_partner_id = rec.partner_id.address_get(
-                adr_pref=['invoice']).get('invoice', rec.partner_id.id)
-    @api.model
-    def cargarDocumentos(self, *post):
+    company_currency_id = fields.Many2one(
+        string='Company Currency',
+        related='company_id.currency_id', readonly=True,
+    )
+    montoNeto = fields.Monetary('monto neto sin iva',
+        compute='_compute_amount', currency_field='company_currency_id',store=True, readonly=True,)
+    montoIvaRecuperable = fields.Monetary('monto con iva incluido',
+        compute='_compute_amount',currency_field='company_currency_id', store=True, readonly=True,)
+    monto_Total = fields.Monetary('Monto',compute='_compute_amount',currency_field='company_currency_id', store=True, readonly=True,)
+
+    def funcion(self):
+        raise ValidationError("hola gente")
     
+    def cargarDocumentos(self, *post):
+        
         os.system('cls')
         listaRut=[]
-        
         conn = psycopg2.connect(database="testing", user = "postgres", password = "admin", host = "localhost", port = "5432")
         cur = conn.cursor()
-        f = open("C:\tools\respaldoBaseDatos\doc_SII_202301", "r")
+        f = open("C:/tools/respaldoBaseDatos/doc_SII_202301", "r")
         archivoJSON = f.read()
         datosJSON = json.loads(archivoJSON)
         for ingreso in (datosJSON["ventas"]["detalleVentas"]):
@@ -131,8 +149,39 @@ class new_module(models.Model):
                 querySelect = cur.fetchall()
                 largoQuery=len(querySelect)
                 print("query despues del ciclo parte 2 => "+str(largoQuery))
+        
+
         conn.commit()
+
         print("script completado")
         conn.close()
+    def obtenerDatosVista(self, container):
+        contenedor = container['records'].filtered(lambda move: move.line_ids)
+        if not contenedor:
+            return
+
+        # /!\ As this method is called in create / write, we can't make the assumption the computed stored fields
+        # are already done. Then, this query MUST NOT depend on computed stored fields.
+        # It happens as the ORM calls create() with the 'no_recompute' statement.
+        
+        self._cr.execute('''
+            select  tipodte codigo_documento,
+                    tipodtestring tipo_documento,
+                    rutCliente rut_tributario, 
+                    folio folio_documento,
+                    fechaemision date_start,
+                    fecharecepcion fecha_factura,
+                    razonsocial razon_social,
+                    acuserecibo acuseRecibo,
+                    montoNeto montoNeto,
+                    montoivarecuperable Impuesto,
+                    montototal total,
+                    trackid
+              FROM borradores 
+              ;
+        ''', [tuple(contenedor.ids)])
+
+        return self._cr.fetchall()
+
             # return record
         # function to getting over dues
