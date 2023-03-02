@@ -2,8 +2,7 @@
 import psycopg2,json,os,sys
 from odoo import models, fields, api, _
 from odoo.exceptions import ValidationError,UserError
-from datetime import datetime, date
-from dateutil.relativedelta import relativedelta
+from datetime import  date
 class new_module(models.Model):
     _name = 'new_module.new_module'
     _description = 'new_module.new_module' 
