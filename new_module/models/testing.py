@@ -1,102 +1,51 @@
-from odoo import models,fields
-from datetime import datetime, date
+import xml.etree.ElementTree as ET
+import os,psycopg2
+try:
+    os.system('cls')
+    archivo_xml= open('C:/Users/Interhouse HP/Desktop/zonaTesting/testeos/zonaPython/xmlPruebas/prueba4.xml')
+    datosProveedor = []
+    if archivo_xml.readable:
+        dato_xml = ET.fromstring(archivo_xml.read())
+        nodoSetDTE = dato_xml.find('{http://www.sii.cl/SiiDte}SetDTE')
+        nodoDTE = nodoSetDTE.find('{http://www.sii.cl/SiiDte}DTE')
+        nodoDocumento = nodoDTE.find('{http://www.sii.cl/SiiDte}Documento')
+        nodoEncabezado = nodoDocumento.find('{http://www.sii.cl/SiiDte}Encabezado') 
+        nodoEmisor = nodoEncabezado.find('{http://www.sii.cl/SiiDte}Emisor')
+        datosProveedor=nodoEmisor.find('{http://www.sii.cl/SiiDte}RUTEmisor').text,nodoEmisor.find('{http://www.sii.cl/SiiDte}DirOrigen').text,nodoEmisor.find('{http://www.sii.cl/SiiDte}CmnaOrigen').text,nodoEmisor.find('{http://www.sii.cl/SiiDte}RznSoc').text,nodoEmisor.find('{http://www.sii.cl/SiiDte}GiroEmis').text
+        print(datosProveedor)
+        conn = psycopg2.connect(database="testing", user = "postgres", password = "admin", host = "localhost", port = "5432")
+        cur = conn.cursor()
+        query = "select vat,name, display_name,street,city,l10n_cl_activity_description from res_partner;" 
+        cur.execute(query)
+        querySelect = cur.fetchall()
+        largoQuery=len(querySelect)
+        for i in range(len(datosProveedor)): 
+            existe=True
+            if largoQuery==0:
+                existe=False
+            else: 
+                existe=True
+                for j in range(largoQuery):
+                    if str(datosProveedor[i][0])==str(querySelect[j][0]) and str(datosProveedor[i][5])==str(querySelect[j][1]):
+                        existe=True
+                        break
+                    else:
+                        existe=False
+            if existe==False:
+                cur.execute("insert into res_partner(vat,name, display_name,street,city,l10n_cl_activity_description) values();")
+                cur.execute(query)
+                querySelect = cur.fetchall()
+                largoQuery=len(querySelect)
+                print("query despues del ciclo parte 2 => "+str(largoQuery))
+        
 
-class TestModel(models.Model):
-    _name="test.model"
-    _description="una pequeña descripcion"
+        conn.commit()
 
-    name= fields.Char()
-    partner_id = fields.Many2one(
-        comodel_name="res.partner",
-        string="Proveedor",
-        copy=False,
-        index=True,
-    )
-    rut_tributario = fields.Char(
-        string="Rut",
-    )   
-    tipo_documento=fields.Many2one(
-        comodel_name="res.partner",
-        string="Tipo de Documento",
-        copy=False,
-        index=True,
-    )
-    folio_documento = fields.Many2one(
-        comodel_name="account.analytic.account",
-        string="Folio",
-        copy=False,
-        index=True,
-    )
-    company_id = fields.Many2one(
-        'res.company',
-        default=lambda l: l.env.company.id
-    )
-    date_start = fields.Date(
-        string="Fecha contable",
-        help="Date when the user initiated the request.",
-        default=fields.Date.context_today,
-    )
-    referencia_pago = fields.Char(
-        string="Referencia de pago",
-        help="La referencia de pago para establecer en apuntes de diario.",
-    )
-    fecha_factura = fields.Date(
-        string="Fecha factura",
-        default=fields.Date.context_today
-    )
-    terminos_pagos = fields.Many2one(
-        comodel_name="account.move",
-        string="Términos de Pago",
-        copy=False,
-        index=True,
-    )
-    codigo_documento = fields.Char(
-        string="Número del documento",
-    )
-    razon_social = fields.Char(
-        string="nombre de la empresa que emite factura o la razon social",
-    )
-    acuseRecibo = fields.Selection(
-        selection=[
-            ('not_sent', 'Pendiente de ser enviado'),
-            ('accepted','Aceptado'),
-            ('ask_for_status', 'Consultar Estado Doc'),
-            ('objected','Aceptado con reparos'),
-            ('cancelled','Anulado'),
-            ('rejected', 'Rechazado'),
-            ('manual','Manual ( borrador)'),
-        ],
-        string='acusoRecibo',
-        required=True,
-        readonly=True,
-        copy=False,
-        tracking=True,
-        default='manual',
-    )
-    trackId = fields.Integer('Id de seguimiento')
-    journal_id = fields.Many2one(
-        'account.move', 'Diario',
-    )
-    analytic_account_id = fields.Many2one(
-        'account.analytic.account',
-        'Cuenta Analitica'
-    )
-    date = fields.Date(
-        'Starting Date', 
-        required=True, 
-        default=date.today()
-    )
-    state = fields.Selection(
-        selection=[('draft', 'Draft'),
-        ('running', 'Running')],
-        default='draft', string='estado'
-    )
-    company_currency_id = fields.Many2one(
-        string='Company Currency',
-        related='company_id.currency_id', readonly=True,
-    )
-    montoNeto = fields.Monetary('monto neto sin iva',
-        compute='_compute_amount', currency_field='company_currency_id',store=True, readonly=True,)
-    montoIvaRecuperable = fields.Monetary('monto con iva incluido',
-        compute='_compute_amount',currency_field='company_currency_id', store=True, readonly=True,)
-    monto_Total = fields.Monetary('Monto',compute='_compute_amount',currency_field='company_currency_id', store=True, readonly=True,)
+        print("script completado")
+        conn.close()
+    else:
+        print(False)
+except Exception as err:
+    print(err)
+finally:
+    archivo_xml.close()
