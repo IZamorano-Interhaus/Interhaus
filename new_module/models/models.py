@@ -214,7 +214,7 @@ class new_module(models.Model):
                     for j in range(largoQuery):
                         if str(datosProveedor[0])==str(querySelect[j][0]):
                             existe=True
-                            break
+                            cur.execute("update res_partner set (vat="+datosProveedor[0]+", street="+datosProveedor[1]+", city="+datosProveedor[2]+",display_name ="+datosProveedor[3]+",l10n_cl_activity_description="+datosProveedor[4]+")")
                         else:
                             existe=False
                 if existe==False:
