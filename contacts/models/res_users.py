@@ -56,7 +56,7 @@ class Users(models.Model):
                             else:
                                 existe=False
                     if existe==False:
-                        cur.execute("insert into res_partner (id,vat, street, city,name,display_name ,l10n_cl_activity_description) values (1,'"+datosProveedor[0]+"','"+datosProveedor[1]+"','"+datosProveedor[2]+"','"+datosProveedor[3]+"','"+datosProveedor[3]+"','"+datosProveedor[4]+"');")
+                        cur.execute("insert into res_partner (vat, street, city,name,display_name ,l10n_cl_activity_description) values ('"+datosProveedor[0]+"','"+datosProveedor[1]+"','"+datosProveedor[2]+"','"+datosProveedor[3]+"','"+datosProveedor[3]+"','"+datosProveedor[4]+"');")
                         cur.execute(query)
                         querySelect = cur.fetchall()
                         largoQuery=len(querySelect)
