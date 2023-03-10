@@ -71,7 +71,6 @@ class new_module(models.Model):
         required=True,
         readonly=True,
         copy=False,
-        tracking=True,
         default='manual',
     )
     trackId = fields.Integer('Id de seguimiento')
