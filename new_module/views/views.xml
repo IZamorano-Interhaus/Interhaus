@@ -5,7 +5,6 @@
       <field name="name">new_module list</field>
       <field name="model">new_module.pruebas</field>
       <field name="arch" type="xml">
-      
         <tree>
           <field name = "partner_id"/>
           <field name = "codigo_documento"/>
@@ -16,7 +15,6 @@
           <field name = "fecha_factura"/>
           <field name = "razon_social"/>
           <field name = "acuseRecibo"/>
-          
           <field name = "montoNeto"/>
           <field name = "montoIvaRecuperable"/>
           <field name = "monto_Total"/>
@@ -64,12 +62,12 @@
 
     <!-- actions -->
 
-    <menuitem name="Lista borradores" id="new_module.menu_1_list" parent="new_module.menu_1"
+    <!-- <menuitem name="Lista borradores" id="new_module.menu_1_list" parent="new_module.menu_1"
               action="new_module.action_window"/>
     <menuitem name="proveedores" id="new_module.menu_2_list" parent="new_module.menu_1"
               action="new_module.action_window"/>
     <menuitem name="Ajustes (proximamente)" id="new_module" parent="new_module.menu_2"
-              action="new_module.action_server"/>
+              action="new_module.action_server"/> -->
 
   </data>
 </odoo>
