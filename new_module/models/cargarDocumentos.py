@@ -8,7 +8,7 @@ else:
     os.system('cls')
     listaRut=[]
     nombreArchivo=sys.argv[1]
-    conn = psycopg2.connect(database="testing", user = "postgres", password = "admin", host = "localhost", port = "5432")
+    conn = psycopg2.connect(database="postgres", user = "postgres", password = "admin", host = "localhost", port = "5432")
     cur = conn.cursor()
     f = open(nombreArchivo, "r")
     archivoJSON = f.read()

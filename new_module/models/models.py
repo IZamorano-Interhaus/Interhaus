@@ -184,7 +184,8 @@ class new_module(models.Model):
 
             # return record
         # function to getting over dues
-    def obtenerDataProveedor():
+    @api.model
+    def obtenerDataProveedor(self):
         import xml.etree.ElementTree as ET
         import psycopg2, os
         try:
