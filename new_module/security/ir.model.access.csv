@@ -1,2 +1,3 @@
 id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
 access_new_module_pruebas,new_module.pruebas,model_new_module_pruebas,base.group_user,1,1,1,1
+access_new_module_proveedor,new_module.proveedor,model_new_module_proveedor,base.group_user,1,1,1,1
