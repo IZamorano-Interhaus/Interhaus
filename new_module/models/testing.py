@@ -2,7 +2,7 @@ def obtenerDataProveedor():
     import xml.etree.ElementTree as ET
     import psycopg2, os
     try:
-        archivo_xml= open('C:/Users/Interhouse HP/Desktop/zonaTesting/testeos/zonaPython/xmlPruebas/prueba1.xml')
+        archivo_xml= open('C:/Users/Interhouse HP/Desktop/zonaTesting/testeos/zonaPython/xmlPruebas/prueba5.xml')
         
         datosProveedor = []
         conn = psycopg2.connect(database="testing", user = "postgres", password = "admin", host = "localhost", port = "5432")
