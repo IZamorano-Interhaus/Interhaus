@@ -16,7 +16,7 @@
           <field name = "fecha_factura"/>
           <field name = "razon_social"/>
           <field name = "acuseRecibo"/>
-          <field name = "l10n_cl_sii_taxpayer_type"/>
+          
           <field name = "montoNeto"/>
           <field name = "montoIvaRecuperable"/>
           <field name = "monto_Total"/>

@@ -6,7 +6,7 @@
             <field name="folio_documento">1</field>
             <field name="codigo_documento">1</field>
             <field name="tipo_documento">1</field>
-            <field name="l10n_cl_sii_taxpayer_type">1</field>
+            
             
             <field name="folio_documento">1</field>
             <field name="referencia_pago">1</field>
@@ -18,7 +18,7 @@
             <field name="folio_documento">1</field>
             <field name="codigo_documento">1</field>
             <field name="tipo_documento">1</field>
-            <field name="l10n_cl_sii_taxpayer_type">1</field>
+            
             
             <field name="referencia_pago">1</field>
             <field name="trackId">98234156</field>
@@ -29,7 +29,7 @@
             <field name="folio_documento">1</field>
             <field name="codigo_documento">1</field>
             <field name="tipo_documento">1</field>
-            <field name="l10n_cl_sii_taxpayer_type">1</field>
+            
             
             <field name="referencia_pago">1</field>
             <field name="trackId">98234156</field>
@@ -40,7 +40,7 @@
             <field name ="folio_documento">1</field>
             <field name="codigo_documento">1</field>
             <field name="tipo_documento">1</field>
-            <field name="l10n_cl_sii_taxpayer_type">1</field>
+            
             <field name="folio_documento">1</field>
             
             <field name="referencia_pago">1</field>
@@ -52,7 +52,7 @@
             <field name="folio_documento">1</field>
             <field name="codigo_documento">1</field>
             <field name="tipo_documento">1</field>
-            <field name="l10n_cl_sii_taxpayer_type">1</field>
+            
             
             <field name="referencia_pago">1</field>
             <field name="trackId">98234156</field>
@@ -63,7 +63,7 @@
             <field name="folio_documento">1</field>
             <field name="codigo_documento">1</field>
             <field name="tipo_documento">1</field>
-            <field name="l10n_cl_sii_taxpayer_type">1</field>
+            
             <field name="folio_documento">1</field>
             
             <field name="referencia_pago">1</field>
@@ -75,7 +75,7 @@
             <field name="folio_documento">1</field>
             <field name="codigo_documento">1</field>
             <field name="tipo_documento">1</field>
-            <field name="l10n_cl_sii_taxpayer_type">1</field>
+            
             <field name="folio_documento">1</field>
             
             <field name="referencia_pago">1</field>
