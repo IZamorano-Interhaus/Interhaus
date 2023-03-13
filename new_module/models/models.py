@@ -170,7 +170,7 @@ class proveedor(models.Model):
 
     name=fields.Char(string = "Nombre proveedor", required=True)
     address=fields.Char(string="direccion completa",required=True)
-
+    l10n_cl_sii_activity_description= fields.Char(string="Giro",required=True)
     pruebas_id= fields.One2many(
         'new_module.pruebas','proveedor_id',string='proveedor'
     )
