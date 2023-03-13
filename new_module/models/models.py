@@ -91,18 +91,23 @@ class new_module(models.Model):
         ('running', 'Running')],
         default='draft', string='estado'
     )
-    partner_id = fields.Many2one(
-        'res.partner', 
-        'Partner',
+    l10n_cl_sii_taxpayer_type = fields.Selection(
+        selection=[
+        ('1','IVA afecto 1° categoria'),
+        ('2','Emisor de boleta 2da Categoria'),
+        ('3','Consumidor final'),
+        ('4','Extranjero')
+        ],
+        default='1', string = 'Tipo de contribuyente'
     )
     company_currency_id = fields.Many2one(
         string='Company Currency',
         related='company_id.currency_id', readonly=True,
     )
     montoNeto = fields.Monetary('monto neto sin iva',
-        compute='_compute_amount', currency_field='company_currency_id',store=True, readonly=True,)
+        compute='_compute_amount', currency_field='company_currency_id',store=True, )
     montoIvaRecuperable = fields.Monetary('monto con iva incluido',
-        compute='_compute_amount',currency_field='company_currency_id', store=True, readonly=True,)
+        compute='_compute_amount',currency_field='company_currency_id', store=True, )
     monto_Total = fields.Monetary('Monto',compute='_compute_amount',currency_field='company_currency_id', store=True, readonly=True,)
 
     def funcion(self):
