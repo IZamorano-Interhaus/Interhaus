@@ -47,7 +47,7 @@ class pruebas(models.Model):
         string="Número del documento",
     )
     razon_social = fields.Char(
-        string="nombre de la empresa que emite factura o la razon social",
+        string="Razón social",
     )
     acuseRecibo = fields.Selection(
         selection=[
@@ -85,7 +85,7 @@ class pruebas(models.Model):
     monto_Total = fields.Integer('Monto',)
     
     proveedor_id = fields.Many2one ( 
-        'new_module.proveedores',string = 'pruebas'
+        'new_module.proveedores',string = 'Proveedores'
     )
 
     def funcion(self):
@@ -183,7 +183,7 @@ class proveedores(models.Model):
     )
 
     pruebas_id= fields.One2many(
-        'new_module.pruebas','proveedor_id',string='proveedor'
+        'new_module.pruebas','proveedor_id',string='Borradores'
     )
             # return record
         # function to getting over dues
