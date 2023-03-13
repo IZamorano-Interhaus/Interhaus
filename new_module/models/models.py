@@ -78,11 +78,11 @@ class pruebas(models.Model):
         default='draft', string='estado'
     )
     
-    montoNeto = fields.int('monto neto sin iva',
+    montoNeto = fields.Int('monto neto sin iva',
          )
-    montoIvaRecuperable = fields.int('monto con iva incluido',
+    montoIvaRecuperable = fields.Int('monto con iva incluido',
          )
-    monto_Total = fields.int('Monto',)
+    monto_Total = fields.Int('Monto',)
     
     proveedor_id = fields.Many2one ( 
         'new_module.proveedor',string = 'pruebas'
