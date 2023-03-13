@@ -28,10 +28,7 @@ class pruebas(models.Model):
         copy=False,
         index=True,
     )
-    company_id = fields.Many2one(
-        'res.company',
-        default=lambda l: l.env.company.id
-    )
+    
     date_start = fields.Date(
         string="Fecha contable",
         help="Date when the user initiated the request.",
@@ -45,12 +42,7 @@ class pruebas(models.Model):
         string="Fecha factura",
         default=fields.Date.context_today
     )
-    terminos_pagos = fields.Many2one(
-        comodel_name="account.move",
-        string="Términos de Pago",
-        copy=False,
-        index=True,
-    )
+    
     codigo_documento = fields.Char(
         string="Número del documento",
     )
@@ -74,13 +66,7 @@ class pruebas(models.Model):
         default='manual',
     )
     trackId = fields.Integer('Id de seguimiento')
-    journal_id = fields.Many2one(
-        'account.move', 'Diario',
-    )
-    analytic_account_id = fields.Many2one(
-        'account.analytic.account',
-        'Cuenta Analitica'
-    )
+    
     date = fields.Date(
         'Starting Date', 
         required=True, 
@@ -92,15 +78,15 @@ class pruebas(models.Model):
         default='draft', string='estado'
     )
     
-    company_currency_id = fields.Many2one(
-        string='Company Currency',
-        related='company_id.currency_id', readonly=True,
-    )
     montoNeto = fields.Monetary('monto neto sin iva',
         compute='_compute_amount', currency_field='company_currency_id',store=True, )
     montoIvaRecuperable = fields.Monetary('monto con iva incluido',
         compute='_compute_amount',currency_field='company_currency_id', store=True, )
     monto_Total = fields.Monetary('Monto',compute='_compute_amount',currency_field='company_currency_id', store=True, readonly=True,)
+    
+    proveedor_id = fields.Many2one ( 
+        'new_module.proveedor',string = 'pruebas'
+    )
 
     def funcion(self):
         raise ValidationError("hola gente")
@@ -185,6 +171,9 @@ class proveedor(models.Model):
     name=fields.Char(string = "Nombre proveedor", required=True)
     address=fields.Char(string="direccion completa",required=True)
 
+    pruebas_id= fields.One2many(
+        'new_module.pruebas','proveedor_id',string='proveedor'
+    )
     l10n_cl_sii_taxpayer_type = fields.Selection(
         selection=[
         ('1','IVA afecto 1° categoria'),
