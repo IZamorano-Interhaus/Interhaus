@@ -41,7 +41,7 @@
 
     <record model="ir.actions.server" id="new_module.action_server">
       <field name="name">zona de ajustes (proximamente)</field>
-      <field name="model_id" ref="model_new_module_new_module"/>
+      <field name="model_id" ref="model_new_module_pruebas"/>
       <field name="state">code</field>
       <field name="code">
         action = {
