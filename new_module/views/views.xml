@@ -66,7 +66,7 @@
     <!-- actions -->
 
     <menuitem name="Lista" id="new_module.menu_1_list" parent="new_module.menu_1"
-              action="new_module.action_window"/>
+              action="new_module.funcion"/>
     <menuitem name="proveedores" id="new_module.menu_2_list" parent="new_module.menu_1"
               action="new_module.action_window"/>
     <menuitem name="Ajustes (proximamente)" id="new_module" parent="new_module.menu_2"
