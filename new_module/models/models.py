@@ -164,7 +164,7 @@ class pruebas(models.Model):
         ''', [tuple(contenedor.ids)])
 
         return self._cr.fetchall()
-class proveedor(models.Model):
+class proveedores(models.Model):
     _name="new_module.proveedor"
     _description="borrador para los proveedores"
 
