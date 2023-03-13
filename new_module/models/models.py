@@ -171,9 +171,7 @@ class proveedores(models.Model):
     name=fields.Char(string = "Nombre proveedor", required=True)
     address=fields.Char(string="direccion completa",required=True)
     l10n_cl_sii_activity_description= fields.Char(string="Giro",required=True)
-    pruebas_id= fields.One2many(
-        'new_module.pruebas','proveedor_id',string='proveedor'
-    )
+    
     l10n_cl_sii_taxpayer_type = fields.Selection(
         selection=[
         ('1','IVA afecto 1° categoria'),
@@ -182,6 +180,10 @@ class proveedores(models.Model):
         ('4','Extranjero')
         ],
         default='1', string = 'Tipo de contribuyente'
+    )
+
+    pruebas_id= fields.One2many(
+        'new_module.pruebas','proveedor_id',string='proveedor'
     )
             # return record
         # function to getting over dues
