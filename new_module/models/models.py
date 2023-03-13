@@ -165,7 +165,7 @@ class pruebas(models.Model):
 
         return self._cr.fetchall()
 class proveedores(models.Model):
-    _name="new_module.proveedor"
+    _name="new_module.proveedores"
     _description="borrador para los proveedores"
 
     name=fields.Char(string = "Nombre proveedor", required=True)
