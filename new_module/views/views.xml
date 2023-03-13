@@ -15,10 +15,8 @@
           <field name = "fecha_factura"/>
           <field name = "razon_social"/>
           <field name = "acuseRecibo"/>
-          <field name = "montoNeto"/>
-          <field name = "montoIvaRecuperable"/>
-          <field name = "monto_Total"/>
-          <field name = "trackId"/>
+          
+          
         </tree>
       </field>
     </record>

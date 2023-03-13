@@ -167,11 +167,8 @@ class pruebas(models.Model):
 class proveedores(models.Model):
     _name="new_module.proveedores"
     _description="borrador para los proveedores"
-
-    name=fields.Char(string = "Nombre proveedor", required=True)
     address=fields.Char(string="direccion completa",required=True)
-    l10n_cl_sii_activity_description= fields.Char(string="Giro",required=True)
-    
+    name=fields.Char(string = "Nombre proveedor", required=True)
     l10n_cl_sii_taxpayer_type = fields.Selection(
         selection=[
         ('1','IVA afecto 1° categoria'),
@@ -181,6 +178,9 @@ class proveedores(models.Model):
         ],
         default='1', string = 'Tipo de contribuyente'
     )
+    l10n_cl_sii_activity_description= fields.Char(string="Giro",required=True)
+    
+    
 
     pruebas_id= fields.One2many(
         'new_module.pruebas','proveedor_id',string='Borradores'
