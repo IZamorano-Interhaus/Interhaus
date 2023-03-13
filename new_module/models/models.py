@@ -85,7 +85,7 @@ class pruebas(models.Model):
     monto_Total = fields.Integer('Monto',)
     
     proveedor_id = fields.Many2one ( 
-        'new_module.proveedor',string = 'pruebas'
+        'new_module.proveedores',string = 'pruebas'
     )
 
     def funcion(self):
