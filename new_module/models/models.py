@@ -182,8 +182,8 @@ class proveedor(models.Model):
     _name="new_module.proveedor"
     _description="borrador para los proveedores"
 
-    name=fields.char(string = "Nombre proveedor", required=True)
-    address=fields.char(string="direccion completa",required=True)
+    name=fields.Char(string = "Nombre proveedor", required=True)
+    address=fields.Char(string="direccion completa",required=True)
 
     l10n_cl_sii_taxpayer_type = fields.Selection(
         selection=[
