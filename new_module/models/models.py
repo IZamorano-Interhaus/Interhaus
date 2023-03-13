@@ -91,6 +91,7 @@ class pruebas(models.Model):
     def funcion(self):
         raise ValidationError("hola gente")
     
+    @api.depends('rutTributario')
     def cargarDocumentos(self, *post):
         
         os.system('cls')
