@@ -20,7 +20,6 @@
           <field name = "montoNeto"/>
           <field name = "montoIvaRecuperable"/>
           <field name = "monto_Total"/>
-          <field name = "journal_id"/>
           <field name = "trackId"/>
         </tree>
       </field>
