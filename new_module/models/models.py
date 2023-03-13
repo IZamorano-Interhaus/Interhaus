@@ -78,11 +78,11 @@ class pruebas(models.Model):
         default='draft', string='estado'
     )
     
-    montoNeto = fields.Monetary('monto neto sin iva',
-        compute='_compute_amount', currency_field='company_currency_id',store=True, )
-    montoIvaRecuperable = fields.Monetary('monto con iva incluido',
-        compute='_compute_amount',currency_field='company_currency_id', store=True, )
-    monto_Total = fields.Monetary('Monto',compute='_compute_amount',currency_field='company_currency_id', store=True, readonly=True,)
+    montoNeto = fields.int('monto neto sin iva',
+         )
+    montoIvaRecuperable = fields.int('monto con iva incluido',
+         )
+    monto_Total = fields.int('Monto',)
     
     proveedor_id = fields.Many2one ( 
         'new_module.proveedor',string = 'pruebas'
