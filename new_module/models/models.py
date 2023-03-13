@@ -4,9 +4,9 @@ import xml.etree.ElementTree as ET
 from odoo import models, fields, api, _
 from odoo.exceptions import ValidationError,UserError
 from datetime import  date
-class new_module(models.Model):
-    _name = 'new_module.new_module'
-    _description = 'new_module.new_module' 
+class pruebas(models.Model):
+    _name = 'new_module.pruebas'
+    _description = 'descripcion de las pruebas, un borrador' 
     partner_id = fields.Many2one(
         comodel_name="res.partner",
         string="Proveedor",
@@ -91,15 +91,7 @@ class new_module(models.Model):
         ('running', 'Running')],
         default='draft', string='estado'
     )
-    l10n_cl_sii_taxpayer_type = fields.Selection(
-        selection=[
-        ('1','IVA afecto 1° categoria'),
-        ('2','Emisor de boleta 2da Categoria'),
-        ('3','Consumidor final'),
-        ('4','Extranjero')
-        ],
-        default='1', string = 'Tipo de contribuyente'
-    )
+    
     company_currency_id = fields.Many2one(
         string='Company Currency',
         related='company_id.currency_id', readonly=True,
@@ -186,7 +178,22 @@ class new_module(models.Model):
         ''', [tuple(contenedor.ids)])
 
         return self._cr.fetchall()
+class proveedor(models.Model):
+    _name="new_module.proveedor"
+    _description="borrador para los proveedores"
 
+    name=fields.char(string = "Nombre proveedor", required=True)
+    address=fields.char(string="direccion completa",required=True)
+
+    l10n_cl_sii_taxpayer_type = fields.Selection(
+        selection=[
+        ('1','IVA afecto 1° categoria'),
+        ('2','Emisor de boleta 2da Categoria'),
+        ('3','Consumidor final'),
+        ('4','Extranjero')
+        ],
+        default='1', string = 'Tipo de contribuyente'
+    )
             # return record
         # function to getting over dues
     @api.model
