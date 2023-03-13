@@ -66,8 +66,7 @@
               action="new_module.pruebas_action_window"/>
     <menuitem name="proveedores" id="new_module.pruebas_menu_2_list" parent="new_module.pruebas_menu_1"
               action="new_module.pruebas_action_window"/>
-    <menuitem name="Ajustes (proximamente)" id="new_module.pruebas" parent="new_module.pruebas_menu_2"
-              action="new_module.pruebas_action_server"/>
+   
 
   </data>
 </odoo>
