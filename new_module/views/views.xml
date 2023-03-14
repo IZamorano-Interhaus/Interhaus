@@ -35,7 +35,7 @@
         </tree>
       </field>
     </record>
-    <!-- <record model="ir.ui.view" id="new_module.list">
+    <record model="ir.ui.view" id="new_module.list">
       <field name="name">new_module list</field>
       <field name="model">new_module.proveedores</field>
       <field name="arch" type="xml">
@@ -46,7 +46,7 @@
           <field name = "l10n_cl_sii_taxpayer_type"/>
         </tree>
       </field>
-    </record> -->
+    </record>
     
     
     
