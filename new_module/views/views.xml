@@ -15,8 +15,23 @@
           <field name = "fecha_factura"/>
           <field name = "razon_social"/>
           <field name = "acuseRecibo"/>
-          
-          
+        </tree>
+      </field>
+    </record>
+    <record model="ir.ui.view" id="new_module.list">
+      <field name="name">new_module list</field>
+      <field name="model">new_module.pruebas</field>
+      <field name="arch" type="xml">
+        <tree>
+          <field name = "partner_id"/>
+          <field name = "codigo_documento"/>
+          <field name = "tipo_documento"/>
+          <field name = "rut_tributario"/>
+          <field name = "folio_documento"/>
+          <field name = "date_start"/>
+          <field name = "fecha_factura"/>
+          <field name = "razon_social"/>
+          <field name = "acuseRecibo"/>
         </tree>
       </field>
     </record>
