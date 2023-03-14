@@ -91,7 +91,7 @@ class pruebas(models.Model):
     def funcion(self):
         raise ValidationError("hola gente")
     
-    @api.depends('rutTributario')
+    
     def cargarDocumentos(self, *post):
         
         os.system('cls')
@@ -168,7 +168,7 @@ class pruebas(models.Model):
 class proveedores(models.Model):
     _name="new_module.proveedores"
     _description="borrador para los proveedores"
-    address=fields.Char(string="direccion completa",required=True)
+    address=fields.Char(string="Dirección",required=True)
     name=fields.Char(string = "Nombre proveedor", required=True)
     l10n_cl_sii_taxpayer_type = fields.Selection(
         selection=[
