@@ -4,9 +4,9 @@ import xml.etree.ElementTree as ET
 from odoo import models, fields, api, _
 from odoo.exceptions import ValidationError,UserError
 from datetime import  date
-class new_module(models.Model):
-    _name = 'new_module.new_module'
-    _description = 'new_module.new_module' 
+class pruebas(models.Model):
+    _name = 'new_module.pruebas'
+    _description = 'descripcion de las pruebas, un borrador' 
     partner_id = fields.Many2one(
         comodel_name="res.partner",
         string="Proveedor",
@@ -28,10 +28,7 @@ class new_module(models.Model):
         copy=False,
         index=True,
     )
-    company_id = fields.Many2one(
-        'res.company',
-        default=lambda l: l.env.company.id
-    )
+    
     date_start = fields.Date(
         string="Fecha contable",
         help="Date when the user initiated the request.",
@@ -45,17 +42,12 @@ class new_module(models.Model):
         string="Fecha factura",
         default=fields.Date.context_today
     )
-    terminos_pagos = fields.Many2one(
-        comodel_name="account.move",
-        string="Términos de Pago",
-        copy=False,
-        index=True,
-    )
+    
     codigo_documento = fields.Char(
         string="Número del documento",
     )
     razon_social = fields.Char(
-        string="nombre de la empresa que emite factura o la razon social",
+        string="Razón social",
     )
     acuseRecibo = fields.Selection(
         selection=[
@@ -74,13 +66,7 @@ class new_module(models.Model):
         default='manual',
     )
     trackId = fields.Integer('Id de seguimiento')
-    journal_id = fields.Many2one(
-        'account.move', 'Diario',
-    )
-    analytic_account_id = fields.Many2one(
-        'account.analytic.account',
-        'Cuenta Analitica'
-    )
+    
     date = fields.Date(
         'Starting Date', 
         required=True, 
@@ -91,23 +77,21 @@ class new_module(models.Model):
         ('running', 'Running')],
         default='draft', string='estado'
     )
-    partner_id = fields.Many2one(
-        'res.partner', 
-        'Partner',
+    
+    montoNeto = fields.Integer('monto neto sin iva',
+         )
+    montoIvaRecuperable = fields.Integer('monto con iva incluido',
+         )
+    monto_Total = fields.Integer('Monto',)
+    
+    proveedor_id = fields.Many2one ( 
+        'new_module.proveedores',string = 'Proveedores'
     )
-    company_currency_id = fields.Many2one(
-        string='Company Currency',
-        related='company_id.currency_id', readonly=True,
-    )
-    montoNeto = fields.Monetary('monto neto sin iva',
-        compute='_compute_amount', currency_field='company_currency_id',store=True, readonly=True,)
-    montoIvaRecuperable = fields.Monetary('monto con iva incluido',
-        compute='_compute_amount',currency_field='company_currency_id', store=True, readonly=True,)
-    monto_Total = fields.Monetary('Monto',compute='_compute_amount',currency_field='company_currency_id', store=True, readonly=True,)
 
     def funcion(self):
         raise ValidationError("hola gente")
     
+    @api.depends('rutTributario')
     def cargarDocumentos(self, *post):
         
         os.system('cls')
@@ -181,9 +165,30 @@ class new_module(models.Model):
         ''', [tuple(contenedor.ids)])
 
         return self._cr.fetchall()
+class proveedores(models.Model):
+    _name="new_module.proveedores"
+    _description="borrador para los proveedores"
+    address=fields.Char(string="direccion completa",required=True)
+    name=fields.Char(string = "Nombre proveedor", required=True)
+    l10n_cl_sii_taxpayer_type = fields.Selection(
+        selection=[
+        ('1','IVA afecto 1° categoria'),
+        ('2','Emisor de boleta 2da Categoria'),
+        ('3','Consumidor final'),
+        ('4','Extranjero')
+        ],
+        default='1', string = 'Tipo de contribuyente'
+    )
+    l10n_cl_sii_activity_description= fields.Char(string="Giro",required=True)
+    
+    
 
+    pruebas_id= fields.One2many(
+        'new_module.pruebas','proveedor_id',string='Borradores'
+    )
             # return record
         # function to getting over dues
+    @api.model
     def obtenerDataProveedor():
         import xml.etree.ElementTree as ET
         import psycopg2, os

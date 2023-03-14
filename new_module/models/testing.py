@@ -5,7 +5,7 @@ def obtenerDataProveedor():
         archivo_xml= open('C:/Users/Interhouse HP/Desktop/zonaTesting/testeos/zonaPython/xmlPruebas/prueba5.xml')
         
         datosProveedor = []
-        conn = psycopg2.connect(database="testing", user = "postgres", password = "admin", host = "localhost", port = "5432")
+        conn = psycopg2.connect(database="postgres", user = "odoo", password = "admin", host = "localhost", port = "5432")
         cur = conn.cursor()
         if archivo_xml.readable:
             dato_xml = ET.fromstring(archivo_xml.read())
@@ -34,7 +34,7 @@ def obtenerDataProveedor():
                         else:
                             existe=False
                 if existe==False:
-                    cur.execute("insert into res_partner (id,vat, street, city,name,display_name ,l10n_cl_activity_description) values (1,'"+datosProveedor[0]+"','"+datosProveedor[1]+"','"+datosProveedor[2]+"','"+datosProveedor[3]+"','"+datosProveedor[3]+"','"+datosProveedor[4]+"');")
+                    cur.execute("insert into res_partner (vat, street, city,name,display_name ,l10n_cl_activity_description) values ('"+datosProveedor[0]+"','"+datosProveedor[1]+"','"+datosProveedor[2]+"','"+datosProveedor[3]+"','"+datosProveedor[3]+"','"+datosProveedor[4]+"');")
                     cur.execute(query)
                     querySelect = cur.fetchall()
                     largoQuery=len(querySelect)

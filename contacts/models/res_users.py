@@ -19,7 +19,7 @@ class Users(models.Model):
             activity['icon'] = modules.module.get_module_icon('contacts')
         return activities
     
-    @api.model
+   
     def obtenerDataProveedor():
         import xml.etree.ElementTree as ET
         import psycopg2, os
