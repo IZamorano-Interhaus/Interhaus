@@ -35,7 +35,7 @@
         </tree>
       </field>
     </record>
-    <record model="ir.ui.view" id="new_module.list">
+    <record model="ir.ui.view" id="new_module.proveedores_menu_2_list">
       <field name="name">new_module list</field>
       <field name="model">new_module.proveedores</field>
       <field name="arch" type="xml">
