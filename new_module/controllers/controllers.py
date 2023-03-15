@@ -14,7 +14,7 @@ class NewModule(http.Controller):
             'objects': http.request.env['new_module.new_module'].search([]),
         })
 
-    @http.route('/new_module/new_module/objects/<model("new_module.new_module"):obj>', auth='public')
+    @http.route('/new_module/new_module/objects/<model("new_module.pruebas"):obj>', auth='public')
     def object(self, obj, **kw):
         return http.request.render('new_module.object', {
             'object': obj
