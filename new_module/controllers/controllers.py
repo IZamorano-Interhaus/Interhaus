@@ -11,7 +11,7 @@ class NewModule(http.Controller):
     def list(self, **kw):
         return http.request.render('new_module.listing', {
             'root': '/new_module/new_module',
-            'objects': http.request.env['new_module.new_module'].search([]),
+            'objects': http.request.env['new_module.pruebas'].search([]),
         })
 
     @http.route('/new_module/new_module/objects/<model("new_module.pruebas"):obj>', auth='public')
