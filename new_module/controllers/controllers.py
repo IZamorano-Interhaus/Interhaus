@@ -19,3 +19,15 @@ class NewModule(http.Controller):
         return http.request.render('new_module.object', {
             'object': obj
         })
+    @http.route('/new_module/new_module/objects', auth='public')
+    def list(self, **kw):
+        return http.request.render('new_module.listing', {
+            'root': '/new_module/new_module',
+            'objects': http.request.env['new_module.proveedores'].search([]),
+        })
+
+    @http.route('/new_module/new_module/objects/<model("new_module.proveedores"):obj>', auth='public')
+    def object(self, obj, **kw):
+        return http.request.render('new_module.object', {
+            'object': obj
+        })
