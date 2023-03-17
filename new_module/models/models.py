@@ -168,7 +168,7 @@ class pruebas(models.Model):
 
         return self._cr.fetchall()
 
-    @api.constraint('date_start')
+    @api.constrains('date_start')
     def validarFecha(self):
         currentDay = date.today()
         for pruebas in self:
