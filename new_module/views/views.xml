@@ -27,6 +27,7 @@
           <field name = "address"/>
           <field name = "l10n_cl_sii_activity_description"/>
           <field name = "l10n_cl_sii_taxpayer_type"/>
+          <field name = "pruebas_id"/>
         </tree>
       </field>
     </record>

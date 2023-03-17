@@ -88,24 +88,28 @@
           <field name = "address">Granja de patos</field>
           <field name = "l10n_cl_sii_activity_description">lord of patitos</field>
           <field name = "l10n_cl_sii_taxpayer_type">1</field>
+          <field name = "pruebas_id">1</field>
         </record>
         <record id="object8" model="new_module.proveedores">
           <field name = "name">mr.Quack</field>
           <field name = "address">Granja de patos</field>
           <field name = "l10n_cl_sii_activity_description">lord of patitos</field>
           <field name = "l10n_cl_sii_taxpayer_type">1</field>
+          <field name = "pruebas_id">2</field>
         </record>
         <record id="object9" model="new_module.proveedores">
           <field name = "name">mr.Quack</field>
           <field name = "address">Granja de patos</field>
           <field name = "l10n_cl_sii_activity_description">lord of patitos</field>
           <field name = "l10n_cl_sii_taxpayer_type">1</field>
+          <field name = "pruebas_id">3</field>
         </record>
         <record id="object10" model="new_module.proveedores">
           <field name = "name">mr.Quack</field>
           <field name = "address">Granja de patos</field>
           <field name = "l10n_cl_sii_activity_description">lord of patitos</field>
           <field name = "l10n_cl_sii_taxpayer_type">1</field>
+          <field name = "pruebas_id">5</field>
         </record>
     </data>
 </odoo>

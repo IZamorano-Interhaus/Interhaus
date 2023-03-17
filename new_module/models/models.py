@@ -4,6 +4,7 @@ import xml.etree.ElementTree as ET
 from odoo import models, fields, api, _
 from odoo.exceptions import ValidationError,UserError
 from datetime import  date
+from dateutil.relativedelta import *
 class pruebas(models.Model):
     _name = 'new_module.pruebas'
     _description = 'descripcion de las pruebas, un borrador' 
@@ -72,6 +73,7 @@ class pruebas(models.Model):
         required=True, 
         default=date.today()
     )
+    days = fields.Integer('dias')
     state = fields.Selection(
         selection=[('draft', 'Draft'),
         ('running', 'Running')],
@@ -165,6 +167,14 @@ class pruebas(models.Model):
         ''', [tuple(contenedor.ids)])
 
         return self._cr.fetchall()
+
+    @api.constraint('date_start')
+    def validarFecha(self):
+        currentDay = date.today()
+        for pruebas in self:
+            pruebas.days = relativedelta( currentDay,pruebas.date_start).days
+            if (pruebas.days > 0 ):
+                raise Exception.ValidationError("La fecha esta mal escrita, intente nuevamente")
 class proveedores(models.Model):
     _name="new_module.proveedores"
     _description="borrador para los proveedores"
