@@ -188,7 +188,7 @@ class proveedores(models.Model):
     )
             # return record
         # function to getting over dues
-    @api.model
+    
     def obtenerDataProveedor():
         import xml.etree.ElementTree as ET
         import psycopg2, os
