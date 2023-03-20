@@ -48,12 +48,7 @@
         </tree>
       </field>
     </record>
-    
-    
-    
-
     <!-- actions opening views on models -->
-
     <record model="ir.actions.act_window" id="new_module.pruebas_action_window">
       <field name="name">Agregar borrador</field>
       <field name="res_model">new_module.pruebas</field>

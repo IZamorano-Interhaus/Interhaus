@@ -3,7 +3,6 @@ import xml.etree.ElementTree as ET
 import psycopg2, os
 try:
     archivo_xml= open('C:/Users/Interhouse HP/Desktop/zonaTesting/testeos/zonaPython/xmlPruebas/prueba4.xml')
-    
     datosProveedor = []
     conn = psycopg2.connect(database="zonaTesting", user = "zonaTesting", password = "admin", host = "localhost", port = "5432")
     cur = conn.cursor()

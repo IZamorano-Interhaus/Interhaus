@@ -79,7 +79,6 @@ class pruebas(models.Model):
         ('running', 'Running')],
         default='draft', string='estado'
     )
-    
     montoNeto = fields.Integer('monto neto sin iva',
          )
     montoIvaRecuperable = fields.Integer('monto con iva incluido',
@@ -89,13 +88,9 @@ class pruebas(models.Model):
     proveedor_id = fields.Many2one ( 
         'new_module.proveedores',string = 'Proveedores'
     )
-
     def funcion(self):
         raise ValidationError("hola gente")
-    
-    
     def cargarDocumentos(self, *post):
-        
         os.system('cls')
         listaRut=[]
         conn = psycopg2.connect(database="testing", user = "postgres", password = "admin", host = "localhost", port = "5432")
@@ -134,10 +129,7 @@ class pruebas(models.Model):
                 querySelect = cur.fetchall()
                 largoQuery=len(querySelect)
                 print("query despues del ciclo parte 2 => "+str(largoQuery))
-        
-
         conn.commit()
-
         print("script completado")
         conn.close()
     def obtenerDatosVista(self, container):
@@ -190,9 +182,6 @@ class proveedores(models.Model):
         default='1', string = 'Tipo de contribuyente'
     )
     l10n_cl_sii_activity_description= fields.Char(string="Giro",required=True)
-    
-    
-
     pruebas_id= fields.One2many(
         'new_module.pruebas','proveedor_id',string='Borradores'
     )
@@ -200,14 +189,13 @@ class proveedores(models.Model):
         # function to getting over dues
     
     def obtenerDataProveedor():
-        # duplicacion de los ruts con razones sociales distintas
         import xml.etree.ElementTree as ET
         import psycopg2, os
         try:
-            archivo_xml= open('C:/Users/Interhouse HP/Desktop/zonaTesting/testeos/zonaPython/xmlPruebas/archivo.xml')
+            archivo_xml= open('C:/Users/Interhouse HP/Desktop/zonaTesting/testeos/zonaPython/xmlPruebas/prueba4.xml')
             
             datosProveedor = []
-            conn = psycopg2.connect(database="testing", user = "postgres", password = "admin", host = "localhost", port = "5432")
+            conn = psycopg2.connect(database="zonaTesting", user = "zonaTesting", password = "admin", host = "localhost", port = "5432")
             cur = conn.cursor()
             if archivo_xml.readable:
                 dato_xml = ET.fromstring(archivo_xml.read())
@@ -235,16 +223,16 @@ class proveedores(models.Model):
                             else:
                                 existe=False
                                 print("no existe el dato en la base")
-                                break
+                                continue
                     if existe==False:
                         if str(datosProveedor[0])==str(querySelect[i][1]) and str(datosProveedor[3])!=str(querySelect[i][2]):
-                            cur.execute("update res_partner set vat='"+datosProveedor[0]+"', street='"+datosProveedor[1]+"', city='"+datosProveedor[2]+"',display_name ='"+datosProveedor[3]+"',name='"+datosProveedor[3]+"',l10n_cl_activity_description ='"+datosProveedor[4]+"',l10n_cl_sii_taxpayer_type=1 where  name>= '"+querySelect[i][2]+"' and vat = '"+datosProveedor[0]+"';")
+                            cur.execute("update res_partner set vat='"+datosProveedor[0]+"', street='"+datosProveedor[1]+"', city='"+datosProveedor[2]+"',display_name ='"+datosProveedor[3]+"',name='"+datosProveedor[3]+"',l10n_cl_activity_description ='"+datosProveedor[4]+"',l10n_cl_sii_taxpayer_type=1 where  name= '"+datosProveedor[3]+"' and vat = '"+datosProveedor[0]+"';")
                             cur.execute(query)
                             querySelect = cur.fetchall()
                             print("se actualiza proveedor por el nombre distinto")
                             largoQuery=len(querySelect)
                         elif str(datosProveedor[0])!=str(querySelect[i][1]) and str(datosProveedor[3])==str(querySelect[i][2]):
-                            cur.execute("update res_partner set vat='"+datosProveedor[0]+"', street='"+datosProveedor[1]+"', city='"+datosProveedor[2]+"',display_name ='"+datosProveedor[3]+"',name='"+datosProveedor[3]+"',l10n_cl_activity_description ='"+datosProveedor[4]+"',l10n_cl_sii_taxpayer_type=1 where  name>= '"+querySelect[i][2]+"' and vat = '"+datosProveedor[0]+"';")
+                            cur.execute("update res_partner set vat='"+datosProveedor[0]+"', street='"+datosProveedor[1]+"', city='"+datosProveedor[2]+"',display_name ='"+datosProveedor[3]+"',name='"+datosProveedor[3]+"',l10n_cl_activity_description ='"+datosProveedor[4]+"',l10n_cl_sii_taxpayer_type=1 where  name= '"+datosProveedor[3]+"' and vat = '"+datosProveedor[0]+"';")
                             cur.execute(query)
                             querySelect = cur.fetchall()
                             print("se actualiza por rut distinto")
