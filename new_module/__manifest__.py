@@ -25,7 +25,7 @@
     
         'security/ir.model.access.csv',
         'views/views.xml',
-        'views/vistazo.xml',
+        
         'views/templates.xml'
         
     ],
