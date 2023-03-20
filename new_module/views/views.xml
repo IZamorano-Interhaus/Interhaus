@@ -53,16 +53,15 @@
 
     <!-- menu categories -->
 
-    <menuitem name="otros" id="new_module.pruebas_menu_2" parent="new_module.menu_root" action ="new_module.pruebas_action_window"/>
     <menuitem name="Menu principal" id="new_module.proveedores_menu_1" parent="new_module.menu_root" action = "new_module.proveedores_action_window"/>
+    <menuitem name="otros" id="new_module.pruebas_menu_2" parent="new_module.menu_root" action ="new_module.pruebas_action_window"/>
 
     <!-- actions -->
-
-    <menuitem name="Lista" id="new_module.pruebas_menu_2_list" parent="new_module.pruebas_menu_2"
-              action="new_module.pruebas_action_window"/>
+    
     <menuitem name="Proveedores" id="new_module.proveedores_menu_1_list" parent="new_module.proveedores_menu_1"
               action="new_module.proveedores_action_window"/>
-   
+    <menuitem name="Lista" id="new_module.pruebas_menu_2_list" parent="new_module.pruebas_menu_2"
+              action="new_module.pruebas_action_window"/>
 
   </data>
 </odoo>
