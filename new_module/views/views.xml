@@ -2,9 +2,9 @@
  
     <!-- explicit list view definition -->
     
-    <header>
+    
         <button name="accion_random" type="object" string="Hace algo"/>
-    </header>
+    
     <sheet>
         <field name="accion"/>
     </sheet>
