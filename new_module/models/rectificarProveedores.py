@@ -16,7 +16,7 @@ try:
         nodoEmisor = nodoEncabezado.find('{http://www.sii.cl/SiiDte}Emisor')
         datosProveedor=nodoEmisor.find('{http://www.sii.cl/SiiDte}RUTEmisor').text,nodoEmisor.find('{http://www.sii.cl/SiiDte}DirOrigen').text,nodoEmisor.find('{http://www.sii.cl/SiiDte}CmnaOrigen').text,nodoEmisor.find('{http://www.sii.cl/SiiDte}RznSoc').text,nodoEmisor.find('{http://www.sii.cl/SiiDte}GiroEmis').text
         print(datosProveedor)
-        query = "select vat,name from res_partner;" 
+        query = "select id, vat,name from res_partner ;" 
         cur.execute(query)
         querySelect = cur.fetchall()
         largoQuery=len(querySelect)        
@@ -27,16 +27,25 @@ try:
             else: 
                 existe=True
                 for j in range(largoQuery):
-                    if str(datosProveedor[0])==str(querySelect[j][0]) and str(datosProveedor[3])==str(querySelect[j][1]):
+                    if str(datosProveedor[0])==str(querySelect[j][1]) and str(datosProveedor[3])==str(querySelect[j][2]):
                         existe=True
-                        cur.execute("update res_partner set vat='"+datosProveedor[0]+"', street='"+datosProveedor[1]+"', city='"+datosProveedor[2]+"',display_name ='"+datosProveedor[3]+"',name='"+datosProveedor[3]+"',l10n_cl_activity_description ='"+datosProveedor[4]+"',l10n_cl_sii_taxpayer_type=1 where vat='"+datosProveedor[0]+"';")
                         break
+                    elif str(datosProveedor[0])==str(querySelect[j][1]) and str(datosProveedor[3])!=str(querySelect[j][2]):
+                        existe=True
+                        break 
                     else:
                         existe=False
             if existe==False:
                 cur.execute("insert into res_partner (vat, street, city,name,display_name ,l10n_cl_activity_description,l10n_cl_sii_taxpayer_type) values ('"+datosProveedor[0]+"','"+datosProveedor[1]+"','"+datosProveedor[2]+"','"+datosProveedor[3]+"','"+datosProveedor[3]+"','"+datosProveedor[4]+"',1);")
                 cur.execute(query)
                 querySelect = cur.fetchall()
+                print("querySelect 1=>",querySelect)
+                largoQuery=len(querySelect)
+            else:
+                cur.execute("update res_partner set vat='"+datosProveedor[0]+"', street='"+datosProveedor[1]+"', city='"+datosProveedor[2]+"',display_name ='"+datosProveedor[3]+"',name='"+datosProveedor[3]+"',l10n_cl_activity_description ='"+datosProveedor[4]+"',l10n_cl_sii_taxpayer_type=1 where vat='"+datosProveedor[0]+"' and id>= "+str(querySelect[0][0])+";")
+                cur.execute(query)
+                querySelect = cur.fetchall()
+                print("querySelect 2=>",querySelect)
                 largoQuery=len(querySelect)
             conn.commit()
         conn.close()
