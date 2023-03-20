@@ -1,14 +1,14 @@
 <odoo>
  
     <!-- explicit list view definition -->
-    <form>
+    
     <header>
         <button name="accion_random" type="object" string="Hace algo"/>
     </header>
     <sheet>
         <field name="accion"/>
     </sheet>
-</form>
+
     <record model="ir.ui.view" id="new_module.proveedores_list_view">
       <field name="name">new_module list</field>
       <field name="model">new_module.proveedores</field>
