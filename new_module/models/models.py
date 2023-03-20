@@ -159,7 +159,11 @@ class pruebas(models.Model):
         ''', [tuple(contenedor.ids)])
 
         return self._cr.fetchall()
-
+    @api.constrains('date_start')
+    def _check_date_end(self):
+        for record in self:
+            if record.date_end < fields.Date.today():
+                raise ValidationError("The end date cannot be set in the past")
     @api.constrains('date_start')
     def validarFecha(self):
         currentDay = date.today()
