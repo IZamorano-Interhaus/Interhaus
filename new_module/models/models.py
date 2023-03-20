@@ -88,6 +88,12 @@ class pruebas(models.Model):
     proveedor_id = fields.Many2one ( 
         'new_module.proveedores',string = 'Proveedores'
     )
+
+    def accion_random(self):
+        for record in self:
+            record.accion="algo genialo sucedera aqui"
+        return True
+
     def funcion(self):
         raise ValidationError("hola gente")
     def cargarDocumentos(self, *post):
