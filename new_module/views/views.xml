@@ -1,5 +1,5 @@
 <odoo>
-  <data>
+ 
     <!-- explicit list view definition -->
     <form>
     <header>
@@ -70,5 +70,5 @@
     <menuitem name="Lista" id="new_module.pruebas_menu_2_list" parent="new_module.pruebas_menu_2"
               action="new_module.pruebas_action_window"/>
 
-  </data>
+
 </odoo>
