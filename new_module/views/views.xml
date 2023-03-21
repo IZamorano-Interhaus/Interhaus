@@ -65,7 +65,7 @@
 
     <!-- Top menu item -->
 
-    <menuitem name="Modulo pruebas" id="new_module.menu_root"/>
+    <menuitem name="Modulo de proveedores" id="new_module.menu_root"/>
 
     <!-- menu categories -->
 

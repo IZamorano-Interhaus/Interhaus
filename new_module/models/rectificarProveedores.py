@@ -14,24 +14,24 @@ try:
         nodoEncabezado = nodoDocumento.find('{http://www.sii.cl/SiiDte}Encabezado') 
         nodoEmisor = nodoEncabezado.find('{http://www.sii.cl/SiiDte}Emisor')
         datosProveedor=nodoEmisor.find('{http://www.sii.cl/SiiDte}RUTEmisor').text,nodoEmisor.find('{http://www.sii.cl/SiiDte}DirOrigen').text,nodoEmisor.find('{http://www.sii.cl/SiiDte}CmnaOrigen').text,nodoEmisor.find('{http://www.sii.cl/SiiDte}RznSoc').text,nodoEmisor.find('{http://www.sii.cl/SiiDte}GiroEmis').text
-        query = "select id, vat,name from res_partner ;" 
+        query = "select id, vat,name from res_partner order by id;" 
         cur.execute(query)
         querySelect = cur.fetchall()
         largoQuery=len(querySelect)        
         existe=True
-        for i in range(len(datosProveedor)):
+        for i in range(largoQuery):
             if largoQuery==0:
                 existe=False
             else: 
                 existe=True
-                for j in range(largoQuery):
-                    if str(datosProveedor[0])==str(querySelect[j][1]) and str(datosProveedor[3])==str(querySelect[j][2]):
+                for j in range(len(datosProveedor)):
+                    if datosProveedor[0]==str(querySelect[j][1]) and datosProveedor[3]==str(querySelect[2]):
                         existe=True
                         print("existe un dato")
                         break
                     else:
                         existe=False
-                        print("no existe el dato en la base")
+                        
                         break
         if existe==False:
             if str(datosProveedor[3])!=str(querySelect[0][2]):
@@ -45,9 +45,7 @@ try:
                 cur.execute(query)
                 querySelect = cur.fetchall()
                 print("se actualiza por rut distinto")
-                largoQuery=len(querySelect)
-                
-                    
+                largoQuery=len(querySelect)              
         conn.commit()
         conn.close()
     else:
