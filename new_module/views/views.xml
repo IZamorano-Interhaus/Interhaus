@@ -15,6 +15,22 @@
         </tree>
       </field>
     </record>
+    <record model="ir.ui.view" id="new_module.pruebas_list_view">
+      <field name="name">new_module list</field>
+      <field name="model">new_module.pruebas</field>
+      <field name="arch" type="xml">
+        <tree>
+          <field name="partner_id"/>
+          <field name="rut_tributario"/>
+          <field name="folio_documento"/>
+          <field name="codigo_documento"/>
+          <field name="tipo_documento"/> 
+          <field name="folio_documento"/>
+          <field name="referencia_pago"/>
+          <field name="trackId"/>
+        </tree>
+      </field>
+    </record>
     <!-- actions opening views on models -->
     <record model="ir.actions.act_window" id="new_module.proveedores_action_window">
       <field name="name">Agregar proveedor</field>
