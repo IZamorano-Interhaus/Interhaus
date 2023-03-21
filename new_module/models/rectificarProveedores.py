@@ -2,7 +2,7 @@
 import xml.etree.ElementTree as ET
 import psycopg2, os
 try:
-    archivo_xml= open('C:/Users/Interhouse HP/Desktop/zonaTesting/testeos/zonaPython/xmlPruebas/prueba4.xml')
+    archivo_xml= open('C:/Users/Interhouse HP/Desktop/zonaTesting/testeos/zonaPython/xmlPruebas/prueba3.xml')
     datosProveedor = []
     conn = psycopg2.connect(database="zonaTesting", user = "zonaTesting", password = "admin", host = "localhost", port = "5432")
     cur = conn.cursor()
@@ -32,26 +32,22 @@ try:
                     else:
                         existe=False
                         print("no existe el dato en la base")
-                        continue
-            if existe==False:
-                if str(datosProveedor[0])==str(querySelect[i][1]) and str(datosProveedor[3])!=str(querySelect[i][2]):
-                    cur.execute("update res_partner set vat='"+datosProveedor[0]+"', street='"+datosProveedor[1]+"', city='"+datosProveedor[2]+"',display_name ='"+datosProveedor[3]+"',name='"+datosProveedor[3]+"',l10n_cl_activity_description ='"+datosProveedor[4]+"',l10n_cl_sii_taxpayer_type=1 where  name= '"+datosProveedor[3]+"' and vat = '"+datosProveedor[0]+"';")
-                    cur.execute(query)
-                    querySelect = cur.fetchall()
-                    print("se actualiza proveedor por el nombre distinto")
-                    largoQuery=len(querySelect)
-                elif str(datosProveedor[0])!=str(querySelect[i][1]) and str(datosProveedor[3])==str(querySelect[i][2]):
-                    cur.execute("update res_partner set vat='"+datosProveedor[0]+"', street='"+datosProveedor[1]+"', city='"+datosProveedor[2]+"',display_name ='"+datosProveedor[3]+"',name='"+datosProveedor[3]+"',l10n_cl_activity_description ='"+datosProveedor[4]+"',l10n_cl_sii_taxpayer_type=1 where  name= '"+datosProveedor[3]+"' and vat = '"+datosProveedor[0]+"';")
-                    cur.execute(query)
-                    querySelect = cur.fetchall()
-                    print("se actualiza por rut distinto")
-                    largoQuery=len(querySelect)
-                else:
-                    cur.execute("insert into res_partner (vat, street, city,name,display_name ,l10n_cl_activity_description,l10n_cl_sii_taxpayer_type) values ('"+datosProveedor[0]+"','"+datosProveedor[1]+"','"+datosProveedor[2]+"','"+datosProveedor[3]+"','"+datosProveedor[3]+"','"+datosProveedor[4]+"',1);")
-                    cur.execute(query)
-                    querySelect = cur.fetchall()
-                    print("se agrega nuevo proveedor")
-                    largoQuery=len(querySelect)
+                        break
+        if existe==False:
+            if str(datosProveedor[3])!=str(querySelect[0][2]):
+                cur.execute("insert into res_partner (vat, street, city,name,display_name ,l10n_cl_activity_description,l10n_cl_sii_taxpayer_type) values ('"+datosProveedor[0]+"','"+datosProveedor[1]+"','"+datosProveedor[2]+"','"+datosProveedor[3]+"','"+datosProveedor[3]+"','"+datosProveedor[4]+"',1);")
+                cur.execute(query)
+                querySelect = cur.fetchall()
+                print("se agrega nuevo proveedor")
+                largoQuery=len(querySelect)
+            elif str(datosProveedor[3])==str(querySelect[0][2]):
+                cur.execute("update res_partner set vat='"+datosProveedor[0]+"', street='"+datosProveedor[1]+"', city='"+datosProveedor[2]+"',display_name ='"+datosProveedor[3]+"',name='"+datosProveedor[3]+"',l10n_cl_activity_description ='"+datosProveedor[4]+"',l10n_cl_sii_taxpayer_type=1 where  name= '"+datosProveedor[3]+"' and vat = '"+datosProveedor[0]+"';")
+                cur.execute(query)
+                querySelect = cur.fetchall()
+                print("se actualiza por rut distinto")
+                largoQuery=len(querySelect)
+                
+                    
         conn.commit()
         conn.close()
     else:
