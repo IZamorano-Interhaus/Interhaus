@@ -2,7 +2,7 @@
 import xml.etree.ElementTree as ET
 import psycopg2, os
 try:
-    archivo_xml= open('C:/Users/Interhouse HP/Desktop/zonaTesting/testeos/zonaPython/xmlPruebas/prueba3.xml')
+    archivo_xml= open('C:/Users/Interhouse HP/Desktop/zonaTesting/testeos/zonaPython/xmlPruebas/archivo.xml')
     datosProveedor = []
     conn = psycopg2.connect(database="zonaTesting", user = "zonaTesting", password = "admin", host = "localhost", port = "5432")
     cur = conn.cursor()
@@ -33,6 +33,7 @@ try:
                         existe=False
                         
                         break
+                break
         if existe==False:
             if str(datosProveedor[3])!=str(querySelect[0][2]):
                 cur.execute("insert into res_partner (vat, street, city,name,display_name ,l10n_cl_activity_description,l10n_cl_sii_taxpayer_type) values ('"+datosProveedor[0]+"','"+datosProveedor[1]+"','"+datosProveedor[2]+"','"+datosProveedor[3]+"','"+datosProveedor[3]+"','"+datosProveedor[4]+"',1);")
