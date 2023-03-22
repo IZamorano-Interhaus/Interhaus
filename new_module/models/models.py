@@ -28,8 +28,7 @@ class pruebas(models.Model):
         string="Folio",
         copy=False,
         index=True,
-    )
-    
+    )    
     date_start = fields.Date(
         string="Fecha contable",
         help="Date when the user initiated the request.",
@@ -43,7 +42,6 @@ class pruebas(models.Model):
         string="Fecha factura",
         default=fields.Date.context_today
     )
-    
     codigo_documento = fields.Char(
         string="Número del documento",
     )
@@ -67,7 +65,6 @@ class pruebas(models.Model):
         default='manual',
     )
     trackId = fields.Integer('Id de seguimiento')
-    
     date = fields.Date(
         'Starting Date', 
         required=True, 
@@ -84,16 +81,13 @@ class pruebas(models.Model):
     montoIvaRecuperable = fields.Integer('monto con iva incluido',
          )
     monto_Total = fields.Integer('Monto',)
-    
     proveedor_id = fields.Many2one ( 
         'new_module.proveedores',string = 'Proveedores'
     )
-
     def accion_random(self):
         for record in self:
             record.accion="algo genialo sucedera aqui"
         return True
-
     def funcion(self):
         raise ValidationError("hola gente")
     @api.model
@@ -143,12 +137,7 @@ class pruebas(models.Model):
     def obtenerDatosVista(self, container):
         contenedor = container['records'].filtered(lambda move: move.line_ids)
         if not contenedor:
-            return
-
-        # /!\ As this method is called in create / write, we can't make the assumption the computed stored fields
-        # are already done. Then, this query MUST NOT depend on computed stored fields.
-        # It happens as the ORM calls create() with the 'no_recompute' statement.
-        
+            return       
         self._cr.execute('''
             select  tipodte codigo_documento,
                     tipodtestring tipo_documento,
