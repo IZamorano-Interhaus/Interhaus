@@ -72,28 +72,28 @@
       <field name = "address">Granja de patos</field>
       <field name = "l10n_cl_sii_activity_description">lord of patitos</field>
       <field name = "l10n_cl_sii_taxpayer_type">1</field>
-      <field name = "pruebas_id">object1</field>
+      <field name = "pruebas_id">1</field>
     </record>
     <record id="object8" model="new_module.proveedores">
       <field name = "name">mr.Quack2</field>
       <field name = "address">Granja de patos</field>
       <field name = "l10n_cl_sii_activity_description">lord of patitos</field>
       <field name = "l10n_cl_sii_taxpayer_type">1</field>
-      <field name = "pruebas_id">object2</field>
+      <field name = "pruebas_id">2</field>
     </record>
     <record id="object9" model="new_module.proveedores">
       <field name = "name">mr.Quack3</field>
       <field name = "address">Granja de patos</field>
       <field name = "l10n_cl_sii_activity_description">lord of patitos</field>
       <field name = "l10n_cl_sii_taxpayer_type">1</field>
-      <field name = "pruebas_id">object3</field>
+      <field name = "pruebas_id">3</field>
     </record>
     <record id="object10" model="new_module.proveedores">
       <field name = "name">mr.Quack4</field>
       <field name = "address">Granja de patos</field>
       <field name = "l10n_cl_sii_activity_description">lord of patitos</field>
       <field name = "l10n_cl_sii_taxpayer_type">1</field>
-      <field name = "pruebas_id">object5</field>
+      <field name = "pruebas_id">4</field>
     </record>
   </data>
 </odoo>
