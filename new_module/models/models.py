@@ -253,14 +253,14 @@ class proveedores(models.Model):
             archivo_xml.close()
 class compannia(models.Model):
     _name="new_module.compannia"
-    _description="modulo para linkear las compañias con los proveedores"
+    _description="modulo para enlazar las compañias con los proveedores"
 
     proveedores_id = fields.Many2many(
         'new_module.proveedores',string = 'Contacto Proveedor'
     )
-    name = fields.Char(
+    nombre_compannia = fields.Char(
         'nombre compannia'
     )
-    street = fields.Char(
+    direccion_compannia = fields.Char(
         'direccion'
     )
