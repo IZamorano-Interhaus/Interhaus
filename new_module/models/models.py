@@ -182,7 +182,7 @@ class proveedores(models.Model):
     pruebas_id= fields.One2many(
         'new_module.pruebas','proveedor_id',string='Borradores'
     )
-    company_id = fields.Many2many(
+    compañias_id = fields.Many2many(
         'new_module.compañia', string="compañia"
     )
             # return record
@@ -254,7 +254,7 @@ class proveedores(models.Model):
 class compañia(models.Model):
     _name="new_module.compañia"
     _description="modulo para linkear las compañias con los proveedores"
-    
+
     proveedores_id = fields.Many2many(
         'new_module.proveedores',string = 'Contacto Proveedor'
     )
