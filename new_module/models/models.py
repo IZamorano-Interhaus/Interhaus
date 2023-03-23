@@ -254,6 +254,7 @@ class proveedores(models.Model):
 class compañia(models.Model):
     _name="new_module.compañia"
     _description="modulo para linkear las compañias con los proveedores"
+    
     proveedores_id = fields.Many2many(
         'new_module.proveedores',string = 'Contacto Proveedor'
     )
