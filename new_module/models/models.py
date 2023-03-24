@@ -259,7 +259,7 @@ class compannia(models.Model):
         'new_module.proveedores',string = 'Contacto Proveedor'
     )
     nombre_compannia = fields.Char(
-        'nombre compannia'
+        'nombre compañia'
     )
     direccion_compannia = fields.Char(
         'direccion'

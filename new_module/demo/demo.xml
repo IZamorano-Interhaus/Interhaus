@@ -99,11 +99,11 @@
       <field name="nombre_compannia">Intehaus</field>
       <field name="direccion_compannia">Pedro de Valdivia 1425</field>
     </record>
-    <record id="object11" model="new_module.compannia">
+    <record id="object12" model="new_module.compannia">
       <field name="nombre_compannia">Intehaus_testing</field>
       <field name="direccion_compannia">Pedro Alarcon 9999</field>
     </record>
-    <record id="object11" model="new_module.compannia">
+    <record id="object13" model="new_module.compannia">
       <field name="nombre_compannia">Neoflor</field>
       <field name="direccion_compannia">Punta Arenas 1452</field>
     </record>
