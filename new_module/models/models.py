@@ -255,12 +255,13 @@ class compannia(models.Model):
     _name="new_module.compannia"
     _description="modulo para enlazar las compañias con los proveedores"
 
-    proveedores_id = fields.Many2many(
-        'new_module.proveedores',string = 'Contacto Proveedor'
-    )
+    
     nombre_compannia = fields.Char(
-        'nombre compañia'
+        'Nombre compañia'
     )
     direccion_compannia = fields.Char(
-        'direccion'
+        'Dirección'
     )
+    proveedores_id = fields.Many2many(
+            'new_module.proveedores',string = 'Contacto proveedor'
+        )
