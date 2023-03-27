@@ -18,7 +18,7 @@ class pruebas(models.Model):
         string="Rut",
     )   
     tipo_documento=fields.Many2one(
-        comodel_name="res.partner",
+        comodel_name="l10n.latam.document.type.name",
         string="Tipo de Documento",
         copy=False,
         index=True,
@@ -42,7 +42,8 @@ class pruebas(models.Model):
         string="Fecha factura",
         default=fields.Date.context_today
     )
-    codigo_documento = fields.Char(
+    codigo_documento = fields.Many2one(
+        comodel_name='l10n.latam.document.type.code',
         string="Número del documento",
     )
     razon_social = fields.Char(
