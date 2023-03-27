@@ -85,7 +85,7 @@ class pruebas(models.Model):
          )
     monto_Total = fields.Integer(
         'Monto',
-        default=montoNeto+montoIvaRecuperable
+        default=montoNeto*montoIvaRecuperable
         )
     proveedor_id = fields.Many2one ( 
         'new_module.proveedores',string = 'Proveedores'
