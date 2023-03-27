@@ -2,70 +2,70 @@
   <data>
     <record id="object0" model="new_module.pruebas">
       <field name="partner_id">7</field>
-      <field name="rut_tributario">19669468-4</field>
+      <field name="rut_tributario">1</field>
       <field name="folio_documento">1</field>
       <field name="codigo_documento">1</field>
       <field name="tipo_documento">1</field> 
       <field name="folio_documento">1</field>
       <field name="referencia_pago">1</field>
-      <field name="trackId">98234156</field>
+      <field name="trackId">1</field>
     </record>
     <record id="object1" model="new_module.pruebas">
       <field name="partner_id">1</field>
-      <field name="rut_tributario">19669468-4</field>
+      <field name="rut_tributario">1</field>
       <field name="folio_documento">1</field>
       <field name="codigo_documento">1</field>
       <field name="tipo_documento">1</field>
       <field name="referencia_pago">1</field>
-      <field name="trackId">98234156</field>
+      <field name="trackId">1</field>
     </record>
     <record id="object2" model="new_module.pruebas">
       <field name="partner_id">2</field>
-      <field name="rut_tributario">19669468-4</field>
+      <field name="rut_tributario">1</field>
       <field name="folio_documento">1</field>
       <field name="codigo_documento">1</field>
       <field name="tipo_documento">1</field>
       <field name="referencia_pago">1</field>
-      <field name="trackId">98234156</field>
+      <field name="trackId">1</field>
     </record>
     <record id="object3" model="new_module.pruebas">
       <field name="partner_id">3</field>
-      <field name="rut_tributario">19669468-4</field>
+      <field name="rut_tributario">1</field>
       <field name ="folio_documento">1</field>
       <field name="codigo_documento">1</field>
       <field name="tipo_documento">1</field>
       <field name="folio_documento">1</field>
       <field name="referencia_pago">1</field>
-      <field name="trackId">98234156</field>
+      <field name="trackId">1</field>
     </record>
     <record id="object4" model="new_module.pruebas">
       <field name="partner_id">4</field>
-      <field name="rut_tributario">19669468-4</field>
+      <field name="rut_tributario">1</field>
       <field name="folio_documento">1</field>
       <field name="codigo_documento">1</field>
       <field name="tipo_documento">1</field>
       <field name="referencia_pago">1</field>
-      <field name="trackId">98234156</field>
+      <field name="trackId">1</field>
     </record>
     <record id="object5" model="new_module.pruebas">
       <field name="partner_id">5</field>
-      <field name="rut_tributario">19669468-4</field>
+      <field name="rut_tributario">1</field>
       <field name="folio_documento">1</field>
       <field name="codigo_documento">1</field>
       <field name="tipo_documento">1</field>
       <field name="folio_documento">1</field>
       <field name="referencia_pago">1</field>
-      <field name="trackId">98234156</field>
+      <field name="trackId">1</field>
     </record>
     <record id="object6" model="new_module.pruebas">
       <field name="partner_id">6</field>
-      <field name="rut_tributario">19669468-4</field>
+      <field name="rut_tributario">1</field>
       <field name="folio_documento">1</field>
       <field name="codigo_documento">1</field>
       <field name="tipo_documento">1</field>
       <field name="folio_documento">1</field>
       <field name="referencia_pago">1</field>
-      <field name="trackId">98234156</field>
+      <field name="trackId">1</field>
     </record>
     <record id="object7" model="new_module.proveedores">
       <field name = "name">mr.Quack</field>

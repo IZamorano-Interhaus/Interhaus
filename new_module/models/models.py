@@ -21,7 +21,7 @@ class pruebas(models.Model):
         index=False,
     )   
     tipo_documento=fields.Many2one(
-        comodel_name="l10n.latam.document.type.name",
+        comodel_name="l10n.latam.document.type_name",
         string="Tipo de Documento",
         copy=False,
         index=False,
