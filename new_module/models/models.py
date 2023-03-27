@@ -46,8 +46,17 @@ class pruebas(models.Model):
         comodel_name='l10n.latam.document.type.code',
         string="Número del documento",
     )
-    razon_social = fields.Char(
+    razon_social = fields.Many2one(
+        comodel_name='res.partner',
+        copy=False,
+        index=True,
         string="Razón social",
+    )
+    giro_actividad = fields.Many2one(
+        comodel_name = 'l10n.cl.company.activities',
+        copy=False,
+        index=True,
+        string="Giro de actividades"
     )
     acuseRecibo = fields.Selection(
         selection=[
