@@ -31,7 +31,6 @@ try:
                         break
                     else:
                         existe=False
-                        
                         break
                 break
         if existe==False:
