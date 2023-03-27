@@ -12,22 +12,25 @@ class pruebas(models.Model):
         comodel_name="res.partner",
         string="Proveedor",
         copy=False,
-        index=True,
+        index=False,
     )
-    rut_tributario = fields.Char(
+    rut_tributario = fields.Many2one(
+        comodel_name = "res.partner",
         string="Rut",
+        copy=False,
+        index=False,
     )   
     tipo_documento=fields.Many2one(
         comodel_name="l10n.latam.document.type.name",
         string="Tipo de Documento",
         copy=False,
-        index=True,
+        index=False,
     )
     folio_documento = fields.Many2one(
         comodel_name="account.analytic.account",
         string="Folio",
         copy=False,
-        index=True,
+        index=False,
     )    
     date_start = fields.Date(
         string="Fecha contable",
