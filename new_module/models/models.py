@@ -77,6 +77,7 @@ class pruebas(models.Model):
         default='draft', string='estado'
     )
     montoNeto = fields.Float('monto neto sin iva',
+                             default=0
          )
     montoIvaRecuperable = fields.Float(
         'monto con iva incluido',
@@ -100,7 +101,7 @@ class pruebas(models.Model):
     def cargarDocumentos(self, *post):
         os.system('cls')
         listaRut=[]
-        conn = psycopg2.connect(database="testing", user = "postgres", password = "admin", host = "localhost", port = "5432")
+        conn = psycopg2.connect(database="zonaTesting", user = "zonaTesting", password = "admin", host = "localhost", port = "5432")
         cur = conn.cursor()
         f = open("C:/tools/respaldoBaseDatos/doc_SII_202301", "r")
         archivoJSON = f.read()
