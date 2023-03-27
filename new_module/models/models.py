@@ -42,16 +42,16 @@ class pruebas(models.Model):
         default=fields.Date.context_today
     )
     codigo_documento = fields.Many2one(
-        comodel_name='l10n.latam.document.type',
+        comodel_name="l10n.latam.document.type",
         string="Número del documento",
     )
     razon_social = fields.Many2one(
-        comodel_name='res.partner',
+        comodel_name="res.partner",
         
         string="Razón social",
     )
     giro_actividad = fields.Many2one(
-        comodel_name = 'l10n.cl.company.activities',
+        comodel_name = "l10n.cl.company.activities",
         
         string="Giro de actividades"
     )
@@ -65,7 +65,7 @@ class pruebas(models.Model):
             ('rejected', 'Rechazado'),
             ('manual','Manual ( borrador)'),
         ],
-        string='acusoRecibo',
+        string="acusoRecibo",
         required=True,
         readonly=True,
         copy=False,
