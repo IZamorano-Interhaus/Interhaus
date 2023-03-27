@@ -31,16 +31,7 @@
         </tree>
       </field>
     </record>
-    <record model="ir.ui.view" id="new_module.compannia_list_view">
-      <field name="name">new_module list</field>
-      <field name="model">new_module.compannia</field>
-      <field name="arch" type="xml">
-        <tree>
-          <field name="nombre_compannia"/>
-          <field name="direccion_compannia"/>
-        </tree>
-      </field>
-    </record>
+   
     <!-- actions opening views on models -->
     <record model="ir.actions.act_window" id="new_module.proveedores_action_window">
       <field name="name">Agregar proveedor</field>
@@ -54,12 +45,7 @@
       <field name="view_mode">tree,form</field>
       
     </record>
-    <record model="ir.actions.act_window" id="new_module.compannia_action_window">
-      <field name="name">Agregar compañia</field>
-      <field name="res_model">new_module.compannia</field>
-      <field name="view_mode">tree,form</field>
-      
-    </record>
+    
     
 
 
@@ -96,8 +82,7 @@
     
     <menuitem name="Factura electronica" id="new_module.pruebas_menu_2_list" parent="new_module.proveedores_menu_1"
               action="new_module.pruebas_action_window"/>
-    <menuitem name="compañia" id="new_module.compannia_menu_3_list" parent="new_module.proveedores_menu_1"
-              action="new_module.compannia_action_window"/>
+   
     <!-- 
     <menuitem name="Factura electronica" id="new_module.pruebas_menu_2_list" parent="new_module.pruebas_menu_2"
               action="new_module.pruebas_action_window"/>

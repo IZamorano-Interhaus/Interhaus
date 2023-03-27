@@ -101,7 +101,7 @@ class pruebas(models.Model):
     def cargarDocumentos(self, *post):
         os.system('cls')
         listaRut=[]
-        conn = psycopg2.connect(database="testing", user = "postgres", password = "admin", host = "localhost", port = "5432")
+        conn = psycopg2.connect(database="zonaTesting", user = "zonaTesting", password = "admin", host = "localhost", port = "5432")
         cur = conn.cursor()
         f = open("C:/tools/respaldoBaseDatos/doc_SII_202301", "r")
         archivoJSON = f.read()
@@ -189,9 +189,7 @@ class proveedores(models.Model):
     pruebas_id= fields.One2many(
         'new_module.pruebas','proveedor_id',string='Borradores'
     )
-    compannias_id = fields.Many2many(
-        'new_module.compannia', string="compañia"
-    )
+    
             # return record
         # function to getting over dues
     @api.model
@@ -258,17 +256,3 @@ class proveedores(models.Model):
             print(err)
         finally:
             archivo_xml.close()
-class compannia(models.Model):
-    _name="new_module.compannia"
-    _description="modulo para enlazar las compañias con los proveedores"
-
-    
-    nombre_compannia = fields.Char(
-        'Nombre compañia'
-    )
-    direccion_compannia = fields.Char(
-        'Dirección'
-    )
-    proveedores_id = fields.Many2many(
-            'new_module.proveedores',string = 'Contacto proveedor'
-        )
