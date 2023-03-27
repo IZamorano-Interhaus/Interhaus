@@ -77,6 +77,7 @@ class pruebas(models.Model):
         default='draft', string='estado'
     )
     montoNeto = fields.Float('monto neto sin iva',
+                             default=0
          )
     montoIvaRecuperable = fields.Float(
         'monto con iva incluido',
