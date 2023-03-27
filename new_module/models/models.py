@@ -83,7 +83,7 @@ class pruebas(models.Model):
         default=0.19,
         readonly=True
          )
-    monto_Total = fields.Integer(
+    monto_Total = fields.Float(
         'Monto Total',
         default=montoNeto*montoIvaRecuperable
         )
