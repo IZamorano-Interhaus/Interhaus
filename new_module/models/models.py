@@ -174,12 +174,12 @@ class pruebas(models.Model):
 class proveedores(models.Model):
     _name="new_module.proveedores"
     _description="borrador para los proveedores"
-    address=fields.Char(string="Dirección",required=True)
     name=fields.Char(string = "Nombre proveedor", required=True)
+    address=fields.Char(string="Dirección",required=True)
     company_id=fields.Many2one(
         string="Compañia",
         comodel_name="res.company",
-        readonly=True,
+        
         store=True,
         index=True,
     )
