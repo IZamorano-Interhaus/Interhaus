@@ -84,7 +84,7 @@ class pruebas(models.Model):
         readonly=True
          )
     monto_Total = fields.Integer(
-        'Monto',
+        'Monto Total',
         default=montoNeto*montoIvaRecuperable
         )
     proveedor_id = fields.Many2one ( 
