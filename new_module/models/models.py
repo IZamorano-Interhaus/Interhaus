@@ -176,12 +176,13 @@ class proveedores(models.Model):
     _description="borrador para los proveedores"
     address=fields.Char(string="Dirección",required=True)
     name=fields.Char(string = "Nombre proveedor", required=True)
-    company_id=fields.Many2one(string="Company",
+    company_id=fields.Many2one(
+        string="Compañia",
         comodel_name="res.company",
         readonly=True,
         store=True,
         index=True,
-                               )
+    )
     l10n_cl_sii_taxpayer_type = fields.Selection(
         selection=[
         ('1','IVA afecto 1° categoria'),
