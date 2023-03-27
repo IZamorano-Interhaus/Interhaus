@@ -85,7 +85,7 @@ class pruebas(models.Model):
          )
     monto_Total = fields.Float(
         'Monto Total',
-        default=montoNeto*montoIvaRecuperable
+        default=0
         )
     proveedor_id = fields.Many2one ( 
         'new_module.proveedores',string = 'Proveedores'
