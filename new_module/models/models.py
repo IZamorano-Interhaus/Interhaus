@@ -183,8 +183,8 @@ class pruebas(models.Model):
 class proveedores(models.Model):
     _name="new_module.proveedores"
     _description="borrador para los proveedores"
-    name=fields.Char(string = "Nombre proveedor", required=True)
-    address=fields.Char(string="Dirección",required=True)
+    name=fields.Many2one('res.partner',string = "Nombre proveedor", required=True)
+    address=fields.Many2one('res.partner_address',string="Dirección",required=True)
     company_id=fields.Many2one(
         string="Compañia",
         comodel_name="res.company",
