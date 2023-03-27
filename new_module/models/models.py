@@ -189,9 +189,7 @@ class proveedores(models.Model):
     pruebas_id= fields.One2many(
         'new_module.pruebas','proveedor_id',string='Borradores'
     )
-    compannias_id = fields.Many2many(
-        'new_module.compannia', string="compañia"
-    )
+    
             # return record
         # function to getting over dues
     @api.model
@@ -258,17 +256,3 @@ class proveedores(models.Model):
             print(err)
         finally:
             archivo_xml.close()
-class compannia(models.Model):
-    _name="new_module.compannia"
-    _description="modulo para enlazar las compañias con los proveedores"
-
-    
-    nombre_compannia = fields.Char(
-        'Nombre compañia'
-    )
-    direccion_compannia = fields.Char(
-        'Dirección'
-    )
-    proveedores_id = fields.Many2many(
-            'new_module.proveedores',string = 'Contacto proveedor'
-        )

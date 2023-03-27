@@ -2,7 +2,7 @@
 import xml.etree.ElementTree as ET
 import psycopg2, os
 try:
-    archivo_xml= open('C:/Users/Interhouse HP/Desktop/zonaTesting/testeos/zonaPython/xmlPruebas/archivo.xml')
+    archivo_xml= open('C:/Users/Interhouse HP/Desktop/zonaTesting/testeos/zonaPython/xmlPruebas/prueba3.xml')
     datosProveedor = []
     conn = psycopg2.connect(database="zonaTesting", user = "zonaTesting", password = "admin", host = "localhost", port = "5432")
     cur = conn.cursor()
@@ -14,7 +14,7 @@ try:
         nodoEncabezado = nodoDocumento.find('{http://www.sii.cl/SiiDte}Encabezado') 
         nodoEmisor = nodoEncabezado.find('{http://www.sii.cl/SiiDte}Emisor')
         datosProveedor=nodoEmisor.find('{http://www.sii.cl/SiiDte}RUTEmisor').text,nodoEmisor.find('{http://www.sii.cl/SiiDte}DirOrigen').text,nodoEmisor.find('{http://www.sii.cl/SiiDte}CmnaOrigen').text,nodoEmisor.find('{http://www.sii.cl/SiiDte}RznSoc').text,nodoEmisor.find('{http://www.sii.cl/SiiDte}GiroEmis').text
-        query = "select id, vat,name from res_partner order by id;" 
+        query = "select id, vat,name from res_partner;" 
         cur.execute(query)
         querySelect = cur.fetchall()
         largoQuery=len(querySelect)        
@@ -22,6 +22,7 @@ try:
         for i in range(largoQuery):
             if largoQuery==0:
                 existe=False
+                break
             else: 
                 existe=True
                 for j in range(len(datosProveedor)):
@@ -31,16 +32,17 @@ try:
                         break
                     else:
                         existe=False
-                        break
+                        print('no existe dato')
+                        continue
                 break
         if existe==False:
-            if str(datosProveedor[3])!=str(querySelect[0][2]):
+            if str(datosProveedor[3])!=str(querySelect[0][2]) and str(datosProveedor[0])!=str(querySelect[0][1]):
                 cur.execute("insert into res_partner (vat, street, city,name,display_name ,l10n_cl_activity_description,l10n_cl_sii_taxpayer_type) values ('"+datosProveedor[0]+"','"+datosProveedor[1]+"','"+datosProveedor[2]+"','"+datosProveedor[3]+"','"+datosProveedor[3]+"','"+datosProveedor[4]+"',1);")
                 cur.execute(query)
                 querySelect = cur.fetchall()
                 print("se agrega nuevo proveedor")
                 largoQuery=len(querySelect)
-            elif str(datosProveedor[3])==str(querySelect[0][2]):
+            elif str(datosProveedor[3])==str(querySelect[0][2]) and str(datosProveedor[0])!=str(querySelect[0][1]):
                 cur.execute("update res_partner set vat='"+datosProveedor[0]+"', street='"+datosProveedor[1]+"', city='"+datosProveedor[2]+"',display_name ='"+datosProveedor[3]+"',name='"+datosProveedor[3]+"',l10n_cl_activity_description ='"+datosProveedor[4]+"',l10n_cl_sii_taxpayer_type=1 where  name= '"+datosProveedor[3]+"' and vat = '"+datosProveedor[0]+"';")
                 cur.execute(query)
                 querySelect = cur.fetchall()
