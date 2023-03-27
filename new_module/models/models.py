@@ -14,11 +14,12 @@ class pruebas(models.Model):
         copy=False,
         index=True,
     )
-    rut_tributario = fields.Char(
+    rut_tributario = fields.Many2one(
+        'res.partner',
         string="Rut",
     )   
     tipo_documento=fields.Many2one(
-        comodel_name="l10n_latam_document_type_name",
+        comodel_name="l10n.latam.document.type",
         string="Tipo de Documento",
         copy=False,
         index=True,
@@ -43,7 +44,7 @@ class pruebas(models.Model):
         default=fields.Date.context_today
     )
     codigo_documento = fields.Many2one(
-        comodel_name='l10n_latam_document_type_code',
+        comodel_name='l10n.latam.document.type',
         string="Número del documento",
     )
     razon_social = fields.Many2one(
@@ -53,7 +54,7 @@ class pruebas(models.Model):
         string="Razón social",
     )
     giro_actividad = fields.Many2one(
-        comodel_name = 'l10n_cl_company_activities',
+        comodel_name = 'l10n.cl.company.activities',
         string="giro"
     )
     acuseRecibo = fields.Selection(
