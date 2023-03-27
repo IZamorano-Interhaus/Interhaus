@@ -21,7 +21,7 @@ class pruebas(models.Model):
         index=False,
     )   
     tipo_documento=fields.Many2one(
-        comodel_name="l10n.latam.document.type_name",
+        comodel_name="l10n.latam.document.type",
         string="Tipo de Documento",
         copy=False,
         index=False,
@@ -46,7 +46,7 @@ class pruebas(models.Model):
         default=fields.Date.context_today
     )
     codigo_documento = fields.Many2one(
-        comodel_name='l10n.latam.document.type.code',
+        comodel_name='l10n.latam.document.type',
         string="Número del documento",
     )
     razon_social = fields.Many2one(
