@@ -11,22 +11,23 @@ class pruebas(models.Model):
     partner_id = fields.Many2one(
         comodel_name="res.partner",
         string="Proveedor",
-        
+        copy=False,
+        index=True,
     )
-    rut_tributario = fields.Many2one(
-        comodel_name = "res.partner",
+    rut_tributario = fields.Char(
         string="Rut",
-        
     )   
     tipo_documento=fields.Many2one(
-        comodel_name="l10n.latam.document.type",
+        comodel_name="l10n_latam_document_type_name",
         string="Tipo de Documento",
-        
+        copy=False,
+        index=True,
     )
     folio_documento = fields.Many2one(
         comodel_name="account.analytic.account",
         string="Folio",
-        
+        copy=False,
+        index=True,
     )    
     date_start = fields.Date(
         string="Fecha contable",
@@ -42,18 +43,18 @@ class pruebas(models.Model):
         default=fields.Date.context_today
     )
     codigo_documento = fields.Many2one(
-        comodel_name="l10n.latam.document.type",
+        comodel_name='l10n_latam_document_type_code',
         string="Número del documento",
     )
     razon_social = fields.Many2one(
-        comodel_name="res.partner",
-        
+        comodel_name='res.partner',
+        copy=False,
+        index=True,
         string="Razón social",
     )
     giro_actividad = fields.Many2one(
-        comodel_name = "l10n.cl.company.activities",
-        
-        string="Giro de actividades"
+        comodel_name = 'l10n_cl_company_activities',
+        string="giro"
     )
     acuseRecibo = fields.Selection(
         selection=[
@@ -65,7 +66,7 @@ class pruebas(models.Model):
             ('rejected', 'Rechazado'),
             ('manual','Manual ( borrador)'),
         ],
-        string="acusoRecibo",
+        string='acusoRecibo',
         required=True,
         readonly=True,
         copy=False,
