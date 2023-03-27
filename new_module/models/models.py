@@ -11,26 +11,22 @@ class pruebas(models.Model):
     partner_id = fields.Many2one(
         comodel_name="res.partner",
         string="Proveedor",
-        copy=False,
-        index=False,
+        
     )
     rut_tributario = fields.Many2one(
         comodel_name = "res.partner",
         string="Rut",
-        copy=False,
-        index=False,
+        
     )   
     tipo_documento=fields.Many2one(
         comodel_name="l10n.latam.document.type",
         string="Tipo de Documento",
-        copy=False,
-        index=False,
+        
     )
     folio_documento = fields.Many2one(
         comodel_name="account.analytic.account",
         string="Folio",
-        copy=False,
-        index=False,
+        
     )    
     date_start = fields.Date(
         string="Fecha contable",
@@ -51,14 +47,12 @@ class pruebas(models.Model):
     )
     razon_social = fields.Many2one(
         comodel_name='res.partner',
-        copy=False,
-        index=True,
+        
         string="Razón social",
     )
     giro_actividad = fields.Many2one(
         comodel_name = 'l10n.cl.company.activities',
-        copy=False,
-        index=True,
+        
         string="Giro de actividades"
     )
     acuseRecibo = fields.Selection(
