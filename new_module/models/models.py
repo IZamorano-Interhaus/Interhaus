@@ -78,9 +78,9 @@ class pruebas(models.Model):
     )
     montoNeto = fields.Integer('monto neto sin iva',
          )
-    montoIvaRecuperable = fields.Integer(
+    montoIvaRecuperable = fields.Double(
         'monto con iva incluido',
-        default='0.19',
+        default=0.19,
         readonly=True
          )
     monto_Total = fields.Integer(
