@@ -107,6 +107,10 @@
       <field name="nombre_compannia">Neoflor</field>
       <field name="direccion_compannia">Punta Arenas 1452</field>
     </record>
+    <record id="object14" model="new_module.compannia">
+      <field name="nombre_compannia">granja del tio Joe</field>
+      <field name="direccion_compannia">Patolandia 001</field>
+    </record>
 
   </data>
 </odoo>
