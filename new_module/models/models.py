@@ -15,7 +15,7 @@ class pruebas(models.Model):
         index=True,
     )
     rut_tributario = fields.Many2one(
-        'res.partner_vat',
+        'res.partner',
         string="Rut",
     )   
     tipo_documento=fields.Many2one(
@@ -54,7 +54,7 @@ class pruebas(models.Model):
         string="Razón social",
     )
     l10n_cl_company_activities_id = fields.Many2one(
-        comodel_name = 'l10n.cl.company.activities',
+        comodel_name = 'res.partner',
         string="giro actividades"
     )
     acuseRecibo = fields.Selection(
