@@ -15,7 +15,7 @@ class pruebas(models.Model):
         index=True,
     )
     rut_tributario = fields.Many2one(
-        'res.partner_vat',
+        'res.partner',
         string="Rut",
     )   
     tipo_documento=fields.Many2one(
