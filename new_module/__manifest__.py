@@ -20,7 +20,6 @@
     # any module necessary for this one to work correctly
     'depends':[
         'contacts',
-        'l10n_cl',
         'account'
     ],
 
