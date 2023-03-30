@@ -88,7 +88,7 @@
       <field name = "address">7</field>
       <field name = "l10n_cl_sii_activity_description_id">4</field>
       <field name = "l10n_cl_sii_taxpayer_type">1</field>
-      <field name = "company_id">2</field>
+      <field name = "company_id">1</field>
       <field name = "pruebas_id">3</field>
     </record>
     <record id="object10" model="new_module.proveedores">
@@ -96,10 +96,8 @@
       <field name = "address">8</field>
       <field name = "l10n_cl_sii_activity_description_id">6</field>
       <field name = "l10n_cl_sii_taxpayer_type">1</field>
-      <field name = "company_id">2</field>
+      <field name = "company_id">1</field>
       <field name = "pruebas_id">4</field>
     </record>
-    
-
   </data>
 </odoo>
