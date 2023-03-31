@@ -11,21 +11,24 @@ class pruebas(models.Model):
     partner_id = fields.Many2one(
         comodel_name="res.partner",
         string="Proveedor",
-        
+        copy=False,
+        index=True,
     )
     rut_tributario = fields.Many2one(
-        'res.partner_vat',
+        'res.partner',
         string="Rut",
     )   
     tipo_documento=fields.Many2one(
         comodel_name="res.partner",
         string="Tipo de Documento",
-        
+        copy=False,
+        index=True,
     )
     folio_documento = fields.Many2one(
         comodel_name="res.partner",
         string="Folio",
-        
+        copy=False,
+        index=True,
     )    
     date_start = fields.Date(
         string="Fecha contable",
@@ -46,11 +49,13 @@ class pruebas(models.Model):
     )
     razon_social = fields.Many2one(
         comodel_name="res.partner",
+        copy=False,
+        index=True,
         string="Razón social",
     )
-    giro_actividad = fields.Many2one(
-        comodel_name = "res.partner",
-        string="giro"
+    l10n_cl_company_activities_id = fields.Many2one(
+        comodel_name = 'res.partner',
+        string="giro actividades"
     )
     acuseRecibo = fields.Selection(
         selection=[
@@ -144,42 +149,14 @@ class pruebas(models.Model):
         conn.commit()
         print("script completado")
         conn.close()
-    @api.model
-    def obtenerDatosVista(self, container):
-        contenedor = container['records'].filtered(lambda move: move.line_ids)
-        if not contenedor:
-            return       
-        self._cr.execute('''
-            select  tipodte codigo_documento,
-                    tipodtestring tipo_documento,
-                    rutCliente rut_tributario, 
-                    folio folio_documento,
-                    fechaemision date_start,
-                    fecharecepcion fecha_factura,
-                    razonsocial razon_social,
-                    acuserecibo acuseRecibo,
-                    montoNeto montoNeto,
-                    montoivarecuperable Impuesto,
-                    montototal total,
-                    trackid
-              FROM borradores 
-              ;
-        ''', [tuple(contenedor.ids)])
-
-        return self._cr.fetchall()
     
-    @api.constrains('date_start')
-    def validarFecha(self):
-        currentDay = date.today()
-        for pruebas in self:
-            pruebas.days = relativedelta( currentDay,pruebas.date_start).days
-            if (pruebas.days > 0 ):
-                raise Exception.ValidationError("La fecha esta mal escrita, intente nuevamente")
+    
+    
 class proveedores(models.Model):
     _name="new_module.proveedores"
     _description="borrador para los proveedores"
-    name=fields.Char(string = "Nombre proveedor", required=True)
-    address=fields.Char(string="Dirección",required=True)
+    name=fields.Many2one('res.partner',string = "Nombre proveedor", required=True)
+    address=fields.Many2one('res.partner',string="Dirección",required=True)
     company_id=fields.Many2one(
         string="Compañia",
         comodel_name="res.company",
@@ -196,7 +173,9 @@ class proveedores(models.Model):
         ],
         default='1', string = 'Tipo de contribuyente'
     )
-    l10n_cl_sii_activity_description= fields.Char(string="Giro",required=True)
+    l10n_cl_sii_activity_description_id= fields.Many2one(
+        'l10n.cl.company.activities',
+        string="Giro",required=True)
     pruebas_id= fields.One2many(
         'new_module.pruebas','proveedor_id',string='Borradores'
     )

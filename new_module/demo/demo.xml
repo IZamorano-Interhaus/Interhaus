@@ -12,7 +12,7 @@
     </record>
     <record id="object1" model="new_module.pruebas">
       <field name="partner_id">1</field>
-      <field name="rut_tributario">1</field>
+      <field name="rut_tributario">2</field>
       <field name="folio_documento">1</field>
       <field name="codigo_documento">1</field>
       <field name="tipo_documento">1</field>
@@ -21,7 +21,7 @@
     </record>
     <record id="object2" model="new_module.pruebas">
       <field name="partner_id">2</field>
-      <field name="rut_tributario">1</field>
+      <field name="rut_tributario">3</field>
       <field name="folio_documento">1</field>
       <field name="codigo_documento">1</field>
       <field name="tipo_documento">1</field>
@@ -30,7 +30,7 @@
     </record>
     <record id="object3" model="new_module.pruebas">
       <field name="partner_id">3</field>
-      <field name="rut_tributario">1</field>
+      <field name="rut_tributario">4</field>
       <field name ="folio_documento">1</field>
       <field name="codigo_documento">1</field>
       <field name="tipo_documento">1</field>
@@ -40,7 +40,7 @@
     </record>
     <record id="object4" model="new_module.pruebas">
       <field name="partner_id">4</field>
-      <field name="rut_tributario">1</field>
+      <field name="rut_tributario">5</field>
       <field name="folio_documento">1</field>
       <field name="codigo_documento">1</field>
       <field name="tipo_documento">1</field>
@@ -49,7 +49,7 @@
     </record>
     <record id="object5" model="new_module.pruebas">
       <field name="partner_id">5</field>
-      <field name="rut_tributario">1</field>
+      <field name="rut_tributario">6</field>
       <field name="folio_documento">1</field>
       <field name="codigo_documento">1</field>
       <field name="tipo_documento">1</field>
@@ -59,7 +59,7 @@
     </record>
     <record id="object6" model="new_module.pruebas">
       <field name="partner_id">6</field>
-      <field name="rut_tributario">1</field>
+      <field name="rut_tributario">7</field>
       <field name="folio_documento">1</field>
       <field name="codigo_documento">1</field>
       <field name="tipo_documento">1</field>
@@ -68,34 +68,36 @@
       <field name="trackId">1</field>
     </record>
     <record id="object7" model="new_module.proveedores">
-      <field name = "name">mr.Quack</field>
-      <field name = "address">Granja de patos</field>
-      <field name = "l10n_cl_sii_activity_description">lord of patitos</field>
+      <field name = "name">1</field>
+      <field name = "address">5</field>
+      <field name = "l10n_cl_sii_activity_description_id">1</field>
       <field name = "l10n_cl_sii_taxpayer_type">1</field>
+      <field name = "company_id">1</field>
       <field name = "pruebas_id">1</field>
     </record>
     <record id="object8" model="new_module.proveedores">
-      <field name = "name">mr.Quack2</field>
-      <field name = "address">Granja de patos</field>
-      <field name = "l10n_cl_sii_activity_description">lord of patitos</field>
+      <field name = "name">2</field>
+      <field name = "address">6</field>
+      <field name = "l10n_cl_sii_activity_description_id">2</field>
       <field name = "l10n_cl_sii_taxpayer_type">1</field>
+      <field name = "company_id">1</field>
       <field name = "pruebas_id">2</field>
     </record>
     <record id="object9" model="new_module.proveedores">
-      <field name = "name">mr.Quack3</field>
-      <field name = "address">Granja de patos</field>
-      <field name = "l10n_cl_sii_activity_description">lord of patitos</field>
+      <field name = "name">3</field>
+      <field name = "address">7</field>
+      <field name = "l10n_cl_sii_activity_description_id">4</field>
       <field name = "l10n_cl_sii_taxpayer_type">1</field>
+      <field name = "company_id">1</field>
       <field name = "pruebas_id">3</field>
     </record>
     <record id="object10" model="new_module.proveedores">
-      <field name = "name">mr.Quack4</field>
-      <field name = "address">Granja de patos</field>
-      <field name = "l10n_cl_sii_activity_description">lord of patitos</field>
+      <field name = "name">4</field>
+      <field name = "address">8</field>
+      <field name = "l10n_cl_sii_activity_description_id">6</field>
       <field name = "l10n_cl_sii_taxpayer_type">1</field>
+      <field name = "company_id">1</field>
       <field name = "pruebas_id">4</field>
     </record>
-    
-
   </data>
 </odoo>

@@ -20,7 +20,7 @@ class Users(models.Model):
         return activities
     
    
-    def obtenerDataProveedor():
+    def obtenerDataProveedor(self):
         import xml.etree.ElementTree as ET
         import psycopg2, os
         try:
