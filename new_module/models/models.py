@@ -149,37 +149,9 @@ class pruebas(models.Model):
         conn.commit()
         print("script completado")
         conn.close()
-    @api.model
-    def obtenerDatosVista(self, container):
-        contenedor = container['records'].filtered(lambda move: move.line_ids)
-        if not contenedor:
-            return       
-        self._cr.execute('''
-            select  tipodte codigo_documento,
-                    tipodtestring tipo_documento,
-                    rutCliente rut_tributario, 
-                    folio folio_documento,
-                    fechaemision date_start,
-                    fecharecepcion fecha_factura,
-                    razonsocial razon_social,
-                    acuserecibo acuseRecibo,
-                    montoNeto montoNeto,
-                    montoivarecuperable Impuesto,
-                    montototal total,
-                    trackid
-              FROM borradores 
-              ;
-        ''', [tuple(contenedor.ids)])
-
-        return self._cr.fetchall()
     
-    @api.constrains('date_start')
-    def validarFecha(self):
-        currentDay = date.today()
-        for pruebas in self:
-            pruebas.days = relativedelta( currentDay,pruebas.date_start).days
-            if (pruebas.days > 0 ):
-                raise Exception.ValidationError("La fecha esta mal escrita, intente nuevamente")
+    
+    
 class proveedores(models.Model):
     _name="new_module.proveedores"
     _description="borrador para los proveedores"
