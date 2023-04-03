@@ -72,7 +72,7 @@
 
     <!-- menu categories -->
 
-    <menuitem name="Proveedores" id="new_module.proveedores_menu_1" parent="new_module.menu_root" action = "new_module.proveedores_action_window"/><!-- 
+    <menuitem name="Acciones de ..." id="new_module.proveedores_menu_1" parent="new_module.menu_root" action = "new_module.proveedores_action_window"/><!-- 
     <menuitem name="Factura electronica" id="new_module.pruebas_menu_2" parent="new_module.menu_root" action ="new_module.pruebas_action_window"/>
     <menuitem name="compañia" id="new_module.compannia_menu_3" parent="new_module.menu_root" action ="new_module.compannia_action_window"/> -->
 
