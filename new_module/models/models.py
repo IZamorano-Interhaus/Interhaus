@@ -149,20 +149,24 @@ class pruebas(models.Model):
         conn.commit()
         print("script completado")
         conn.close()
-    
-    
-    
 class proveedores(models.Model):
     _name="new_module.proveedores"
     _description="borrador para los proveedores"
-    name=fields.Many2one('res.partner',string = "Nombre proveedor", required=True)
-
-    street=fields.Many2one('res.partner',string="Dirección",required=True)
+    name=fields.Many2one(
+        'res.partner',
+        string = "Nombre proveedor",
+        required=True
+    )
+    street=fields.Many2one(
+        'res.partner',
+        string="Dirección",
+        required=True
+    )
     company_id=fields.Many2one(
         string="Compañia",
         comodel_name="res.company",
-        required=True, default=lambda self: self.env.company,
-        
+        required=True, 
+        default=lambda self: self.env.company,
         store=True,
         index=True,
     )
@@ -177,9 +181,13 @@ class proveedores(models.Model):
     )
     l10n_cl_sii_activity_description_id= fields.Many2one(
         'res.partner',
-        string="Giro",required=True)
+        string="Giro",
+        required=True
+    )
     pruebas_id= fields.One2many(
-        'new_module.pruebas','proveedor_id',string='Borradores'
+        'new_module.pruebas',
+        'proveedor_id',
+        string='Borradores'
     )
     
             # return record
