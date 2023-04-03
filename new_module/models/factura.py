@@ -10,26 +10,23 @@ class pruebas(models.Model):
     partner_id = fields.Many2one(
         comodel_name="res.partner",
         string="Proveedor",
-        default=lambda self: self.env.company,
+        default=lambda self: self.env.partner,
         copy=False,
         index=True,
     )
     rut_tributario = fields.Many2one(
         comodel_name="res.partner",
         string="Rut",
-        default=lambda self: self.env.company,
     )   
     tipo_documento=fields.Many2one(
         comodel_name="res.partner",
         string="Tipo de Documento",
-        default=lambda self: self.env.company,
         copy=False,
         index=True,
     )
     folio_documento = fields.Many2one(
         comodel_name="res.partner",
         string="Folio",
-        default=lambda self: self.env.company,
         copy=False,
         index=True,
     )    
