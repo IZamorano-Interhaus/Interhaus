@@ -41,7 +41,7 @@ class proveedores(models.Model):
     )
     pruebas_id= fields.One2many(
         comodel_name='new_module.pruebas',
-        inverese_name='proveedor_id',
+        inverse_name='proveedor_id',
         string='Borradores'
     )
     
