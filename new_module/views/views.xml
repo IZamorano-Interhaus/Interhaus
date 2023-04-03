@@ -9,7 +9,7 @@
         <tree>
           <field name = "name"/>
           <field name = "address"/>
-          <field name = "l10n_cl_sii_activity_description_id"/>
+          <field name = "l10n_cl_sii_taxpayer_type"/>
           <field name = "l10n_cl_sii_taxpayer_type"/>
           <field name = "company_id"/>
           <field name = "pruebas_id"/>
