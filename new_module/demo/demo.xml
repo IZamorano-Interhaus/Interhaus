@@ -71,7 +71,7 @@
       <field name = "name">1</field>
       <field name = "address">5</field>
       <field name = "l10n_cl_sii_taxpayer_type">1</field>
-      <field name = "l10n_cl_sii_taxpayer_type">1</field>
+      <field name = "l10n_cl_sii_activity_description">1</field>
       <field name = "company_id">1</field>
       <field name = "pruebas_id">1</field>
     </record>
@@ -79,7 +79,7 @@
       <field name = "name">2</field>
       <field name = "address">6</field>
       <field name = "l10n_cl_sii_taxpayer_type">2</field>
-      <field name = "l10n_cl_sii_taxpayer_type">1</field>
+      <field name = "l10n_cl_sii_activity_description">1</field>
       <field name = "company_id">1</field>
       <field name = "pruebas_id">2</field>
     </record>
@@ -87,7 +87,7 @@
       <field name = "name">3</field>
       <field name = "address">7</field>
       <field name = "l10n_cl_sii_taxpayer_type">4</field>
-      <field name = "l10n_cl_sii_taxpayer_type">1</field>
+      <field name = "l10n_cl_sii_activity_description">1</field>
       <field name = "company_id">1</field>
       <field name = "pruebas_id">3</field>
     </record>
@@ -95,7 +95,7 @@
       <field name = "name">4</field>
       <field name = "address">8</field>
       <field name = "l10n_cl_sii_taxpayer_type">6</field>
-      <field name = "l10n_cl_sii_taxpayer_type">1</field>
+      <field name = "l10n_cl_sii_activity_description">1</field>
       <field name = "company_id">1</field>
       <field name = "pruebas_id">4</field>
     </record>
