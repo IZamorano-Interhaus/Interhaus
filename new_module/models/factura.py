@@ -58,19 +58,19 @@ class pruebas(models.Model):
     )
     acuseRecibo = fields.Selection(
         selection=[
-            ('not_sent', 'Pendiente de ser enviado'),
-            ('accepted','Aceptado'),
-            ('ask_for_status', 'Consultar Estado Doc'),
-            ('objected','Aceptado con reparos'),
-            ('cancelled','Anulado'),
-            ('rejected', 'Rechazado'),
-            ('manual','Manual ( borrador)'),
+            ('1','Pendiente de ser enviado'),
+            ('2','Aceptado'),
+            ('3','Consultar Estado Doc'),
+            ('4','Aceptado con reparos'),
+            ('5','Anulado'),
+            ('6','Rechazado'),
+            ('7','Manual'),
         ],
         string='acusoRecibo',
         required=True,
         readonly=True,
         copy=False,
-        default='manual',
+        default=7,
     )
     trackId = fields.Integer('Id de seguimiento')
     date = fields.Date(
@@ -80,9 +80,9 @@ class pruebas(models.Model):
     )
     days = fields.Integer('dias')
     state = fields.Selection(
-        selection=[('draft', 'Draft'),
-        ('running', 'Running')],
-        default='draft', string='estado'
+        selection=[('1', 'Draft'),
+        ('2', 'Running')],
+        default=1, string='estado'
     )
     montoNeto = fields.Float('monto neto sin iva',
                              default=0
