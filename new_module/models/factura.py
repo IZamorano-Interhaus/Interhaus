@@ -78,31 +78,31 @@ class pruebas(models.Model):
         required=True, 
         default=date.today()
     )
-    days = fields.Integer('dias')
     state = fields.Selection(
-        selection=[('1', 'Draft'),
-        ('2', 'Running')],
-        default=1, string='estado'
+        selection=[
+        ('1', 'Draft'),
+        ('2', 'Running')
+        ],
+        default=1,
+        string='estado'
     )
-    montoNeto = fields.Float('monto neto sin iva',
-                             default=0
-         )
+    montoNeto = fields.Float(
+        'monto neto sin iva',
+        default=0
+    )
     montoIvaRecuperable = fields.Float(
         'monto con iva incluido',
         default=0.19,
         readonly=True
-         )
+    )
     monto_Total = fields.Float(
         'Monto Total',
         default=0
-        )
-    proveedor_id = fields.Many2one ( 
-        'new_module.proveedores',string = 'Proveedores'
     )
-    def accion_random(self):
-        for record in self:
-            record.accion="algo genialo sucedera aqui"
-        return True
+    proveedor_id = fields.Many2one ( 
+        'new_module.proveedores',
+        string = 'Proveedores'
+    )
     @api.model
     def cargarDocumentos(self, *post):
         os.system('cls')
