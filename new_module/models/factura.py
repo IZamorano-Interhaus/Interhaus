@@ -34,8 +34,9 @@ class pruebas(models.Model):
         index=True,
     )    
     date_start = fields.Date(
-        string="Fecha contable",
-        help="Date when the user initiated the request.",
+        string="Fecha factura",
+        help="Fecha cuando se crea la factura.",
+        readonly=True,
         default=fields.Date.context_today,
     )
     referencia_pago = fields.Char(
@@ -43,7 +44,9 @@ class pruebas(models.Model):
         help="La referencia de pago para establecer en apuntes de diario.",
     )
     fecha_factura = fields.Date(
-        string="Fecha factura",
+        string="Fecha plazo máximo",
+        help="Fecha que es el plazo máximo para pago",
+        readonly=True,
         default=fields.Date.context_today,
     )
     codigo_documento = fields.Many2one(
@@ -80,11 +83,7 @@ class pruebas(models.Model):
         default='7',
     )
     trackId = fields.Integer('Id de seguimiento')
-    date = fields.Date(
-        'Starting Date', 
-        required=True, 
-        default=date.today(),
-    )
+    
     state = fields.Selection(
         selection=[
         ('1', 'Draft'),
