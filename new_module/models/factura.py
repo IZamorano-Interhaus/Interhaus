@@ -14,7 +14,7 @@ class pruebas(models.Model):
         index=True,
     )
     rut_tributario = fields.Many2one(
-        comodel_name='res.partner',
+        comodel_name="res.partner",
         string="Rut",
     )   
     tipo_documento=fields.Many2one(
@@ -40,7 +40,7 @@ class pruebas(models.Model):
     )
     fecha_factura = fields.Date(
         string="Fecha factura",
-        default=fields.Date.context_today
+        default=fields.Date.context_today,
     )
     codigo_documento = fields.Many2one(
         comodel_name="res.partner",
@@ -54,7 +54,7 @@ class pruebas(models.Model):
     )
     l10n_cl_company_activities_id = fields.Many2one(
         comodel_name = 'res.partner',
-        string="giro actividades"
+        string="giro actividades",
     )
     acuseRecibo = fields.Selection(
         selection=[
@@ -76,7 +76,7 @@ class pruebas(models.Model):
     date = fields.Date(
         'Starting Date', 
         required=True, 
-        default=date.today()
+        default=date.today(),
     )
     state = fields.Selection(
         selection=[
@@ -84,24 +84,24 @@ class pruebas(models.Model):
         ('2', 'Running')
         ],
         default='1',
-        string='estado'
+        string='estado',
     )
     montoNeto = fields.Float(
         'monto neto sin iva',
-        default=0
+        default=0,
     )
     montoIvaRecuperable = fields.Float(
         'monto con iva incluido',
         default=0.19,
-        readonly=True
+        readonly=True,
     )
     monto_Total = fields.Float(
         'Monto Total',
-        default=0
+        default=0,
     )
     proveedor_id = fields.Many2one ( 
         comodel_name='new_module.proveedores',
-        string = 'Proveedores'
+        string = 'Proveedores',
     )
     @api.model
     def cargarDocumentos(self, *post):
