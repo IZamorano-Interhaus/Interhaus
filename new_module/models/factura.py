@@ -10,28 +10,33 @@ class pruebas(models.Model):
     partner_id = fields.Many2one(
         comodel_name="res.partner",
         string="Proveedor",
+        default=lambda self: self.env.company,
         copy=False,
         index=True,
     )
     rut_tributario = fields.Many2one(
         comodel_name="res.partner",
         string="Rut",
+        default=lambda self: self.env.company,
     )   
     tipo_documento=fields.Many2one(
         comodel_name="res.partner",
         string="Tipo de Documento",
+        default=lambda self: self.env.company,
         copy=False,
         index=True,
     )
     folio_documento = fields.Many2one(
         comodel_name="res.partner",
         string="Folio",
+        default=lambda self: self.env.company,
         copy=False,
         index=True,
     )    
     date_start = fields.Date(
-        string="Fecha contable",
-        help="Date when the user initiated the request.",
+        string="Fecha factura",
+        help="Fecha cuando se crea la factura.",
+        readonly=True,
         default=fields.Date.context_today,
     )
     referencia_pago = fields.Char(
@@ -39,15 +44,19 @@ class pruebas(models.Model):
         help="La referencia de pago para establecer en apuntes de diario.",
     )
     fecha_factura = fields.Date(
-        string="Fecha factura",
+        string="Fecha plazo máximo",
+        help="Fecha que es el plazo máximo para pago",
+        readonly=True,
         default=fields.Date.context_today,
     )
     codigo_documento = fields.Many2one(
         comodel_name="res.partner",
         string="Número del documento",
+        
     )
     razon_social = fields.Many2one(
         comodel_name="res.partner",
+        
         copy=False,
         index=True,
         string="Razón social",
@@ -55,6 +64,7 @@ class pruebas(models.Model):
     l10n_cl_company_activities_id = fields.Many2one(
         comodel_name = 'res.partner',
         string="giro actividades",
+        default=lambda self: self.env.company,
     )
     acuseRecibo = fields.Selection(
         selection=[
@@ -67,16 +77,13 @@ class pruebas(models.Model):
             ('7','Manual'),
         ],
         string='acusoRecibo',
+        default='7',
         required=True,
         copy=False,
-        default='7',
+        
     )
     trackId = fields.Integer('Id de seguimiento')
-    date = fields.Date(
-        'Starting Date', 
-        required=True, 
-        default=date.today(),
-    )
+    
     state = fields.Selection(
         selection=[
         ('1', 'Draft'),
@@ -101,6 +108,7 @@ class pruebas(models.Model):
     proveedor_id = fields.Many2one ( 
         comodel_name='new_module.proveedores',
         string = 'Proveedores',
+        default=lambda self: self.env.company,
     )
     @api.model
     def cargarDocumentos(self, *post):
