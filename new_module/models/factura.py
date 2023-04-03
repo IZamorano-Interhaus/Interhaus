@@ -61,7 +61,6 @@ class pruebas(models.Model):
     l10n_cl_company_activities_id = fields.Many2one(
         comodel_name = 'res.partner',
         string="giro actividades",
-        default=lambda self: self.env.company,
     )
     acuseRecibo = fields.Selection(
         selection=[
@@ -105,7 +104,6 @@ class pruebas(models.Model):
     proveedor_id = fields.Many2one ( 
         comodel_name='new_module.proveedores',
         string = 'Proveedores',
-        default=lambda self: self.env.company,
     )
     @api.model
     def cargarDocumentos(self, *post):
