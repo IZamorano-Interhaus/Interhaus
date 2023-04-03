@@ -8,12 +8,12 @@ class proveedores(models.Model):
     _name="new_module.proveedores"
     _description="borrador para los proveedores"
     name=fields.Many2one(
-        'res.partner',
+        comodel_name='res.partner',
         string = "Nombre proveedor",
         required=True
     )
     street=fields.Many2one(
-        'res.partner',
+        comodel_name='res.partner',
         string="Dirección",
         required=True
     )
@@ -35,13 +35,13 @@ class proveedores(models.Model):
         default='1', string = 'Tipo de contribuyente'
     )
     l10n_cl_sii_activity_description_id= fields.Many2one(
-        'res.partner',
+        comodel_name='res.partner',
         string="Giro",
         required=True
     )
     pruebas_id= fields.One2many(
-        'new_module.pruebas',
-        'proveedor_id',
+        comodel_name='new_module.pruebas',
+        inverese_name='proveedor_id',
         string='Borradores'
     )
     
