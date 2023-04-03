@@ -49,11 +49,9 @@ class pruebas(models.Model):
     codigo_documento = fields.Many2one(
         comodel_name="res.partner",
         string="Número del documento",
-        
     )
     razon_social = fields.Many2one(
         comodel_name="res.partner",
-        
         copy=False,
         index=True,
         string="Razón social",
