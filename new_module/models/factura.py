@@ -70,7 +70,7 @@ class pruebas(models.Model):
         required=True,
         readonly=True,
         copy=False,
-        default=7,
+        default='7',
     )
     trackId = fields.Integer('Id de seguimiento')
     date = fields.Date(
@@ -83,7 +83,7 @@ class pruebas(models.Model):
         ('1', 'Draft'),
         ('2', 'Running')
         ],
-        default=1,
+        default='1',
         string='estado'
     )
     montoNeto = fields.Float(
