@@ -80,7 +80,7 @@ class pruebas(models.Model):
         default=lambda self: self.env.company,
         required=True,
         copy=False,
-        default='7',
+        
     )
     trackId = fields.Integer('Id de seguimiento')
     
