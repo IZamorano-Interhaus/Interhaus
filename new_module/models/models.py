@@ -174,8 +174,8 @@ class proveedores(models.Model):
         ],
         default='1', string = 'Tipo de contribuyente'
     )
-    l10n_cl_sii_activity_description= fields.Many2one(
-        'res.partner',
+    l10n_cl_sii_activity_description_id= fields.Many2one(
+        'l10n_cl.sii.activity.description',
         string="Giro",required=True)
     pruebas_id= fields.One2many(
         'new_module.pruebas','proveedor_id',string='Borradores'
