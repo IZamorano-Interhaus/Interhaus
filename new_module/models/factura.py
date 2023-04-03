@@ -14,7 +14,7 @@ class pruebas(models.Model):
         index=True,
     )
     rut_tributario = fields.Many2one(
-        'res.partner',
+        comodel_name='res.partner',
         string="Rut",
     )   
     tipo_documento=fields.Many2one(
@@ -100,7 +100,7 @@ class pruebas(models.Model):
         default=0
     )
     proveedor_id = fields.Many2one ( 
-        'new_module.proveedores',
+        comodel_name='new_module.proveedores',
         string = 'Proveedores'
     )
     @api.model
