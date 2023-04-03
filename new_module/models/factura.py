@@ -68,7 +68,6 @@ class pruebas(models.Model):
         ],
         string='acusoRecibo',
         required=True,
-        readonly=False,
         copy=False,
         default='7',
     )
