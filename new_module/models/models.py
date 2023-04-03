@@ -161,6 +161,7 @@ class proveedores(models.Model):
     company_id=fields.Many2one(
         string="Compañia",
         comodel_name="res.company",
+        required=True, default=lambda self: self.env.company,
         
         store=True,
         index=True,
