@@ -10,22 +10,26 @@ class pruebas(models.Model):
     partner_id = fields.Many2one(
         comodel_name="res.partner",
         string="Proveedor",
+        default=lambda self: self.env.company,
         copy=False,
         index=True,
     )
     rut_tributario = fields.Many2one(
         comodel_name="res.partner",
         string="Rut",
+        default=lambda self: self.env.company,
     )   
     tipo_documento=fields.Many2one(
         comodel_name="res.partner",
         string="Tipo de Documento",
+        default=lambda self: self.env.company,
         copy=False,
         index=True,
     )
     folio_documento = fields.Many2one(
         comodel_name="res.partner",
         string="Folio",
+        default=lambda self: self.env.company,
         copy=False,
         index=True,
     )    
@@ -45,9 +49,11 @@ class pruebas(models.Model):
     codigo_documento = fields.Many2one(
         comodel_name="res.partner",
         string="Número del documento",
+        default=lambda self: self.env.company,
     )
     razon_social = fields.Many2one(
         comodel_name="res.partner",
+        default=lambda self: self.env.company,
         copy=False,
         index=True,
         string="Razón social",
@@ -55,6 +61,7 @@ class pruebas(models.Model):
     l10n_cl_company_activities_id = fields.Many2one(
         comodel_name = 'res.partner',
         string="giro actividades",
+        default=lambda self: self.env.company,
     )
     acuseRecibo = fields.Selection(
         selection=[
@@ -67,6 +74,7 @@ class pruebas(models.Model):
             ('7','Manual'),
         ],
         string='acusoRecibo',
+        default=lambda self: self.env.company,
         required=True,
         copy=False,
         default='7',
@@ -101,6 +109,7 @@ class pruebas(models.Model):
     proveedor_id = fields.Many2one ( 
         comodel_name='new_module.proveedores',
         string = 'Proveedores',
+        default=lambda self: self.env.company,
     )
     @api.model
     def cargarDocumentos(self, *post):
