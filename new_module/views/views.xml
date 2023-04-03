@@ -41,7 +41,7 @@
       
     </record>    
     <record model="ir.actions.act_window" id="new_module.pruebas_action_window">
-      <field name="name">Agregar borrador</field>
+      <field name="name">Agregar factura</field>
       <field name="res_model">new_module.pruebas</field>
       <field name="view_mode">tree,form</field>
       
