@@ -52,11 +52,11 @@ class pruebas(models.Model):
     codigo_documento = fields.Many2one(
         comodel_name="res.partner",
         string="Número del documento",
-        default=lambda self: self.env.company,
+        
     )
     razon_social = fields.Many2one(
         comodel_name="res.partner",
-        default=lambda self: self.env.company,
+        
         copy=False,
         index=True,
         string="Razón social",
@@ -77,7 +77,7 @@ class pruebas(models.Model):
             ('7','Manual'),
         ],
         string='acusoRecibo',
-        default=lambda self: self.env.company,
+        default='7',
         required=True,
         copy=False,
         
