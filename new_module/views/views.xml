@@ -8,7 +8,7 @@
       <field name="arch" type="xml">
         <tree>
           <field name = "name"/>
-          <field name = "address"/>
+          <field name = "street"/>
           <field name = "l10n_cl_sii_taxpayer_type_id"/>
           <field name = "l10n_cl_sii_activity_description_id"/>
           <field name = "company_id"/>
