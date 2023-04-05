@@ -10,7 +10,7 @@ class pruebas(models.Model):
     partner_id = fields.Many2one(
         comodel_name="res.partner",
         string="Proveedor",
-        default=lambda self: self.env.partner,
+        
         copy=False,
         index=True,
     )
