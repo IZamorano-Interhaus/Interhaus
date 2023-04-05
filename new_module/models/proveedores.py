@@ -63,15 +63,7 @@ class proveedores(models.Model):
                 nodoEmisor = nodoEncabezado.find('{http://www.sii.cl/SiiDte}Emisor')
                 datosProveedor=nodoEmisor.find('{http://www.sii.cl/SiiDte}RUTEmisor').text,nodoEmisor.find('{http://www.sii.cl/SiiDte}DirOrigen').text,nodoEmisor.find('{http://www.sii.cl/SiiDte}CmnaOrigen').text,nodoEmisor.find('{http://www.sii.cl/SiiDte}RznSoc').text,nodoEmisor.find('{http://www.sii.cl/SiiDte}GiroEmis').text
                 query=self.env.cr.execute("""
-                    SELECT move.journal_id,
-                        move.sequence_prefix
-                    FROM account_move move
-                    JOIN res_company company ON company.id = move.company_id
-                    WHERE move.journal_id = ANY(%(journal_ids)s)
-                    AND move.state = 'posted'
-                    AND (company.fiscalyear_lock_date IS NULL OR move.date >= company.fiscalyear_lock_date) 
-                GROUP BY move.journal_id, move.sequence_prefix
-                    HAVING COUNT(*) != MAX(move.sequence_number) - MIN(move.sequence_number) + 1
+                    SELECT vat,name,street FROM RES_PARTNER;
                 """, {
                     'journal_ids': self.ids,
                 })

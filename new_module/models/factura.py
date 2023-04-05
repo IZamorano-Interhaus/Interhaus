@@ -104,6 +104,26 @@ class pruebas(models.Model):
         string = 'Proveedores',
     )
     @api.model
+    def create(self, vals):
+
+        return super().create(vals)
+    
+    @api.model
+    def update(self, vals):
+
+        return super().update(vals)
+    
+    @api.model
+    def replace(self, vals):
+
+        return super().replace(vals)
+    
+    @api.model
+    def deleted(self, vals):
+
+        return super().ondelete(vals)
+    
+    @api.model
     def cargarDocumentos(self, *post):
         os.system('cls')
         listaRut=[]
