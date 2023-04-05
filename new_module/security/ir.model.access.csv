@@ -1,3 +1,4 @@
 id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
 access_new_module_pruebas,new_module.pruebas,model_new_module_pruebas,base.group_user,1,1,1,1
 access_new_module_proveedores,new_module.proveedores,model_new_module_proveedores,base.group_user,1,1,1,1
+access_new_module_InheritedModel,inherited.model,model_new_module_InheritedModel,base.group_user,1,0,0,0
