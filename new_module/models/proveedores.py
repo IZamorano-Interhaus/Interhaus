@@ -62,8 +62,12 @@ class proveedores(models.Model):
                 nodoEncabezado = nodoDocumento.find('{http://www.sii.cl/SiiDte}Encabezado') 
                 nodoEmisor = nodoEncabezado.find('{http://www.sii.cl/SiiDte}Emisor')
                 datosProveedor=nodoEmisor.find('{http://www.sii.cl/SiiDte}RUTEmisor').text,nodoEmisor.find('{http://www.sii.cl/SiiDte}DirOrigen').text,nodoEmisor.find('{http://www.sii.cl/SiiDte}CmnaOrigen').text,nodoEmisor.find('{http://www.sii.cl/SiiDte}RznSoc').text,nodoEmisor.find('{http://www.sii.cl/SiiDte}GiroEmis').text
-                query = "select id, vat,name from res_partner ;" 
-                cur.execute(query)
+                query=self.env.cr.execute("""
+                    SELECT vat,name,street FROM RES_PARTNER;
+                """, {
+                    'journal_ids': self.ids,
+                })
+                
                 querySelect = cur.fetchall()
                 largoQuery=len(querySelect)        
                 existe=True

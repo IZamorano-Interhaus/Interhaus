@@ -33,6 +33,18 @@
       </field>
     </record>
    
+    <!--se agrega inheritance para ver la funcionalidad-->
+    <!-- <record id="inherited_model_view_form" model="ir.ui.view">
+    <field name="name">inherited.model.form.inherit.test</field>
+    <field name="model">inherited.model</field>
+    <field name="inherit_id" ref="inherited.inherited_model_view_form"/>
+    <field name="arch" type="xml">
+        
+        <xpath expr="//field[@name='description']" position="after">
+          <field name="new_field"/>
+        </xpath>
+    </field>
+    </record> -->
     <!-- actions opening views on models -->
     <record model="ir.actions.act_window" id="new_module.proveedores_action_window">
       <field name="name">Agregar proveedor</field>

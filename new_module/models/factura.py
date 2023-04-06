@@ -10,7 +10,7 @@ class pruebas(models.Model):
     partner_id = fields.Many2one(
         comodel_name="res.partner",
         string="Proveedor",
-        default=lambda self: self.env.partner,
+        
         copy=False,
         index=True,
     )
@@ -103,6 +103,26 @@ class pruebas(models.Model):
         comodel_name='new_module.proveedores',
         string = 'Proveedores',
     )
+    @api.model
+    def create(self, vals):
+
+        return super().create(vals)
+    
+    @api.model
+    def update(self, vals):
+
+        return super().update(vals)
+    
+    @api.model
+    def replace(self, vals):
+
+        return super().replace(vals)
+    
+    @api.model
+    def deleted(self, vals):
+
+        return super().ondelete(vals)
+    
     @api.model
     def cargarDocumentos(self, *post):
         os.system('cls')
