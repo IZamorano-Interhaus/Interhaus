@@ -26,9 +26,9 @@ class AccountFinancialReport(models.Model):
                 res += child._get_children_by_order()
         return res
 
-    name = fields.Char('Report Name', required=True, translate=True)
-    parent_id = fields.Many2one('account.financial.report', 'Parent')
-    children_ids = fields.One2many('account.financial.report', 'parent_id', 'Account Report')
+    name = fields.Char('Nombre repotable Name', required=True, translate=True)
+    parent_id = fields.Many2one('account.financial.report', 'Parent, proveedor')
+    children_ids = fields.One2many('account.financial.report', 'parent_id', 'Registro del  Report')
     sequence = fields.Integer('Sequence')
     level = fields.Integer(compute='_get_level', string='Level', store=True, recursive=True)
     type = fields.Selection([

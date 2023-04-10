@@ -58,6 +58,16 @@
       <field name="view_mode">tree,form</field>
       
     </record>
+
+    <record id="report_event_registration_badge" model="ir.actions.report">
+        <field name="name">Registration Badge</field>
+        <field name="model">new_module.pruebas</field>
+        <field name="report_type">qweb-pdf</field>
+        <field name="report_name">new_module.pruebas</field>
+        <field name="report_file">new_module.pruebas</field>
+        <field name="print_report_name">'Registration Event - %s' % (object.name or 'Attendee').replace('/','')</field>
+        
+    </record>
     
     
 

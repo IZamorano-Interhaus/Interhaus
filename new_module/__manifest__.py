@@ -28,13 +28,14 @@
     
         'security/ir.model.access.csv',
         'views/views.xml',
-        
         'views/templates.xml',
-        
+        'report/report.xml',
+        'report/report_template.xml'
         
     ],
     # only loaded in demonstration mode
     'demo': [
         'demo/demo.xml',
+        "data/estate_demo.xml"
     ],
 }
