@@ -4,7 +4,7 @@ from odoo import fields, models, api, _
 from odoo.exceptions import UserError
 
 
-class AccountReportGeneralLedger(models.TransientModel):
+class AccountReportGeneralLedger(models.Model):
     _name = "account.report.general.ledger"
     _inherit = "account.common.account.report"
     _description = "General Ledger Report"

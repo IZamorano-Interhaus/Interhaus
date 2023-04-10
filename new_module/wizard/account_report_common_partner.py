@@ -3,7 +3,7 @@
 from odoo import fields, models
 
 
-class AccountingCommonPartnerReport(models.TransientModel):
+class AccountingCommonPartnerReport(models.Model):
     _name = 'account.common.partner.report'
     _inherit = "account.common.report"
     _description = 'Account Common Partner Report'

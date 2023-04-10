@@ -3,7 +3,7 @@
 from odoo import fields, models, api, _
 
 
-class AccountPartnerLedger(models.TransientModel):
+class AccountPartnerLedger(models.Model):
     _name = "account.report.partner.ledger"
     _inherit = "account.common.partner.report"
     _description = "Account Partner Ledger"

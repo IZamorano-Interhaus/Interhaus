@@ -3,7 +3,7 @@
 from odoo import fields, models, api
 
 
-class AccountPrintJournal(models.TransientModel):
+class AccountPrintJournal(models.Model):
     _name = "account.print.journal"
     _inherit = "account.common.journal.report"
     _description = "Account Print Journal"

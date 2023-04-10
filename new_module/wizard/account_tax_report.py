@@ -4,7 +4,7 @@ from odoo import models, api, fields
 from datetime import date
 
 
-class AccountTaxReport(models.TransientModel):
+class AccountTaxReport(models.Model):
     _name = 'account.tax.report.wizard'
     _inherit = "account.common.report"
     _description = 'Tax Report'

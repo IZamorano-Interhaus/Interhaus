@@ -4,7 +4,7 @@ from odoo import api, fields, models, _
 from odoo.tools.misc import get_lang
 
 
-class AccountCommonReport(models.TransientModel):
+class AccountCommonReport(models.Model):
     _name = "account.common.report"
     _description = "Account Common Report"
 

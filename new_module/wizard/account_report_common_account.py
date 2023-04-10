@@ -3,7 +3,7 @@
 from odoo import api, fields, models
 
 
-class AccountCommonAccountReport(models.TransientModel):
+class AccountCommonAccountReport(models.Model):
     _name = 'account.common.account.report'
     _inherit = "account.common.report"
     _description = 'Account Common Account Report'

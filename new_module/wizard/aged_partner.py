@@ -6,7 +6,7 @@ from odoo import api, fields, models, _
 from odoo.exceptions import UserError
 
 
-class AccountAgedTrialBalance(models.TransientModel):
+class AccountAgedTrialBalance(models.Model):
     _name = 'account.aged.trial.balance'
     _inherit = 'account.common.partner.report'
     _description = 'Account Aged Trial balance Report'
