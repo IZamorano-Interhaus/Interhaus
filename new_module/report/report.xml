@@ -31,7 +31,7 @@
 
      <record id="report_event_event_badge" model="ir.actions.report">
          <field name="name">Event Badge</field>
-         <field name="model">new_module.factura</field>
+         <field name="model">new_module.models.factura</field>
          <field name="report_type">qweb-pdf</field>
          <field name="report_name">new_module.factura</field>
          <field name="report_file">new_module.factura</field>
