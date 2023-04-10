@@ -56,16 +56,8 @@
       <field name="name">Agregar factura</field>
       <field name="res_model">new_module.pruebas</field>
       <field name="view_mode">tree,form</field>
-      
     </record>
-
-    
-    
-    
-
-
     <!-- server action to the one above -->
-
     <record model="ir.actions.server" id="new_module.pruebas_action_server">
       <field name="name">Zona de ajustes (proximamente)</field>
       <field name="model_id" ref="model_new_module_pruebas"/>
@@ -78,15 +70,10 @@
         }
       </field>
     </record>
-
-
     <!-- Top menu item -->
-
     <menuitem name="Modulo de pruebas" id="new_module.menu_root"/>
-
     <!-- menu categories -->
-
-    <menuitem name="Acciones de ..." id="new_module.proveedores_menu_1" parent="new_module.menu_root" action = "new_module.proveedores_action_window"/>
+    <menuitem name="Vistas principales" id="new_module.proveedores_menu_1" parent="new_module.menu_root" action = "new_module.proveedores_action_window"/>
     <!-- actions -->
     
     <menuitem name="Proveedores" id="new_module.proveedores_menu_1_list" parent="new_module.proveedores_menu_1"
