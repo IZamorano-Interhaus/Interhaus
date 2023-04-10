@@ -35,7 +35,7 @@
          <field name="report_type">qweb-pdf</field>
          <field name="report_name">new_module.factura</field>
          <field name="report_file">new_module.factura</field>
-         <field name="paperformat_id" ref="new_module.factura"/>
+         <field name="paperformat_id" ref="event.paperformat_euro_lowmargin"/>
      </record>
 
 </odoo>
