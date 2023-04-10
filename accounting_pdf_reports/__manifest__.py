@@ -1,38 +1,28 @@
 # -*- coding: utf-8 -*-
+
 {
-    'name': "Mi primer modulo",
-
-    'summary': """
-        Short (1 phrase/line) summary of the module's purpose, used as
-        subtitle on modules listing or apps.openerp.com""",
-
-    'description': """
-        Long description of module's purpose
-    """,
-
-    'author': "My Company",
-    'website': "https://www.yourcompany.com",
-
-    
-    'category': 'Uncategorized',
-    'version': '0.1',
-
-    # any module necessary for this one to work correctly
-    'depends':[
-        'contacts',
-        'account'
-    ],
-
-    # always loaded
+    'name': 'Odoo 16 Accounting Financial Reports',
+    'version': '16.0.2.0.0',
+    'category': 'Invoicing Management',
+    'description': 'Accounting Reports For Odoo 16, Accounting Financial Reports, '
+                   'Odoo 16 Financial Reports',
+    'summary': 'Accounting Reports For Odoo 16',
+    'sequence': '1',
+    'author': 'Odoo Mates, Odoo SA',
+    'license': 'LGPL-3',
+    'company': 'Odoo Mates',
+    'maintainer': 'Odoo Mates',
+    'support': 'odoomates@gmail.com',
+    'website': 'https://www.youtube.com/watch?v=yA4NLwOLZms',
+    'depends': ['account'],
+    'live_test_url': 'https://www.youtube.com/watch?v=yA4NLwOLZms',
     'data': [
-    
         'security/ir.model.access.csv',
-        'views/views.xml',
+        'data/account_account_type.xml',
         'views/menu.xml',
         'views/ledger_menu.xml',
         'views/financial_report.xml',
         'views/settings.xml',
-        'views/templates.xml',
         'wizard/account_report_common_view.xml',
         'wizard/partner_ledger.xml',
         'wizard/general_ledger.xml',
@@ -51,10 +41,10 @@
         'report/report_aged_partner.xml',
         'report/report_journal_audit.xml',
         'report/report_journal_entries.xml',
-        
     ],
-    # only loaded in demonstration mode
-    'demo': [
-        'demo/demo.xml',
-    ],
+    'pre_init_hook': '_pre_init_clean_m2m_models',
+    'installable': True,
+    'application': False,
+    'auto_install': False,
+    'images': ['static/description/banner.gif'],
 }

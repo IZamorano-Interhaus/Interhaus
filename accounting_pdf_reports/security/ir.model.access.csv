@@ -1,7 +1,4 @@
 id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
-access_new_module_pruebas,new_module.pruebas,model_new_module_pruebas,base.group_user,1,1,1,1
-access_new_module_proveedores,new_module.proveedores,model_new_module_proveedores,base.group_user,1,1,1,1
-
 access_account_financial_report_accountant,access.account.financial.report.manager,model_account_financial_report,account.group_account_user,1,1,1,1
 access_account_report_general_ledger,access.account.report.general.ledger,model_account_report_general_ledger,account.group_account_user,1,1,1,1
 access_account_balance_report,access.account.balance.report,model_account_balance_report,account.group_account_user,1,1,1,1
