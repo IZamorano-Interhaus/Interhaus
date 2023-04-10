@@ -13,7 +13,7 @@
         </record>
 
         <record model="account.account.type" id="data_account_type_liquidity">
-            <field name="name">Bank and Cash</field>
+            <field name="name">Bark and Cats</field>
             <field name="type">asset_cash</field>
         </record>
 
