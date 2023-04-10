@@ -9,10 +9,10 @@ class AccountReportGeneralLedger(models.TransientModel):
     _inherit = "account.common.account.report"
     _description = "General Ledger Report"
 
-    initial_balance = fields.Boolean(string='Include Initial Balances',
-                                    help='If you selected date, this field allow'
-                                         ' you to add a row to display the amount '
-                                         'of debit/credit/balance that precedes'
+    initial_balance = fields.Boolean(string='Incluye balances iniciales',
+                                    help='Si quieres seleccionar fehca, este campoo permite que'
+                                         ' tu agreges un caolmna para mostrar el monto de '
+                                         ' debit/credit/balance that precedes'
                                          ' the filter you\'ve set.')
     sortby = fields.Selection([('sort_date', 'Date'), 
                                ('sort_journal_partner', 'Journal & Partner')], 
