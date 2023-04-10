@@ -28,7 +28,10 @@
     
         'security/ir.model.access.csv',
         'views/views.xml',
-        
+        'views/menu.xml',
+        'views/ledger_menu.xml',
+        'views/financial_report.xml',
+        'views/settings.xml',
         'views/templates.xml'
         
     ],
