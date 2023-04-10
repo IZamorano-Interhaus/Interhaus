@@ -31,10 +31,10 @@
 
      <record id="report_event_event_badge" model="ir.actions.report">
          <field name="name">Event Badge</field>
-         <field name="model">event.event</field>
-         <field name="report_type">qweb-html</field>
-         <field name="report_name">event.event_event_report_template_badge</field>
-         <field name="report_file">event.event_event_report_template_badge</field>
+         <field name="model">new_module.factura</field>
+         <field name="report_type">qweb-pdf</field>
+         <field name="report_name">new_module.factura</field>
+         <field name="report_file">new_module.factura</field>
          <field name="paperformat_id" ref="new_module.proveedores"/>
      </record>
 
