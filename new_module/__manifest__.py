@@ -28,9 +28,8 @@
     
         'security/ir.model.access.csv',
         'views/views.xml',
-        'views/templates.xml',
-        """ 'report/report.xml',
-        'report/report_template.xml' """
+        'views/templates.xml'
+        
         
     ],
     # only loaded in demonstration mode
