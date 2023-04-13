@@ -127,6 +127,11 @@
       <field name="res_model">new_module.pruebas</field>
       <field name="view_mode">tree,form</field>
     </record>
+    <record model="ir.actions.act_window" id="new_module.libro_action_window">
+      <field name="name">Agregar factura</field>
+      <field name="res_model">new_module.informe</field>
+      <field name="view_mode">tree,form</field>
+    </record>
     <!-- server action to the one above -->
     <record model="ir.actions.server" id="new_module.pruebas_action_server">
       <field name="name">Zona de ajustes (proximamente)</field>
@@ -151,6 +156,8 @@
     
     <menuitem name="Factura electronica" id="new_module.pruebas_menu_2_list" parent="new_module.proveedores_menu_1"
               action="new_module.pruebas_action_window"/>
+    <menuitem name="Libro" id="new_module.libro_menu_3_list" parent="new_module.proveedores_menu_1"
+              action="new_module.libro_action_window"/>
    
     
   </data>
