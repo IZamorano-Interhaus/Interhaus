@@ -35,7 +35,6 @@
     ],
     # only loaded in demonstration mode
     'demo': [
-        'demo/demo.xml',
-        "data/estate_demo.xml"
+        'demo/demo.xml'
     ],
 }
