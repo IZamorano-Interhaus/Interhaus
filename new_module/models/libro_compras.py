@@ -2,7 +2,7 @@ from odoo import fields,models,api,_
 from datetime import  date
 
 class informe(models.Model):
-    _inherit = "account.move"
+    
     _name="new_module.informe"
     _description="modulo para descargar archivos en pdf y vista preliminar de libros contables"
     @api.depends('parent_id', 'parent_id.level')
@@ -38,7 +38,7 @@ class informe(models.Model):
     account_ids = fields.Many2many('account.account', 'account_account_financial_report',
                                    'report_line_id', 'account_id', 'Accounts')
     account_report_id = fields.Many2one('new_module.informe', 'Report Value')
-    account_type_ids = fields.Many2many( 'account_account_financial_report_type',
+    account_type_ids = fields.Many2many('account.account.type', 'account_account_financial_report_type',
                                         'report_id', 'account_type_id', 'Account Types')
     report_domain = fields.Char(string="Report Domain")
     sign = fields.Selection([('-1', 'Reverse balance sign'), ('1', 'Preserve balance sign')], 'Sign on Reports',
