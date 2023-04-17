@@ -84,3 +84,4 @@ class borradorDetalle(models.Model):
         default='7',
         required=True,
         copy=False,)
+    #funciones
