@@ -7,7 +7,7 @@
             <field name="description">una pequeña descripcion</field>    
         </record>
         <record model="res.groups" id="group_pruebas">
-            <field name="name">pruebas</field>
+            <field name="name">pruebas2</field>
             <field name="description">una pequeña descripcion</field>    
         </record>
     </data>
