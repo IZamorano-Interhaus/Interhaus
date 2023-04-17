@@ -29,7 +29,8 @@
         'security/ir.model.access.csv',
         'views/views.xml',
         'views/templates.xml',
-        'views/libro_compras.xml'
+        'views/libro_compras.xml',
+        'ciews/report.xml'
         
         
     ],
