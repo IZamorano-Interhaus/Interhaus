@@ -5,7 +5,7 @@ class informe(models.Model):
     
     _name="new_module.account_financial_report"
     _description="modulo para descargar archivos en pdf y vista preliminar de libros contables"
-    @api.depends('parent_id', 'parent_id.level')
+    """  @api.depends('parent_id', 'parent_id.level')
     def _get_level(self):
         '''Returns a dictionary with key=the ID of a record and value = the level of this
            record in the tree structure.'''
@@ -65,5 +65,5 @@ class informe(models.Model):
         help="You can set up here the format you want this record to be displayed. "
              "If you leave the automatic formatting, it will be computed based on the "
              "financial reports hierarchy (auto-computed field 'level').")
-    children_ids = fields.One2many('account.financial.report', 'parent_id', string='Children')
+    children_ids = fields.One2many('account.financial.report', 'parent_id', string='Children') """
 

@@ -70,7 +70,6 @@
                 </form>
             </field>
         </record>
-
         <record id="view_account_financial_report_tree" model="ir.ui.view">
             <field name="name">new_module.account_financial_report tree</field>
             <field name="model">new_module.account_financial_report</field>
@@ -82,7 +81,6 @@
                 </tree>
             </field>
         </record>
-
         <record id="view_account_financial_report_search" model="ir.ui.view">
             <field name="name">new_module.account_financial_report search</field>
             <field name="model">new_module.account_financial_report</field>
