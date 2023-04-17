@@ -5,7 +5,7 @@ class informe(models.Model):
     _inherit="account.move"
     _name="new_module.informe"
     _description="modulo para descargar archivos en pdf y vista preliminar de libros contables"
-    @api.depends('parent_id', 'parent_id.level')
+    """ @api.depends('parent_id', 'parent_id.level')
     def _get_level(self):
         '''Returns a dictionary with key=the ID of a record and value = the level of this
            record in the tree structure.'''
@@ -22,7 +22,7 @@ class informe(models.Model):
         if children:
             for child in children:
                 res += child._get_children_by_order()
-        return res
+        return res """
 
     """  name = fields.Char('Report Name', required=True, translate=True)
     parent_id = fields.Many2one('new_module.informe', 'Parent')
