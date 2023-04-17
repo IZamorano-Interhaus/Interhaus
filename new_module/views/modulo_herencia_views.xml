@@ -4,8 +4,8 @@
         <record id="modulo_herencia_view" model="ir.ui.view">
             <field name="name"> modulo herencia </field>
             <field name="model">modulo.herencia</field>
-            <field name="inherit.id" ref="account_reports.action_account_report_general_ledger">
-
+            <field name="inherit.id" ref="account_reports.action_account_report_general_ledger"></field>
+            <field name="arch" type="xml">
         </record>
     </data>
 </odoo>
