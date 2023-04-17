@@ -50,7 +50,7 @@ class borradoresFactura(models.Model):
             ('6','Rechazado'),
             ('7','Manual'),
         ],
-        string='acusoRecibo',
+        string='estado factura',
         default='7',
         required=True,
         copy=False,) 
@@ -80,7 +80,7 @@ class borradorDetalle(models.Model):
             ('6','Rechazado'),
             ('7','Manual'),
         ],
-        string='acusoRecibo',
+        string='estado',
         default='7',
         required=True,
         copy=False,)
