@@ -5,7 +5,7 @@
         string="informe personalizado" 
         model="account.journal" 
         report_type="qweb-pdf"
-        name="new_module.informe_libros"/>
+        name="new_module.informe_libro"/>
     <template id="informe_libros">
         <t t-call="report.html_container">
             <t t-call="report.external_layout">
