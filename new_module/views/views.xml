@@ -8,9 +8,9 @@
       <field name="arch" type="xml">
         <tree>
           <field name = "name"/>
-          <field name = "address"/>
+          <field name = "street"/>
+          <field name = "l10n_cl_sii_taxpayer_type_id"/>
           <field name = "l10n_cl_sii_activity_description_id"/>
-          <field name = "l10n_cl_sii_taxpayer_type"/>
           <field name = "company_id"/>
           <field name = "pruebas_id"/>
         </tree>
@@ -32,7 +32,85 @@
         </tree>
       </field>
     </record>
-   
+   <!-- <record id="view_account_financial_report_form" model="ir.ui.view">
+            <field name="name">new_module.res_partner form</field>
+            <field name="model">new_module.res_partner</field>
+            <field name="arch" type="xml">
+                <form string="Account Report">
+                    <sheet>
+                        <group>
+                            <group>
+                                <field name="name"/>
+                                <field name="sequence"/>
+                            </group>
+                            <group>
+                                <field name="type"/>
+                                <field name="sign"/>
+                                <field name="style_overwrite"/>
+                            </group>
+                        </group>
+                        <notebook>
+                            <page string="Report"
+                                  attrs="{'invisible': [('type','not in',['accounts','account_type', 'account_report'])]}">
+                                <group>
+                                    <field name="display_detail"
+                                           attrs="{'invisible': [('type','not in',['accounts','account_type'])]}"/>
+                                    <field name="account_report_id"
+                                           attrs="{'invisible': [('type', '!=', 'account_report')]}"/>
+                                </group>
+                                <field name="account_ids" attrs="{'invisible': [('type', '!=', 'accounts')]}"/>
+                                <field name="account_type_ids" attrs="{'invisible': [('type', '!=', 'account_type')]}"/>
+                            </page>
+                            <page string="Childrens">
+                                <field name="children_ids" nolabel="1">
+                                </field>
+                            </page>
+                        </notebook>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+        <record id="view_account_financial_report_tree" model="ir.ui.view">
+            <field name="name">new_module.res_partner tree</field>
+            <field name="model">new_module.res_partner</field>
+            <field name="arch" type="xml">
+                <tree string="Account Report">
+                    <field name="name"/>
+                    <field name="type"/>
+                    <field name="account_report_id"/>
+                </tree>
+            </field>
+        </record>
+        <record id="view_account_financial_report_search" model="ir.ui.view">
+            <field name="name">new_module.res_partner search</field>
+            <field name="model">new_module.res_partner</field>
+            <field name="arch" type="xml">
+                <search string="Account Report">
+                    <field name="name" string="Account Report"/>
+                    <field name="type"/>
+                    <field name="account_report_id"/>
+                    <filter string="Reports" name="filter_parent_id" domain="[('parent_id','=', False)]"/>
+                    <group expand="0" string="Group By">
+                        <filter name="parent_report" string="Parent Report" domain=""
+                                context="{'group_by':'parent_id'}"/>
+                        <filter name="report_type" string="Report Type" domain="[]" context="{'group_by':'type'}"/>
+                    </group>
+                </search>
+            </field>
+        </record> -->
+
+    <!--se agrega inheritance para ver la funcionalidad-->
+    <!-- <record id="inherited_model_view_form" model="ir.ui.view">
+    <field name="name">inherited.model.form.inherit.test</field>
+    <field name="model">inherited.model</field>
+    <field name="inherit_id" ref="inherited.inherited_model_view_form"/>
+    <field name="arch" type="xml">
+        
+        <xpath expr="//field[@name='description']" position="after">
+          <field name="new_field"/>
+        </xpath>
+    </field>
+    </record> -->
     <!-- actions opening views on models -->
     <record model="ir.actions.act_window" id="new_module.proveedores_action_window">
       <field name="name">Agregar proveedor</field>
@@ -41,17 +119,26 @@
       
     </record>    
     <record model="ir.actions.act_window" id="new_module.pruebas_action_window">
-      <field name="name">Agregar borrador</field>
+      <field name="name">Agregar factura</field>
       <field name="res_model">new_module.pruebas</field>
       <field name="view_mode">tree,form</field>
-      
     </record>
-    
-    
-
-
+    <!-- <record model="ir.actions.act_window" id="new_module.libro_action_window">
+      <field name="name">Libro contable</field>
+      <field name="res_model">new_module.res_partner</field>
+      <field name="view_mode">tree,form</field>
+    </record> -->
+    <record model="ir.actions.act_window" id="new_module.borrador_factura_action_window">
+      <field name="name">Libro contable factura</field>
+      <field name="res_model">new_module.borrador_factura</field>
+      <field name="view_mode">tree,form</field>
+    </record>
+    <record model="ir.actions.act_window" id="new_module.borrador_detalle_action_window">
+      <field name="name">Libro contable detalle</field>
+      <field name="res_model">new_module.borrador_detalle</field>
+      <field name="view_mode">tree,form</field>
+    </record>
     <!-- server action to the one above -->
-
     <record model="ir.actions.server" id="new_module.pruebas_action_server">
       <field name="name">Zona de ajustes (proximamente)</field>
       <field name="model_id" ref="model_new_module_pruebas"/>
@@ -64,18 +151,10 @@
         }
       </field>
     </record>
-
-
     <!-- Top menu item -->
-
     <menuitem name="Modulo de pruebas" id="new_module.menu_root"/>
-
     <!-- menu categories -->
-
-    <menuitem name="Proveedores" id="new_module.proveedores_menu_1" parent="new_module.menu_root" action = "new_module.proveedores_action_window"/><!-- 
-    <menuitem name="Factura electronica" id="new_module.pruebas_menu_2" parent="new_module.menu_root" action ="new_module.pruebas_action_window"/>
-    <menuitem name="compañia" id="new_module.compannia_menu_3" parent="new_module.menu_root" action ="new_module.compannia_action_window"/> -->
-
+    <menuitem name="Vistas principales" id="new_module.proveedores_menu_1" parent="new_module.menu_root" action = "new_module.proveedores_action_window"/>
     <!-- actions -->
     
     <menuitem name="Proveedores" id="new_module.proveedores_menu_1_list" parent="new_module.proveedores_menu_1"
@@ -83,12 +162,13 @@
     
     <menuitem name="Factura electronica" id="new_module.pruebas_menu_2_list" parent="new_module.proveedores_menu_1"
               action="new_module.pruebas_action_window"/>
+    <!-- <menuitem name="Libro" id="new_module.libro_menu_3_list" parent="new_module.proveedores_menu_1"
+              action="new_module.libro_action_window"/> -->
+    <menuitem name="Borrador factura" id="new_module.libro_menu_4_list" parent="new_module.proveedores_menu_1"
+              action="new_module.borrador_factura_action_window"/>
+    <menuitem name="Borrador detalle" id="new_module.libro_menu_5_list" parent="new_module.proveedores_menu_1"
+              action="new_module.borrador_detalle_action_window"/>
    
-    <!-- 
-    <menuitem name="Factura electronica" id="new_module.pruebas_menu_2_list" parent="new_module.pruebas_menu_2"
-              action="new_module.pruebas_action_window"/>
-    <menuitem name="compañia" id="new_module.compannia_menu_3_list" parent="new_module.compannia_menu_3"
-              action="new_module.compannia_action_window"/> -->
-
+    
   </data>
 </odoo>
