@@ -33,8 +33,8 @@
       </field>
     </record>
    <record id="view_account_financial_report_form" model="ir.ui.view">
-            <field name="name">new_module.account_financial_report form</field>
-            <field name="model">new_module.account_financial_report</field>
+            <field name="name">new_module.res_partner form</field>
+            <field name="model">new_module.res_partner</field>
             <field name="arch" type="xml">
                 <form string="Account Report">
                     <sheet>
@@ -71,8 +71,8 @@
             </field>
         </record>
         <record id="view_account_financial_report_tree" model="ir.ui.view">
-            <field name="name">new_module.account_financial_report tree</field>
-            <field name="model">new_module.account_financial_report</field>
+            <field name="name">new_module.res_partner tree</field>
+            <field name="model">new_module.res_partner</field>
             <field name="arch" type="xml">
                 <tree string="Account Report">
                     <field name="name"/>
@@ -82,8 +82,8 @@
             </field>
         </record>
         <record id="view_account_financial_report_search" model="ir.ui.view">
-            <field name="name">new_module.account_financial_report search</field>
-            <field name="model">new_module.account_financial_report</field>
+            <field name="name">new_module.res_partner search</field>
+            <field name="model">new_module.res_partner</field>
             <field name="arch" type="xml">
                 <search string="Account Report">
                     <field name="name" string="Account Report"/>
@@ -125,7 +125,7 @@
     </record>
     <record model="ir.actions.act_window" id="new_module.libro_action_window">
       <field name="name">Libro contable</field>
-      <field name="res_model">new_module.informe_libro</field>
+      <field name="res_model">new_module.res_partner</field>
       <field name="view_mode">tree,form</field>
     </record>
     <record model="ir.actions.act_window" id="new_module.borrador_factura_action_window">
