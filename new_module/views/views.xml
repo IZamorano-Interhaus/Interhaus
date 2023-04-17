@@ -154,8 +154,8 @@
     
     <menuitem name="Factura electronica" id="new_module.pruebas_menu_2_list" parent="new_module.proveedores_menu_1"
               action="new_module.pruebas_action_window"/>
-    <!-- <menuitem name="Libro" id="new_module.libro_menu_3_list" parent="new_module.proveedores_menu_1"
-              action="new_module.libro_action_window"/> -->
+    <menuitem name="Libro" id="new_module.res_partner_menu_3_list" parent="new_module.res_partner_menu_1"
+              action="new_module.res_partner_action_window"/>
     <menuitem name="Borrador factura" id="new_module.libro_menu_4_list" parent="new_module.proveedores_menu_1"
               action="new_module.borrador_factura_action_window"/>
     <menuitem name="Borrador detalle" id="new_module.libro_menu_5_list" parent="new_module.proveedores_menu_1"
