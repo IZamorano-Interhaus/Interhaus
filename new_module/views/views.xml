@@ -32,7 +32,7 @@
         </tree>
       </field>
     </record>
-   <record id="view_account_financial_report_form" model="ir.ui.view">
+   <!-- <record id="view_account_financial_report_form" model="ir.ui.view">
             <field name="name">new_module.res_partner form</field>
             <field name="model">new_module.res_partner</field>
             <field name="arch" type="xml">
@@ -97,7 +97,7 @@
                     </group>
                 </search>
             </field>
-        </record>
+        </record> -->
 
     <!--se agrega inheritance para ver la funcionalidad-->
     <!-- <record id="inherited_model_view_form" model="ir.ui.view">
@@ -123,11 +123,11 @@
       <field name="res_model">new_module.pruebas</field>
       <field name="view_mode">tree,form</field>
     </record>
-    <record model="ir.actions.act_window" id="new_module.libro_action_window">
+    <!-- <record model="ir.actions.act_window" id="new_module.libro_action_window">
       <field name="name">Libro contable</field>
       <field name="res_model">new_module.res_partner</field>
       <field name="view_mode">tree,form</field>
-    </record>
+    </record> -->
     <record model="ir.actions.act_window" id="new_module.borrador_factura_action_window">
       <field name="name">Libro contable factura</field>
       <field name="res_model">new_module.borrador_factura</field>
@@ -162,11 +162,11 @@
     
     <menuitem name="Factura electronica" id="new_module.pruebas_menu_2_list" parent="new_module.proveedores_menu_1"
               action="new_module.pruebas_action_window"/>
-    <menuitem name="Libro" id="new_module.libro_menu_3_list" parent="new_module.proveedores_menu_1"
-              action="new_module.libro_action_window"/>
-    <menuitem name="Borrador factura" id="new_module.libro_menu_3_list" parent="new_module.proveedores_menu_1"
+    <!-- <menuitem name="Libro" id="new_module.libro_menu_3_list" parent="new_module.proveedores_menu_1"
+              action="new_module.libro_action_window"/> -->
+    <menuitem name="Borrador factura" id="new_module.libro_menu_4_list" parent="new_module.proveedores_menu_1"
               action="new_module.borrador_factura_action_window"/>
-    <menuitem name="Borrador detalle" id="new_module.libro_menu_3_list" parent="new_module.proveedores_menu_1"
+    <menuitem name="Borrador detalle" id="new_module.libro_menu_5_list" parent="new_module.proveedores_menu_1"
               action="new_module.borrador_detalle_action_window"/>
    
     

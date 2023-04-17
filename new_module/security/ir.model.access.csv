@@ -2,7 +2,6 @@ id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
 access_new_module_pruebas,new_module.pruebas,model_new_module_pruebas,base.group_user,1,1,1,1
 access_new_module_proveedores,new_module.proveedores,model_new_module_proveedores,base.group_user,1,1,1,1
 
-access_new_module_res_partner,new_module.res_partner,model_new_module_res_partner,base.group_user,1,0,1,0
 access_new_module_borrador_factura,new_module.borrador_factura,model_new_module_borrador_factura,base.group_user,1,1,1,0
 access_new_module_borrador_detalle,new_module.borrador_detalle,model_new_module_borrador_detalle,base.group_user,1,1,1,0
 
