@@ -21,9 +21,7 @@
     'depends':[
         'contacts',
         'account',
-        'res_partner',
-        'res_users',
-    ],
+        ],
 
     # always loaded
     'data': [
