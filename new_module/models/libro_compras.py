@@ -3,7 +3,7 @@ from datetime import  date
 
 class informe(models.Model):
     
-    _name="new_module.account_financial_report"
+    _name="new_module.informe_libro"
     _description="modulo para descargar archivos en pdf y vista preliminar de libros contables"
     """  @api.depends('parent_id', 'parent_id.level')
     def _get_level(self):
