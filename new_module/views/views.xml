@@ -125,7 +125,17 @@
     </record>
     <record model="ir.actions.act_window" id="new_module.libro_action_window">
       <field name="name">Libro contable</field>
-      <field name="res_model">new_module.account_financial_report</field>
+      <field name="res_model">new_module.informe_libro</field>
+      <field name="view_mode">tree,form</field>
+    </record>
+    <record model="ir.actions.act_window" id="new_module.borrador_factura_action_window">
+      <field name="name">Libro contable factura</field>
+      <field name="res_model">new_module.borrador_factura</field>
+      <field name="view_mode">tree,form</field>
+    </record>
+    <record model="ir.actions.act_window" id="new_module.borrador_detalle_action_window">
+      <field name="name">Libro contable detalle</field>
+      <field name="res_model">new_module.borrador_detalle</field>
       <field name="view_mode">tree,form</field>
     </record>
     <!-- server action to the one above -->
@@ -153,7 +163,11 @@
     <menuitem name="Factura electronica" id="new_module.pruebas_menu_2_list" parent="new_module.proveedores_menu_1"
               action="new_module.pruebas_action_window"/>
     <menuitem name="Libro" id="new_module.libro_menu_3_list" parent="new_module.proveedores_menu_1"
-              action="new_module.account_financial_report_action_window"/>
+              action="new_module.libro_action_window"/>
+    <menuitem name="Borrador factura" id="new_module.libro_menu_3_list" parent="new_module.proveedores_menu_1"
+              action="new_module.borrador_factura_action_window"/>
+    <menuitem name="Borrador detalle" id="new_module.libro_menu_3_list" parent="new_module.proveedores_menu_1"
+              action="new_module.borrador_detalle_action_window"/>
    
     
   </data>
