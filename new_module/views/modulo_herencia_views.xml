@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="modulo_herencia_view" model="ir.ui.view">
+            <field name="name"> modulo herencia </field>
+            <field name="model">modulo.herencia</field>
+            <field name="inherit.id" ref="account_reports.action_account_report_general_ledger">
+
+        </record>
+    </data>
+</odoo>
