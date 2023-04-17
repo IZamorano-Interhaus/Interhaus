@@ -25,8 +25,8 @@ class informe(models.Model):
         return res
 
     name = fields.Char('Report Name', required=True, translate=True)
-    parent_id = fields.Many2one('account.financial.report', 'Parent')
-    children_ids = fields.One2many('account.financial.report', 'parent_id', 'Account Report')
+    parent_id = fields.Many2one('new_module.informe', 'Parent')
+    children_ids = fields.One2many('new_module.informe', 'parent_id', 'Account Report')
     sequence = fields.Integer('Sequence')
     level = fields.Integer(compute='_get_level', string='Level', store=True, recursive=True)
     type = fields.Selection([
@@ -37,7 +37,7 @@ class informe(models.Model):
         ], 'Type', default='sum')
     account_ids = fields.Many2many('account.account', 'account_account_financial_report',
                                    'report_line_id', 'account_id', 'Accounts')
-    account_report_id = fields.Many2one('account.financial.report', 'Report Value')
+    account_report_id = fields.Many2one('new_module.informe', 'Report Value')
     account_type_ids = fields.Many2many('account.account.type', 'account_account_financial_report_type',
                                         'report_id', 'account_type_id', 'Account Types')
     report_domain = fields.Char(string="Report Domain")
@@ -65,5 +65,5 @@ class informe(models.Model):
         help="You can set up here the format you want this record to be displayed. "
              "If you leave the automatic formatting, it will be computed based on the "
              "financial reports hierarchy (auto-computed field 'level').")
-    children_ids = fields.One2many('account.financial.report', 'parent_id', string='Children')
+    children_ids = fields.One2many('new_module.informe', 'parent_id', string='Children')
 
