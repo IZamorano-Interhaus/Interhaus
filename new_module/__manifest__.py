@@ -30,7 +30,7 @@
         'views/views.xml',
         'views/templates.xml',
         'views/libro_compras.xml',
-        'ciews/report.xml'
+        'views/report.xml'
         
         
     ],
