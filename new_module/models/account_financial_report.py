@@ -1,10 +1,12 @@
-from odoo import fields,models,api,_
-from datetime import  date
+# -*- coding: utf-8 -*-
 
-class informe(models.Model):
-    
-    _name="account.financial.report"
-    _description="modulo para descargar archivos en pdf y vista preliminar de libros contables"
+from odoo import api, models, fields
+
+
+class AccountFinancialReport(models.Model):
+    _name = "account.financial.report"
+    _description = "Account Report"
+
     @api.depends('parent_id', 'parent_id.level')
     def _get_level(self):
         '''Returns a dictionary with key=the ID of a record and value = the level of this
