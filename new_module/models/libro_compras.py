@@ -24,7 +24,7 @@ class informe(models.Model):
                 res += child._get_children_by_order()
         return res
 
-    name = fields.Char('Report Name', required=True, translate=True)
+    """  name = fields.Char('Report Name', required=True, translate=True)
     parent_id = fields.Many2one('new_module.informe', 'Parent')
     children_ids = fields.One2many('new_module.informe', 'parent_id', 'Account Report')
     sequence = fields.Integer('Sequence')
@@ -65,4 +65,4 @@ class informe(models.Model):
         help="You can set up here the format you want this record to be displayed. "
              "If you leave the automatic formatting, it will be computed based on the "
              "financial reports hierarchy (auto-computed field 'level').")
-    children_ids = fields.One2many('new_module.informe', 'parent_id', string='Children')
+    children_ids = fields.One2many('new_module.informe', 'parent_id', string='Children') """
