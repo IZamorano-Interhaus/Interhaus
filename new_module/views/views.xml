@@ -32,7 +32,7 @@
         </tree>
       </field>
     </record>
-   <record id="view_account_financial_report_form" model="ir.ui.view">
+   <!-- <record id="view_account_financial_report_form" model="ir.ui.view">
             <field name="name">new_module.account_financial_report form</field>
             <field name="model">new_module.account_financial_report</field>
             <field name="arch" type="xml">
@@ -99,7 +99,7 @@
                     </group>
                 </search>
             </field>
-        </record>
+        </record> -->
 
     <!--se agrega inheritance para ver la funcionalidad-->
     <!-- <record id="inherited_model_view_form" model="ir.ui.view">
