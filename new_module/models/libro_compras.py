@@ -35,7 +35,7 @@ class informe(models.Model):
         ('account_type', 'Account Type'),
         ('account_report', 'Report Value'),
         ], 'Type', default='sum')
-    account_ids = fields.Many2many('account.account', 'account_account_financial_report',
+    account_ids = fields.Many2many('account.account', 'new_module_informe',
                                    'report_line_id', 'account_id', 'Accounts')
     account_report_id = fields.Many2one('new_module.informe', 'Report Value')
     account_type_ids = fields.Many2many('account.account.type', 'account_account_financial_report_type',
