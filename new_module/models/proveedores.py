@@ -13,7 +13,7 @@ class proveedores(models.Model):
         required=True
     )
     street=fields.Many2one(
-        comodel_name='res.partner',
+        comodel_name='partner_id.street',
         string="Dirección",
         required=True
     )
