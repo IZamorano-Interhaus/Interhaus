@@ -2,7 +2,7 @@ from odoo import fields, models,api, _
 from odoo.exceptions import ValidationError
 
 class Users(models.Model):
-    
+    _name = "res_users"
     _inherit="res.users"
     _description="usuario"
 
