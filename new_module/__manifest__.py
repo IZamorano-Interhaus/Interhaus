@@ -20,7 +20,9 @@
     # any module necessary for this one to work correctly
     'depends':[
         'contacts',
-        'account'
+        'account',
+        'res_partner',
+        'res_users',
     ],
 
     # always loaded
