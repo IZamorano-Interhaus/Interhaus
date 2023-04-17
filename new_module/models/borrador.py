@@ -3,7 +3,7 @@ from datetime import  date
 
 class borradoresFactura(models.Model):
     
-    _name="new_module.borrador.factura"
+    _name="new_module.borrador_factura"
     _description="modulo para crear tabla borrador para alojar los datos que se obtienen en facturas"
 
     tipoDTEString= fields.Char()
@@ -59,7 +59,7 @@ class borradoresFactura(models.Model):
 
 
 class borradorDetalle(models.Model):
-    _name="new_module.borrador.detalle"
+    _name="new_module.borrador_detalle"
     _description="Muestra la cantidad de documentos emitidos segun el tipo de documento"
 
     tipoDte= fields.Integer()
