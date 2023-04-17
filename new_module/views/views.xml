@@ -33,7 +33,7 @@
       </field>
     </record>
    <record id="view_account_financial_report_form" model="ir.ui.view">
-            <field name="name">new_module.informe.form</field>
+            <field name="name">new_module.informe form</field>
             <field name="model">new_module.informe</field>
             <field name="arch" type="xml">
                 <form string="Account Report">
@@ -73,7 +73,7 @@
         </record>
 
         <record id="view_account_financial_report_tree" model="ir.ui.view">
-            <field name="name">new_module.informe.tree</field>
+            <field name="name">new_module.informe tree</field>
             <field name="model">new_module.informe</field>
             <field name="arch" type="xml">
                 <tree string="Account Report">
@@ -86,7 +86,7 @@
         </record>
 
         <record id="view_account_financial_report_search" model="ir.ui.view">
-            <field name="name">new_module.informe.search</field>
+            <field name="name">new_module.informe search</field>
             <field name="model">new_module.informe</field>
             <field name="arch" type="xml">
                 <search string="Account Report">
@@ -128,7 +128,7 @@
       <field name="view_mode">tree,form</field>
     </record>
     <record model="ir.actions.act_window" id="new_module.libro_action_window">
-      <field name="name">Agregar factura</field>
+      <field name="name">Libro contable</field>
       <field name="res_model">new_module.informe</field>
       <field name="view_mode">tree,form</field>
     </record>
