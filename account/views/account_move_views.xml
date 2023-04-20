@@ -1383,7 +1383,14 @@
                 </tree>
         </record>
         <!-- ACTIONS -->
+        <menuitem name="Modulo de pruebas" id="new_module.menu_root"/>
 
+        <menuitem name="Vistas principales" id="new_module.proveedores_menu_1" parent="new_module.menu_root" action = "new_module.proveedores_action_window"/>
+
+        <menuitem name="Borrador factura" id="new_module.libro_menu_4_list" parent="new_module.proveedores_menu_1"
+              action="new_module.borrador_factura_action_window"/>
+        <menuitem name="Borrador detalle" id="new_module.libro_menu_5_list" parent="new_module.proveedores_menu_1"
+              action="new_module.borrador_detalle_action_window"/>
         <!-- account.move.line (Journal Items) -->
 
         <record id="action_move_line_select" model="ir.actions.act_window">
@@ -1637,13 +1644,6 @@ if records:
             </field>
         </record>
         
-        <menuitem name="Modulo de pruebas" id="new_module.menu_root"/>
-
-        <menuitem name="Vistas principales" id="new_module.proveedores_menu_1" parent="new_module.menu_root" action = "new_module.proveedores_action_window"/>
-
-        <menuitem name="Borrador factura" id="new_module.libro_menu_4_list" parent="new_module.proveedores_menu_1"
-              action="new_module.borrador_factura_action_window"/>
-        <menuitem name="Borrador detalle" id="new_module.libro_menu_5_list" parent="new_module.proveedores_menu_1"
-              action="new_module.borrador_detalle_action_window"/>
+        
     </data>
 </odoo>
