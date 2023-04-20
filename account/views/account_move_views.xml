@@ -1592,30 +1592,30 @@ if records:
             <field name = "model">new_module.borrador_factura</field>
             <field name = "arch" type="xml">
                 <tree>
-                    <field name="tipoDTEString">
-                    <field name="tipoDTE">
-                    <field name="tipoCompra">
-                    <field name="rutCliente">
-                    <field name="razonSocial">
-                    <field name="folio">
-                    <field name="fechaEmision">
-                    <field name="fechaRecepcion">
-                    <field name="acuseRecibo">
-                    <field name="montoExento">
-                    <field name="montoNeto">
-                    <field name="montoIvaRecuperable">
-                    <field name="montoTotal">
-                    <field name="ivaNoRetenido">
-                    <field name="totalOtrosImpuestos">
-                    <field name="valorOtroImpuesto">
-                    <field name="tasaOtroImpuesto">
-                    <field name="tipoDocReferencia">
-                    <field name="trackId">
-                    <field name="referencias">
-                    <field name="referenciado">
-                    <field name="reparos">
-                    <field name="otrosImpuestos">
-                    <field name="estado">
+                    <field name="tipoDTEString"/>
+                    <field name="tipoDTE"/>
+                    <field name="tipoCompra"/>
+                    <field name="rutCliente"/>
+                    <field name="razonSocial"/>
+                    <field name="folio"/>
+                    <field name="fechaEmision"/>
+                    <field name="fechaRecepcion"/>
+                    <field name="acuseRecibo"/>
+                    <field name="montoExento"/>
+                    <field name="montoNeto"/>
+                    <field name="montoIvaRecuperable"/>
+                    <field name="montoTotal"/>
+                    <field name="ivaNoRetenido"/>
+                    <field name="totalOtrosImpuestos"/>
+                    <field name="valorOtroImpuesto"/>
+                    <field name="tasaOtroImpuesto"/>
+                    <field name="tipoDocReferencia"/>
+                    <field name="trackId"/>
+                    <field name="referencias"/>
+                    <field name="referenciado"/>
+                    <field name="reparos"/>
+                    <field name="otrosImpuestos"/>
+                    <field name="estado"/>
                 </tree>
             </field>
         </record>
@@ -1624,16 +1624,16 @@ if records:
             <field name = "model">new_module.borrador_detalle</field>
             <field name = "arch" type="xml"></field>
                 <tree>
-                    <field name="tipoDte">
-                    <field name="tipoDteString">
-                    <field name="totalDocumentos">
-                    <field name="montoExento">
-                    <field name="montoNeto">
-                    <field name="ivaRecuperable">
-                    <field name="ivaUsoComun">
-                    <field name="ivaNoRecuperable">
-                    <field name="montoTotal">
-                    <field name="estado">
+                    <field name="tipoDte"/>
+                    <field name="tipoDteString"/>
+                    <field name="totalDocumentos"/>
+                    <field name="montoExento"/>
+                    <field name="montoNeto"/>
+                    <field name="ivaRecuperable"/>
+                    <field name="ivaUsoComun"/>
+                    <field name="ivaNoRecuperable"/>
+                    <field name="montoTotal"/>
+                    <field name="estado"/>
                     
                 </tree>
         </record>
