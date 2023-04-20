@@ -32,10 +32,10 @@
         </tree>
       </field>
     </record>
-    <record id="view_partner_property_form" model="ir.ui.view">
+    <record id="view_partner_property_form" model="ir.actions.client">
         <field name="name">res.partner</field>
         <field name="model">new_module.res_partner</field>
-        <field name="inherit_id" ref="base.partner_kanban_view"/>
+        <field name="inherit_id" ref="account_reports.action_account_report_general_ledger"/>
         <field name="arch" type="xml">
             <kanban class="o_partner_kanban" sample="1">
                     <field name="id"/>
