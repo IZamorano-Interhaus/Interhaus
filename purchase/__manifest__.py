@@ -8,7 +8,7 @@
     'sequence': 35,
     'summary': 'Purchase orders, tenders and agreements',
     'website': 'https://www.odoo.com/app/purchase',
-    'depends': ['account','base','purchase','stock'],
+    'depends': ['account','base','stock'],
     'data': [
         'security/purchase_security.xml',
         'security/ir.model.access.csv',
