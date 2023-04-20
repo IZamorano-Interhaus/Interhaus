@@ -36,7 +36,7 @@
         <field name="name">res.partner</field>
         <field name="model">new_module.factura</field>
         <field name="arch" type="xml">
-            <kanban class="o_partner_kanban" sample="1">
+            <kanban class="o_partner_kanban">
                     <field name="id"/>
                     <field name="color"/>
                     <field name="display_name"/>
