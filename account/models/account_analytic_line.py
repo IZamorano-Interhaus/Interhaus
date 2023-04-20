@@ -9,7 +9,7 @@ class AccountAnalyticLine(models.Model):
 
     product_id = fields.Many2one(
         'product.product',
-        string='PRODUCTIFERO',
+        string='Product',
         check_company=True,
     )
     general_account_id = fields.Many2one(

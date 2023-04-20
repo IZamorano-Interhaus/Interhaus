@@ -9,7 +9,6 @@ from json import dumps
 import re
 from textwrap import shorten
 from unittest.mock import patch
-import psycopg2,json,os,sys
 
 from odoo import api, fields, models, _, Command
 from odoo.addons.base.models.decimal_precision import DecimalPrecision
@@ -75,15 +74,15 @@ class AccountMove(models.Model):
 
     # === Accounting fields === #
     name = fields.Char(
-        string='Numero o nombre, no se que es',
+        string='Number',
         compute='_compute_name', readonly=False, store=True,
         copy=False,
         tracking=True,
         index='trigram',
     )
-    ref = fields.Char(string='Referencia', copy=False, tracking=True)
+    ref = fields.Char(string='Reference', copy=False, tracking=True)
     date = fields.Date(
-        string='Fecha de emision',
+        string='Date',
         index=True,
         compute='_compute_date', store=True, required=True, readonly=False, precompute=True,
         states={'posted': [('readonly', True)], 'cancel': [('readonly', True)]},
@@ -96,7 +95,7 @@ class AccountMove(models.Model):
             ('posted', 'Posted'),
             ('cancel', 'Cancelled'),
         ],
-        string='Estado',
+        string='Status',
         required=True,
         readonly=True,
         copy=False,
@@ -105,7 +104,7 @@ class AccountMove(models.Model):
     )
     move_type = fields.Selection(
         selection=[
-            ('entry', 'Entrada Registro'),
+            ('entry', 'Journal Entry'),
             ('out_invoice', 'Customer Invoice'),
             ('out_refund', 'Customer Credit Note'),
             ('in_invoice', 'Vendor Bill'),
@@ -113,7 +112,7 @@ class AccountMove(models.Model):
             ('out_receipt', 'Sales Receipt'),
             ('in_receipt', 'Purchase Receipt'),
         ],
-        string='Tipazo',
+        string='Type',
         required=True,
         readonly=True,
         tracking=True,
@@ -127,7 +126,7 @@ class AccountMove(models.Model):
     )
     journal_id = fields.Many2one(
         'account.journal',
-        string='Diario contable',
+        string='Journal',
         compute='_compute_journal_id', store=True, readonly=False, precompute=True,
         required=True,
         states={'draft': [('readonly', False)]},
@@ -136,14 +135,14 @@ class AccountMove(models.Model):
     )
     company_id = fields.Many2one(
         comodel_name='res.company',
-        string='Compañia',
+        string='Company',
         compute='_compute_company_id', inverse='_inverse_company_id', store=True, readonly=False, precompute=True,
         index=True,
     )
     line_ids = fields.One2many(
         'account.move.line',
         'move_id',
-        string='Items de diarios',
+        string='Journal Items',
         copy=True,
         readonly=True,
         states={'draft': [('readonly', False)]},
@@ -152,7 +151,7 @@ class AccountMove(models.Model):
     # === Payment fields === #
     payment_id = fields.Many2one(
         comodel_name='account.payment',
-        string="Pago genialo",
+        string="Payment",
         index='btree_not_null',
         copy=False,
         check_company=True,
@@ -161,7 +160,7 @@ class AccountMove(models.Model):
     # === Statement fields === #
     statement_line_id = fields.Many2one(
         comodel_name='account.bank.statement.line',
-        string="Linea de tu testamento",
+        string="Statement Line",
         copy=False,
         check_company=True,
     )
@@ -194,7 +193,7 @@ class AccountMove(models.Model):
 
     # === Misc fields === #
     auto_post = fields.Selection(
-        string='Auto-posteo',
+        string='Auto-post',
         selection=[
             ('no', 'No'),
             ('at_date', 'At Date'),
@@ -256,7 +255,7 @@ class AccountMove(models.Model):
 
     # === Date fields === #
     invoice_date = fields.Date(
-        string='fecha de la factura emitida como dios manda',
+        string='Invoice/Bill Date',
         readonly=True,
         states={'draft': [('readonly', False)]},
         index=True,
@@ -282,7 +281,7 @@ class AccountMove(models.Model):
     # === Partner fields === #
     partner_id = fields.Many2one(
         'res.partner',
-        string='Proveedor genialo',
+        string='Partner',
         readonly=True,
         tracking=True,
         states={'draft': [('readonly', False)]},
@@ -299,14 +298,14 @@ class AccountMove(models.Model):
     )
     partner_shipping_id = fields.Many2one(
         comodel_name='res.partner',
-        string='direccion de entrega',
+        string='Delivery Address',
         compute='_compute_partner_shipping_id', store=True, readonly=False, precompute=True,
         domain="['|', ('company_id', '=', False), ('company_id', '=', company_id)]",
         help="Delivery address for current invoice.",
     )
     partner_bank_id = fields.Many2one(
         'res.partner.bank',
-        string='lugar del banco',
+        string='Recipient Bank',
         compute='_compute_partner_bank_id', store=True, readonly=False,
         help="Bank Account Number to which the invoice will be paid. "
              "A Company bank account if this is a Customer Invoice or Vendor Credit Note, "
@@ -316,7 +315,7 @@ class AccountMove(models.Model):
     )
     fiscal_position_id = fields.Many2one(
         'account.fiscal.position',
-        string='Posicion Fiscal UVE',
+        string='Fiscal Position',
         check_company=True,
         compute='_compute_fiscal_position_id', store=True, readonly=False, precompute=True,
         states={'posted': [('readonly', True)], 'cancel': [('readonly', True)]},
@@ -445,7 +444,6 @@ class AccountMove(models.Model):
         copy=False,
         tracking=True,
     )
-    
 
     # === Reverse feature fields === #
     reversed_entry_id = fields.Many2one(
@@ -2546,7 +2544,7 @@ class AccountMove(models.Model):
         for that partner as the default one, otherwise the default of the journal.
         """
         self.ensure_one()
-        if not self.quick_edit_mode or not self.quick_edit_total_amount:
+        if not self.quick_edit_total_amount:
             return False
         count, account_id, tax_ids = self._get_frequent_account_and_taxes(
             self.company_id.id,
@@ -4095,48 +4093,3 @@ class AccountMove(models.Model):
         :return: an array of ir.model.fields for which the user should provide values.
         """
         return []
-    @api.model
-    def cargarDocumentos(self, *post):
-        os.system('cls')
-        listaRut=[]
-        conn = psycopg2.connect(database="testing", user = "postgres", password = "admin", host = "localhost", port = "5432")
-        cur = conn.cursor()
-        f = open("C:\tools\respaldoBaseDatos\doc_SII_202301", "r")
-        archivoJSON = f.read()
-        datosJSON = json.loads(archivoJSON)
-        for ingreso in (datosJSON["ventas"]["detalleVentas"]):
-            lax=[]
-            try:
-                if ingreso["acuseRecibo"]!=None:
-                    acuse=ingreso["acuseRecibo"]
-            except:
-                acuse=""
-            lax= ingreso["tipoDTEString"],str(ingreso["tipoDTE"]),ingreso["tipoCompra"],ingreso["rutCliente"],ingreso["razonSocial"],str(ingreso["folio"]),ingreso["fechaEmision"],ingreso["fechaRecepcion"],str(acuse),str(ingreso["montoExento"]),str(ingreso["montoNeto"]),str(ingreso["montoIvaRecuperable"]),str(ingreso["montoTotal"]),str(ingreso["ivaNoRetenido"]),str(ingreso["totalOtrosImpuestos"]),str(ingreso["valorOtroImpuesto"]),str(ingreso["tasaOtroImpuesto"]), str(ingreso["tipoDocReferencia"]),str(ingreso["trackId"]),ingreso["referencias"],ingreso["referenciado"],ingreso["reparos"],ingreso["otrosImpuestos"],ingreso["estado"]
-            listaRut.append(lax)
-        query = "select rutCliente,folio from borradores;" 
-        cur.execute(query)
-        querySelect = cur.fetchall()
-        largoQuery=len(querySelect)
-        for i in range(len(listaRut)): 
-            existe=True
-            if largoQuery==0:
-                existe=False
-            else: 
-                existe=True
-                for j in range(largoQuery):
-                    if str(listaRut[i][3])==str(querySelect[j][0]) and str(listaRut[i][5])==str(querySelect[j][1]):
-                        existe=True
-                        break
-                    else:
-                        existe=False
-            if existe==False:
-                cur.execute("insert into borradores (tipoDTEstring,tipoDTE,tipoCompra,rutCliente,razonSocial,folio,fechaEmision,fechaRecepcion,acuseRecibo,montoExento,montoNeto,montoIvaRecuperable,montoTotal,ivaNoRetenido,totalOtrosImpuestos,valorOtroImpuesto,tasaOtroImpuesto,tipoDocReferencia,trackId,referencias,referenciado,reparos,otrosImpuestos,estado) values('"+str(listaRut[i][0])+"',"+str(listaRut[i][1])+",'"+str(listaRut[i][2])+"','"+str(listaRut[i][3])+"','"+str(listaRut[i][4])+"',"+str(listaRut[i][5])+",'"+str(listaRut[i][6])+"','"+str(listaRut[i][7])+"','"+str(listaRut[i][8])+"','"+str(listaRut[i][9])+"','"+str(listaRut[i][10])+"','"+str(listaRut[i][11])+"','"+str(listaRut[i][12])+"','"+str(listaRut[i][13])+"','"+str(listaRut[i][14])+"','"+str(listaRut[i][15])+"','"+str(listaRut[i][16])+"','"+str(listaRut[i][17])+"','"+str(listaRut[i][18])+"','"+str(listaRut[i][19])+"','"+str(listaRut[i][20])+"','"+str(listaRut[i][21])+"','"+str(listaRut[i][22])+"','"+str(listaRut[i][23])+"');")
-                cur.execute(query)
-                querySelect = cur.fetchall()
-                largoQuery=len(querySelect)
-                print("query despues del ciclo parte 2 => "+str(largoQuery))
-        conn.commit()
-        print("script completado")
-        conn.close()
-
-
