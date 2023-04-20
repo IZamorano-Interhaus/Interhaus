@@ -2,7 +2,7 @@ from odoo import fields,models,api,_
 from datetime import  date
 
 class res_partner(models.Model):
-    _name="res.partner"
+    _name="partner"
     _inherit="res.partner"
 
     property_payment_method_id = fields.Many2one(
