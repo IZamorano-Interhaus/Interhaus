@@ -1590,7 +1590,7 @@ if records:
         <record id="borrador_libro_id" model="ir.ui.view">
             <field name = "name">borrador_libro</field>
             <field name = "model">new_module.borrador_factura</field>
-            <field name = "arch" type="xml"></field>
+            <field name = "arch" type="xml">
                 <tree>
                     <field name="tipoDTEString">
                     <field name="tipoDTE">
@@ -1617,6 +1617,7 @@ if records:
                     <field name="otrosImpuestos">
                     <field name="estado">
                 </tree>
+            </field>
         </record>
         <record id="borrador_detalle_id" model="ir.ui.view">
             <field name = "name">borrador_detalle</field>
