@@ -2,8 +2,8 @@ from odoo import fields,models,api,_
 from datetime import  date
 
 class res_partner(models.Model):
-    _name="res.partner"
-    _inherit="res.partner"
+    _name="partner"
+    
 
     property_payment_method_id = fields.Many2one(
         comodel_name='account.payment.method',
