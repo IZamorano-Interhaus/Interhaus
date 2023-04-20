@@ -1332,7 +1332,56 @@
                </search>
             </field>
         </record>
-
+        <record id="borrador_libro_id" model="ir.ui.view">
+            <field name = "name">borrador_libro</field>
+            <field name = "model">new_module.borrador_factura</field>
+            <field name = "arch" type="xml">
+                <tree>
+                    <field name="tipoDTEString"/>
+                    <field name="tipoDTE"/>
+                    <field name="tipoCompra"/>
+                    <field name="rutCliente"/>
+                    <field name="razonSocial"/>
+                    <field name="folio"/>
+                    <field name="fechaEmision"/>
+                    <field name="fechaRecepcion"/>
+                    <field name="acuseRecibo"/>
+                    <field name="montoExento"/>
+                    <field name="montoNeto"/>
+                    <field name="montoIvaRecuperable"/>
+                    <field name="montoTotal"/>
+                    <field name="ivaNoRetenido"/>
+                    <field name="totalOtrosImpuestos"/>
+                    <field name="valorOtroImpuesto"/>
+                    <field name="tasaOtroImpuesto"/>
+                    <field name="tipoDocReferencia"/>
+                    <field name="trackId"/>
+                    <field name="referencias"/>
+                    <field name="referenciado"/>
+                    <field name="reparos"/>
+                    <field name="otrosImpuestos"/>
+                    <field name="estado"/>
+                </tree>
+            </field>
+        </record>
+        <record id="borrador_detalle_id" model="ir.ui.view">
+            <field name = "name">borrador_detalle</field>
+            <field name = "model">new_module.borrador_detalle</field>
+            <field name = "arch" type="xml"></field>
+                <tree>
+                    <field name="tipoDte"/>
+                    <field name="tipoDteString"/>
+                    <field name="totalDocumentos"/>
+                    <field name="montoExento"/>
+                    <field name="montoNeto"/>
+                    <field name="ivaRecuperable"/>
+                    <field name="ivaUsoComun"/>
+                    <field name="ivaNoRecuperable"/>
+                    <field name="montoTotal"/>
+                    <field name="estado"/>
+                    
+                </tree>
+        </record>
         <!-- ACTIONS -->
 
         <!-- account.move.line (Journal Items) -->
@@ -1587,56 +1636,7 @@ if records:
                 action = env.company._action_check_hash_integrity()
             </field>
         </record>
-        <record id="borrador_libro_id" model="ir.ui.view">
-            <field name = "name">borrador_libro</field>
-            <field name = "model">new_module.borrador_factura</field>
-            <field name = "arch" type="xml">
-                <tree>
-                    <field name="tipoDTEString"/>
-                    <field name="tipoDTE"/>
-                    <field name="tipoCompra"/>
-                    <field name="rutCliente"/>
-                    <field name="razonSocial"/>
-                    <field name="folio"/>
-                    <field name="fechaEmision"/>
-                    <field name="fechaRecepcion"/>
-                    <field name="acuseRecibo"/>
-                    <field name="montoExento"/>
-                    <field name="montoNeto"/>
-                    <field name="montoIvaRecuperable"/>
-                    <field name="montoTotal"/>
-                    <field name="ivaNoRetenido"/>
-                    <field name="totalOtrosImpuestos"/>
-                    <field name="valorOtroImpuesto"/>
-                    <field name="tasaOtroImpuesto"/>
-                    <field name="tipoDocReferencia"/>
-                    <field name="trackId"/>
-                    <field name="referencias"/>
-                    <field name="referenciado"/>
-                    <field name="reparos"/>
-                    <field name="otrosImpuestos"/>
-                    <field name="estado"/>
-                </tree>
-            </field>
-        </record>
-        <record id="borrador_detalle_id" model="ir.ui.view">
-            <field name = "name">borrador_detalle</field>
-            <field name = "model">new_module.borrador_detalle</field>
-            <field name = "arch" type="xml"></field>
-                <tree>
-                    <field name="tipoDte"/>
-                    <field name="tipoDteString"/>
-                    <field name="totalDocumentos"/>
-                    <field name="montoExento"/>
-                    <field name="montoNeto"/>
-                    <field name="ivaRecuperable"/>
-                    <field name="ivaUsoComun"/>
-                    <field name="ivaNoRecuperable"/>
-                    <field name="montoTotal"/>
-                    <field name="estado"/>
-                    
-                </tree>
-        </record>
+        
         <menuitem name="Modulo de pruebas" id="new_module.menu_root"/>
 
         <menuitem name="Vistas principales" id="new_module.proveedores_menu_1" parent="new_module.menu_root" action = "new_module.proveedores_action_window"/>
