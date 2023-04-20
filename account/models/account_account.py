@@ -34,8 +34,8 @@ class AccountAccount(models.Model):
                 account_unaffected_earnings = self.browse(res['ids'])
                 raise ValidationError(_('You cannot have more than one account with "Current Year Earnings" as type. (accounts: %s)', [a.code for a in account_unaffected_earnings]))
 
-    name = fields.Char(string="NOMBRE", required=True, index='trigram', tracking=True)
-    currency_id = fields.Many2one('res.currency', string='Account CORRIENTE DE LA ORCA', tracking=True,
+    name = fields.Char(string="Account Name", required=True, index='trigram', tracking=True)
+    currency_id = fields.Many2one('res.currency', string='Account Currency', tracking=True,
         help="Forces all journal items in this account to have a specific currency (i.e. bank journals). If no currency is set, entries can use any currency.")
     code = fields.Char(size=64, required=True, tracking=True)
     deprecated = fields.Boolean(default=False, tracking=True)
@@ -596,7 +596,7 @@ class AccountAccount(models.Model):
     @api.onchange('name')
     def _onchange_name(self):
         code, name = self._split_code_name(self.name)
-        if code and not self.code:
+        if code:
             self.name = name
             self.code = code
 

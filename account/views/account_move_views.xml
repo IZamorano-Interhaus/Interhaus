@@ -1332,9 +1332,9 @@
                </search>
             </field>
         </record>
-        
+
         <!-- ACTIONS -->
-        
+
         <!-- account.move.line (Journal Items) -->
 
         <record id="action_move_line_select" model="ir.actions.act_window">
@@ -1587,7 +1587,6 @@ if records:
                 action = env.company._action_check_hash_integrity()
             </field>
         </record>
-        
-        
+
     </data>
 </odoo>
