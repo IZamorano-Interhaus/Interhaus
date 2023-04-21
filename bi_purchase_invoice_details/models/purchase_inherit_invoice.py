@@ -35,7 +35,7 @@ class PurchaseOrderUpdate(models.Model):
 			else:
 				record.invoiced_amount = total
 	@api.depends('paid_amount','invoiced_amount', 'amount_due')
-	def _compute_invoice_amount(self):
+	def _compute_invoiced_amount(self):
 		for record in self:
 			invoice_ids = self.env['account.move'].search(['&',('invoice_origin','=', record.name),'|',('state','=','draft'),('state','=','posted'),('payment_state', 'not in', ['reversed', 'invoicing_legacy'])])
 			amount = 0
