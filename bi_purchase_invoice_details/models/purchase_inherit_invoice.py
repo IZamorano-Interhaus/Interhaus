@@ -12,19 +12,8 @@ class PurchaseOrderUpdate(models.Model):
 	amount_paid_percent = fields.Float(compute = 'action_amount_paid')
 	currency_id = fields.Many2one('res.currency', string='Currency', default=lambda self: self.env.user.company_id.currency_id)
 
-	""" @api.depends('paid_amount','invoiced_amount', 'amount_due')
-	def _compute_invoiced_amount_alt(self):
-		for record in self:
-			invoice_ids = self.env['account.move'].search(['&',('invoice_origin','=', record.name),'|',('state','=','draft'),('state','=','posted'),('payment_state', 'not in', ['reversed', 'invoicing_legacy'])])
-			total = 0
-			if invoice_ids:
-				for bill in invoice_ids:
-					total = bill.amount_total
-					record.invoiced_amount = total
-			else:
-				record.invoiced_amount = total """
 	@api.depends('paid_amount','invoiced_amount', 'amount_due')
-	def _computedue(self):
+	def _compute_invoiced_amount(self):
 		for record in self:
 			invoice_ids = self.env['account.move'].search(['&',('invoice_origin','=', record.name),'|',('state','=','draft'),('state','=','posted'),('payment_state', 'not in', ['reversed', 'invoicing_legacy'])])
 			total = 0
@@ -35,7 +24,7 @@ class PurchaseOrderUpdate(models.Model):
 			else:
 				record.invoiced_amount = total
 	@api.depends('paid_amount','invoiced_amount', 'amount_due')
-	def _compute_invoiced_amount(self):
+	def _computedue(self):
 		for record in self:
 			invoice_ids = self.env['account.move'].search(['&',('invoice_origin','=', record.name),'|',('state','=','draft'),('state','=','posted'),('payment_state', 'not in', ['reversed', 'invoicing_legacy'])])
 			amount = 0
@@ -45,17 +34,6 @@ class PurchaseOrderUpdate(models.Model):
 					record.amount_due = amount
 			else:
 				record.amount_due = amount
-	""" @api.depends('paid_amount','invoiced_amount', 'amount_due')
-	def _computedue_alt(self):
-		for record in self:
-			invoice_ids = self.env['account.move'].search(['&',('invoice_origin','=', record.name),'|',('state','=','draft'),('state','=','posted'),('payment_state', 'not in', ['reversed', 'invoicing_legacy'])])
-			amount = 0
-			if invoice_ids:
-				for inv in invoice_ids:
-					amount  += inv.amount_residual   
-					record.amount_due = amount
-			else:
-				record.amount_due = amount """
 			
 
 	@api.onchange('invoiced_amount','amount_due')
