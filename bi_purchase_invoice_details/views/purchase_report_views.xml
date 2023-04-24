@@ -5,7 +5,19 @@
 		<field name="model">purchase.order</field>
 		<field name="inherit_id" ref="purchase.purchase_order_form"/>
 		<field name="arch" type="xml">
+            
 
+			<xpath expr="//field[@name='notes']" position="after" >
+			<group>
+				<group>
+					<field name="currency_id" invisible="1"/> 
+					<field name="invoiced_amount" widget='monetary' options="{'currency_field': 'currency_id'}" readonly="True" />
+					<field name="paid_amount" widget='monetary' options="{'currency_field': 'currency_id'}" readonly="True" />
+					<field name="amount_due" widget='monetary' options="{'currency_field': 'currency_id'}" readonly="True" />
+				</group>
+			 </group>   
+			</xpath>
+			
 
         </field>
     </record>
