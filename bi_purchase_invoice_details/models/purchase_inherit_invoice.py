@@ -34,7 +34,7 @@ class PurchaseOrderUpdate(models.Model):
 				record.amount_due = amount
 			else:
 				record.amount_due = amount
-			
+			#grabado
 
 	@api.onchange('invoiced_amount','amount_due')
 	def _computepaid(self):
