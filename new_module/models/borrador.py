@@ -15,7 +15,7 @@ class borradoresFactura(models.Model):
     fechaEmision= fields.Date()
     fechaRecepcion = fields.Date()
     acuseRecibo= fields.Selection(selection=[
-            ('1','Pendiente de ser enviado'),
+            ('1','Pendiente de ser enviaado'),
             ('2','Aceptado'),
             ('3','Consultar Estado Doc'),
             ('4','Aceptado con reparos'),
