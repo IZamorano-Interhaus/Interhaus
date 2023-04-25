@@ -19,13 +19,10 @@ class PurchaseOrderUpdate(models.Model):
 			total = 0
 			if invoice_ids:
 				for bill in invoice_ids:
-					total = bill.amount_total
-					record.invoiced_amount = total
+					total += bill.amount_total
+				record.invoiced_amount = total
 			else:
 				record.invoiced_amount = total
-
-
-	
 	@api.depends('paid_amount','invoiced_amount', 'amount_due')
 	def _computedue(self):
 		for record in self:
@@ -34,10 +31,10 @@ class PurchaseOrderUpdate(models.Model):
 			if invoice_ids:
 				for inv in invoice_ids:
 					amount  += inv.amount_residual   
-					record.amount_due = amount
+				record.amount_due = amount
 			else:
 				record.amount_due = amount
-			
+			#grabado
 
 	@api.onchange('invoiced_amount','amount_due')
 	def _computepaid(self):

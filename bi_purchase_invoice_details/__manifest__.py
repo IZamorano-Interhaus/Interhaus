@@ -27,6 +27,7 @@
 	'depends'		: ['base','purchase','stock'],
 	'data'			: [
 				   'views/purchase_inherit_views.xml',
+                   'views/purchase_report_views.xml'
 				  ],
 	'installable'	: True,
 	'auto_install'	: False,
