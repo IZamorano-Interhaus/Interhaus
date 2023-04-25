@@ -26,7 +26,7 @@
 	'website'		: 'https://www.browseinfo.in',
 	'depends'		: ['base','account','stock'],
 	'data'			: [
-				   'views/purchase_inherit_views.xml',
+				   'views/purchase_inherit_report_views.xml',
 				  ],
 	'installable'	: True,
 	'auto_install'	: False,
