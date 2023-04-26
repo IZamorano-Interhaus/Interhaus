@@ -9,6 +9,13 @@ class reporte_detalle():
 class OrdenCompra():
     _inherit=['purcharse.order',]
 
+    x_studio_cuenta_contable = fields.Many2one(
+        comodel_name='account.move.line',
+        string='Cuenta contable',
+        readonly=True,
+        required=True
+    )
+
     @api.depends('journal_id','company_id','partner_id')
     def _migracionDatos(self):
         query="""
