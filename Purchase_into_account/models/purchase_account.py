@@ -3,10 +3,10 @@
 
 from odoo import api, fields, models, _
 
-class reporte_detalle():
+class reporte_detalle(models.Model):
     _inherit="purchase.order.line"
 
-class OrdenCompra():
+class OrdenCompra(models.Model):
     _inherit=['purcharse.order',]
 
     x_studio_cuenta_contable = fields.Many2one(
