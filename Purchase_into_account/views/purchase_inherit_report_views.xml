@@ -5,7 +5,7 @@
 		<field name="model">purchase.order<!-- .line --></field>
 		<field name="inherit_id" ref="studio_customization.default_list_view_fo_03669b9d-d385-4147-ba8e-f3405fb19c44"/>
 		<field name="arch" type="xml">
-			<sheet>
+			
 				<!-- <xpath expr="//menuitem[@name='menu_account_supplier']">
 					<menuitem id="menu_account_AccountMoveLine" name="Orden de Compra" action="action_move_in_invoice_type" sequence="300"/>
 				</xpath> -->
@@ -13,7 +13,7 @@
 					<field name="x_studio_cuenta_contable"/>
 					<field name="analytic_distribution"/>
 					<field name="price_total"/> -->
-			</sheet>
+			
 		</field>
 	</record>
 	
