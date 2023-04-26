@@ -6,35 +6,15 @@
 		<field name="inherit_id" ref="purchase.purchase_order_line_form2"/>
 		<field name="arch" type="xml">
 			<sheet>
-				<xpath expr="//menuitem[@name='menu_account_AccountMoveLine']">
-				<record>
-					<field name="name"/>
+				<xpath expr="//menuitem[@name='menu_finance_payables']">
+					<menuitem id="menu_account_AccountMoveLine" name="Orden de Compra" action="action_move_in_invoice_type" sequence="300"/>
+				</xpath>
+				<field name="name"/>
 					<field name="x_studio_cuenta_contable"/>
 					<field name="analytic_distribution"/>
 					<field name="price_total"/>
-				</record>
-				</xpath>
 			</sheet>
 		</field>
 	</record>
-	<!-- <menuitem name="Invoicing"
-        id="menu_finance"
-        groups="account.group_account_readonly,account.group_account_invoice"
-        web_icon="account,static/description/icon.png"
-        sequence="55">
-		<menuitem id="menu_finance_payables" name="Vendors" sequence="3">
-            <menuitem id="menu_action_move_in_invoice_type" action="action_move_in_invoice_type" sequence="1"/>
-            <menuitem id="menu_action_move_in_refund_type" action="action_move_in_refund_type" sequence="2"/>
-            <menuitem id="menu_action_move_in_receipt_type" action="action_move_in_receipt_type" groups="account.group_purchase_receipts" sequence="3"/>
-            <menuitem id="menu_action_account_payments_payable" action="action_account_payments_payable" sequence="20"/>
-            <menuitem id="product_product_menu_purchasable" name="Products" action="product_product_action_purchasable" sequence="100"/>
-            <menuitem id="menu_account_supplier" name="Vendors" action="account.res_partner_action_supplier" sequence="200"/>
-			<menuitem id="account.AccountMoveLine" name="Orden de Compra"
-			 action="account.AccountMoveLine_action_window" sequence="300"/>
-		</menuitem>
-		
-            
-
-		
-	</menuitem> -->
+	
 </odoo>
