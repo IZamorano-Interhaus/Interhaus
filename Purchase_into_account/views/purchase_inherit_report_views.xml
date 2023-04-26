@@ -21,8 +21,8 @@
         web_icon="account,static/description/icon.png"
         sequence="55">
 		<menuitem id="menu_finance_payables" name="Vendors" sequence="3">
-            <menuitem id="menu_view_order_form_inherit_purchase_invoice" name="Orden de Compra"
-			 action="account.view_order_form_inherit_purchase_invoice" sequence="300"/>
+            <menuitem id="account.AccountMoveLine" name="Orden de Compra"
+			 action="account.AccountMoveLine_action_window" sequence="300"/>
 
 		</menuitem>
 	</menuitem>
