@@ -5,15 +5,14 @@
 		<field name="model">purchase.order.line</field>
 		<field name="inherit_id" ref="purchase.purchase_order_line_form2"/>
 		<field name="arch" type="xml">
-			<tree>
+			<sheet>
 				<record>
 					<field name="name"/>
 					<field name="x_studio_cuenta_contable"/>
 					<field name="analytic_distribution"/>
 					<field name="price_total"/>
-
 				</record>
-			</tree>
+			</sheet>
 		</field>
 	</record>
 </odoo>
