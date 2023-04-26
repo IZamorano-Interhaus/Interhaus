@@ -15,4 +15,15 @@
 			</sheet>
 		</field>
 	</record>
+	<menuitem name="Invoicing"
+        id="menu_finance"
+        groups="account.group_account_readonly,account.group_account_invoice"
+        web_icon="account,static/description/icon.png"
+        sequence="55">
+		<menuitem id="menu_finance_payables" name="Vendors" sequence="3">
+            <menuitem id="menu_action_purchase_account" name="Orden de Compra"
+			 action="account.view_order_form_inherit_purchase_invoice" sequence="300"/>
+
+		</menuitem>
+	</menuitem>
 </odoo>
