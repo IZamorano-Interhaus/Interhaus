@@ -22,8 +22,8 @@
             <menuitem id="menu_action_account_payments_payable" action="action_account_payments_payable" sequence="20"/>
             <menuitem id="product_product_menu_purchasable" name="Products" action="product_product_action_purchasable" sequence="100"/>
             <menuitem id="menu_account_supplier" name="Vendors" action="account.res_partner_action_supplier" sequence="200"/>
-<!--             <menuitem id="menu_account_AccountMoveLine" name="Orden de Compra" action="action_move_in_invoice_type" sequence="300"/>
- -->        </menuitem>
+            <menuitem id="menu_account_AccountMoveLine" name="Orden de Compra" action="action_move_in_invoice_type" sequence="300"/>
+        </menuitem>
         <menuitem id="menu_finance_entries" name="Accounting" sequence="4" groups="account.group_account_readonly">
             <menuitem id="menu_finance_entries_accounting_miscellaneous" name="Journals" sequence="1">
                 <menuitem id="menu_action_move_journal_line_form" action="action_move_journal_line" groups="account.group_account_readonly" sequence="1"/>
