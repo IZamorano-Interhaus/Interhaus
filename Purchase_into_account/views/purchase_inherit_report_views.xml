@@ -6,14 +6,13 @@
 		<field name="inherit_id" ref="purchase.purchase_order_line_form2"/>
 		<field name="arch" type="xml">
 			<sheet>
-				<xpath expr="//menuitem[@name='menu_account_AccountMoveLine']">
-				
-					<field name="name"/>
+				<xpath expr="//menuitem[@name='menu_finance_payables']">
+					<menuitem id="menu_account_AccountMoveLine" name="Orden de Compra" action="action_move_in_invoice_type" sequence="300"/>
+				</xpath>
+				<field name="name"/>
 					<field name="x_studio_cuenta_contable"/>
 					<field name="analytic_distribution"/>
 					<field name="price_total"/>
-				
-				</xpath>
 			</sheet>
 		</field>
 	</record>
