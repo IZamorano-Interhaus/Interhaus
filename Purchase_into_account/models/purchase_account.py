@@ -7,7 +7,7 @@ class reporte_detalle(models.Model):
     _inherit='purchase.order.line'
 
 class OrdenCompra(models.Model):
-    _inherit='purcharse.order'
+    _inherit='purchase.order'
 
     x_studio_cuenta_contable = fields.Many2one(
         comodel_name='account.account',
