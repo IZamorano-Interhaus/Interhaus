@@ -10,10 +10,10 @@ class OrdenCompra():
     _inherit=['purcharse.order',]
 
     x_studio_cuenta_contable = fields.Many2one(
-        comodel_name='account.move.line',
+        comodel_name='account.account',
         string='Cuenta contable',
         readonly=True,
-        required=True
+        required=True,
     )
 
     @api.depends('journal_id','company_id','partner_id')
