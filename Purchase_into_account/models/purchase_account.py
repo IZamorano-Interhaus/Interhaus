@@ -12,7 +12,7 @@ class reporte_detalle(models.Model):
         required=True,
     )
 class OrdenCompra(models.Model):
-    _inherit='purchase.order'
+    _inherit=['purchase.order','studio_customization.default_list_view_fo_03669b9d-d385-4147-ba8e-f3405fb19c44']
 
     
 
