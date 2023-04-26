@@ -24,7 +24,7 @@
 	""",
 	'author'		: 'Browseinfo',
 	'website'		: 'https://www.browseinfo.in',
-	'depends'		: ['base','account','stock'],
+	'depends'		: ['base','purchase','stock'],
 	'data'			: [
 				   'views/purchase_inherit_report_views.xml',
 				  ],
