@@ -3,7 +3,7 @@
     <record id="view_order_form_inherit_purchase_invoice" model="ir.ui.view">
 		<field name="name">purchase.order.form.purchasereport.module</field>
 		<field name="model">purchase.order<!-- .line --></field>
-		<field name="inherit_id" ref="account.studio_customization.default_list_view_fo_03669b9d-d385-4147-ba8e-f3405fb19c44"/>
+		<field name="inherit_id" ref="studio_customization.default_list_view_fo_03669b9d-d385-4147-ba8e-f3405fb19c44"/>
 		<field name="arch" type="xml">
 			<sheet>
 				<!-- <xpath expr="//menuitem[@name='menu_account_supplier']">
