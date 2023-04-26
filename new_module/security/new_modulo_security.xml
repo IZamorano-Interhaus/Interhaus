@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<odoo>
+    <data>
+        <record model="ir.module.category" id="new_module.module_category_pruebas">
+            <field name="name">pruebas</field>
+            <field name="description">una pequeña descripcion</field>    
+        </record>
+        <record model="res.groups" id="group_pruebas">
+            <field name="name">pruebas2</field>
+            <field name="description">una pequeña descripcion</field>    
+        </record>
+    </data>
+</odoo>
