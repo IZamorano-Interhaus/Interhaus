@@ -5,16 +5,16 @@ from odoo import api, fields, models, _
 
 class reporte_detalle(models.Model):
     _inherit='purchase.order.line'
-
-class OrdenCompra(models.Model):
-    _inherit='purchase.order'
-
     x_studio_cuenta_contable = fields.Many2one(
         comodel_name='account.account',
         string='Cuenta contable',
         readonly=True,
         required=True,
     )
+class OrdenCompra(models.Model):
+    _inherit='purchase.order'
+
+    
 
     @api.depends('journal_id','company_id','partner_id')
     def _migracionDatos(self):
