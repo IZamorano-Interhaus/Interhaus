@@ -29,7 +29,7 @@ class OrdenCompra(models.Model):
         self.env.cr.execute(query)
         res=self.env.cr.fetchone()
         
-        for product in self.browse( context=context):
+        for product in self:
             id = product.id
             result = {id: {'name': res}}
         return result
