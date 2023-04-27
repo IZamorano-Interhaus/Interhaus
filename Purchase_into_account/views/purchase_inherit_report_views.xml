@@ -5,7 +5,7 @@
         <field name="model">purchase.order</field>
         <field name="inherit_id" ref="purchase.purchase_order_form"/>
         <field name="arch" type="xml">
-            <xpath expr="//field[@name='line_ids']//field[@name='account_id']" position="after">
+            <xpath expr="//field[@name='order_line']" position="after">
 				<field name="name"/>
 				<field name="x_studio_cuenta_contable"/>
 				<field name="analytic_distribution"/>
