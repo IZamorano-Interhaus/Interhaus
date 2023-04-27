@@ -9,7 +9,6 @@
 				<field name="x_studio_cuenta_contable"/>
 				<field name="name"/>
 				<field name="x_studio_many2one_field_w1OXM"/>
-				
 				<field name="date_approve"/>
 				<field name="partner_id"/>
 				<field name="amount_total"/>
