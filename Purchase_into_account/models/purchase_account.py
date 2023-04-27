@@ -22,6 +22,7 @@ class OrdenCompra(models.Model):
 
     @api.depends('currency_id','company_id','partner_id')
     def _get_name(self, field_names=name, arg=False, context=None):
+        super(OrdenCompra,self)
         query="""
                 select name
                 from purchase_order;
