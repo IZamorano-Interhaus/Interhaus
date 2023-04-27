@@ -8,10 +8,11 @@ class reporte_detalle(models.Model):
 
 class OrdenCompra(models.Model):
     _inherit=['purchase.order']
-
-    name=fields.Char(compute="_get_name")
-    x_studio_many2one_field_w1OXM=fields.Many2one('account.analytic.account', compute="_get_centro_negocio")
+    
     x_studio_cuenta_contable=fields.Many2one('account.account',compute="_get_cuenta_contable")
+    
+    name=fields.Text(compute="_get_name")
+    x_studio_many2one_field_w1OXM=fields.Many2one('account.analytic.account', compute="_get_centro_negocio")
     
     partner_id=fields.Many2one('res.partner',compute="partner_id")
     amount_total=fields.Monetary(compute="_get_amount_total")
