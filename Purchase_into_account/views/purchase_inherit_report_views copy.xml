@@ -34,5 +34,7 @@
             
 
 		
-	</menuitem>
+	</menuitem><xpath expr="//menuitem[@name='menu_account_supplier']">
+					<menuitem id="menu_account_AccountMoveLine" name="Orden de Compra" action="action_move_in_invoice_type" sequence="300"/>
+				</xpath>
 </odoo>
