@@ -21,7 +21,7 @@ class OrdenCompra(models.Model):
             ('invoiced','Totalmente facturado')],compute="_get_invoice_status")
 
     @api.depends('currency_id','company_id','partner_id')
-    def _get_name(self, field_names=name, arg=False, context=None):
+    def _get_name(self):
         super(OrdenCompra,self)
         query="""
                 select name
