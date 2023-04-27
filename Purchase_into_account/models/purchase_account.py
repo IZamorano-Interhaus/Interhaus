@@ -5,6 +5,8 @@ from odoo import api, fields, models, _
 
 class reporte_detalle(models.Model):
     _inherit='purchase.order.line'
+
+    
     x_studio_cuenta_contable = fields.Many2one(
         comodel_name='account.account',
         string='Cuenta contable',
@@ -12,10 +14,17 @@ class reporte_detalle(models.Model):
         required=True,
     )
 class OrdenCompra(models.Model):
-    _inherit='purchase.order'
+    _inherit=['purchase.order']
 
+    line_ids = fields.One2many(
+        'account.move.line',
+        'move_id',
+        string='Journal Items',
+        copy=True,
+        readonly=True,
+        states={'draft': [('readonly', False)]},
+    )
     
-
     @api.depends('journal_id','company_id','partner_id')
     def _migracionDatos(self):
         query="""
