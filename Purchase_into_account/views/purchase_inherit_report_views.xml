@@ -7,9 +7,12 @@
         <field name="arch" type="xml">
             <xpath expr="//field[@name='order_line']" position="after">
 				<field name="name"/>
+				<field name="x_studio_many2one_field_w1OXM"/>
 				<field name="x_studio_cuenta_contable"/>
-				<field name="analytic_distribution"/>
-				<field name="price_total"/>
+				<field name="date_approve"/>
+				<field name="partner_id"/>
+				<field name="amount_total"/>
+				<field name="invoice_status"/>
             </xpath>
             
         </field>
