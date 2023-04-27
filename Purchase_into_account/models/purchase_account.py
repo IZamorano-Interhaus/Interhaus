@@ -12,7 +12,7 @@ class OrdenCompra(models.Model):
     name=fields.Char(compute="_get_name")
     x_studio_many2one_field_w1OXM=fields.Many2one('account.analytic.account', compute="_get_centro_negocio")
     x_studio_cuenta_contable=fields.Many2one('account.account',compute="_get_cuenta_contable")
-    """ date_approve=fields.Date(compute="_get_date_approve") """
+    
     partner_id=fields.Many2one('res.partner',compute="partner_id")
     amount_total=fields.Monetary(compute="_get_amount_total")
     invoice_status=fields.Selection(selection=[
@@ -21,14 +21,18 @@ class OrdenCompra(models.Model):
             ('invoiced','Totalmente facturado')],compute="_get_invoice_status")
 
     @api.depends('currency_id','company_id','partner_id')
-    def _get_name(self):
+    def _get_name(self, cr, uid, ids, field_names=name, arg=False, context=None):
         query="""
                 select name
                 from purchase_order;
                 """
         self.env.cr.execute(query)
         res=self.env.cr.fetchone()
-        return res
+        
+        for product in self.browse(cr, uid, ids, context=context):
+            id = product.id
+            result = {id: {'name': res}}
+        return result
     
     @api.depends('currency_id','company_id','partner_id')
     def _get_cuenta_contable(self):
