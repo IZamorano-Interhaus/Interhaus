@@ -12,7 +12,7 @@ class OrdenCompra(models.Model):
     name=fields.Char(compute="_get_name")
     x_studio_many2one_field_w1OXM=fields.Many2one('account.analytic.account', compute="_get_centro_negocio")
     x_studio_cuenta_contable=fields.Many2one('account.account',compute="_get_cuenta_contable")
-    date_approve=fields.Date(compute="_get_date_approve")
+    """ date_approve=fields.Date(compute="_get_date_approve") """
     partner_id=fields.Many2one('res.partner',compute="partner_id")
     amount_total=fields.Monetary(compute="_get_amount_total")
     invoice_status=fields.Selection(selection=[
