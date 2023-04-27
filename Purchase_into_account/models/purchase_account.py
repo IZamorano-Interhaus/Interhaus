@@ -6,43 +6,85 @@ from odoo import api, fields, models, _
 class reporte_detalle(models.Model):
     _inherit='purchase.order.line'
 
-    
-    x_studio_cuenta_contable = fields.Many2one(
-        comodel_name='account.account',
-        string='Cuenta contable',
-        readonly=True,
-        required=True,
-    )
 class OrdenCompra(models.Model):
     _inherit=['purchase.order']
 
-    line_ids = fields.One2many(
-        'account.move.line',
-        'move_id',
-        string='Journal Items',
-        copy=True,
-        readonly=True,
-        states={'draft': [('readonly', False)]},
-    )
-    account_id = fields.Many2one(
-        comodel_name='account.account',
-        string='Account',
-        index=True,
-        auto_join=True,
-        ondelete="cascade",
-        domain="[('deprecated', '=', False), ('company_id', '=', company_id), ('is_off_balance', '=', False)]",
-        check_company=True,
-        tracking=True,
-    )
-    
+    name=fields.Char(compute="_get_name")
+    x_studio_many2one_field_w1OXM=fields.Many2one('account.analytic.account', compute="_get_centro_negocio")
+    x_studio_cuenta_contable=fields.Many2one('account.account',compute="_get_cuenta_contable")
+    date_approve=fields.datetime(compute="_get_date_approve")
+    partner_id=fields.Many2one('res.partner',compute="partner_id")
+    amount_total=fields.Monetary(compute="_get_amount_total")
+    invoice_status=fields.Selection(selection=[
+            ('no','Nada para facturar'),
+            ('to invoice','Para Facturar'),
+            ('invoiced','Totalmente facturado')],compute="_get_invoice_status")
+
     @api.depends('journal_id','company_id','partner_id')
-    def _migracionDatos(self):
+    def _get_name(self):
         query="""
-                select Po.id,Po.name,Po.x_studio_cuenta_contable, Pol.analytic_distribution, Pol.price_total
-                from purchase_order  Po
-                join purchase_order_line Pol on Po.id=Pol.order_id;
+                select name
+                from purchase_order;
                 """
         self.env.cr.execute(query)
         res=self.env.cr.fetchone()
         return res
+    
+    @api.depends('journal_id','company_id','partner_id')
+    def _get_cuenta_contable(self):
+        query="""
+                select x_studio_cuenta_contable
+                from purchase_order;
+                """
+        self.env.cr.execute(query)
+        res=self.env.cr.fetchone()
+        return res
+    
+    @api.depends('journal_id','company_id','partner_id')
+    def _get_centro_negocio(self):
+        query="""
+                    select x_studio_many2one_field_w1OXM
+                    from purchase_order;
+                """
+        self.env.cr.execute(query)
+        res=self.env.cr.fetchone()
+        return res
+    
+    @api.depends('journal_id','company_id','partner_id')
+    def _get_date_approve(self):
+        query="""
+                select date_approve
+                from purchase_order;
+                """
+        self.env.cr.execute(query)
+        res=self.env.cr.fetchone()
+        return res
+    @api.depends('journal_id','company_id','partner_id')
+    def _get_partner_id(self):
+        query="""
+                select partner_id
+                from purchase_order;
+                """
+        self.env.cr.execute(query)
+        res=self.env.cr.fetchone()
+        return res
+    @api.depends('journal_id','company_id','partner_id')
+    def _get_amount_total(self):
+        query="""
+                select amount_total
+                from purchase_order;
+                """
+        self.env.cr.execute(query)
+        res=self.env.cr.fetchone()
+        return res
+    @api.depends('journal_id','company_id','partner_id')
+    def _get_invoice_status(self):
+        query="""
+                select invoice_status
+                from purchase_order;
+                """
+        self.env.cr.execute(query)
+        res=self.env.cr.fetchone()
+        return res
+    
 
