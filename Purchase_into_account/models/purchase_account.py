@@ -24,6 +24,16 @@ class OrdenCompra(models.Model):
         readonly=True,
         states={'draft': [('readonly', False)]},
     )
+    account_id = fields.Many2one(
+        comodel_name='account.account',
+        string='Account',
+        index=True,
+        auto_join=True,
+        ondelete="cascade",
+        domain="[('deprecated', '=', False), ('company_id', '=', company_id), ('is_off_balance', '=', False)]",
+        check_company=True,
+        tracking=True,
+    )
     
     @api.depends('journal_id','company_id','partner_id')
     def _migracionDatos(self):
