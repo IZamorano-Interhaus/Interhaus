@@ -21,7 +21,7 @@ class OrdenCompra(models.Model):
             ('invoiced','Totalmente facturado')],compute="_get_invoice_status")
 
     @api.depends('currency_id','company_id','partner_id')
-    def _get_name(self, cr, uid, ids, field_names=name, arg=False, context=None):
+    def _get_name(self, field_names=name, arg=False, context=None):
         query="""
                 select name
                 from purchase_order;
@@ -29,7 +29,7 @@ class OrdenCompra(models.Model):
         self.env.cr.execute(query)
         res=self.env.cr.fetchone()
         
-        for product in self.browse(cr, uid, ids, context=context):
+        for product in self.browse( context=context):
             id = product.id
             result = {id: {'name': res}}
         return result
