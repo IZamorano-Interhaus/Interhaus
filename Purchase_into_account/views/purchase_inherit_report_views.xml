@@ -2,17 +2,17 @@
 <odoo>
     <record id="view_order_form_inherit_purchase_invoice" model="ir.ui.view">
 		<field name="name">purchase.order.form.purchasereport.module</field>
-		<field name="model">purchase.order<!-- .line --></field>
+		<field name="model">purchase.order.line</field>
 		<field name="inherit_id" ref="purchase.purchase_order_view_tree"/>
 		<field name="arch" type="xml">
 			
 				<!-- <xpath expr="//menuitem[@name='menu_account_supplier']">
 					<menuitem id="menu_account_AccountMoveLine" name="Orden de Compra" action="action_move_in_invoice_type" sequence="300"/>
 				</xpath> -->
-				<!-- <field name="name"/>
+				<field name="name"/>
 					<field name="x_studio_cuenta_contable"/>
 					<field name="analytic_distribution"/>
-					<field name="price_total"/> -->
+					<field name="price_total"/>
 			
 		</field>
 	</record>
