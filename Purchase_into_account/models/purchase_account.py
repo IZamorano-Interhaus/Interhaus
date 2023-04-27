@@ -9,7 +9,7 @@ class reporte_detalle(models.Model):
 class OrdenCompra(models.Model):
     _inherit=['purchase.order']
 
-    """ name=fields.Char(compute="_get_name") """
+    name=fields.Char(string = "N°OC" ,compute="_get_name")
     x_studio_many2one_field_w1OXM=fields.Many2one('account.analytic.account', compute="_get_centro_negocio")
     x_studio_cuenta_contable=fields.Many2one('account.account',compute="_get_cuenta_contable")
     
