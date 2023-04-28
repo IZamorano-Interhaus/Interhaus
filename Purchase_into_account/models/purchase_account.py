@@ -36,62 +36,8 @@ class OrdenCompra(models.Model):
             id = OC.id
             result = {id: {'name': res}}
         return result
+        """
     
-    @api.depends('currency_id','company_id','partner_id')
-    def _get_cuenta_contable(self):
-        query=
-                #select x_studio_cuenta_contable
-                #from purchase_order;
-                
-        self.env.cr.execute(query)
-        res=self.env.cr.fetchone()
-        return res
     
-    @api.depends('currency_id','company_id','partner_id')
-    def _get_centro_negocio(self):
-        query=
-                   # select x_studio_many2one_field_w1OXM
-                   # from purchase_order;
-                
-        self.env.cr.execute(query)
-        res=self.env.cr.fetchone()
-        return res
-    
-    @api.depends('currency_id','company_id','partner_id')
-    def _get_date_approve(self):
-        query=
-                #select date_approve
-               # from purchase_order;
-                
-        self.env.cr.execute(query)
-        res=self.env.cr.fetchone()
-        return res
-    @api.depends('currency_id','company_id','partner_id')
-    def _get_partner_id(self):
-        query=
-                #select partner_id
-                #from purchase_order;
-                
-        self.env.cr.execute(query)
-        res=self.env.cr.fetchone()
-        return res
-    @api.depends('currency_id','company_id','partner_id')
-    def _get_amount_total(self):
-        query=
-                #select amount_total
-                #from purchase_order;
-                
-        self.env.cr.execute(query)
-        res=self.env.cr.fetchone()
-        return res
-    @api.depends('currency_id','company_id','partner_id')
-    def _get_invoice_status(self):
-        query=
-               # select invoice_status
-               # from purchase_order;
-                
-        self.env.cr.execute(query)
-        res=self.env.cr.fetchone()
-        return res """
     
 
