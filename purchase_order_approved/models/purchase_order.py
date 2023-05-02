@@ -7,7 +7,7 @@ from odoo import fields, models
 class PurchaseOrder(models.Model):
     _inherit = "purchase.order"
 
-    state = fields.Selection(selection_add=[("approved", "Approved"), ("purchase",)])
+    state = fields.Selection(selection_add=[("approved", "Aprobación técnica"), ("purchase",)])
 
     READONLY_STATES = {
         "purchase": [("readonly", True)],
