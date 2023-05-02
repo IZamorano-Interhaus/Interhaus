@@ -18,8 +18,8 @@
                 <button
                     name="button_release"
                     type="object"
-                    states="approved"
-                    string="Convert to Purchase Order"
+                    states="approved1"
+                    string="Convertir a Orden de Compra"
                     class="oe_highlight"
                 />
             <!-- <button name="button_approve" position="after">

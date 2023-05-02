@@ -40,7 +40,7 @@ class PurchaseOrder(models.Model):
                 rec.partner_id.purchase_requires_second_approval == "based_on_company"
                 and rec.company_id.purchase_approve_active
             )
-            if rec.state != "approved1" and (
+            if rec.state == "to approve" and (
                 partner_requires_approve or company_requires_approve
             ):
                 two_steps_purchase_approval_ids.append(rec.id)
@@ -50,10 +50,10 @@ class PurchaseOrder(models.Model):
         return super(PurchaseOrder, one_step_purchase_approval).button_approve1(
             force=force
         )
-    def button_release(self):
-        return super(PurchaseOrder, self).button_approve()
+    def button_release2(self):
+        return super(PurchaseOrder, self).button_approve2()
 
-    def button_approve(self, force=False):
+    def button_approve2(self, force=False):
         two_steps_purchase_approval_ids = []
         for rec in self:
             partner_requires_approve = (
@@ -63,13 +63,13 @@ class PurchaseOrder(models.Model):
                 rec.partner_id.purchase_requires_second_approval == "based_on_company"
                 and rec.company_id.purchase_approve_active
             )
-            if rec.state != "aproved2" and (
+            if rec.state == "aproved1" and (
                 partner_requires_approve or company_requires_approve
             ):
                 two_steps_purchase_approval_ids.append(rec.id)
         two_steps_purchase_approval = self.browse(two_steps_purchase_approval_ids)
         two_steps_purchase_approval.write({"state": "aproved2"})
         one_step_purchase_approval = self - two_steps_purchase_approval
-        return super(PurchaseOrder, one_step_purchase_approval).button_approve(
+        return super(PurchaseOrder, one_step_purchase_approval).button_approve2(
             force=force
         )
