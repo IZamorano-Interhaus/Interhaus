@@ -7,13 +7,14 @@ from odoo import fields, models
 class PurchaseOrder(models.Model):
     _inherit = "purchase.order"
 
-    state = fields.Selection(selection_add=[("approved1", "Aprobación técnica"), ("purchase",)])
+    state = fields.Selection(selection_add=[("approved1", "Aprobación técnica"),("approved2","Aprobación financiera") ("purchase",)])
 
     READONLY_STATES = {
         "purchase": [("readonly", True)],
         "done": [("readonly", True)],
         "cancel": [("readonly", True)],
         "approved1": [("readonly", True)],
+        "approved2":[("readonly", True)],
     }
 
     # Update the readonly states:
@@ -47,5 +48,25 @@ class PurchaseOrder(models.Model):
         two_steps_purchase_approval.write({"state": "approved1"})
         one_step_purchase_approval = self - two_steps_purchase_approval
         return super(PurchaseOrder, one_step_purchase_approval).button_approve(
+            force=force
+        )
+    def button_approve2(self, force=False):
+        two_steps_purchase_approval_ids = []
+        for rec in self:
+            partner_requires_approve = (
+                rec.partner_id.purchase_requires_second_approval == "always"
+            )
+            company_requires_approve = (
+                rec.partner_id.purchase_requires_second_approval == "based_on_company"
+                and rec.company_id.purchase_approve_active
+            )
+            if rec.state != "approved1" and rec.state != "approved2" and(
+                partner_requires_approve or company_requires_approve
+            ):
+                two_steps_purchase_approval_ids.append(rec.id)
+        two_steps_purchase_approval = self.browse(two_steps_purchase_approval_ids)
+        two_steps_purchase_approval.write({"state": "approved2"})
+        one_step_purchase_approval = self - two_steps_purchase_approval
+        return super(PurchaseOrder, one_step_purchase_approval).button_approve2(
             force=force
         )
