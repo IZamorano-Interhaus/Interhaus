@@ -24,7 +24,6 @@ class SaleConfiguration(models.TransientModel):
             users_two_approval_purchase = user_two_ids,
             )
         return res
-    @api.multi
     def set_values(self): #Para guardar las variables
         super(SaleConfiguration, self).set_values()
         ICPSudo = self.env['ir.config_parameter'].sudo()
