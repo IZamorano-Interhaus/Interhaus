@@ -23,6 +23,15 @@
                     class="oe_highlight"
                 />
             </button>
+            <button name="button_approve2" position="after">
+                <button
+                    name="button_release2"
+                    type="object"
+                    states="approved2"
+                    string="Convert to Purchase Order 2"
+                    class="oe_highlight"
+                />
+            </button>
             <field name="order_line" position="attributes">
                 <attribute
                     name="attrs"
