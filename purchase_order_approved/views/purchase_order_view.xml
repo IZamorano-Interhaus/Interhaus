@@ -30,7 +30,8 @@
                     string="Convert to Purchase Order"
                     class="oe_highlight"
                 />
-            </button> -->
+            -->
+            </button>
             <field name="order_line" position="attributes">
                 <attribute
                     name="attrs"
