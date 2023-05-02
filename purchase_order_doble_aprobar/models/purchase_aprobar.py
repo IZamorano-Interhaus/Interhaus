@@ -24,7 +24,7 @@ class purchase_order(models.Model):
         two_purchase = ICPSudo.get_param('purchase.two_approval_purchase')
         self.two_approval_purchase = two_purchase
         
-    @api.multi
+    
     def button_confirm(self):
         ICPSudo = self.env['ir.config_parameter'].sudo()
         two_approval_purchase = ICPSudo.get_param('purchase.two_approval_purchase')
