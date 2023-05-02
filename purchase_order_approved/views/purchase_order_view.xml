@@ -16,7 +16,7 @@
             </button>
             <button name="button_approve1" position="after">
                 <button
-                    name="button_release"
+                    name="button_release1"
                     type="object"
                     states="approved1"
                     string="Convertir a Orden de Compra"
