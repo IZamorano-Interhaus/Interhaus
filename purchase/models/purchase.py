@@ -464,46 +464,7 @@ class PurchaseOrder(models.Model):
         self.write({'state': 'purchase', 'date_approve': fields.Datetime.now()})
         self.filtered(lambda p: p.company_id.po_lock == 'lock').write({'state': 'done'})
         return {}
-    def button_approve1(self, force=False):
-        two_steps_purchase_approval_ids = []
-        for rec in self:
-            partner_requires_approve = (
-                rec.partner_id.purchase_requires_second_approval == "always"
-            )
-            company_requires_approve = (
-                rec.partner_id.purchase_requires_second_approval == "based_on_company"
-                and rec.company_id.purchase_approve_active
-            )
-            if rec.state != "approved1" and (
-                partner_requires_approve or company_requires_approve
-            ):
-                two_steps_purchase_approval_ids.append(rec.id)
-        two_steps_purchase_approval = self.browse(two_steps_purchase_approval_ids)
-        two_steps_purchase_approval.write({"state": "approved1"})
-        one_step_purchase_approval = self - two_steps_purchase_approval
-        return super(PurchaseOrder, one_step_purchase_approval).button_approve(
-            force=force
-        )
-    def button_approve2(self, force=False):
-        two_steps_purchase_approval_ids = []
-        for rec in self:
-            partner_requires_approve = (
-                rec.partner_id.purchase_requires_second_approval == "always"
-            )
-            company_requires_approve = (
-                rec.partner_id.purchase_requires_second_approval == "based_on_company"
-                and rec.company_id.purchase_approve_active
-            )
-            if rec.state != "approved1" and rec.state != "approved2" and(
-                partner_requires_approve or company_requires_approve
-            ):
-                two_steps_purchase_approval_ids.append(rec.id)
-        two_steps_purchase_approval = self.browse(two_steps_purchase_approval_ids)
-        two_steps_purchase_approval.write({"state": "approved2"})
-        one_step_purchase_approval = self - two_steps_purchase_approval
-        return super(PurchaseOrder, one_step_purchase_approval).button_approve2(
-            force=force
-        )
+
     def button_draft(self):
         self.write({'state': 'draft'})
         return {}

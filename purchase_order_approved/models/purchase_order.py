@@ -32,7 +32,7 @@ class PurchaseOrder(models.Model):
     def button_release2(self):
         return super(PurchaseOrder, self).button_approve2()
 
-    """ def button_approve1(self, force=False):
+    def button_approve1(self, force=False):
         two_steps_purchase_approval_ids = []
         for rec in self:
             partner_requires_approve = (
@@ -71,4 +71,4 @@ class PurchaseOrder(models.Model):
         one_step_purchase_approval = self - two_steps_purchase_approval
         return super(PurchaseOrder, one_step_purchase_approval).button_approve2(
             force=force
-        ) """
+        )
