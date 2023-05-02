@@ -25,6 +25,26 @@ class purchase_order(models.Model):
         self.two_approval_purchase = two_purchase
         
     
+    def button_approve(self, force=False):
+        two_steps_purchase_approval_ids = []
+        for rec in self:
+            partner_requires_approve = (
+                rec.partner_id.purchase_requires_second_approval == "always"
+            )
+            company_requires_approve = (
+                rec.partner_id.purchase_requires_second_approval == "based_on_company"
+                and rec.company_id.purchase_approve_active
+            )
+            if rec.state != "approved" and (
+                partner_requires_approve or company_requires_approve
+            ):
+                two_steps_purchase_approval_ids.append(rec.id)
+        two_steps_purchase_approval = self.browse(two_steps_purchase_approval_ids)
+        two_steps_purchase_approval.write({"state": "approved"})
+        one_step_purchase_approval = self - two_steps_purchase_approval
+        return super(purchase_order, one_step_purchase_approval).button_approve(
+            force=force
+        )
     def button_confirm(self):
         ICPSudo = self.env['ir.config_parameter'].sudo()
         two_approval_purchase = ICPSudo.get_param('purchase.two_approval_purchase')
