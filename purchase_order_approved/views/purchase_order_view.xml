@@ -18,27 +18,15 @@
                 <button
                     name="button_release"
                     type="object"
-                    states="approved1"
-                    string="Aprobación Técnica"
+                    states="approved"
+                    string="Convert to Purchase Order"
                     class="oe_highlight"
                 />
-                
             </button>
-            <button name="button_approve" position="after">
-                <button
-                    name="button_release2"
-                    type="object"
-                    states="approved2"
-                    string="Aprobación Financiera"
-                    class="oe_highlight"
-                />
-                
-            </button>
-            
             <field name="order_line" position="attributes">
                 <attribute
                     name="attrs"
-                >{'readonly': [('state', 'in', ('done', 'cancel', 'approved1','approved2'))]}</attribute>
+                >{'readonly': [('state', 'in', ('done', 'cancel', 'approved'))]}</attribute>
             </field>
         </field>
     </record>
@@ -50,18 +38,13 @@
             <filter name="approved" position="before">
                 <filter
                     name="purchase_order_approved"
-                    string="Aprobaciones técnicas"
-                    domain="[('state', '=', 'approved1')]"
-                />
-                <filter
-                    name="purchase_order_approved"
-                    string="Aprobaciones financieras"
-                    domain="[('state', '=', 'approved2')]"
+                    string="Approved Orders"
+                    domain="[('state', '=', 'approved')]"
                 />
             </filter>
         </field>
     </record>
     <record id="purchase.purchase_form_action" model="ir.actions.act_window">
-        <field name="domain">[('state','in',('approved1','approved2', 'purchase', 'done'))]</field>
+        <field name="domain">[('state','in',('approved', 'purchase', 'done'))]</field>
     </record>
 </odoo>
