@@ -16,21 +16,12 @@
             </button>
             <button name="button_approve" position="after">
                 <button
-                    name="button_release1"
-                    type="object"
-                    states="approved1"
-                    string="Convertir a Orden de Compra"
-                    class="oe_highlight"
-                />
-            <!-- <button name="button_approve" position="after">
-                <button
                     name="button_release"
                     type="object"
                     states="approved"
                     string="Convert to Purchase Order"
                     class="oe_highlight"
                 />
-            -->
             </button>
             <field name="order_line" position="attributes">
                 <attribute
