@@ -14,15 +14,9 @@
                     name="states"
                 >draft,to approve,approved,sent,purchase</attribute>
             </button>
-            <button name="button_approve1" position="after">
-                <button
-                    name="button_release"
-                    type="object"
-                    states="approved1"
-                    string="Aprobación Técnica"
-                    class="oe_highlight"
-                />
-            </button>
+<!--             <button name="button_approve1" position="after" class="oe_highlight"/>
+ -->                
+            
             <button name="button_approve2" position="after">
                 <button
                     name="button_release2"
