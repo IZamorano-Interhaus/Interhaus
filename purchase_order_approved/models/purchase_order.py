@@ -29,6 +29,8 @@ class PurchaseOrder(models.Model):
 
     def button_release(self):
         return super(PurchaseOrder, self).button_approve()
+    def button_release2(self):
+        return super(PurchaseOrder, self).button_approve2()
 
     def button_approve(self, force=False):
         two_steps_purchase_approval_ids = []
