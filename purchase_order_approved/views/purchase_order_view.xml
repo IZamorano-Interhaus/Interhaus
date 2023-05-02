@@ -14,6 +14,14 @@
                     name="states"
                 >draft,to approve,approved,sent,purchase</attribute>
             </button>
+            <button name="button_approve1" position="after">
+                <button
+                    name="button_release"
+                    type="object"
+                    states="approved"
+                    string="Convert to Purchase Order"
+                    class="oe_highlight"
+                />
             <button name="button_approve" position="after">
                 <button
                     name="button_release"
