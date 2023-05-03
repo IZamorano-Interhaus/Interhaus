@@ -541,8 +541,10 @@ class PurchaseOrder(models.Model):
                 }
                 # supplier info should be added regardless of the user access rights
                 line.product_id.sudo().write(vals)
+
     def action_contabilizar(self):
         raise ValidationError("Hola mundo")
+    
     def action_create_invoice(self):
         """Create the invoice associated to the PO.
         """
