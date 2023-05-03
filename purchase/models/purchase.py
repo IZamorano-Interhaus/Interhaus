@@ -541,7 +541,8 @@ class PurchaseOrder(models.Model):
                 }
                 # supplier info should be added regardless of the user access rights
                 line.product_id.sudo().write(vals)
-
+    def action_contabilizar(self):
+        raise ValidationError("Hola mundo")
     def action_create_invoice(self):
         """Create the invoice associated to the PO.
         """
@@ -614,7 +615,7 @@ class PurchaseOrder(models.Model):
         moves.filtered(lambda m: m.currency_id.round(m.amount_total) < 0).action_switch_invoice_into_refund_credit_note()
 
         return self.action_view_invoice(moves)
-
+    
     def _prepare_invoice(self):
         """Prepare the dict of values to create the new invoice for a purchase order.
         """
